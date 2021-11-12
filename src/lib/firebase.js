@@ -1,6 +1,6 @@
 import Firebase from 'firebase/compat/app'
-import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
 
 // import seed file
 // import { seedDatabase } from '../seed';
@@ -22,5 +22,5 @@ const { FieldValue } = Firebase.firestore;
 
 // call the seed file
 // seedDatabase(firebase);
-
+ 
 export { firebase, FieldValue };
