@@ -1,30 +1,31 @@
+// text-red-primary -> hex values
+// text-gray-base -> hex values
+// border-gray-primary -> hex values
+// text-blue-primary -> hex values
+
+
 module.exports = {
     future: {
       removeDeprecatedGapUtilities: true
     },
-    purge: {
-      content: ['./src/**/*.js', './src/**/**/*.js']
-    },
+    fill: (theme) => ({
+      red: theme('colors.red.primary')
+    }),
     theme: {
-      fill: (theme) => ({
-        red: theme('colors.red.primary')
-      }),
       colors: {
-        white: '#ffffff',
-        blue: {
-          medium: '#005c98'
+        white: {
+          primary: "#e3e3e3",
+          normal: "#ffffff"
         },
         black: {
-          light: '#262626',
-          faded: '#00000059'
+          background: '#181818',
         },
         gray: {
-          base: '#616161',
-          background: '#fafafa',
-          primary: '#dbdbdb'
+          background: '#9F9F9F',
+          primary: '#9D9DAA'
         },
-        red: {
-          primary: '#ed4956'
+        brown: {
+          button: "#776A49"
         }
       }
     },
@@ -34,3 +35,4 @@ module.exports = {
       }
     }
   };
+

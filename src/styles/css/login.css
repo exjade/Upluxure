@@ -1,0 +1,77 @@
+
+.login_title {
+    display: flex;
+    color: #e3e3e3;
+    font-size: 20px;
+    justify-content: center;
+    font-weight: 400;
+    margin-bottom: .5rem;
+    text-align: center;
+    width: 100%
+}
+
+/* FORM */
+.form__email {
+    width: 100%;
+    height: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.75rem;
+    padding: 10px;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: transparent;
+    border-bottom: 1px solid #9F9F9F;
+    color: #9D9DAA;
+    outline:none;
+    font-style: italic;
+}
+.form__password {
+    width: 100%;
+    height: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.75rem;
+    padding: 10px;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: transparent;
+    border-bottom: 1px solid #9F9F9F;
+    color: #9D9DAA;
+    outline:none;
+    font-style: italic;
+}
+
+.form_button {
+    background: #776A49;
+    margin-top: 1rem;
+    width: 100%;
+    height: 46px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.form_create_account {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 0.75rem;
+    color: #c0c0c0 ;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: initial;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.form_create_account_signup {
+    margin-left: 8px;
+    color: #ffffff ;
+}
+/*ERROR*/
+.error {
+    color:red;
+    text-align: center;
+}

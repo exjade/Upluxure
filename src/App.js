@@ -1,13 +1,14 @@
 import React, { lazy,Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as ROUTES from './constants/routes'
+import './styles/css/loading.css'
 
 const Login = lazy(() => import("./pages/login"));
 
 function App() {
   return (
     <Router>
-      <Suspense fallback={<p className="text-white">Loading...</p>}>
+      <Suspense fallback={<p className="loading">Loading...</p>}>
         <Switch>
           <Route path={ROUTES.LOGIN} component={Login} />
         </Switch>
