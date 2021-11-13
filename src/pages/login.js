@@ -73,7 +73,7 @@ const Login = () => {
                     </div>
                     <div className="form_create_account">
                         <p className="">Don't have an account? {``} </p>
-                        <Link to="/signup" className="form_create_account_signup">Sign Up</Link>
+                        <Link to={ROUTES.SIGN_UP} className="form_create_account_signup">Sign Up</Link>
                     </div>
                 </div>
             </div>
