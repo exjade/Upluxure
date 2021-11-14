@@ -21,6 +21,20 @@ const Header = () => {
                 <Avatar className="header__stories_avatar"></Avatar>
                 <Avatar className="header__stories_avatar"></Avatar>
                 <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
+                <Avatar className="header__stories_avatar"></Avatar>
             </div>
         </div>
     )
