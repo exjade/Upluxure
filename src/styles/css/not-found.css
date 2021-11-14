@@ -1,0 +1,82 @@
+.notfound {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.notfound_box {
+    display: flex;
+    justify-content: center;
+    background: #1E1E1E;
+    width: 300px;
+    height: 201px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: -2px -6px 15px 9px rgba(0,0,0,0.24);
+    -webkit-box-shadow: -2px -6px 15px 9px rgba(0,0,0,0.24);
+    -moz-box-shadow: -2px -6px 15px 9px rgba(0,0,0,0.24);
+} 
+.notfound_box > p {
+    color: #FFFFFF;
+    text-align: center;
+    /* border: 1px solid red; */
+    padding-top: 75px;
+}
+
+/* SEARCHBOX */
+
+.notfound_searchbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    color: #ffffff;
+    z-index: 9999;
+    text-align: center;
+}
+.notfound_searchbox_card {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background: hsla(0, 0%, 7%, 0.137);
+    opacity: 0.3;
+    border-radius: 136px;
+    width: 300px;
+    height: 55px;
+    border: 1px solid #ffffff;
+}
+
+.notfound_searchbox_card > input {
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.17em;
+    outline: none;
+    background:transparent;
+    word-break: break-all;
+    width: 90%;
+}
+
+/* HOME BUTTON */
+.notfound_home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    z-index: 9999;
+    text-align: center;
+}
+.notfound_home > a > .MuiButtonBase-root {
+    background: #f1f1f1;
+    width: 60px;
+    height: 60px;
+    border-radius: 9999px;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    -ms-border-radius: 9999px;
+    -o-border-radius: 9999px;
+}

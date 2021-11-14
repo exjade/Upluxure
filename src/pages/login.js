@@ -44,7 +44,7 @@ const Login = () => {
                             <h1>Uncensored Social Network</h1>
                         </div>
                         <h1 className="flex justify-center w-full">
-                            <img src="/images/users/logo.png" alt="Upluxure Logo" className="mt-2 w-6/12 mb-4" />
+                            <img src="/images/users/logo.png" alt="Upluxure Logo" className="mt-2 w-6/12 mb-4 object-cover" />
                         </h1>
 
                         {error && <p className="mb-4 text-xs error">{error}</p>}
@@ -77,6 +77,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+
         </>
     )
 }
