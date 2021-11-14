@@ -1,4 +1,5 @@
 import React, { lazy,Suspense } from "react";
+import useAuthListener from './hooks/use-auth-listener'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as ROUTES from './constants/routes'
 import './styles/css/loading.css'
@@ -9,6 +10,9 @@ const NotFound = lazy(() => import("./pages/not-found"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 
 function App() {
+
+  const { user } = useAuthListener();
+
   return (
     <Router>
       <Suspense fallback={<p className="loading">Loading...</p>}>
