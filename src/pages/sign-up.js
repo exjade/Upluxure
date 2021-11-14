@@ -7,6 +7,7 @@ import { doesUsernameExist } from '../services/firebase'
 
 /* Material UI Icons*/
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const SignUp = () => {
 
@@ -28,11 +29,11 @@ const SignUp = () => {
         if (!usernameExists.length) {
             try {
                 const createdUserResult = await firebase
-                .auth()
-                .createUserWithEmailAndPassword(emailAddress, password);
+                    .auth()
+                    .createUserWithEmailAndPassword(emailAddress, password);
 
                 // Authenticate 
-                    // -> emailAddress, password & username (displayName)
+                // -> emailAddress, password & username (displayName)
                 await createdUserResult.user.updateProfile({
                     displayName: username,
                 })
@@ -115,7 +116,9 @@ const SignUp = () => {
                             />
 
                             <div className="form__signup_terms">
-                                <CheckBoxIcon className=""></CheckBoxIcon>
+                                <Checkbox>
+                                    <CheckBoxIcon className=""></CheckBoxIcon>
+                                </Checkbox>
                                 <p className="signup_conditions_terms">I agree with conditions & terms</p>
                             </div>
 

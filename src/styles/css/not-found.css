@@ -38,28 +38,6 @@
     z-index: 9999;
     text-align: center;
 }
-.notfound_searchbox_card {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    background: hsla(0, 0%, 7%, 0.137);
-    opacity: 0.3;
-    border-radius: 136px;
-    width: 300px;
-    height: 55px;
-    border: 1px solid #ffffff;
-}
-
-.notfound_searchbox_card > input {
-    text-align: center;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.17em;
-    outline: none;
-    background:transparent;
-    word-break: break-all;
-    width: 90%;
-}
 
 /* HOME BUTTON */
 .notfound_home {

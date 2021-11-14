@@ -4,6 +4,7 @@ import * as ROUTES from '../constants/routes'
 import '../styles/css/not-found.css'
 import ButtonBase from '@material-ui/core/ButtonBase';
 import HomeIcon from '@material-ui/icons/Home';
+import SearchBar from '../components/searchbar'
 
 
 const NotFound = () => {
@@ -20,10 +21,7 @@ const NotFound = () => {
                 </p>
             </div>
             <div className="notfound_searchbox">
-                <div className="notfound_searchbox_card ">
-                    {/* <p>Type something</p> */}
-                    <input type="text" placeholder="Type something..." className="text-white-primary" />
-                </div>
+                <SearchBar />
             </div>
             <div className="notfound_home">
                 <Link to={ROUTES.DASHBOARD} >

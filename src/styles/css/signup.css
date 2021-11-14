@@ -100,3 +100,11 @@
     color:red;
     text-align: center;
 }
+
+.form__signup_terms > .MuiCheckbox-colorSecondary.Mui-checked {
+    color: #ffffff;
+}
+
+.MuiIconButton-label > .MuiSvgIcon-root {
+    fill: #9D9DAA;
+}
