@@ -11,8 +11,8 @@ const Login = () => {
 
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
-
     const [error, setError] = useState('');
+
     const isInvalid = password === '' || emailAddress === '';
 
     const handleLogin = async (event) => {
@@ -22,9 +22,12 @@ const Login = () => {
             await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
             history.push(ROUTES.DASHBOARD);
         } catch (error) {
-            setEmailAddress('')
+            // setEmailAddress('')
             setPassword('')
-            setError(error.message);
+            setError(error.message); 
+            setTimeout(() => {
+                setError('')
+            }, 3500);
         }
     }
 

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import '../styles/css/stories.css';
 import Header from '../components/header'
 import Sidebar from '../components/sidebar'
 import Timeline from '../components/timeline'
@@ -15,6 +16,7 @@ function Dashboard() {
         <>
             <div>
                 <Header />
+                <Stories />
                 <div className="grid">
                     <Timeline />
                     <Sidebar />

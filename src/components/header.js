@@ -1,42 +1,36 @@
-import React from 'react'
-import '../styles/css/header.css'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import FirebaseContext from '../context/firebase'; // sign and signout functions
+import UserContext from '../context/user';
+import * as ROUTES from '../constants/routes';
 
-/* Material Ui */
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@mui/material/Button';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+
 
 const Header = () => {
 
+    const { firebase } = useContext(FirebaseContext);
+    const { user } = useContext(UserContext);
+
+    // console.log('user', user)
 
     return (
-        <div className="header__container">
+        <header className="h-16 border-b border-gray-primary mb-8">
+            <div className="container mx-auto max-w-screen-lg h-full">
+                <div className="flex justify-between h-full">
 
-            <div className="header__container_stories">
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
-                <Avatar className="header__stories_avatar"></Avatar>
+                    <div className="text-gray-primary text-center flex items-center align-items cursor-pointer" >
+                        <h1 className="flex justify-center w-full">
+                            <Link to={ROUTES.DASHBOARD} aria-label="instagram logo">
+                                <img src="/images/users/logo.png" alt="Upluxure" className="mt-2 w-6/12" />
+                            </Link>
+                        </h1>
+                    </div>
+                    <div className="text-center flex items-center align-items">
+
+                    </div>
+                </div>
             </div>
-        </div>
+        </header>
     )
 }
 

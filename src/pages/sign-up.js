@@ -61,7 +61,7 @@ const SignUp = () => {
     }
 
     useEffect(() => {
-        document.title = 'Sign Up - Upluxure';
+        document.title = 'Sign Up - Upluxure'; 
     }, [])
 
     return (
