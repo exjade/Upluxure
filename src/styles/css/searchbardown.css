@@ -144,22 +144,9 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
     user-select: none;
     border-radius: 50%;
     justify-content: center;
+    color:black;
 }
-.MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-2s90m6-MuiAvatar-root{
-    width: 60px;
-    height: 60px;
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    font-size: 1.25rem;
-    align-items: center;
-    flex-shrink: 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    line-height: 1;
-    user-select: none;
-    border-radius: 50%;
-    justify-content: center;
-}
+
 
 .MuiAvatar-root.MuiAvatar-circular.css-1wlk0hk-MuiAvatar-root {
     width: 60px;
