@@ -51,16 +51,29 @@ const Header = () => {
                                                 }
                                             }}
                                         >
-                                            <IconButton>
-                                                <LogoutOutlinedIcon className="text-white-primary" />
-                                            </IconButton>
+                                            <LogoutOutlinedIcon className="text-white-primary" />
                                         </button>
                                     </>
                                 )
                                 :
                                 (
                                     <>
-                                        
+                                        <Link to={ROUTES.LOGIN} aria-label="Log in button">
+                                            <button
+                                                type="button"
+                                                className="bg-brown-button font-bold text-sm rounded w-20 h-8 text-center text-white-primary"
+                                            >
+                                                Log In
+                                            </button>
+                                        </Link>
+                                        <Link to={ROUTES.SIGN_UP} aria-label="Sign Upbutton">
+                                            <button
+                                                type="button"
+                                                className="font-bold text-sm rounded text-gray-primary w-20 h-8 "
+                                            >
+                                                Sign Up
+                                            </button>
+                                        </Link>
                                     </>
                                 )
                         }

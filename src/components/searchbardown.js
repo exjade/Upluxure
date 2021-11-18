@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import '../styles/css/searchbardown.css'
 import UserContext from '../context/user';
+import FirebaseContext from '../context/firebase'; // sign and signout functions
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
@@ -27,7 +28,7 @@ const actions = [
 
 const SearchBarDown = () => {
 
-    // const { firebase } = useContext(FirebaseContext);
+    const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext);
 
     const [open, setOpen] = React.useState(false);
@@ -44,9 +45,11 @@ const SearchBarDown = () => {
 
 
                                 <div className="homesearchbar__dashboard">
-                                    <ButtonBase>
-                                        <HomeIcon />
-                                    </ButtonBase>
+                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                        <ButtonBase>
+                                            <HomeIcon />
+                                        </ButtonBase>
+                                    </Link>
                                 </div>
                                 <div className="homesearchbar__search">
                                     <ButtonBase >
@@ -82,7 +85,12 @@ const SearchBarDown = () => {
                                     </ButtonBase>
                                 </div>
                                 <div className="homesearchbar__search">
-                                    <Avatar src="public\images\avatars\carolinaflorez.jpg" />
+                                    <Link to={`/p/${user.displayName}`}>
+                                        <Avatar 
+                                            src={`/images/avatars/${user.displayName}.jpg`} 
+                                            alt={`${user.displayName} profile picture`}
+                                        />
+                                    </Link>
                                 </div>
 
                             </div>
@@ -91,7 +99,7 @@ const SearchBarDown = () => {
                     :
                     (
                         <>
-
+                        
                         </>
                     )
             }
