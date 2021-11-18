@@ -17,7 +17,7 @@ function Dashboard() {
             <div>
                 <Header />
                 <Stories />
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-4 justify-between mx mx-auto max-w-screen-lg">
                     <Timeline />
                     <Sidebar />
                 </div>
