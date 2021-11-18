@@ -4,7 +4,7 @@ import Header from '../components/header'
 import Sidebar from '../components/sidebar'
 import Timeline from '../components/timeline'
 import Stories from '../components/stories'
-import SearchBar from '../components/searchbar'
+import SearchBarDown from '../components/searchbardown'
 
 function Dashboard() {
 
@@ -21,6 +21,7 @@ function Dashboard() {
                     <Timeline />
                     <Sidebar />
                 </div>
+                <SearchBarDown />
             </div>
         </>
     )

@@ -1,0 +1,147 @@
+.homesearch__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    height: 55px;
+    background: #5D5D5D;
+    border-radius: 138px;
+    -webkit-border-radius: 138px;
+    -moz-border-radius: 138px;
+    -ms-border-radius: 138px;
+    -o-border-radius: 138px;
+}
+
+/* HOME */
+.homesearchbar__dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: #C4C4C4;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+button.MuiButtonBase-root.css-10d1a0h-MuiButtonBase-root {
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+}
+
+/* SEARCH */
+.homesearchbar__search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+.homesearchbar__search >  .MuiSvgIcon-root {
+    font-size: 50px;
+}
+
+/* Add Content*/
+.homesearchbar__add {
+    display: flex;
+    background: transparent;
+    padding-bottom: 6rem;
+
+}
+button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-primary.MuiSpeedDial-fab.css-1i5alow-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    background: #C4C4C4;
+    color: black;
+}
+.MuiBackdrop-root.css-sox5kk-MuiBackdrop-root {
+    background: transparent;
+}
+.css-1okazbh {
+    height: 0 !important;
+}
+.css-2v6tvw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+.MuiBox-root .css-2v6tvw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0px;
+    height: 0px;
+}
+.css-h0fz3e-MuiSpeedDial-root {
+    z-index: 1050;
+    display: -webkit-box;
+    margin-top: -8rem;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    pointer-events: none;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
+/* notifications */
+.homesearchbar__notifications{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+.homesearchbar__notifications >  .MuiSvgIcon-root {
+    font-size: 50px;
+}
+
+/* AVatar*/ 
+.homesearchbar__search  > .MuiAvatar-root{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    font-size: 1.25rem;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1;
+    user-select: none;
+    border-radius: 50%;
+    justify-content: center;
+}
