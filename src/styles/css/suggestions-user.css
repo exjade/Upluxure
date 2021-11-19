@@ -1,0 +1,9 @@
+.p-4 {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.suggestions_user_name {
+    margin-left: 1rem;
+}

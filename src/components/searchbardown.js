@@ -37,7 +37,7 @@ const SearchBarDown = () => {
 
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => { 
-        setDesktop(window.innerWidth > 600);
+        setDesktop(window.innerWidth > 700);
     }
 
     useEffect(() => {
