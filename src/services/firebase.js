@@ -1,4 +1,4 @@
-import { firebase, fieldValue } from '../lib/firebase';
+import { firebase, FieldValue } from '../lib/firebase';
 
 export async function doesUsernameExist(username) {
   const result = await firebase
@@ -27,3 +27,45 @@ export async function getUserByUserId(userId) {
 
     return user;
 }
+
+export async function getSuggestedProfiles(userId, following){ 
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .limit(10)
+    .get();
+
+  return result.docs
+  .map( (user) => ({ ...user.data(), docId: user.id })) // we want to get all users
+  .filter( (profile) => profile.userId !== userId && !following.includes(profile.userId)) // we want to filter out the current user and dont show profiles we are already following
+}
+
+
+export async function updateLoggedInUserFollowing(
+  LoggedInUserDocId, // current user doc id
+  profileId, // the user id of the profile we want to follow
+  isFollowingProfile // true if we are following the profile, false if we want to unfollow
+  ){
+  return firebase 
+  .firestore()
+  .collection('users')
+  .doc(LoggedInUserDocId)
+  .update({
+    following: isFollowingProfile ? FieldValue.arrayRemove(profileId) : FieldValue.arrayUnion(profileId)
+  })
+}
+
+export async function updateFollowedUserFollowers(
+  profileDocId,
+  LoggedInUserDocId,
+   isFollowingProfile
+   ) {
+  return firebase
+  .firestore()
+  .collection('users')
+  .doc(profileDocId)
+  .update({
+    followers: isFollowingProfile ? FieldValue.arrayRemove(LoggedInUserDocId) : FieldValue.arrayUnion(LoggedInUserDocId)
+
+  })
+} 
