@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import '../styles/css/stories.css';
-import FirebaseContext from '../context/firebase'; // sign and signout functions
-import UserContext from '../context/user';
+// import FirebaseContext from '../context/firebase';  sign and signout functions
+// import { Link } from 'react-router-dom';
+// import UserContext from '../context/user';
 
 /* Material Ui */
 import Avatar from '@material-ui/core/Avatar'

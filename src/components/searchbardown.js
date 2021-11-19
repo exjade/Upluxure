@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '../styles/css/searchbardown.css'
 import UserContext from '../context/user';
-import FirebaseContext from '../context/firebase'; // sign and signout functions
+// import FirebaseContext from '../context/firebase';  sign and signout functions
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
@@ -28,7 +28,7 @@ const actions = [
 
 const SearchBarDown = () => {
 
-    const { firebase } = useContext(FirebaseContext);
+    // const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext);
 
     const [open, setOpen] = React.useState(false);
