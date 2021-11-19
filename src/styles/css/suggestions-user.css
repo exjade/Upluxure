@@ -2,8 +2,12 @@
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
+    
 }
 
-.suggestions_user_name {
-    margin-left: 10px;
+@media (max-width: 998px) {
+    .p-4 {
+       display:none;
+    }
 }
+    
