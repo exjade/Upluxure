@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import Skeleton from 'react-loading-skeleton'
 
-const User = () => {
-    return (
-        <div className="text-gray-primary">
-            user
-        </div>
+const User = ({ username, fullName }) =>
+    !username || !fullName ? (
+        <Skeleton count={1} height={61} />
+    ) : (
+        <Link to={`/p/${username}`} className="grid grid-cols-4 grap-4 mb-6 items-center">
+            <div className="flex items-center justify-between col-span-1">
+                <img
+                    className="rounded-full w-16 flex mr-3"
+                    src={`/images/avatars/${username}.jpg`}
+                    alt=""
+                />
+            </div>
+            <div className="col-span-3 ml-3">
+                <p className="font-bold text-sm text-white-primary">{username}</p>
+                <p className="text-sm text-white-primary">{fullName}</p>
+            </div>
+        </Link>
     )
-}
 
-export default User
+export default memo(User);
+
+User.propTypes = {
+    username: PropTypes.string.isRequired,
+    fullName: PropTypes.string.isRequired
+}
