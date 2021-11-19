@@ -32,7 +32,7 @@ export async function getSuggestedProfiles(userId, following){
   const result = await firebase
     .firestore()
     .collection('users')
-    .limit(10)
+    .limit(8)
     .get();
 
   return result.docs
@@ -69,3 +69,17 @@ export async function updateFollowedUserFollowers(
 
   })
 } 
+
+
+// Get photos for user
+
+export async function getPhotos(userId, following) {
+  const result = await firebase
+    .firestore()
+    .collection('photos')
+    .where('userId', 'in', following)
+    .get();
+
+  return result.docs
+    .map( (item) => ({ ...item.data(), docId: item.id }))
+}
