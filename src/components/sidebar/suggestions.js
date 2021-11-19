@@ -31,7 +31,7 @@ const Suggestions = ({ userId, following, LoggedInUserDocId }) => {
                 <div className="text-sm flex items-center justify-between mb-2">
                     <p className="font-bold text-white-primary">Suggestions for you</p>
                 </div>
-                <div className="mt-4 grid gap-5">
+                <div className="mt-4 grid gap-5 justify-end">
                     {
                         profiles.map( (profile) => (
                             <SuggestedProfile 

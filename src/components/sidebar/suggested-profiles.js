@@ -33,13 +33,13 @@ export default function SuggestedProfile({
                         alt="suggested users"
                     />
                     <Link to={`/p/${username}`}>
-                        <p className="font-bold text-sm text-white-primary" >
+                        <p className="font-bold text-sm text-white-primary mr-3" >
                             {username}
                         </p>
                     </Link>
                 </div>
                 <button
-                    className="text-xs font-bold text-gray-primary"
+                    className="text-xs font-bold bg-brown-button rounded w-20 h-8 text-center text-white-primary"
                     type="button"
                     onClick={handleFollowUser}
                 >
