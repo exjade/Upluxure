@@ -164,3 +164,13 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
     border-radius: 50%;
     justify-content: center;
 }
+
+@media (min-width: 600px) {
+    .homesearch__card {
+        display:none
+    }
+    .homesearchbar__dashboard {
+        display:none
+    }
+  }
+

@@ -37,7 +37,7 @@ const SearchBarDown = () => {
 
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => { 
-        setDesktop(window.innerWidth > 700);
+        setDesktop(window.innerWidth > 600);
     }
 
     useEffect(() => {
@@ -52,8 +52,6 @@ const SearchBarDown = () => {
                     (
                         <>
                             <div className="homesearch__card">
-
-
                                 <div className="homesearchbar__dashboard">
                                     <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                                         <ButtonBase>
@@ -109,7 +107,9 @@ const SearchBarDown = () => {
                     :
                     (
                         <>
-                        
+                            <div className="homesearchbar__dashboard">
+
+                            </div>
                         </>
                     )
             }

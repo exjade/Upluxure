@@ -6,11 +6,11 @@ import '../../styles/css/suggestions-user.css'
 
 const Sidebar = () => {
 
-    const { user: { fullName, username, userId } } = useUser()
+    const { user ,user: { fullName, username, userId } } = useUser()
 
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => { 
-        setDesktop(window.innerWidth > 700);
+        setDesktop(window.innerWidth > 600);
     }
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Sidebar = () => {
     return (
         <>
             {
-                isDesktop ? (
+                isDesktop & user ? (
                     <div className="p-4 ">
                     <User username={username} fullName={fullName} />
                     <Suggestions userId={userId} />
