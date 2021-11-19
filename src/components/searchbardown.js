@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../styles/css/searchbardown.css'
 import UserContext from '../context/user';
 // import FirebaseContext from '../context/firebase';  sign and signout functions
@@ -35,10 +35,20 @@ const SearchBarDown = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
+    const updateMedia = () => { 
+        setDesktop(window.innerWidth > 600);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', updateMedia);
+        return () => window.removeEventListener('resize', updateMedia);
+    }, [])
+
     return (
         <>
             {
-                user ?
+                user && !isDesktop ?
                     (
                         <>
                             <div className="homesearch__card">
