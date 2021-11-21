@@ -80,7 +80,7 @@ export async function getPhotos(userId, following) {
     docId: photo.id
   }));
 
-  console.log('userFollowedPhotos', userFollowedPhotos)
+  // console.log('userFollowedPhotos', userFollowedPhotos)
 
   const photosWithUserDetails = await Promise.all(
     userFollowedPhotos.map(async(photo) => {
@@ -90,7 +90,7 @@ export async function getPhotos(userId, following) {
     }
     const user = await getUserByUserId(photo.userId);// get user details
     const { username } = user[0]; // get username
-    console.log('username', user[0])
+    // console.log('username', user[0])
     return { username, ...photo, userLikedPhoto }
   })
   );

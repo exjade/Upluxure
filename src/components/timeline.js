@@ -1,7 +1,8 @@
 /*eslint-disable no-nested-ternary */
-import React, { useContext } from 'react';
+import React from 'react';
 import Skeleton from 'react-loading-skeleton'
 import usePhotos from '../hooks/use-photos'
+import Post from './post'
 
 const Timeline = () => {
 
@@ -23,7 +24,7 @@ const Timeline = () => {
                             )}
                         </>
                     ) : photos?.length > 0 ? (
-                        photos.map( (content) => <p key={content.docId}>{content.imageSrc}</p>)
+                        photos.map( (content) => <Post key={content.docId} content={content} />)
                     ): (
                         <p className="text-center text-2x1">Follow people to see photos</p>
                     )}

@@ -21,5 +21,5 @@ const Sidebar = () => {
 
 export default Sidebar
 
-Sidebar.whyDidYouRender = true
+// Sidebar.whyDidYouRender = true
 
