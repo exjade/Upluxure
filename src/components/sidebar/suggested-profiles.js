@@ -28,18 +28,19 @@ export default function SuggestedProfile({
             <div className="flex flex-row items-center align-items justify-between">
                 <div className="flex items-center justify-between">
                     <Avatar 
-                        className="rounded-full w-8 flex mr-3"
+                        className="rounded-full w-8 flex mr-2"
                         src={`/images/avatars/${username}.jpg`}
                         alt="suggested users"
                     />
                     <Link to={`/p/${username}`}>
-                        <p className="font-bold text-sm text-white-primary mr-3" >
+                        <p className="font-bold text-sm text-white-primary ml-0.5 mr-2" >
                             {username}
                         </p>
                     </Link>
                 </div>
                 <button
-                    className="text-xs font-bold bg-brown-button rounded w-20 h-8 text-center text-white-primary"
+                    // 20
+                    className="text-xs font-bold bg-brown-button rounded w-16 h-8 text-center text-white-primary"
                     type="button"
                     onClick={handleFollowUser}
                 >

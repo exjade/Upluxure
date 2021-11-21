@@ -1,6 +1,8 @@
 import { useRef }  from 'react'
 import PropTypes from 'prop-types'
 import Header from './header'
+import Image from './image'
+import '../../styles/css/post/index.css'
 
 const Post = ( {content} ) => {
 
@@ -9,8 +11,9 @@ const Post = ( {content} ) => {
     
 
     return (
-        <div className="rounded col-span-4 border bg-black-background border-gray-primary mb-16">
+        <div className="post__index rounded col-span-4 bg-black-background mb-10">
             <Header username={content.username} />
+            <Image src={content.imageSrc} caption={content.caption} />
         </div>
     )
 }

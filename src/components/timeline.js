@@ -9,7 +9,7 @@ const Timeline = () => {
     const { photos } = usePhotos();
 
     return (
-        <div className="container col-span-2 ml-4 text-white-primary ">
+        <div className="container col-span-2 mt- text-white-primary ">
                 {
                     !photos ? (
                         <>
@@ -17,8 +17,8 @@ const Timeline = () => {
                                 <Skeleton 
                                     key={index}
                                     count={4}
-                                    width={640}
-                                    height={500}
+                                    width={1080}
+                                    height={1350}
                                     className="mb-5"
                                 />
                             )}

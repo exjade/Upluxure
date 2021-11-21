@@ -35,3 +35,17 @@
     margin-top: 10px;
     cursor: pointer;
 }
+
+/* Image full center */
+@media (max-width: 1075px) { 
+
+    .grid.grid-cols-3.gap-8.justify-between.mx.mx-auto.max-w-screen-lg {
+        grid-gap: 0;
+        gap: 0;
+        grid-template-columns: 0;
+        justify-content: center;
+    }
+}
+
+
+    

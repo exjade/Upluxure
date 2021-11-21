@@ -12,7 +12,7 @@ const Sidebar = () => {
 
     // console.log('fullName, username, userId', fullName, username, userId)
     return (
-        <div className="p-4 ">
+        <div className="sidebar">
             <User username={username} fullName={fullName} />
             <Suggestions userId={userId} following={following} LoggedInUserDocId={docId} />
         </div>

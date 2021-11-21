@@ -1,13 +1,13 @@
-.p-4 {
+.sidebar {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
     
 }
 
-@media (max-width: 998px) {
-    .p-4 {
+@media (max-width: 1075px) {
+    .sidebar {
        display:none;
     }
-}
+} 
     

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/css/stories.css';
 import Header from '../components/header'
 import Sidebar from '../components/sidebar'
@@ -17,7 +17,7 @@ function Dashboard() {
             <div>
                 <Header />
                 <Stories />
-                <div className="grid grid-cols-3 gap-4 justify-between mx mx-auto max-w-screen-lg">
+                <div className="grid grid-cols-3 gap-8 justify-between mx mx-auto max-w-screen-lg">
                     <Timeline />
                     <Sidebar />
                 </div>
