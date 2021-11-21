@@ -17,7 +17,7 @@ function App() {
   return (
     <UserContext.Provider value={{ user }}>
       <Router>
-        <Suspense fallback={<p className="loading">Loading...</p>}>
+        <Suspense fallback={<div className="loader"><span>Up</span><span>luxure</span></div>}>
           <Switch>
             <Route path={ROUTES.LOGIN} component={Login} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />

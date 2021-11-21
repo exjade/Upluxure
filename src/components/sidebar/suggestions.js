@@ -17,7 +17,7 @@ const Suggestions = ({ userId, following, LoggedInUserDocId }) => {
         if(userId) {
             suggestedProfiles()
         }
-    }, [userId])
+    }, [userId])  // eslint-disable-line react-hooks/exhaustive-deps
     // getSuggestedProfiles(userId)
     // call the async func from the server 
     // store it in state

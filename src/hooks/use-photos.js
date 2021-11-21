@@ -1,17 +1,17 @@
 import { useState, useEffect, useContext } from 'react';
-import UserContext from '../context/UserContext';
 import { getUserByUserId, getPhotos } from '../services/firebase';
+import UserContext from '../context/user';
 
 export default function usePhotos() {
 
     const [photos, setPhotos] = useState(null);
-    const {
-        user: { uid: userId = '' },
-    } =useContext(UserContext);
+    const {  
+        user: { uid: userId = ''} 
+    } = useContext(UserContext);
 
     useEffect(() => { 
         async function getTimelinePhotos() {
-            const { following } = await getUserByUserId(userId);
+            const [{ following }] = await getUserByUserId(userId);
             let followedUserPhotos = [];
 
             // does the user have any following?
@@ -19,10 +19,13 @@ export default function usePhotos() {
                 followedUserPhotos = await getPhotos(userId, following)
             }
 
-        console.log(userId)
-        // getTimelinePhotos()
+            // show newest photos first by dateCreated
+            followedUserPhotos.sort((a, b) => b.dateCreated - a.dateCreated)
+            setPhotos(followedUserPhotos);
         }
-    }, []);
+      
+        getTimelinePhotos()
+    }, [userId]);
 
     return { photos }
 }
