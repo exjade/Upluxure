@@ -9,7 +9,7 @@ module.exports = {
       removeDeprecatedGapUtilities: true
     },
     fill: (theme) => ({
-      red: theme('colors.red.primary')
+      red: theme('colors.red.500')
     }),
     theme: {
       colors: {
@@ -26,6 +26,12 @@ module.exports = {
         },
         brown: {
           button: "#776A49"
+        },
+        red: {
+          like: "#E63C27"
+        },
+        purple: {
+          like: "#6469E3"
         }
       }
     },

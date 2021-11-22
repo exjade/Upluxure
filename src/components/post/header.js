@@ -53,8 +53,11 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
 
             <div className="header__actions_icons flex">
                 <div className="actions__card_star">
+                        <StarBorderOutlinedIcon
+                            onClick={handleToggleLiked}
+                            className={`${toggleLiked ? 'text-red-like' : 'text-white-primary'}`}
+                        />
                     <IconButton>
-                        <StarBorderOutlinedIcon />
                     </IconButton>
                 </div>
                 <div className="actions__card_comment">
