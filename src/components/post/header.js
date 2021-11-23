@@ -39,12 +39,12 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
 
     return (
         <>
-            <div className="post__index_header flex h-4 p-4 py-12 mb-2">
+            <div className="post__index_header flex h-4 p-4 py-12">
                 <div className="flex items-center">
                     <Link to={`/p/${username}`} className="flex items-center">
                         <img
                             className="rounded-full h-16 w-16 mr-3"
-                            src={`/images/avatars/cat.jpg`} // IMPORTANTE!!! CAMBIAR cat POR ${username}
+                            src={`/images/avatars/${username}.jpg`} // IMPORTANTE!!! CAMBIAR cat POR ${username}
                             alt={`${username} profile`}
                         />
                     </Link>
@@ -64,8 +64,7 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
                                 }
                             }}
                         />
-                        <IconButton>
-                        </IconButton>
+
                     </div>
                     <div className="actions__card_comment">
                         <IconButton>
@@ -77,9 +76,9 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
             <div className="p-4 py-0">
                 {
                     likes > 50 ? (
-                        <p className="font-bold">{`${likes}`} <StarRateIcon/><StarRateIcon /> </p>
+                        <p className="font-bold mr-1 mt-4" >{`${likes}`} <StarRateIcon/><StarRateIcon /> </p>
                     ) : likes > 100 ? (
-                        <p className="font-bold mr-1">{`${likes}`} <StarRateIcon
+                        <p className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon
                         className="text-yellow-like"
                         />
                         <StarRateIcon
@@ -90,7 +89,7 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
                         </p>
                     )   : (
                         <p 
-                        className="font-bold mr-1">{`${likes}`} <StarRateIcon /> </p>
+                        className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon /> </p>
                     )
                 }
                

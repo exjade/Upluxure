@@ -7,7 +7,7 @@ const Image = ({ src, caption }) => {
         <div className="post__index_image">
             {/* en img debe ir src => src={src} */}
             <img 
-                src={`/images/users/cat/3.jpg`} 
+                src={src} 
                 alt={caption}
                 width="640"
                 height="680" 
@@ -18,7 +18,7 @@ const Image = ({ src, caption }) => {
 
 export default Image
 
-Image.protoTypes = {
+Image.propTypes = {
     src: PropTypes.string.isRequired,
     caption: PropTypes.string.isRequired
 }
