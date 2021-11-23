@@ -10,6 +10,7 @@ import '../../styles/css/post/actions.css'
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import IconButton from '@mui/material/IconButton';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
 
@@ -37,36 +38,64 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
     }
 
     return (
-        <div className="post__index_header flex h-4 p-4 py-12 mb-2">
-            <div className="flex items-center">
-                <Link to={`/p/${username}`} className="flex items-center">
-                    <img
-                        className="rounded-full h-16 w-16 mr-3"
-                        src={`/images/avatars/cat.jpg`} // IMPORTANTE!!! CAMBIAR cat POR ${username}
-                        alt={`${username} profile`}
-                    />
-                </Link>
-            </div>
-            <div className="header__name_username flex">
-                <p className="font-bold">{username}</p>
-            </div>
+        <>
+            <div className="post__index_header flex h-4 p-4 py-12 mb-2">
+                <div className="flex items-center">
+                    <Link to={`/p/${username}`} className="flex items-center">
+                        <img
+                            className="rounded-full h-16 w-16 mr-3"
+                            src={`/images/avatars/cat.jpg`} // IMPORTANTE!!! CAMBIAR cat POR ${username}
+                            alt={`${username} profile`}
+                        />
+                    </Link>
+                </div>
+                <div className="header__name_username flex">
+                    <p className="font-bold">{username}</p>
+                </div>
 
-            <div className="header__actions_icons flex">
-                <div className="actions__card_star">
-                    <StarBorderOutlinedIcon
-                        onClick={handleToggleLiked}
-                        className={`${toggleLiked ? 'text-red-like' : 'text-white-primary'}`}
-                    />
-                    <IconButton>
-                    </IconButton>
-                </div>
-                <div className="actions__card_comment">
-                    <IconButton>
-                        <ModeCommentOutlinedIcon />
-                    </IconButton>
+                <div className="header__actions_icons flex">
+                    <div className="actions__card_star">
+                        <StarBorderOutlinedIcon
+                            onClick={handleToggleLiked}
+                            className={`${toggleLiked ? 'text-red-like' : 'text-white-primary'}`}
+                            onKeyDown={event => {
+                                if (event.key === 'Enter') {
+                                    handleToggleLiked()
+                                }
+                            }}
+                        />
+                        <IconButton>
+                        </IconButton>
+                    </div>
+                    <div className="actions__card_comment">
+                        <IconButton>
+                            <ModeCommentOutlinedIcon />
+                        </IconButton>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div className="p-4 py-0">
+                {
+                    likes > 50 ? (
+                        <p className="font-bold">{`${likes}`} <StarRateIcon/><StarRateIcon /> </p>
+                    ) : likes > 100 ? (
+                        <p className="font-bold mr-1">{`${likes}`} <StarRateIcon
+                        className="text-yellow-like"
+                        />
+                        <StarRateIcon
+                        className="text-yellow-like"
+                        />
+                        <StarRateIcon className="text-yellow-like"
+                        />
+                        </p>
+                    )   : (
+                        <p 
+                        className="font-bold mr-1">{`${likes}`} <StarRateIcon /> </p>
+                    )
+                }
+               
+            </div>
+        </>
     )
 }
 

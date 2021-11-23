@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import Header from './header'
 import Image from './image'
+import Footer from './footer'
 import '../../styles/css/post/index.css'
 
 const Post = ({ content }) => {
@@ -24,6 +25,9 @@ const Post = ({ content }) => {
                     likedPhoto={content.userLikedPhoto}
                     handleFocus={handleFocus}
                 />
+            </div>
+            <div className="post__container_caption">
+                <Footer username={content.username} caption={content.caption} />
             </div>
         </div>
     )

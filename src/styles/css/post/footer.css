@@ -1,0 +1,9 @@
+span.hola.mr-1.font-bold {
+    display:flex;
+}
+
+.post__container_caption {
+    text-overflow: ellipsis;
+    word-break: break-word;
+    overflow: none;
+}

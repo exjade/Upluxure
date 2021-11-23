@@ -27,7 +27,8 @@ const Timeline = () => {
                         photos.map( (content) => <Post key={content.docId} content={content} />)
                     ): (
                         <p className="text-center text-2x1">Follow people to see photos</p>
-                    )}
+                    )
+                }
         </div>
     )
 }

@@ -32,6 +32,9 @@ module.exports = {
         },
         purple: {
           like: "#6469E3"
+        },
+        yellow: {
+          like: "#FFCF00"
         }
       }
     },

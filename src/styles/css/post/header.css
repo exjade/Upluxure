@@ -81,3 +81,25 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiS
     align-items: flex-start;
     margin-left: -80px;
 }
+
+/* P tag likes  */
+
+.py-0 {
+    padding-bottom: 81px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    margin-left: -3rem;
+    font-style: normal;
+    font-weight: 200;
+} 
+
+.py-0 > p {
+    font-weight: 400;
+}
+
+.py-0 > p > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+}

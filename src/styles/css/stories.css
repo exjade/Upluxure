@@ -27,8 +27,8 @@
     box-sizing: border-box;
 }
 .MuiAvatar-root.MuiAvatar-circular.header__stories_avatar.MuiAvatar-colorDefault{
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     margin-left: 15px;
     border: 2px solid #6469E3;
     box-sizing: border-box;

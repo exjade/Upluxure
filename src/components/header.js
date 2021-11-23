@@ -44,7 +44,7 @@ const Header = () => {
                                         <button
                                             type="button"
                                             title="Sign Out"
-                                            onClick={() => 
+                                            onClick={() =>
                                                 firebase.auth().signOut()
                                             }
                                             onKeyDown={(event) => {
@@ -52,9 +52,9 @@ const Header = () => {
                                                     firebase.auth().signOut()
                                                 }
                                             }}
-                                            
+
                                         >
-                                            <LogoutOutlinedIcon className="text-white-primary" />
+                                            <LogoutOutlinedIcon className="header_signup text-white-primary" />
                                         </button>
                                     </>
                                 )

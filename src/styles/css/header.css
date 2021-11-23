@@ -1,0 +1,10 @@
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.header_signup.text-white-primary.css-i4bv87-MuiSvgIcon-root {
+    width: 30px;
+    height: 30px;
+}
+header.h-16.border-b.mb-5 {
+    position: sticky;
+    top: 0;
+    background: #181818;
+    z-index: 999;
+}
