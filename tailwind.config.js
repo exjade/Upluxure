@@ -35,6 +35,9 @@ module.exports = {
         },
         yellow: {
           like: "#FFCF00"
+        },
+        blue: {
+          primary: "#1B74BA"
         }
       }
     },

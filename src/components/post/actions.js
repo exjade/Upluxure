@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import FirebaseContext from '../../context/firebase'
 import UserContext from '../../context/user'
-import '../../styles/css/post/actions.css'
+// import '../../styles/css/post/actions.css'
 import StarIcon from '@mui/icons-material/Star';
 import IconButton from '@mui/material/IconButton';
 

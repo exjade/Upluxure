@@ -2,13 +2,9 @@ import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import '../../styles/css/post/header.css'
-
-/* */
 import FirebaseContext from '../../context/firebase'
 import UserContext from '../../context/user'
-import '../../styles/css/post/actions.css'
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import IconButton from '@mui/material/IconButton';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import StarRateIcon from '@mui/icons-material/StarRate';
 
@@ -67,32 +63,37 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
 
                     </div>
                     <div className="actions__card_comment">
-                        <IconButton>
-                            <ModeCommentOutlinedIcon />
-                        </IconButton>
+                        <ModeCommentOutlinedIcon
+                            onClick={handleFocus}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                    handleFocus()
+                                }
+                            }}
+                        />
                     </div>
                 </div>
             </div>
             <div className="p-4 py-0">
                 {
                     likes > 50 ? (
-                        <p className="font-bold mr-1 mt-4" >{`${likes}`} <StarRateIcon/><StarRateIcon /> </p>
+                        <p className="font-bold mr-1 mt-4" >{`${likes}`} <StarRateIcon /><StarRateIcon /> </p>
                     ) : likes > 100 ? (
                         <p className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon
-                        className="text-yellow-like"
+                            className="text-yellow-like"
                         />
-                        <StarRateIcon
-                        className="text-yellow-like"
-                        />
-                        <StarRateIcon className="text-yellow-like"
-                        />
+                            <StarRateIcon
+                                className="text-yellow-like"
+                            />
+                            <StarRateIcon className="text-yellow-like"
+                            />
                         </p>
-                    )   : (
-                        <p 
-                        className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon /> </p>
+                    ) : (
+                        <p
+                            className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon /> </p>
                     )
                 }
-               
+
             </div>
         </>
     )

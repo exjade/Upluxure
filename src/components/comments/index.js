@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { formatDistance } from 'date-fns'
 import { Link } from 'react-router-dom'
 import '../../styles/css/comments/index.css'
+import AddComment from './add-comments'
 
-const Comments = ({ docId, comments: allComments, posted, commentInput }) => {
+const Comments = ({ username, docId, comments: allComments, posted, commentInput }) => {
 
     const [comments, setComments] = useState(allComments)
 
@@ -36,6 +37,13 @@ const Comments = ({ docId, comments: allComments, posted, commentInput }) => {
                 }
                 <p className="text-gray-primary uppercase text-xs mt-2"> {formatDistance(posted, new Date())} ago</p>
             </div>
+            <AddComment 
+                docId={docId} 
+                comments={comments}
+                commentInput={commentInput} 
+                setComments={setComments} 
+                username={username}
+            />
         </>
     )
 }
@@ -43,6 +51,7 @@ const Comments = ({ docId, comments: allComments, posted, commentInput }) => {
 export default Comments
 
 Comments.propTypes = {
+    username: PropTypes.string.isRequired,
     docId: PropTypes.string.isRequired,
     comments: PropTypes.array.isRequired,
     posted: PropTypes.number.isRequired,

@@ -31,6 +31,7 @@ const Post = ({ content }) => {
                 <Footer username={content.username} caption={content.caption} />
             </div>
             <Comments 
+                username={content.username}
                 docId={content.docId}
                 comments={content.comments}
                 posted={content.dateCreated}
