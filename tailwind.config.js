@@ -9,7 +9,7 @@ module.exports = {
       removeDeprecatedGapUtilities: true
     },
     fill: (theme) => ({
-      red: theme('colors.red.500')
+      'red': theme('colors.red.500'),
     }),
     theme: {
       colors: {
