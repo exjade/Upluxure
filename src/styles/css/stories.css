@@ -47,5 +47,7 @@
     }
 }
 
-
-    
+/* Overflow texto en dashboad*/
+.grid.grid-cols-3.gap-8.justify-between.mx.mx-auto.max-w-screen-lg {
+    word-break: break-word;
+}

@@ -1,0 +1,7 @@
+.breakwordbug {
+    word-break: break-all;
+}
+
+.viewallcomments__container {
+    border-bottom: 1px solid #a8a7a70c;
+}

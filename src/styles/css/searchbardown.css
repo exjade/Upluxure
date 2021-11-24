@@ -31,6 +31,7 @@
     -moz-border-radius: 138px;
     -ms-border-radius: 138px;
     -o-border-radius: 138px;
+    z-index: 0;
 }
 
 

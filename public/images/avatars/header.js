@@ -40,13 +40,13 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
                     <Link to={`/p/${username}`} className="flex items-center">
                         <img
                             className="rounded-full h-16 w-16 mr-3"
-                            src={`/images/avatars/${username}.jpg`} // IMPORTANTE!!! CAMBIAR cat POR ${username}
+                            src={`/images/avatars/cat.jpg`} // IMPORTANTE!!! CAMBIAR cat POR ${username}
                             alt={`${username} profile`}
                         />
                     </Link>
                 </div>
                 <div className="header__name_username flex">
-                    <p className="font-bold">{username}</p> 
+                    <p className="font-bold">catcat</p> 
                      {/* username */}
                 </div>
 

@@ -4,6 +4,7 @@ import Header from './header'
 import Image from './image'
 import Footer from './footer'
 import Comments from '../comments/index'
+
 import '../../styles/css/post/index.css'
 
 const Post = ({ content }) => {
