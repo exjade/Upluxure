@@ -31,7 +31,7 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
     return (
         <div className="border-t border-gray-primary">
             <form
-                className="flex justify-between pl-0 pr-5 mb-20"
+                className="flex justify-between pl-0 pr-5 mb-5"
                 method="POST"
                 onSubmit={(event) => comment.length >= 1 ? handleSubmitComment(event) : (event.preventDefault())}
             >
@@ -44,7 +44,7 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
                 <input
                     aria-label="Add a comment"
                     autoComplete="off"
-                    className="text-sm text-white-primary w-full mr-3 py-5 px-4 bg-black-background outline-none"
+                    className="text-sm text-white-primary w-full py-5 px-4 bg-black-background outline-none"
                     type="text"
                     name="add-comment"
                     placeholder="Add a comment..."
@@ -54,7 +54,7 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
                     maxLength="60"
                 />
                 <button
-                    className={`text-sm font-bold text-white-primary ${!comment && 'opacity-25'}`}
+                    className={`text-sm font-bold text-white-primary flex items-center w-12 ${!comment && 'opacity-25'}`}
                     type="button"
                     disabled={comment.length < 1}
                     onClick={handleSubmitComment}

@@ -5,3 +5,13 @@
 .viewallcomments__container {
     border-bottom: 1px solid #a8a7a70c;
 }
+
+.answer_comments {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    text-transform: capitalize;
+    margin-top: 2px;
+    font-weight: 600;
+    cursor: pointer;
+}

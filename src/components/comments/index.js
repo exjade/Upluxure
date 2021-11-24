@@ -47,7 +47,6 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                         <ViewAllComments 
                                             docId={docId}
                                             comments={comments}
-                                            commentInput={commentInput}
                                             setComments={setComments}
                                             username={username}
                                         />

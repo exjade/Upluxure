@@ -9,7 +9,7 @@ const Image = ({ src, caption }) => {
             <img 
                 src={src} 
                 alt={caption}
-                width="640"
+                width="680"
                 height="680" 
                 className="post_index_img" /> 
         </div>
