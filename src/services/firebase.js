@@ -98,3 +98,4 @@ export async function getPhotos(userId, following) {
   return photosWithUserDetails;
 }
 
+

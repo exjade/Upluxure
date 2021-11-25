@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ViewAllComments from './view-all-comments';
 
-const Comments = ({ username, docId, comments: allComments, posted, commentInput }) => {
+const Comments = ({ username, docId, comments: allComments, posted, commentInput, userLikedComment, likedComment }) => {
 
     const [comments, setComments] = useState(allComments)
     const [open, setOpen] = useState(false)
@@ -49,6 +49,8 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                             comments={comments}
                                             setComments={setComments}
                                             username={username}
+                                            userLikedComment={userLikedComment}
+                                            likedComment={likedComment}
                                         />
                                     </Box>
                                 </div>
@@ -92,4 +94,7 @@ Comments.propTypes = {
     comments: PropTypes.array.isRequired,
     posted: PropTypes.number.isRequired,
     commentInput: PropTypes.object.isRequired,
+
+    userLikedComment: PropTypes.bool.isRequired,
+    likedComment: PropTypes.bool.isRequired,
 }

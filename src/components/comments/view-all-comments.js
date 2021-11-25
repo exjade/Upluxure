@@ -1,17 +1,18 @@
-import React, { useState, useContext } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import UserContext from '../../context/user'
+import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import UserContext from '../../context/user';
+import AddComment from './add-comments';
 import Avatar from '@mui/material/Avatar';
-import '../../styles/css/comments/view-all-comments.css'
-import AddComment from './add-comments'
 import StarRateIcon from '@mui/icons-material/StarRate';
+import '../../styles/css/comments/view-all-comments.css';
 
 const ViewAllComments = ({ username, comments: allComments }) => {
 
     const [comments, setComments] = useState(allComments)
 
-    const { user } = useContext(UserContext)
+    const { user, user: { uid: userId = ""} } = useContext(UserContext)
+
     
     return (
 
@@ -46,9 +47,11 @@ const ViewAllComments = ({ username, comments: allComments }) => {
                             </div>
                         </div>
                         <div className="viewallcomments__like_star">
-                            <StarRateIcon className="text-white-primary" />
+                            <StarRateIcon 
+                                className="text-white-primary"                             
+                            />
                             {/* CANTIDAD DE LIKES */}
-                            <p className="text-white-primary font-extralight text-sm">3864</p> 
+                            <p className="text-white-primary font-extralight text-sm">385</p> 
                         </div>
                     </div>
                 ))
@@ -66,4 +69,5 @@ export default ViewAllComments
 ViewAllComments.propTypes = {
     username: PropTypes.string.isRequired,
     comments: PropTypes.array,
+    docId: PropTypes.string.isRequired,
 }
