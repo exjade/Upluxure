@@ -42,7 +42,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                 <div className={styles.box_comments}>
                                     <Box
                                         textAlign="center"
-                                        className="p-3 bg-black-background"
+                                        className={`${styles.mobile__comments} p-3 bg-black-background`}
                                     >
                                         <ViewAllComments 
                                             docId={docId}

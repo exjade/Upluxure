@@ -1,9 +1,11 @@
 .breakwordbug {
     word-break: break-all;
+    font-size:15px;
 }
 
 .viewallcomments__container {
     border-bottom: 1px solid #a8a7a70c;
+    width: 100%;
 }
 
 .answer_comments {
@@ -14,4 +16,69 @@
     margin-top: 2px;
     font-weight: 600;
     cursor: pointer;
+}
+
+/* Reply */
+.comments__answer.text-brown-button {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Viewcomments responsive for iphone 4 */
+@media (max-width: 320px) {
+    .comments__answer {
+        width: 35vh;
+    }
+    .view_comments_avatar > a {
+        /* margin-left: -4px; */
+        height: 0.25rem;
+        width: 0.25rem;
+    }
+}
+
+.comments__anwer > p{
+    width: min-content;
+    cursor: pointer;
+}
+
+.view_comments_avatar {
+    margin-top: -3rem;
+}
+.comments__displayname {
+    width: min-content;
+}
+
+.coomments_answer {
+    width: fit-content;
+}
+
+.flex.content-start.text-brown-button.cursor-pointer.min-w-min {
+    width: fit-content;
+    font-size: 15px;
+}
+/* Mover estrella al lado derecho*/
+.flex.text-white-primary.capitalize.mb-1.flex-col {
+    width: 100%;
+}
+
+.comments__answer_reply {
+    margin-left: 1rem;
+    color: #ffffff9e;
+    font-size: 15px;
+    display:flex;
+    align-items: center;
+}
+
+.viewallcomments__like_star {
+    margin-left: 5px;
+}
+.viewallcomments__like_star > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root {
+    width: 30px;
+    height: 30px;
+}
+
+.Comments_box_comments > .p-3 {
+    padding: 0;
 }

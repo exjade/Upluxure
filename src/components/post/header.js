@@ -46,7 +46,8 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
                     </Link>
                 </div>
                 <div className="header__name_username flex">
-                    <p className="font-bold">{username}</p> 
+                {/* // debe ser {username} */}
+                    <p className="font-bold">{username}</p>  
                      {/* username */}
                 </div>
 
@@ -77,7 +78,7 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
             </div>
             <div className="p-4 py-0">
                 {
-                    likes > 50 ? (
+                    likes === 50 ? (
                         <p className="font-bold mr-1 mt-4" >{`${likes}`} <StarRateIcon /><StarRateIcon /> </p>
                     ) : likes > 100 ? (
                         <p className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon

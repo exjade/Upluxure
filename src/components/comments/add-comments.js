@@ -5,7 +5,7 @@ import UserContext from '../../context/user';
 import Avatar from '@mui/material/Avatar';
 import {Link} from 'react-router-dom'
 
-const AddComment = ({ docId, comments, setComments, commentInput }) => {
+const AddComment = ({ docId, comments, setComments, commentInput, username }) => {
 
     const { firebase, FieldValue } = useContext(FirebaseContext);
     const { user, user: { displayName } } = useContext(UserContext);
@@ -29,7 +29,7 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
     }
 
     return (
-        <div className="border-t border-gray-primary">
+        <div className="border-t border-gray-primary mt-2">
             <form
                 className="flex justify-between pl-0 pr-5 mb-5"
                 method="POST"

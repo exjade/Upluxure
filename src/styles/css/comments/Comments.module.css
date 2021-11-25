@@ -17,6 +17,22 @@
     /* overflow-y: hidden; */
     background: #181818;
 }
+
+@media (max-width: 320px) {
+  .mobile__comments.p-3.bg-black-background.MuiBox-root.css-xi606m {
+    padding: 0;
+  }
+  .Comments_mobile__comments__1KyXb.p-3.bg-black-background.MuiBox-root.css-xi606m {
+    padding: 0;
+  }
+  .p-3 {
+    padding: 0;
+  }
+  .mobile__comments {
+    padding: 0;
+  }
+}
+
 ::-webkit-scrollbar {
     width: 10px;
   }
