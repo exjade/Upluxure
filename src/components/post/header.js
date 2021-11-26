@@ -32,7 +32,7 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
         setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
 
     }
-
+    
     return (
         <>
             <div className="post__index_header flex h-4 p-4 py-12">

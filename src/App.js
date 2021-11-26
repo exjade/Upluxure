@@ -13,6 +13,7 @@ const SignUp = lazy(() => import("./pages/sign-up"));
 const Profile = lazy(() => import("./pages/profile"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const NotFound = lazy(() => import("./pages/not-found"));
+const PruebaUpload = lazy(() => import("./pages/pruebas"));
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
               <SignUp />
             </IsUserLoggedIn>
             <Route path={ROUTES.PROFILE} component={Profile} />
+            <Route path={ROUTES.PRUEBA} component={PruebaUpload} />
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../styles/css/searchbardown.css'
-import UserContext from '../context/user';
-// import FirebaseContext from '../context/firebase';  sign and signout functions
 import { Link } from 'react-router-dom';
+import UserContext from '../context/user';
+import FirebaseContext from '../context/firebase'; // sign and signout functions
 import * as ROUTES from '../constants/routes';
 
 /* Mateial */
@@ -20,23 +20,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
 
-const actions = [
-    { icon: <InsertPhotoIcon sx={{ color: 'black' }} />, name: 'Library' },
-    { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
-    { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
-];
 
 const SearchBarDown = () => {
 
-    // const { firebase } = useContext(FirebaseContext);
+    const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext);
-
     const [open, setOpen] = React.useState(false);
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
-    const updateMedia = () => { 
+    const updateMedia = () => {
         setDesktop(window.innerWidth > 840);
     }
 
@@ -44,6 +39,15 @@ const SearchBarDown = () => {
         window.addEventListener('resize', updateMedia);
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
+
+
+    /* SpeedDial - ICONS */
+    const actions = [
+        { icon: <InsertPhotoIcon sx={{ color: 'black' }} />, name: 'Library' },
+        { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
+        { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
+    ];
+
 
     return (
         <>
@@ -80,22 +84,23 @@ const SearchBarDown = () => {
                                                     key={action.name}
                                                     icon={action.icon}
                                                     tooltipTitle={action.name}
-                                                    // tooltipOpen
                                                     onClick={handleClose}
-                                                />
+                                                >
+                                                </SpeedDialAction>
                                             ))}
                                         </SpeedDial>
                                     </Box>
                                 </div>
                                 <div className="homesearchbar__notifications">
                                     <ButtonBase>
-                                        <NotificationsIcon />
+                                        <NotificationsIcon
+                                        />
                                     </ButtonBase>
                                 </div>
                                 <div className="homesearchbar__search">
                                     <Link to={`/p/${user.displayName}`}>
-                                        <Avatar 
-                                            src={`/images/avatars/${user.displayName}.jpg`} 
+                                        <Avatar
+                                            src={`/images/avatars/${user.displayName}.jpg`}
                                             alt={`${user.displayName} profile picture`}
                                         />
                                     </Link>
