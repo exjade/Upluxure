@@ -5,7 +5,7 @@ import UserContext from '../../context/user';
 import Avatar from '@mui/material/Avatar';
 import {Link} from 'react-router-dom'
 
-const AddComment = ({ docId, comments, setComments, commentInput, username }) => {
+const AddComment = ({ docId, comments, setComments, commentInput }) => {
 
     const { firebase, FieldValue } = useContext(FirebaseContext);
     const { user, user: { displayName } } = useContext(UserContext);

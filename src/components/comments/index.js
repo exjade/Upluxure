@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { formatDistance } from 'date-fns'
+import { formatRelative, subDays } from 'date-fns'
 import { Link } from 'react-router-dom'
-// import '../../styles/css/comments/index.css'
 import styles from '../../styles/css/comments/Comments.module.css'
 import AddComment from './add-comments'
 
@@ -18,7 +17,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
 
     return (
         <>
-            <div 
+            <div
                 className={`${styles.post__comments} p-4 pt-1 pb-4`}
             >
                 {
@@ -44,7 +43,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                         textAlign="center"
                                         className={`${styles.mobile__comments} p-3 bg-black-background`}
                                     >
-                                        <ViewAllComments 
+                                        <ViewAllComments
                                             docId={docId}
                                             comments={comments}
                                             setComments={setComments}
@@ -55,7 +54,11 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                             </SwipeableDrawer>
                         </>
                     ) : (
-                        <></>
+                        <p
+                            className="text-sm text-gray-primary text-center justify-center items-center mt-3"
+                        >
+                            No new comments
+                        </p>
                     )
                 }
                 {
@@ -67,11 +70,11 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                             <Link to={`/p/${item.displayName}`}>
                                 <span className="mr-1 font-bold">{item.displayName}</span>
                             </Link>
-                                <span>{item.comment}</span>
+                            <span>{item.comment}</span>
                         </p>
                     ))
                 }
-                {/* <p className="text-gray-primary uppercase text-xs mt-2"> {formatDistance(posted, new Date())} ago</p> */}
+                {/* <p className="text-gray-primary uppercase text-xs mt-2"> {posted.toString(), Date()} ago</p> */}
             </div>
             <AddComment
                 docId={docId}

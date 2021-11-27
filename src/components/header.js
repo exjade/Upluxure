@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/css/header.css'
 import FirebaseContext from '../context/firebase'; // sign and signout functions
@@ -9,11 +9,24 @@ import * as ROUTES from '../constants/routes';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import IconButton from '@mui/material/IconButton';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import Avatar from '@mui/material/Avatar';
 
 const Header = () => {
 
     const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext);
+
+    const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
+    const updateMedia = () => {
+        setDesktop(window.innerWidth > 840);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', updateMedia);
+        return () => window.removeEventListener('resize', updateMedia);
+    }, [])
+
 
     // console.log('user', user)
 
@@ -35,11 +48,23 @@ const Header = () => {
                             user ?
                                 (
                                     <>
-                                        <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                                            <IconButton>
-                                                <HomeOutlinedIcon className="text-white-primary" />
-                                            </IconButton>
-                                        </Link>
+                                        {
+                                            isDesktop ? (
+                                                <>
+                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                        <IconButton className="header_add_icon ">
+                                                            <AddCircleOutlineIcon className=" text-white-primary" />
+                                                        </IconButton>
+                                                    </Link>
+                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                        <IconButton className="header_home_icon">
+                                                            <HomeOutlinedIcon className="text-white-primary" />
+                                                        </IconButton>
+                                                    </Link>
+                                                </>
+                                            ) : null
+                                        }
+
 
                                         <button
                                             type="button"
@@ -52,7 +77,7 @@ const Header = () => {
                                                     firebase.auth().signOut()
                                                 }
                                             }}
-
+                                            className="header_signup_icon"
                                         >
                                             <LogoutOutlinedIcon className="header_signup text-white-primary" />
                                         </button>

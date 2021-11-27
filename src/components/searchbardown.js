@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../styles/css/searchbardown.css'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import UserContext from '../context/user';
 import FirebaseContext from '../context/firebase'; // sign and signout functions
 import * as ROUTES from '../constants/routes';
-
+import '../styles/css/searchbardown.css'
 /* Mateial */
 import Box from '@mui/material/Box';
 import Backdrop from '@mui/material/Backdrop';
@@ -20,12 +19,26 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
 
+/* Modal */
+/* Material UI*/
+import Input from '@mui/material/Input';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+/* Firebase, Firestore & Storage */
+import { firebase } from '../lib/firebase'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { getFirestore, updateDoc, doc, collection, addDoc } from 'firebase/firestore'
+const firestore = getFirestore(firebase)
+const storage = getStorage(firebase)
 
 const SearchBarDown = () => {
 
     const { firebase } = useContext(FirebaseContext);
-    const { user } = useContext(UserContext);
-    const [open, setOpen] = React.useState(false);
+
+    const {
+        user
+    } = useContext(UserContext);
+    const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -40,14 +53,66 @@ const SearchBarDown = () => {
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
 
-
     /* SpeedDial - ICONS */
     const actions = [
-        { icon: <InsertPhotoIcon sx={{ color: 'black' }} />, name: 'Library' },
+        { icon: <InsertPhotoIcon sx={{ color: 'black' }} onClick={handleOpen} />, name: 'Library' },
         { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
         { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
     ];
 
+    let downloadUrl;
+
+
+    /* Modal */
+
+    let history = useHistory();
+
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
+    /* UPLOAD FILE*/
+    // Add a new document in 'photos' collection  
+    const newDoc = async () => {
+        try {
+            const docRef = await addDoc(collection(firestore, "photos"), {
+                comments: [],
+                dateCreated: new Date(),
+                imageSrc: downloadUrl,
+                likes: [],
+                userId: user.uid,
+                username: user.displayName,
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (error) {
+            console.error("Error adding document: ", error);
+        }
+    }
+    // const newDoc =  async (event)  => {
+    //     event.preventDefault()
+
+
+    //     try {
+    //         const description = event.target.caption.value
+    //         const docRef = await addDoc(collection(firestore, "pruebas"), {
+    //           caption: description,
+    //           imageSrc: downloadUrl,
+    //         });
+
+    //         console.log("Document written with ID: ", docRef.id);
+    //       } catch (e) {
+    //         console.error("Error adding document: ", e);
+    //       }
+    // }
+
+    // Upload a file to firebase storage and get the download url
+    const fileHandler = async (event) => {
+        const localFile = event.target.files[0];
+        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${localFile.name}`)
+        await uploadBytes(storageRef, localFile)
+        downloadUrl = await getDownloadURL(storageRef)
+    }
+    /* END UPLOAD FILE*/
 
     return (
         <>
@@ -70,21 +135,22 @@ const SearchBarDown = () => {
                                 </div>
                                 <div className="homesearchbar__add">
                                     <Box sx={{ height: 330, transform: 'translateZ(0px)', flexGrow: 2 }}>
-                                        <Backdrop open={open} />
+                                        <Backdrop open={openModal} />
                                         <SpeedDial
                                             ariaLabel="SpeedDial Home"
                                             className="speed-dial"
                                             icon={<SpeedDialIcon />}
-                                            onClose={handleClose}
-                                            onOpen={handleOpen}
-                                            open={open}
+                                            onClose={handleCloseModal}
+                                            onOpen={handleOpenModal}
+                                            open={openModal}
+
                                         >
                                             {actions.map((action) => (
                                                 <SpeedDialAction
                                                     key={action.name}
                                                     icon={action.icon}
                                                     tooltipTitle={action.name}
-                                                    onClick={handleClose}
+                                                    onClick={handleCloseModal}
                                                 >
                                                 </SpeedDialAction>
                                             ))}
@@ -107,13 +173,58 @@ const SearchBarDown = () => {
                                 </div>
 
                             </div>
+
+                            {/* Modal */}
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                                className="container flex justify-center  "
+                            >
+                                <Box
+                                    className="flex flex-col w-96 h-64 p-5 my-60 justify-between border border-white-primary object-center rounded-lg"
+                                >
+                                    <form
+                                        onSubmit={newDoc}
+                                    >
+                                        <label htmlFor="icon-button-file" className="btn-6">
+                                            <Input
+                                                accept="image/*"
+                                                id="icon-button-file"
+                                                type="file"
+                                                onChange={fileHandler}
+                                            />
+                                            <span>
+                                                Select Image 
+                                            </span>
+                                        </label>
+                                        <label htmlFor="fiel-area-text" className="textfield-6">
+                                            <TextField
+                                                id="fiel-area-text"
+                                                label="Write a description for your post"
+                                                multiline
+                                                fullWidth
+                                                rows={4}
+                                            />
+                                        </label>
+                                    </form>
+                                    <button
+                                        variant="contained"
+                                        component="span"
+                                        onClick={() => {
+                                            newDoc()
+                                            history.push(ROUTES.LOGIN);
+                                        }}
+                                        className="btn__upload"
+                                    >
+                                     Upload Image
+                                    </button>
+                                </Box>
+                            </Modal>
                         </>
                     )
-                    :
-                    (
-                        <>
-                        </>
-                    )
+                    : null
             }
         </>
     )

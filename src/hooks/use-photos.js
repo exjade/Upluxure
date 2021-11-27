@@ -6,7 +6,7 @@ export default function usePhotos() {
 
     const [photos, setPhotos] = useState(null);
     const {
-         user: { uid: userId = '' }
+         user, user: { uid: userId = '' }
     } = useContext(UserContext);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function usePhotos() {
 
             }
             // show newest photos first by dateCreated
-            followedUserPhotos.sort((a, b) => b.dateCreated - a.dateCreated)
+            followedUserPhotos.sort((a, b) => b.photoId - a.photoId);
             setPhotos(followedUserPhotos);
 
         }
