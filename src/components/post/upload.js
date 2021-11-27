@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 /* Context */
 import UserContext from '../../context/user'
+import Header from '../header'
 /* Material UI*/
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
@@ -74,6 +75,7 @@ const Upload = ({ src }) => {
 
     return (
         <div>
+            <Header />
             <Button onClick={handleOpen}>Open modal</Button>
             <Modal
                 open={open}

@@ -19,6 +19,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
 
+import { v4 as uuidv4 } from 'uuid';
 /* Modal */
 /* Material UI*/
 import Input from '@mui/material/Input';
@@ -27,22 +28,32 @@ import TextField from '@mui/material/TextField';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, updateDoc, doc, collection, addDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
 const SearchBarDown = () => {
 
-    const { firebase } = useContext(FirebaseContext);
+    /* Modal */
+    let history = useHistory();
+    let downloadUrl;
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+    /* error */
+    const [error, setError] = useState('');
 
+    const { firebase } = useContext(FirebaseContext);
     const {
-        user
+        user, user: { uid, displayName },
     } = useContext(UserContext);
     const [open, setOpen] = useState(false);
 
+    /* Speel Dial*/
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    /* Mobile */
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => {
         setDesktop(window.innerWidth > 840);
@@ -53,23 +64,6 @@ const SearchBarDown = () => {
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
 
-    /* SpeedDial - ICONS */
-    const actions = [
-        { icon: <InsertPhotoIcon sx={{ color: 'black' }} onClick={handleOpen} />, name: 'Library' },
-        { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
-        { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
-    ];
-
-    let downloadUrl;
-
-
-    /* Modal */
-
-    let history = useHistory();
-
-    const [openModal, setOpenModal] = useState(false);
-    const handleOpenModal = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
 
     /* UPLOAD FILE*/
     // Add a new document in 'photos' collection  
@@ -83,11 +77,12 @@ const SearchBarDown = () => {
                 userId: user.uid,
                 username: user.displayName,
             });
-            console.log("Document written with ID: ", docRef.id);
+            // console.log("Document written with ID: ", docRef.id);
         } catch (error) {
-            console.error("Error adding document: ", error);
+            setError(console.log("Processing File :)"))
         }
     }
+
     // const newDoc =  async (event)  => {
     //     event.preventDefault()
 
@@ -105,14 +100,24 @@ const SearchBarDown = () => {
     //       }
     // }
 
+    
     // Upload a file to firebase storage and get the download url
     const fileHandler = async (event) => {
         const localFile = event.target.files[0];
-        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${localFile.name}`)
+        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
         await uploadBytes(storageRef, localFile)
         downloadUrl = await getDownloadURL(storageRef)
+        // console.log(downloadUrl)
+        newDoc()
     }
     /* END UPLOAD FILE*/
+
+    /* SpeedDial - ICONS */
+    const actions = [
+        { icon: <InsertPhotoIcon sx={{ color: 'black' }} onClick={handleOpen} />, name: 'Library' },
+        { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
+        { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
+    ];
 
     return (
         <>
@@ -186,7 +191,7 @@ const SearchBarDown = () => {
                                     className="flex flex-col w-96 h-64 p-5 my-60 justify-between border border-white-primary object-center rounded-lg"
                                 >
                                     <form
-                                        onSubmit={newDoc}
+                                    onSubmit={newDoc}
                                     >
                                         <label htmlFor="icon-button-file" className="btn-6">
                                             <Input
@@ -196,7 +201,7 @@ const SearchBarDown = () => {
                                                 onChange={fileHandler}
                                             />
                                             <span>
-                                                Select Image 
+                                                Select Image
                                             </span>
                                         </label>
                                         <label htmlFor="fiel-area-text" className="textfield-6">
@@ -213,12 +218,14 @@ const SearchBarDown = () => {
                                         variant="contained"
                                         component="span"
                                         onClick={() => {
-                                            newDoc()
-                                            history.push(ROUTES.LOGIN);
+                                            setTimeout(() => {
+                                                newDoc()
+                                                history.push(ROUTES.LOGIN)
+                                            }, 2500);
                                         }}
                                         className="btn__upload"
                                     >
-                                     Upload Image
+                                        Upload Image
                                     </button>
                                 </Box>
                             </Modal>
