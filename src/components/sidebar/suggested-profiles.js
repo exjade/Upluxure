@@ -21,6 +21,7 @@ export default function SuggestedProfile({
         await updateLoggedInUserFollowing(LoggedInUserDocId, profileId, false)
         // 2) update followers array of the user who has been followed
         await updateFollowedUserFollowers(profileDocId, userId, false)
+        window.location.reload()
     }
 
     return (

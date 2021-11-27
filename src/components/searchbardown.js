@@ -40,8 +40,6 @@ const SearchBarDown = () => {
     const [openModal, setOpenModal] = useState(false);
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
-    /* error */
-    const [error, setError] = useState('');
 
     const { firebase } = useContext(FirebaseContext);
     const {
@@ -65,6 +63,19 @@ const SearchBarDown = () => {
     }, [])
 
 
+    // Upload a file to firebase storage and get the download url
+    const fileHandler = async (event) => {
+        const localFile = event.target.files[0];
+        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
+        await uploadBytes(storageRef, localFile)
+        downloadUrl = await getDownloadURL(storageRef)
+        console.log('successfully uploaded! Dev: Exjade')
+        
+        setTimeout(() => {
+            history.push(ROUTES.LOGIN) 
+        }, 3500);
+    }
+
     /* UPLOAD FILE*/
     // Add a new document in 'photos' collection  
     const newDoc = async () => {
@@ -79,10 +90,10 @@ const SearchBarDown = () => {
             });
             // console.log("Document written with ID: ", docRef.id);
         } catch (error) {
-            setError(console.log("Processing File :)"))
+            console.log("Failed: processing your file :(")
         }
     }
-
+    /* END UPLOAD FILE*/
     // const newDoc =  async (event)  => {
     //     event.preventDefault()
 
@@ -100,17 +111,6 @@ const SearchBarDown = () => {
     //       }
     // }
 
-    
-    // Upload a file to firebase storage and get the download url
-    const fileHandler = async (event) => {
-        const localFile = event.target.files[0];
-        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
-        await uploadBytes(storageRef, localFile)
-        downloadUrl = await getDownloadURL(storageRef)
-        // console.log(downloadUrl)
-        newDoc()
-    }
-    /* END UPLOAD FILE*/
 
     /* SpeedDial - ICONS */
     const actions = [
@@ -191,7 +191,11 @@ const SearchBarDown = () => {
                                     className="flex flex-col w-96 h-64 p-5 my-60 justify-between border border-white-primary object-center rounded-lg"
                                 >
                                     <form
-                                    onSubmit={newDoc}
+                                        onSubmit={() => {
+                                            setTimeout(() => {
+                                                newDoc()
+                                            }, 6500);
+                                        }}
                                     >
                                         <label htmlFor="icon-button-file" className="btn-6">
                                             <Input
@@ -220,8 +224,7 @@ const SearchBarDown = () => {
                                         onClick={() => {
                                             setTimeout(() => {
                                                 newDoc()
-                                                history.push(ROUTES.LOGIN)
-                                            }, 2500);
+                                            }, 6500);
                                         }}
                                         className="btn__upload"
                                     >

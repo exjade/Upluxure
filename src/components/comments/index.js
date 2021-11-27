@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { formatRelative, subDays } from 'date-fns'
+import { formatDistance } from 'date-fns'
 import { Link } from 'react-router-dom'
 import styles from '../../styles/css/comments/Comments.module.css'
 import AddComment from './add-comments'
@@ -62,7 +62,9 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                     )
                 }
                 {
+
                     comments.slice(0, 3).map((item) => (
+
                         <p
                             key={`${item.comment}-${item.displayName}`}
                             className="mb-1"
@@ -73,8 +75,10 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                             <span>{item.comment}</span>
                         </p>
                     ))
+
                 }
-                {/* <p className="text-gray-primary uppercase text-xs mt-2"> {posted.toString(), Date()} ago</p> */}
+
+                {/* <p className="text-gray-primary uppercase text-xs mt-2"> {formatDistance(posted, new Date(2014, 1, 11))} ago</p> */}
             </div>
             <AddComment
                 docId={docId}
