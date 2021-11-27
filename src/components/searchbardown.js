@@ -188,7 +188,7 @@ const SearchBarDown = () => {
                                 className="container flex justify-center  "
                             >
                                 <Box
-                                    className="flex flex-col w-96 h-64 p-5 my-60 justify-between border border-white-primary object-center rounded-lg"
+                                    className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
                                 >
                                     <form
                                         onSubmit={() => {

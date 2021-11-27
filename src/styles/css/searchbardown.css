@@ -247,16 +247,26 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
   }
   
   textarea.MuiOutlinedInput-input.MuiInputBase-input.MuiInputBase-inputMultiline.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input {
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.287);
     color: rgba(255, 255, 255, 0.794);
 }
 
-.flex.flex-col.w-96.h-64.p-5.my-60.justify-between.border.border-white-primary.object-center.rounded-lg.MuiBox-root.css-0 {
+.flex.flex-col.w-96.h-64.p-5.my-60.justify-between.border.border-white-primary.object-center.rounded-lg.MuiBox-root.css-0,
+.flex.flex-col.h-64.p-5.my-60.justify-between.border.border-white-primary.object-center.rounded-lg.MuiBox-root.css-0,
+.flex.flex-col.h-64.p-5.my-60.justify-between.border.object-center.rounded-lg.MuiBox-root.css-0,
+.flex.flex-col.w-96.h-64.p-5.my-auto.justify-between.object-center.rounded-lg.MuiBox-root.css-0 {
     height: 18rem;
+    background: rgb(24,24,24);
+    background: linear-gradient(138deg, rgba(24,24,24,0.9352051835853131) 0%, rgba(0,0,0,0.7429805615550755) 52%, rgba(25,25,25,0.8444924406047516) 99%);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
 .btn__upload {
-    border: 1px solid #ffffff93;
+    border: 1px solid #ffffff52;
     color: #ffffff;
     height: 3rem;
     border-radius: 4px;

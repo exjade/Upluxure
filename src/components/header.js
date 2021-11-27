@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import '../styles/css/header.css'
 import FirebaseContext from '../context/firebase'; // sign and signout functions
 import UserContext from '../context/user';
@@ -10,7 +10,22 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import IconButton from '@mui/material/IconButton';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import Avatar from '@mui/material/Avatar';
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+
+import { v4 as uuidv4 } from 'uuid';
+/* Modal */
+/* Material UI*/
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+/* Firebase, Firestore & Storage */
+import { firebase } from '../lib/firebase'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
+const firestore = getFirestore(firebase)
+const storage = getStorage(firebase)
 
 const Header = () => {
 
@@ -19,16 +34,49 @@ const Header = () => {
 
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => {
-        setDesktop(window.innerWidth > 840);
+        setDesktop(window.innerWidth > 700);
     }
 
     useEffect(() => {
         window.addEventListener('resize', updateMedia);
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
-
-
     // console.log('user', user)
+
+    const fileHandler = async (event) => {
+        const localFile = event.target.files[0];
+        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
+        await uploadBytes(storageRef, localFile)
+        downloadUrl = await getDownloadURL(storageRef)
+        console.log('successfully uploaded! Dev: Exjade')
+
+        setTimeout(() => {
+            history.push(ROUTES.LOGIN)
+        }, 3500);
+    }
+
+    /* Modal */
+    let history = useHistory();
+    let downloadUrl;
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
+    const newDoc = async () => {
+        try {
+            const docRef = await addDoc(collection(firestore, "photos"), {
+                comments: [],
+                dateCreated: new Date(),
+                imageSrc: downloadUrl,
+                likes: [],
+                userId: user.uid,
+                username: user.displayName,
+            });
+            // console.log("Document written with ID: ", docRef.id);
+        } catch (error) {
+            console.log("Failed: processing your file :(")
+        }
+    }
 
     return (
         <header className="h-16 border-b  mb-5">
@@ -52,8 +100,22 @@ const Header = () => {
                                             isDesktop ? (
                                                 <>
                                                     <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                                                        <IconButton className="header_add_icon ">
-                                                            <AddCircleOutlineIcon className=" text-white-primary" />
+                                                        <IconButton className="header_inbox_icon">
+                                                            <SendOutlinedIcon className=" text-white-primary"
+                                                            />
+                                                        </IconButton>
+                                                    </Link>
+                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                        <IconButton className="header_add_icon"
+                                                            onClick={handleOpenModal}>
+                                                            <AddCircleOutlineIcon className=" text-white-primary"
+                                                            />
+                                                        </IconButton>
+                                                    </Link>
+                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                        <IconButton className="header_notifications_icon">
+                                                            <NotificationsIcon className=" text-white-primary"
+                                                            />
                                                         </IconButton>
                                                     </Link>
                                                     <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
@@ -61,6 +123,60 @@ const Header = () => {
                                                             <HomeOutlinedIcon className="text-white-primary" />
                                                         </IconButton>
                                                     </Link>
+
+                                                    {/* Modal */}
+                                                    <Modal
+                                                        open={openModal}
+                                                        onClose={handleCloseModal}
+                                                        aria-labelledby="modal-modal-title"
+                                                        aria-describedby="modal-modal-description"
+                                                        className="container flex justify-center  "
+                                                    >
+                                                        <Box
+                                                            className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
+                                                        >
+                                                            <form
+                                                                onSubmit={() => {
+                                                                    setTimeout(() => {
+                                                                        newDoc()
+                                                                    }, 6500);
+                                                                }}
+                                                            >
+                                                                <label htmlFor="icon-button-file" className="btn-6">
+                                                                    <Input
+                                                                        accept="image/*"
+                                                                        id="icon-button-file"
+                                                                        type="file"
+                                                                        onChange={fileHandler}
+                                                                    />
+                                                                    <span>
+                                                                        Select Image
+                                                                    </span>
+                                                                </label>
+                                                                <label htmlFor="fiel-area-text" className="textfield-6">
+                                                                    <TextField
+                                                                        id="fiel-area-text"
+                                                                        label="Write a description for your post"
+                                                                        multiline
+                                                                        fullWidth
+                                                                        rows={4}
+                                                                    />
+                                                                </label>
+                                                            </form>
+                                                            <button
+                                                                variant="contained"
+                                                                component="span"
+                                                                onClick={() => {
+                                                                    setTimeout(() => {
+                                                                        newDoc()
+                                                                    }, 6500);
+                                                                }}
+                                                                className="btn__upload"
+                                                            >
+                                                                Upload Image
+                                                            </button>
+                                                        </Box>
+                                                    </Modal>
                                                 </>
                                             ) : null
                                         }

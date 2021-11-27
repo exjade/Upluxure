@@ -9,7 +9,8 @@ header.h-16.border-b.mb-5 {
 .header_add_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root,
 .header_signup_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.header_signup.text-white-primary.css-i4bv87-MuiSvgIcon-root ,
 .header_home_icon > svg.MuiSvgIcon-root.text-white-primary,
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.header_signup.text-white-primary.css-i4bv87-MuiSvgIcon-root 
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.header_signup.text-white-primary.css-i4bv87-MuiSvgIcon-root,
+.header_notifications_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root
 {
     width: 30px;
     height: 30px;
@@ -18,4 +19,14 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.header_signup.text-white-primary.c
 button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.header_add_icon.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
     width: 30px;
     height: 30px;
+}
+
+.header_inbox_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root {
+    width: 30px;
+    height: 30px;
+    transform: rotate(336deg);
+    -webkit-transform: rotate(336deg);
+    -moz-transform: rotate(336deg);
+    -ms-transform: rotate(336deg);
+    -o-transform: rotate(336deg);
 }
