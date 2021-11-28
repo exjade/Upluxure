@@ -11,7 +11,7 @@ const ViewAllComments = ({ username, comments: allComments }) => {
 
     const [comments, setComments] = useState(allComments)
 
-    const { user, user: { uid: userId = ""} } = useContext(UserContext)
+    const { user, user: { uid: userId = "" } } = useContext(UserContext)
 
     
     return (
@@ -22,10 +22,10 @@ const ViewAllComments = ({ username, comments: allComments }) => {
                 comments.map((item, index) => (
                     <div key={index} className="viewallcomments__container flex items-center justify-start content-between">
                         <div className="view_comments_avatar mb-8">
-                            <Link to={`/p/${user.displayName}`} className="flex w-3 h-3 mr-12">
+                            <Link to={`/p/${item.displayName}`} className="flex w-3 h-3 mr-12">
                                 <Avatar
                                     className="rounded-full h-3 w-3 mt-4 cursor-pointer"
-                                    src={`/images/avatars/${user.displayName}.jpg`}
+                                    src={`/images/avatars/${item.displayName}.jpg`}
                                 >
 
                                 </Avatar>
