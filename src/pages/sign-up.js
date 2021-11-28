@@ -59,81 +59,163 @@ const SignUp = () => {
         }
     }
 
+    /* Mobile */
+    const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
+    const updateMedia = () => {
+        setDesktop(window.innerWidth > 835);
+    }
+
     useEffect(() => {
-        document.title = 'Sign Up - Upluxure'; 
+        window.addEventListener('resize', updateMedia);
+        return () => window.removeEventListener('resize', updateMedia);
+    }, [])
+
+    useEffect(() => {
+        document.title = 'Sign Up - Upluxure';
     }, [])
 
     return (
         <>
-            <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-                <div className="flex w-3/5">
-                    <img src="/images/iphone-with-profile.png" alt="Iphone with profile" />
-                </div>
-                <div className="flex flex-col w-2/5">
-                    <div className="flex flex-col">
-                        <div className="signup_title white.primary">
-                            <h1>Uncensored Social Network</h1>
-                        </div>
-                        <h1 className="flex justify-center w-full">
-                            <img src="/images/users/logo.png" alt="Upluxure Logo" className="mt-2 w-6/12 mb-4" />
-                        </h1>
-
-                        {error && <p className="mb-4 text-xs error">{error}</p>}
-
-                        <form onSubmit={handleSignup} method="POST" >
-                            <input
-                                aria-label="Enter your username"
-                                type="text"
-                                placeholder="Username"
-                                className="form__signup_email"
-                                onChange={({ target }) => setUsername(target.value)}
-                                value={username}
-                            />
-                            <input
-                                aria-label="Enter your Full Name"
-                                type="text"
-                                placeholder="Full Name"
-                                className="form__signup_email"
-                                onChange={({ target }) => setFullName(target.value)}
-                                value={fullName}
-                            />
-                            <input
-                                aria-label="Enter your email address"
-                                type="text"
-                                placeholder="Email"
-                                className="form__signup_email"
-                                onChange={({ target }) => setEmailAddress(target.value)}
-                                value={emailAddress}
-                            />
-                            <input
-                                aria-label="Enter your password"
-                                type="password"
-                                placeholder="Password"
-                                className="form__signup_password"
-                                onChange={({ target }) => setPassword(target.value)}
-                                value={password}
-                            />
-
-                            <div className="form__signup_terms">
-                                <Checkbox required>
-                                    <CheckBoxIcon className=""></CheckBoxIcon>
-                                </Checkbox>
-                                <p className="signup_conditions_terms">I agree with conditions & terms</p>
+           {
+                isDesktop ? (
+                    <div className="container flex mx-auto max-w-screen-md items-center h-screen">
+                    <div className="flex w-3/5">
+                        <img src="/images/iphone-with-profile.png" alt="Iphone with profile" />
+                    </div>
+                    <div className="flex flex-col w-2/5">
+                        <div className="flex flex-col">
+                            <div className="signup_title white.primary">
+                                <h1>Uncensored Social Network</h1>
                             </div>
-
-                            <button
-                                disabled={isInvalid}
-                                type="submit"
-                                className={`form_signup_button ${isInvalid && 'opacity-80'}`}
-                            >Sign up for free</button>
-                        </form>
-                    </div>
-                    <div className="form_login_account">
-                        <p className="">Already a member? {``} </p>
-                        <Link to={ROUTES.LOGIN} className="form_create_account_signup">Login Now</Link>
+                            <h1 className="flex justify-center w-full">
+                                <img src="/images/users/logo.png" alt="Upluxure Logo" className="mt-2 w-6/12 mb-4" />
+                            </h1>
+    
+                            {error && <p className="mb-4 text-xs error">{error}</p>}
+    
+                            <form onSubmit={handleSignup} method="POST" >
+                                <input
+                                    aria-label="Enter your username"
+                                    type="text"
+                                    placeholder="Username"
+                                    className="form__signup_email"
+                                    onChange={({ target }) => setUsername(target.value)}
+                                    value={username}
+                                />
+                                <input
+                                    aria-label="Enter your Full Name"
+                                    type="text"
+                                    placeholder="Full Name"
+                                    className="form__signup_email"
+                                    onChange={({ target }) => setFullName(target.value)}
+                                    value={fullName}
+                                />
+                                <input
+                                    aria-label="Enter your email address"
+                                    type="text"
+                                    placeholder="Email"
+                                    className="form__signup_email"
+                                    onChange={({ target }) => setEmailAddress(target.value)}
+                                    value={emailAddress}
+                                />
+                                <input
+                                    aria-label="Enter your password"
+                                    type="password"
+                                    placeholder="Password"
+                                    className="form__signup_password"
+                                    onChange={({ target }) => setPassword(target.value)}
+                                    value={password}
+                                />
+    
+                                <div className="form__signup_terms">
+                                    <Checkbox required>
+                                        <CheckBoxIcon className=""></CheckBoxIcon>
+                                    </Checkbox>
+                                    <p className="signup_conditions_terms">I agree with conditions & terms</p>
+                                </div>
+    
+                                <button
+                                    disabled={isInvalid}
+                                    type="submit"
+                                    className={`form_signup_button ${isInvalid && 'opacity-80'}`}
+                                >Sign up for free</button>
+                            </form>
+                        </div>
+                        <div className="form_login_account">
+                            <p className="">Already a member? {``} </p>
+                            <Link to={ROUTES.LOGIN} className="form_create_account_signup">Login Now</Link>
+                        </div>
                     </div>
                 </div>
-            </div>
+                ) : (
+                    <div className="container flex justify-center mx-auto max-w-screen-md items-center h-screen">
+                    <div className="flex flex-col w-4/5">
+                        <div className="flex flex-col">
+                            <div className="signup_title white.primary">
+                                <h1>Uncensored Social Network</h1>
+                            </div>
+                            <h1 className="flex justify-center w-full">
+                                <img src="/images/users/logo.png" alt="Upluxure Logo" className="mt-2 w-6/12 mb-4" />
+                            </h1>
+    
+                            {error && <p className="mb-4 text-xs error">{error}</p>}
+    
+                            <form onSubmit={handleSignup} method="POST" >
+                                <input
+                                    aria-label="Enter your username"
+                                    type="text"
+                                    placeholder="Username"
+                                    className="form__signup_email"
+                                    onChange={({ target }) => setUsername(target.value)}
+                                    value={username}
+                                />
+                                <input
+                                    aria-label="Enter your Full Name"
+                                    type="text"
+                                    placeholder="Full Name"
+                                    className="form__signup_email"
+                                    onChange={({ target }) => setFullName(target.value)}
+                                    value={fullName}
+                                />
+                                <input
+                                    aria-label="Enter your email address"
+                                    type="text"
+                                    placeholder="Email"
+                                    className="form__signup_email"
+                                    onChange={({ target }) => setEmailAddress(target.value)}
+                                    value={emailAddress}
+                                />
+                                <input
+                                    aria-label="Enter your password"
+                                    type="password"
+                                    placeholder="Password"
+                                    className="form__signup_password"
+                                    onChange={({ target }) => setPassword(target.value)}
+                                    value={password}
+                                />
+    
+                                <div className="form__signup_terms">
+                                    <Checkbox required>
+                                        <CheckBoxIcon className=""></CheckBoxIcon>
+                                    </Checkbox>
+                                    <p className="signup_conditions_terms">I agree with conditions & terms</p>
+                                </div>
+    
+                                <button
+                                    disabled={isInvalid}
+                                    type="submit"
+                                    className={`form_signup_button ${isInvalid && 'opacity-80'}`}
+                                >Sign up for free</button>
+                            </form>
+                        </div>
+                        <div className="form_login_account">
+                            <p className="">Already a member? {``} </p>
+                            <Link to={ROUTES.LOGIN} className="form_create_account_signup">Login Now</Link>
+                        </div>
+                    </div>
+                </div>
+                )
+           }
         </>
     )
 }

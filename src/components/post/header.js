@@ -5,11 +5,13 @@ import '../../styles/css/post/header.css'
 import FirebaseContext from '../../context/firebase'
 import UserContext from '../../context/user'
 import StarRateIcon from '@mui/icons-material/StarRate';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Header = ({ username, docId, totalLikes, likedPhoto }) => {
 
     const {
-        user, user: { uid: userId = ''},
+        user, user: { uid: userId = '' },
     } = useContext(UserContext)
     const { firebase, FieldValue } = useContext(FirebaseContext)
     console.log(docId)
@@ -45,9 +47,9 @@ const Header = ({ username, docId, totalLikes, likedPhoto }) => {
                 </div>
                 <div className="header__name_username flex">
                     {/* // debe ser {username} */}
-                    <p className="font-bold">{user.fullName}</p>
+                    <p className="font-bold">{username}</p>
                     <div className="rate p-4 py-0">
-                        {
+                        {/* {
                             likes === 50 ? (
                                 <p className="rate_star font-bold mr-1" >{likes}
                                     <StarRateIcon />
@@ -64,8 +66,10 @@ const Header = ({ username, docId, totalLikes, likedPhoto }) => {
                                     <StarRateIcon />
                                 </p>
                             )
-                        }
-
+                        } */}
+                        <IconButton className="header_more_info w-4 h-4">
+                            <MoreVertIcon className="header_more_info text-white-primary w-4 h-4"/>
+                        </IconButton>
                     </div>
                 </div>
 

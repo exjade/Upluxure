@@ -24,7 +24,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                     comments.length >= 1 ? (
                         <>
                             <p
-                                className="text-sm text-gray-primary mb-1 cursor-pointer"
+                                className="flex justify-center text-sm text-gray-primary mb-1 cursor-pointer"
                                 edge="start"
                                 color="inherit"
                                 aria-label="open drawer"

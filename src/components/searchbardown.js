@@ -139,7 +139,7 @@ const SearchBarDown = () => {
                                     </ButtonBase>
                                 </div>
                                 <div className="homesearchbar__add">
-                                    <Box sx={{ height: 330, transform: 'translateZ(0px)', flexGrow: 2 }}>
+                                    <Box sx={{ height: 330, transform: 'translateZ(0px)', flexGrow: 2, transitionDuration: "100ms" }}>
                                         <Backdrop open={openModal} />
                                         <SpeedDial
                                             ariaLabel="SpeedDial Home"

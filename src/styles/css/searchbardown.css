@@ -76,17 +76,30 @@ button.MuiButtonBase-root.css-10d1a0h-MuiButtonBase-root {
 
 /* Add Content*/
 .homesearchbar__add {
-    display: flex;
+    display: flex; 
     background: transparent;
-    padding-bottom: 6rem;
-
+     padding-bottom: 6rem;
 }
+.css-h0fz3e-MuiSpeedDial-root .MuiSpeedDial-actions {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    /* margin-bottom: -32px; */
+    /* padding-bottom: 48px; */
+}
+
 button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-primary.MuiSpeedDial-fab.css-1i5alow-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab{
     display: flex;
     width: 80px;
     height: 80px;
     background: #C4C4C4;
     color: black;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    /* margin-top: -2rem; */
 }
 .MuiBackdrop-root.css-sox5kk-MuiBackdrop-root {
     background: transparent;
@@ -94,6 +107,11 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 .css-1okazbh {
     height: 0 !important;
 }
+
+.css-x4oyac {
+    height: 0 !important;
+}
+
 .css-2v6tvw {
     display: flex;
     justify-content: center;

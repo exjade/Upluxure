@@ -24,12 +24,23 @@ const Login = () => {
         } catch (error) {
             // setEmailAddress('')
             setPassword('')
-            setError(error.message); 
+            setError(error.message);
             setTimeout(() => {
                 setError('')
             }, 3500);
         }
     }
+
+    /* Mobile */
+    const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
+    const updateMedia = () => {
+        setDesktop(window.innerWidth > 835);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', updateMedia);
+        return () => window.removeEventListener('resize', updateMedia);
+    }, [])
 
     useEffect(() => {
         document.title = 'Login - Upluxure';
@@ -37,6 +48,8 @@ const Login = () => {
 
     return (
         <>
+        {
+            isDesktop ? (
             <div className="container flex mx-auto max-w-screen-md items-center h-screen">
                 <div className="flex w-3/5">
                     <img src="/images/iphone-with-profile.png" alt="Iphone with profile" />
@@ -80,6 +93,49 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            ) : (
+                <div className="container flex justify-center mx-auto max-w-screen-md items-center h-screen">
+                <div className="flex flex-col w-4/5">
+                    <div className="flex flex-col">
+                        <div className="login_title white.primary">
+                            <h1>Uncensored Social Network</h1>
+                        </div>
+                        <h1 className="flex justify-center w-full">
+                            <img src="/images/users/logo.png" alt="Upluxure Logo" className="mt-2 w-6/12 mb-4 object-cover" />
+                        </h1>
+
+                        {error && <p className="mb-4 text-xs error">{error}</p>}
+
+                        <form onSubmit={handleLogin} method="POST" >
+                            <input
+                                aria-label="Enter your email address"
+                                type="text"
+                                placeholder="Email"
+                                className="form__email"
+                                onChange={({ target }) => setEmailAddress(target.value)}
+                            />
+                            <input
+                                aria-label="Enter your password"
+                                type="password"
+                                placeholder="Password"
+                                className="form__password"
+                                onChange={({ target }) => setPassword(target.value)}
+                            />
+                            <button
+                                disabled={isInvalid}
+                                type="submit"
+                                className={`form_button ${isInvalid && 'opacity-70'}`}
+                            >Log in</button>
+                        </form>
+                    </div>
+                    <div className="form_create_account">
+                        <p className="">Don't have an account? {``} </p>
+                        <Link to={ROUTES.SIGN_UP} className="form_create_account_signup">Sign Up</Link>
+                    </div>
+                </div>
+            </div>
+            )
+        }
 
         </>
     )
