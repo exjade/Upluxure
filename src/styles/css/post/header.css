@@ -11,16 +11,25 @@
     -o-border-radius: 9999px;
 }
 
-/*STAR */
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-red-like.css-i4bv87-MuiSvgIcon-root {
-    width: 40px;
-    height: 40px;
+/*STAR SIZE */
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.star_size.text-white-primary.css-i4bv87-MuiSvgIcon-root {
+    width: 37px;
+    height: 37px;
+}
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.star_size.text-red-like.css-i4bv87-MuiSvgIcon-root{
+    height: 37px;
+    width: 37px;
 }
 
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root {
+/* svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-red-like.css-i4bv87-MuiSvgIcon-root {
     width: 40px;
     height: 40px;
-}
+} */
+
+/* svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root {
+    width: 40px;
+    height: 40px;
+} */
 
 /* .actions__card_star > button > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
     fill: #C4C4C4;

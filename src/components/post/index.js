@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import Header from './header'
 import Image from './image'
+import Actions from './Actions'
 import Footer from './footer'
 import Comments from '../comments/index'
 
@@ -18,11 +19,21 @@ const Post = ({ content }) => {
 
     return (
         <div className="post__index rounded col-span-4 bg-black-background mb-10">
-            <Image src={content.imageSrc} caption={content.caption} />
             <div className="post_container_header">
                 <Header
                     username={content.username}
                     docId={content.docId}
+                    totalLikes={content.likes.length}
+                    likedPhoto={content.userLikedPhoto}
+                    handleFocus={handleFocus}
+                />
+            </div>
+            <Image src={content.imageSrc} caption={content.caption} />
+            <div className="post_container_header">
+                <Actions
+                    username={content.username}
+                    docId={content.docId}
+                    comments={content.comments}
                     totalLikes={content.likes.length}
                     likedPhoto={content.userLikedPhoto}
                     handleFocus={handleFocus}

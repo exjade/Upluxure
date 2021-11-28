@@ -1,0 +1,55 @@
+.post__index_header {
+    margin-top: 1rem;
+}
+
+/*STAR */
+.actions__card_star {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.star_likes{
+    margin-left: 1rem;
+    color: #ffffffd1;
+    font-size: larger;
+}
+
+
+/* comment icon */
+.actions__card_comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.actions__card_comment > button > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+    fill: #C4C4C4;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.comment_count {
+    margin-left: 1rem;
+    color: #ffffffd1;
+    font-size: larger;
+}
+
+.header__actions_icons {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: flex-end;
+}
