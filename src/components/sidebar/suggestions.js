@@ -28,7 +28,7 @@ const Suggestions = ({ userId, following, LoggedInUserDocId }) => {
             <Skeleton count={1} height={150} className="mt-5" />
         ) : profiles.length > 0 ? (
             <div className="rounded flex flex-col">
-                <div className="text-sm flex items-center justify-between mb-2">
+                <div className="text-sm flex items-center justify-between mb-2 ml-3">
                     <p className="font-bold text-white-primary">Suggestions for you</p>
                 </div>
                 <div className="mt-4 grid gap-5">

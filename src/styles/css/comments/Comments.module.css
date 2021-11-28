@@ -1,10 +1,3 @@
-.post__comments {
-    border-color: #212121;
-    border-bottom-width: 6px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
-
 .drawer__container {
     z-index: 9999;
 }

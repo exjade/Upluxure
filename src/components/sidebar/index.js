@@ -14,7 +14,7 @@ const Sidebar = () => {
 
     // console.log('fullName, username, userId', fullName, username, userId)
     return (
-        <div className="sidebar">
+        <div className="sidebar border-l-2 border-black-border">
             <User username={username} fullName={fullName} />
             <Suggestions userId={userId} following={following} LoggedInUserDocId={docId} />
         </div>
