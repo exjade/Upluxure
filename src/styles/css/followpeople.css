@@ -1,0 +1,17 @@
+.wrapper {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .typing-demo {
+    white-space: break-spaces;
+    text-overflow: ellipsis;
+    /* border-right: 3px solid; */
+    font-family: monospace;
+    font-size: 2em;
+    width: 100%;
+}
+
+  

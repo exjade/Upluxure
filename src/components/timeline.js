@@ -1,8 +1,10 @@
 /*eslint-disable no-nested-ternary */
-import React from 'react';
+import React,  { lazy, Suspense  }  from 'react';
 import Skeleton from 'react-loading-skeleton'
 import usePhotos from '../hooks/use-photos'
 import Post from './post'
+import FollowPeople from './followpeople';
+
 
 const Timeline = () => {
 
@@ -10,25 +12,27 @@ const Timeline = () => {
 
     return (
         <div className="container col-span-2 mt- text-white-primary ">
-                {
-                    !photos ? (
-                        <>
-                            {[...new Array(4)].map((_, index) => 
-                                <Skeleton 
-                                    key={index}
-                                    count={4}
-                                    width={1080}
-                                    height={1350}
-                                    className="mb-5"
-                                />
-                            )}
-                        </>
-                    ) : photos?.length > 0 ? (
-                        photos.map( (content) => <Post key={content.docId} content={content} />)
-                    ): (
-                        <p className="text-center text-2x1">Follow people to see photos</p>
-                    )
-                }
+            {
+                !photos ? (
+                    <>
+                        {[...new Array(4)].map((_, index) =>
+                            <Skeleton
+                                key={index}
+                                count={4}
+                                width={1080}
+                                height={1350}
+                                className="mb-5"
+                            />
+                        )}
+                    </>
+                ) : photos?.length > 0 ? (
+                    photos.map((content) => <Post key={content.docId} content={content} />)
+                ) : (
+                   <Suspense>
+                       <p className="text-center text-2x1"><FollowPeople /> </p>
+                   </Suspense>
+                )
+            }
         </div>
     )
 }
