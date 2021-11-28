@@ -17,12 +17,10 @@ export default function usePhotos() {
             // does the user have any following?
             if (following.length > 0) {
                 followedUserPhotos = await getPhotos(userId, following)
-
             }
             // show newest photos first by dateCreated
-            // followedUserPhotos.sort((a, b) => b.photoId - a.photoId);
+            followedUserPhotos.sort((a, b) => b.photoId - a.photoId);
             setPhotos(followedUserPhotos);
-
         }
 
         getTimelinePhotos()
