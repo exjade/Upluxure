@@ -256,8 +256,8 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 .flex.flex-col.h-64.p-5.my-60.justify-between.border.object-center.rounded-lg.MuiBox-root.css-0,
 .flex.flex-col.w-96.h-64.p-5.my-auto.justify-between.object-center.rounded-lg.MuiBox-root.css-0 {
     height: 18rem;
-    background: rgb(24,24,24);
-    background: linear-gradient(138deg, rgba(24,24,24,0.9352051835853131) 0%, rgba(0,0,0,0.7429805615550755) 52%, rgba(25,25,25,0.8444924406047516) 99%);
+    background: #626262;
+    background: linear-gradient(360deg, rgba(24,24,24,0.9352051835853131) 0%, rgba(0,0,0,0.7429805615550755) 52%, rgba(25,25,25,0.8444924406047516) 99%);
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;

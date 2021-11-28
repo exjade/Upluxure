@@ -35,8 +35,8 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
     
     return (
         <>
-            <div className="post__index_header flex h-4 p-4 py-12">
-                <div className="flex items-center">
+            <div className="post__index_header flex items-center">
+                <div className="flex items-center p-4">
                     <Link to={`/p/${username}`} className="flex items-center">
                         <img
                             className="rounded-full h-16 w-16 mr-3"
@@ -48,7 +48,6 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
                 <div className="header__name_username flex">
                 {/* // debe ser {username} */}
                     <p className="font-bold">{username}</p>  
-                     {/* username */}
                 </div>
 
                 <div className="header__actions_icons flex">
@@ -76,12 +75,12 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
                     </div>
                 </div>
             </div>
-            <div className="p-4 py-0">
+            <div className="rate p-4 py-0">
                 {
                     likes === 50 ? (
-                        <p className="font-bold mr-1 mt-4" >{`${likes}`} <StarRateIcon /><StarRateIcon /> </p>
+                        <p className="rate_star font-bold mr-1 mt-4" >{`${likes}`} <StarRateIcon /><StarRateIcon /> </p>
                     ) : likes > 100 ? (
-                        <p className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon
+                        <p className="rate_star font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon
                             className="text-yellow-like"
                         />
                             <StarRateIcon
@@ -92,7 +91,7 @@ const Header = ({ username, docId, totalLikes, likedPhoto, handleFocus }) => {
                         </p>
                     ) : (
                         <p
-                            className="font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon /> </p>
+                            className="rate_star font-bold mr-1 mt-4">{`${likes}`} <StarRateIcon /> </p>
                     )
                 }
 

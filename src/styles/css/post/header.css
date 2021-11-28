@@ -1,7 +1,7 @@
 .actions__card_star {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     width: 50px;
     height: 50px;
     border-radius: 9999px;
@@ -37,16 +37,15 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiS
 /* comment icon */
 .actions__card_comment {
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 50px;
     height: 50px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     border-radius: 9999px;
     -webkit-border-radius: 9999px;
     -moz-border-radius: 9999px;
     -ms-border-radius: 9999px;
     -o-border-radius: 9999px;
+    align-items: flex-end;
 }
 
 .actions__card_comment > button > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
@@ -64,9 +63,9 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiS
 
 .header__name_username {
     display: flex;
-    align-items: flex-end;
     flex-wrap: nowrap;
     flex-direction: row;
+    margin-top: -1.5rem;
     
 }
 
@@ -77,19 +76,18 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiS
 
 .header__actions_icons {
     display: flex;
+    margin-top: 2.5rem;
+    flex-wrap: nowrap;
     flex-direction: row;
-    align-items: flex-start;
-    margin-left: -80px;
+    align-items: flex-end;
 }
 
 /* P tag likes  */
 
 .py-0 {
-    padding-bottom: 81px;
     display: flex;
-    align-items: flex-end;
     flex-direction: row;
-    margin-left: -3rem;
+    margin-left: -4rem;
     font-style: normal;
     font-weight: 200;
 } 

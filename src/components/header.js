@@ -65,6 +65,7 @@ const Header = () => {
     const newDoc = async () => {
         try {
             const docRef = await addDoc(collection(firestore, "photos"), {
+                caption: "prueba de descripcion",
                 comments: [],
                 dateCreated: new Date(),
                 imageSrc: downloadUrl,
