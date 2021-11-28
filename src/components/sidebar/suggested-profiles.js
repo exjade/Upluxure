@@ -3,32 +3,38 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import { updateLoggedInUserFollowing, updateFollowedUserFollowers } from '../../services/firebase'
+import usePhotos from '../../hooks/use-photos'
 
-export default function SuggestedProfile({ 
-    profileDocId, 
-    username, 
-    profileId, 
+export default function SuggestedProfile({
+    profileDocId,
+    username,
+    profileId,
     userId,
     LoggedInUserDocId
- }) {
+}) {
     const [followed, setFollowed] = useState(false)
+    const { photos } = usePhotos();
+
 
     async function handleFollowUser() {
         setFollowed(true)
-        
+
         // 0) create 2 functions
         // 1) update following array if the actual user
         await updateLoggedInUserFollowing(LoggedInUserDocId, profileId, false)
         // 2) update followers array of the user who has been followed
         await updateFollowedUserFollowers(profileDocId, userId, false)
-        window.location.reload()
+        if (photos) {
+            window.location.reload()
+        }
+           
     }
 
     return (
         !followed ? (
             <div className="flex flex-row items-center align-items justify-between">
                 <div className="flex items-center justify-between">
-                    <Avatar 
+                    <Avatar
                         className="rounded-full w-8 flex mr-2"
                         src={`/images/avatars/${username}.jpg`}
                         alt="suggested users"

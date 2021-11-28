@@ -27,7 +27,7 @@ function App() {
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN}>
               <Login />
             </IsUserLoggedIn>
-            <IsUserLoggedIn user={user} loggedInPath={ROUTES.LOGIN} path={ROUTES.SIGN_UP}>
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.SIGN_UP}>
               <SignUp />
             </IsUserLoggedIn>
             <Route path={ROUTES.PROFILE} component={Profile} />

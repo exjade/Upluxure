@@ -24,7 +24,6 @@ const SignUp = () => {
 
     const handleSignup = async (event) => {
         event.preventDefault();
-
         const usernameExists = await doesUsernameExist(username);
         if (!usernameExists.length) {
             try {
@@ -46,7 +45,7 @@ const SignUp = () => {
                     following: [],
                     dateCreated: new Date()
                 })
-
+                window.location.reload()
                 history.push(ROUTES.DASHBOARD)
             } catch (error) {
                 setFullName('')
