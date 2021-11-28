@@ -115,7 +115,7 @@ const SignUp = () => {
                             />
 
                             <div className="form__signup_terms">
-                                <Checkbox>
+                                <Checkbox required>
                                     <CheckBoxIcon className=""></CheckBoxIcon>
                                 </Checkbox>
                                 <p className="signup_conditions_terms">I agree with conditions & terms</p>
