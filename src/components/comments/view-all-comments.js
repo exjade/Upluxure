@@ -7,13 +7,12 @@ import Avatar from '@mui/material/Avatar';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import '../../styles/css/comments/view-all-comments.css';
 
-const ViewAllComments = ({ docId, username, comments, setComments }) => {
+const ViewAllComments = ({ docId, comments, setComments }) => {
 
     // const [comments, setComments] = useState(allComments)
     const [comment, setComment] = useState('');
     const { user, user: {displayName} } = useContext(UserContext)
     const { firebase, FieldValue } = useContext(FirebaseContext);
-    console.log(displayName)
 
     const handleSubmitComment = (event) => {
         event.preventDefault()
