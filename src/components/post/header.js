@@ -4,17 +4,16 @@ import { Link } from 'react-router-dom'
 import '../../styles/css/post/header.css'
 import FirebaseContext from '../../context/firebase'
 import UserContext from '../../context/user'
-import StarRateIcon from '@mui/icons-material/StarRate';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Header = ({ username, docId, totalLikes, likedPhoto }) => {
 
     const {
-        user, user: { uid: userId = '' },
+        user, user: { uid: userId = '', fullName },
     } = useContext(UserContext)
     const { firebase, FieldValue } = useContext(FirebaseContext)
-    console.log(docId)
+    // console.log(user)
     const [toggleLiked, setToggleLiked] = useState(likedPhoto)
     const [likes, setLikes] = useState(totalLikes)
 

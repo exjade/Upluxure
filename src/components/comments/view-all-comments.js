@@ -70,4 +70,5 @@ ViewAllComments.propTypes = {
     username: PropTypes.string.isRequired,
     comments: PropTypes.array,
     docId: PropTypes.string.isRequired,
+
 }

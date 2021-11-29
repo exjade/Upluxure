@@ -7,6 +7,7 @@ import AddComment from './add-comments'
 
 /**/
 import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ViewAllComments from './view-all-comments';
 
@@ -14,6 +15,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
 
     const [comments, setComments] = useState(allComments)
     const [open, setOpen] = useState(false)
+
 
     return (
         <>
@@ -63,22 +65,36 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                 }
                 {
 
-                    comments.slice(0, 3).map((item) => (
+                    comments.slice(0, 1).map((item) => (
+                        <>
 
-                        <p
-                            key={`${item.comment}-${item.displayName}`}
-                            className="mb-1"
-                        >
-                            <Link to={`/p/${item.displayName}`}>
-                                <span className="mr-1 font-bold">{item.displayName}</span>
-                            </Link>
-                            <span>{item.comment}</span>
-                        </p>
+                            <p
+                                key={`${item.comment}-${item.displayName}`}
+                                className={`${styles.comments_index} flex mb-1`}
+                            >
+                                <div className={`${styles.comments__avatar} flex items-center`}>
+                                    <Link to={`/p/${item.displayName}`} >
+                                        <Avatar
+                                            className="rounded-full cursor-pointer avatarincomments"
+                                            src={`/images/avatars/${item.displayName}.jpg`}
+                                        >
+
+                                        </Avatar>
+                                    </Link>
+                                </div>
+                                <div className={`${styles.comments__comment} flex items-start justify-center content-center ml-4 flex-col`} >
+                                    <Link to={`/p/${item.displayName}`} className={styles.comments_displayname} >
+                                        <span className="mr-1 font-bold">{item.displayName}</span>
+                                    </Link>
+                                    <span>{item.comment}</span>
+                                </div>
+                            </p>
+                        </>
                     ))
 
                 }
 
-                {/* <p className="text-gray-primary uppercase text-xs mt-2"> {formatDistance(posted, new Date(2014, 1, 11))} ago</p> */}
+                <p className="text-gray-primary uppercase text-xs mt-2 flex justify-center"> {formatDistance(posted, new Date(), { addSuffix: true })}</p>
             </div>
             <AddComment
                 docId={docId}

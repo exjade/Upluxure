@@ -10,7 +10,6 @@ import '../../styles/css/post/index.css'
 
 const Post = ({ content }) => {
     const commentInput = useRef(null)
-
     const handleFocus = () => commentInput.current.focus();
 
     //Components
@@ -47,7 +46,7 @@ const Post = ({ content }) => {
                 docId={content.docId}
                 comments={content.comments}
                 posted={content.dateCreated}
-                commentInput={commentInput}
+                commentInput={commentInput}               
             />
         </div>
     )

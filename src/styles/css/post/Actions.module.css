@@ -1,5 +1,10 @@
 .post__index_header {
     margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 /*STAR */
@@ -8,10 +13,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin-right: 1rem;
-    margin-left: 1rem;
+    align-content: center;
 }
 .star_likes{
     margin-left: 1rem;
@@ -51,5 +53,6 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
+    width: 100%;
 }

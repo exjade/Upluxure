@@ -7,7 +7,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 
-const Actions = ({ username, docId, totalLikes, likedPhoto, handleFocus, comments }) => {
+const Actions = ({ docId, totalLikes, likedPhoto, handleFocus, comments }) => {
 
     const {
         user: { uid: userId = '' },
@@ -31,37 +31,37 @@ const Actions = ({ username, docId, totalLikes, likedPhoto, handleFocus, comment
         setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
 
     }
-    
+
     return (
-        <>  
+        <>
             <div className={`${styles.post__index_header} flex items-center`} >
-        
+
                 <div className={styles.header__actions_icons} >
                     <div className={styles.actions__card_star} >
                         {
                             toggleLiked ? (
                                 <StarRateIcon
-                                onClick={handleToggleLiked}
-                                className="star_size text-red-like"
-                                onKeyDown={event => {
-                                    if (event.key === 'Enter') {
-                                        handleToggleLiked()
-                                    }
-                                }}
-                            />
+                                    onClick={handleToggleLiked}
+                                    className="star_size text-red-like"
+                                    onKeyDown={event => {
+                                        if (event.key === 'Enter') {
+                                            handleToggleLiked()
+                                        }
+                                    }}
+                                />
                             ) : (
                                 <StarBorderIcon
-                                onClick={handleToggleLiked}
-                                className="star_size text-white-primary"
-                                onKeyDown={event => {
-                                    if (event.key === 'Enter') {
-                                        handleToggleLiked()
-                                    }
-                                }}
-                            />
+                                    onClick={handleToggleLiked}
+                                    className="star_size text-white-primary"
+                                    onKeyDown={event => {
+                                        if (event.key === 'Enter') {
+                                            handleToggleLiked()
+                                        }
+                                    }}
+                                />
                             )
                         }
-                      
+
                         <p className={styles.star_likes} >{likes}</p>
                     </div>
                     <div className={styles.actions__card_comment} >

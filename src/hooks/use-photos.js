@@ -1,16 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import { getUserByUserId, getPhotos } from '../services/firebase';
 import UserContext from '../context/user';
-import { useHistory } from 'react-router-dom';
-import * as ROUTES from '../constants/routes'
 
 export default function usePhotos() {
 
-    let history = useHistory()
-
     const [photos, setPhotos] = useState(null);
     const {
-        user, user: { uid: userId = '' }
+        user: { uid: userId = '' }
     } = useContext(UserContext);
 
     useEffect(() => {

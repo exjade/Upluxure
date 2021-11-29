@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from '../context/user';
-import FirebaseContext from '../context/firebase'; // sign and signout functions
+// import FirebaseContext from '../context/firebase'; // sign and signout functions
 import * as ROUTES from '../constants/routes';
 import '../styles/css/searchbardown.css'
 /* Mateial */
@@ -41,9 +41,8 @@ const SearchBarDown = () => {
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
-    const { firebase } = useContext(FirebaseContext);
     const {
-        user, user: { uid, displayName },
+        user
     } = useContext(UserContext);
     const [open, setOpen] = useState(false);
 
@@ -82,13 +81,13 @@ const SearchBarDown = () => {
         try {
             const docRef = await addDoc(collection(firestore, "photos"), {
                 comments: [],
-                dateCreated: new Date(),
+                dateCreated: Date.now(),
                 imageSrc: downloadUrl,
                 likes: [],
                 userId: user.uid,
                 username: user.displayName,
             });
-            // console.log("Document written with ID: ", docRef.id);
+            console.log("Document written with ID: ", docRef.id);
         } catch (error) {
             console.log("Failed: processing your file :(")
         }
@@ -114,7 +113,7 @@ const SearchBarDown = () => {
 
     /* SpeedDial - ICONS */
     const actions = [
-        { icon: <InsertPhotoIcon sx={{ color: 'black' }} onClick={handleOpen} />, name: 'Library' },
+        { icon: <InsertPhotoIcon sx={{ color: 'black'}} onClick={handleOpen} />, name: 'Library' },
         { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
         { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
     ];
