@@ -18,6 +18,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
+import usePhotos from '../hooks/use-photos';
 
 import { v4 as uuidv4 } from 'uuid';
 /* Modal */
@@ -28,11 +29,13 @@ import TextField from '@mui/material/TextField';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, doc, updateDoc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
 const SearchBarDown = () => {
+
+    const { photos: docId } = usePhotos();
 
     /* Modal */
     let history = useHistory();
@@ -69,9 +72,9 @@ const SearchBarDown = () => {
         await uploadBytes(storageRef, localFile)
         downloadUrl = await getDownloadURL(storageRef)
         console.log('successfully uploaded! Dev: Exjade')
-        
+
         setTimeout(() => {
-            history.push(ROUTES.LOGIN) 
+            history.push(ROUTES.LOGIN)
         }, 3500);
     }
 
@@ -80,6 +83,7 @@ const SearchBarDown = () => {
     const newDoc = async () => {
         try {
             const docRef = await addDoc(collection(firestore, "photos"), {
+                caption: '',
                 comments: [],
                 dateCreated: Date.now(),
                 imageSrc: downloadUrl,
@@ -87,9 +91,12 @@ const SearchBarDown = () => {
                 userId: user.uid,
                 username: user.displayName,
             });
+            await updateDoc(docRef, {
+                caption: caption.caption,
+            });
             console.log("Document written with ID: ", docRef.id);
         } catch (error) {
-            console.log("Failed: processing your file :(")
+            console.log("Failed: processing your file :(", error.message);
         }
     }
     /* END UPLOAD FILE*/
@@ -109,11 +116,23 @@ const SearchBarDown = () => {
     //         console.error("Error adding document: ", e);
     //       }
     // }
+    const [caption, setCaption] = useState({
+        caption: ''
+    });
+
+    const handleCaptionChange = async (e) => {
+        setCaption(
+            {
+                ...caption,
+                [e.target.name]: e.target.value
+            }
+        );
+    }
 
 
     /* SpeedDial - ICONS */
     const actions = [
-        { icon: <InsertPhotoIcon sx={{ color: 'black'}} onClick={handleOpen} />, name: 'Library' },
+        { icon: <InsertPhotoIcon sx={{ color: 'black' }} onClick={handleOpen} />, name: 'Library' },
         { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
         { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
     ];
@@ -214,6 +233,9 @@ const SearchBarDown = () => {
                                                 multiline
                                                 fullWidth
                                                 rows={4}
+                                                name="caption"
+                                                value={caption.caption}
+                                                onChange={handleCaptionChange}
                                             />
                                         </label>
                                     </form>
