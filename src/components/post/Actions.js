@@ -6,6 +6,7 @@ import UserContext from '../../context/user'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 
 const Actions = ({ docId, totalLikes, likedPhoto, handleFocus, comments }) => {
 
@@ -64,18 +65,39 @@ const Actions = ({ docId, totalLikes, likedPhoto, handleFocus, comments }) => {
 
                         <p className={styles.star_likes} >{likes}</p>
                     </div>
+
+                    {
+                        comments.length > 10 ? 
+                        (
+                            <div className={styles.actions__card_comment} >
+                                <QuestionAnswerIcon
+                                    onClick={handleFocus}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            handleFocus()
+                                        }
+                                    }}
+                                    className={`comments_size ${comments.length > 1 ? 'text-red-like' : 'text-white-primary'}`}
+                                />
+                                <p className={styles.comment_count} >{comments.length}</p>
+                            </div>
+                        ) : (
+                            
                     <div className={styles.actions__card_comment} >
-                        <ModeCommentOutlinedIcon
-                            onClick={handleFocus}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    handleFocus()
-                                }
-                            }}
-                            className={`comments_size ${comments.length > 1 ? 'text-red-like' : 'text-white-primary'}`}
-                        />
-                        <p className={styles.comment_count} >{comments.length}</p>
-                    </div>
+                    <ModeCommentOutlinedIcon
+                        onClick={handleFocus}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                handleFocus()
+                            }
+                        }}
+                        className={`comments_size ${comments.length > 1 ? 'text-purple-like' : 'text-white-primary'}`}
+                    />
+                    <p className={styles.comment_count} >{comments.length}</p>
+                </div>
+                        )
+                    }
+
                 </div>
             </div>
         </>

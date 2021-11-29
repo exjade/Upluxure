@@ -31,7 +31,7 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
     return (
         <div className="border-b border-black-border">
             <form
-                className="flex justify-between pl-0 pr-5 mb-5"
+                className="flex justify-between pl-0 pr-5 mb-10"
                 method="POST"
                 onSubmit={(event) => comment.length >= 1 ? handleSubmitComment(event) : (event.preventDefault())}
             >
