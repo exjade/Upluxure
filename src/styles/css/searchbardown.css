@@ -149,6 +149,7 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
     flex-direction: column-reverse;
 }
 
+
 /* notifications */
 .homesearchbar__notifications{
     display: flex;

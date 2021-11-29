@@ -29,7 +29,7 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
     }
 
     return (
-        <div className="mt-2 border-b border-black-border">
+        <div className="border-b border-black-border">
             <form
                 className="flex justify-between pl-0 pr-5 mb-5"
                 method="POST"

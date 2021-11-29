@@ -20,13 +20,13 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
     return (
         <>
             <div
-                className={`${styles.post__comments} p-4 pt-1 pb-4`}
+                className={`${styles.post__comments} p-2`}
             >
                 {
                     comments.length >= 1 ? (
                         <>
                             <p
-                                className="flex justify-center text-sm text-gray-primary mb-1 cursor-pointer"
+                                className="flex justify-center text-sm text-gray-primary cursor-pointer mb-3"
                                 edge="start"
                                 color="inherit"
                                 aria-label="open drawer"
@@ -58,7 +58,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                         </>
                     ) : (
                         <p
-                            className="text-sm text-gray-primary text-center justify-center items-center mt-3"
+                            className="text-sm text-gray-primary text-center justify-center items-center mb-4"
                         >
                             No new comments
                         </p>
@@ -66,7 +66,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                 }
                 {
 
-                    comments.slice(-1).map((item, index) => (
+                    comments.slice(0,0).map((item) => (
                         <div key={`${item.comment}-${item.displayName}`}>
 
                             <div
