@@ -100,7 +100,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                         disabled={comment.length < 1}
                         onClick={handleSubmitComment}
                     >
-                        Post
+                        Post 
                     </button>
                 </form>
             </div>
