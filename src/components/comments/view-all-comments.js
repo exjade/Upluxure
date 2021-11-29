@@ -2,18 +2,34 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/user';
-import AddComment from './add-comments';
+import FirebaseContext from '../../context/firebase';
 import Avatar from '@mui/material/Avatar';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import '../../styles/css/comments/view-all-comments.css';
 
-const ViewAllComments = ({ username, comments: allComments }) => {
+const ViewAllComments = ({ docId, username, comments, setComments }) => {
 
-    const [comments, setComments] = useState(allComments)
+    // const [comments, setComments] = useState(allComments)
+    const [comment, setComment] = useState('');
+    const { user, user: {displayName} } = useContext(UserContext)
+    const { firebase, FieldValue } = useContext(FirebaseContext);
+    console.log(displayName)
 
-    const { user, user: { uid: userId = "" } } = useContext(UserContext)
+    const handleSubmitComment = (event) => {
+        event.preventDefault()
 
-    
+        setComments([{ displayName, comment }, ...comments]) // new array with new comment, add the old comments
+        setComment('') // clear the input
+
+        return firebase
+            .firestore()
+            .collection('photos')
+            .doc(docId)
+            .update({
+                comments: FieldValue.arrayUnion({ displayName,  comment })
+            });
+    }
+
     return (
 
         <div className=" bg-black-background">
@@ -46,20 +62,49 @@ const ViewAllComments = ({ username, comments: allComments }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="viewallcomments__like_star">
-                            <StarRateIcon 
-                                className="text-white-primary"                             
+                        <div className="viewallcomments__like_star"  key={`${index}-${item.displayName}`}>
+                            <StarRateIcon
+                                className="text-white-primary"
                             />
                             {/* CANTIDAD DE LIKES */}
-                            <p className="text-white-primary font-extralight text-sm">385</p> 
+                            <p className="text-white-primary font-extralight text-sm">385</p>
                         </div>
                     </div>
                 ))
             }
-            <AddComment
-                username={username}
-                className="mb-1"
-            />
+            <div className="mt-2 border-b border-black-border">
+                <form
+                    className="flex justify-between pl-0 pr-5 mb-5"
+                    method="POST"
+                    onSubmit={(event) => comment.length >= 1 ? handleSubmitComment(event) : (event.preventDefault())}
+                >
+                    <Link to={`/p/${user.displayName}`}>
+                        <Avatar
+                            className="rounded-full h-10 w-10 mt-4 ml-2"
+                            src={`/images/avatars/${user.displayName}.jpg`}
+                        />
+                    </Link>
+                    <input
+                        aria-label="Add a comment"
+                        autoComplete="off"
+                        className="text-sm text-white-primary w-full py-5 px-4 bg-black-background outline-none mb-2"
+                        type="text"
+                        name="add-comment"
+                        placeholder="Add a comment..."
+                        value={comment}
+                        onChange={({ target }) => setComment(target.value)}
+                        maxLength="60"
+                    />
+                    <button
+                        className={`text-sm font-bold text-white-primary flex items-center w-12 ${!comment && 'opacity-25'}`}
+                        type="button"
+                        disabled={comment.length < 1}
+                        onClick={handleSubmitComment}
+                    >
+                        Post
+                    </button>
+                </form>
+            </div>
         </div>
     )
 }
@@ -70,5 +115,5 @@ ViewAllComments.propTypes = {
     username: PropTypes.string.isRequired,
     comments: PropTypes.array,
     docId: PropTypes.string.isRequired,
-
+    setComments: PropTypes.func.isRequired,
 }

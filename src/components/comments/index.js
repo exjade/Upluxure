@@ -50,6 +50,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                             comments={comments}
                                             setComments={setComments}
                                             username={username}
+                                            setComments={setComments}
                                         />
                                     </Box>
                                 </div>
@@ -65,7 +66,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                 }
                 {
 
-                    comments.slice(0, 1).map((item) => (
+                    comments.slice(0, 1).map((item, index) => (
                         <>
 
                             <p
@@ -82,7 +83,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                         </Avatar>
                                     </Link>
                                 </div>
-                                <div className={`${styles.comments__comment} flex items-start justify-center content-center ml-4 flex-col`} >
+                                <div className={`${styles.comments__comment} flex items-start justify-center content-center ml-4 flex-col`}   key={`${index}-${item.displayName}`}>
                                     <Link to={`/p/${item.displayName}`} className={styles.comments_displayname} >
                                         <span className="mr-1 font-bold">{item.displayName}</span>
                                     </Link>
