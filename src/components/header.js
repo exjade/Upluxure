@@ -23,7 +23,7 @@ import TextField from '@mui/material/TextField';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, updateDoc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
@@ -49,10 +49,6 @@ const Header = () => {
         await uploadBytes(storageRef, localFile)
         downloadUrl = await getDownloadURL(storageRef)
         console.log('successfully uploaded! Dev: Exjade')
-
-        setTimeout(() => {
-            history.push(ROUTES.LOGIN)
-        }, 3500);
     }
 
     /* Modal */
@@ -67,16 +63,34 @@ const Header = () => {
             const docRef = await addDoc(collection(firestore, "photos"), {
                 caption: "prueba de descripcion",
                 comments: [],
-                dateCreated: new Date(),
+                dateCreated:  Date.now(),
                 imageSrc: downloadUrl,
                 likes: [],
                 userId: user.uid,
                 username: user.displayName,
             });
+            await updateDoc(docRef, {
+                caption: caption.caption,
+            });
             console.log("Document written with ID: ", docRef.id);
         } catch (error) {
             console.log("Failed: processing your file :(")
         }
+        setTimeout(() => {
+            history.push(ROUTES.LOGIN)
+        }, 3500);
+    }
+    const [caption, setCaption] = useState({
+        caption: ''
+    });
+
+    const handleCaptionChange = async (e) => {
+        setCaption(
+            {
+                ...caption,
+                [e.target.name]: e.target.value
+            }
+        );
     }
 
     return (
@@ -174,6 +188,9 @@ const Header = () => {
                                                                         multiline
                                                                         fullWidth
                                                                         rows={4}
+                                                                        name="caption"
+                                                                        value={caption.caption}
+                                                                        onChange={handleCaptionChange}
                                                                     />
                                                                 </label>
                                                             </form>

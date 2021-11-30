@@ -169,7 +169,7 @@ const SearchBarDown = () => {
                                                 <SpeedDialAction
                                                     key={action.name}
                                                     icon={action.icon}
-                                                    // tooltipTitle={action.name}
+                                                    tooltipTitle={action.name}
                                                     onClick={handleCloseModal}
                                                     className="speed-dial__action "
                                                 >
@@ -253,7 +253,7 @@ const SearchBarDown = () => {
                             </Modal>
                         </>
                     )
-                    : null
+                    : null 
             }
         </>
     )
