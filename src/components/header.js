@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import '../styles/css/header.css'
+// import '../styles/css/header.css'
 import FirebaseContext from '../context/firebase'; // sign and signout functions
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
@@ -100,20 +100,20 @@ const Header = () => {
                                         {
                                             isDesktop ? (
                                                 <>
-                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                    <Link to={ROUTES.DASHBOARD} aria-label="inbox">
                                                         <IconButton className="header_inbox_icon">
                                                             <SendOutlinedIcon className=" text-white-primary"
                                                             />
                                                         </IconButton>
                                                     </Link>
-                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                    <Link to={ROUTES.DASHBOARD} aria-label="add">
                                                         <IconButton className="header_add_icon"
                                                             onClick={handleOpenModal}>
                                                             <AddCircleOutlineIcon className=" text-white-primary"
                                                             />
                                                         </IconButton>
                                                     </Link>
-                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                    <Link to={ROUTES.DASHBOARD} aria-label="not">
                                                         <IconButton className="header_notifications_icon">
                                                             <NotificationsIcon className=" text-white-primary"
                                                             />
@@ -124,6 +124,19 @@ const Header = () => {
                                                             <HomeOutlinedIcon className="text-white-primary" />
                                                         </IconButton>
                                                     </Link>
+                                                    <IconButton className="header_notifications_icon"
+                                                        onClick={() =>
+                                                            firebase.auth().signOut()
+                                                        }
+                                                        onKeyDown={(event) => {
+                                                            if (event.key === 'Enter') {
+                                                                firebase.auth().signOut()
+                                                            }
+                                                        }}
+                                                    >
+                                                        <LogoutOutlinedIcon className=" text-white-primary"
+                                                        />
+                                                    </IconButton>
 
                                                     {/* Modal */}
                                                     <Modal
@@ -179,11 +192,10 @@ const Header = () => {
                                                         </Box>
                                                     </Modal>
                                                 </>
-                                            ) : null
-                                        }
+                                            ) : null}
 
 
-                                        <button
+                                        {/* <button
                                             type="button"
                                             title="Sign Out"
                                             onClick={() =>
@@ -197,7 +209,7 @@ const Header = () => {
                                             className="header_signup_icon"
                                         >
                                             <LogoutOutlinedIcon className="header_signup text-white-primary" />
-                                        </button>
+                                        </button> */}
                                     </>
                                 )
                                 :

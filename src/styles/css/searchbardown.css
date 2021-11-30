@@ -76,19 +76,20 @@ button.MuiButtonBase-root.css-10d1a0h-MuiButtonBase-root {
 
 /* Add Content*/
 .homesearchbar__add {
-    display: flex; 
-    background: transparent;
-     padding-bottom: 2rem;
-}
-.css-h0fz3e-MuiSpeedDial-root .MuiSpeedDial-actions {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    /* margin-bottom: -32px; */
-    /* padding-bottom: 48px; */
+    display: flex;
 }
 
-button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-primary.MuiSpeedDial-fab.css-1i5alow-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab{
+.css-h0fz3e-MuiSpeedDial-root .MuiSpeedDial-actions {
+    margin-top: 0rem;
+    display: flex;
+    flex-direction: row;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    margin-bottom: -32px; 
+     padding-bottom: 48px;
+}
+
+button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-primary.MuiSpeedDial-fab.css-1i5alow-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab {
     display: flex;
     width: 80px;
     height: 80px;
@@ -99,8 +100,44 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
     -moz-border-radius: 100px;
     -ms-border-radius: 100px;
     -o-border-radius: 100px;
-    /* margin-top: -2rem; */
 }
+
+.css-sox5kk-MuiBackdrop-root {
+	position: fixed;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	-webkit-tap-highlight-color: transparent;
+}
+
+.css-16pxapz {
+	-webkit-transform: translateZ(0px);
+	-moz-transform: translateZ(0px);
+	-ms-transform: translateZ(0px);
+	transform: translateZ(0px);
+	-webkit-box-flex: 2;
+	-webkit-flex-grow: 2;
+	-ms-flex-positive: 2;
+	flex-grow: 2;
+	transition-duration: 100ms;
+	display: flex;
+	margin-bottom: -35px;
+}
+
 .MuiBackdrop-root.css-sox5kk-MuiBackdrop-root {
     background: transparent;
 }
@@ -109,7 +146,7 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 }
 
 .css-x4oyac {
-    height: 0 !important;
+    height: 0!important;
 }
 
 .css-2v6tvw {
@@ -135,7 +172,7 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 .css-h0fz3e-MuiSpeedDial-root {
     z-index: 1050;
     display: -webkit-box;
-    margin-top: -8rem;
+    margin-top: -12rem;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -149,6 +186,40 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
     flex-direction: column-reverse;
 }
 
+.css-1nrgn0c-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab:hover {
+    background-color: rgb(216, 216, 216);
+    border-radius: 100px;
+}
+
+button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeSmall.MuiSpeedDialAction-fab.MuiSpeedDialAction-fabClosed.speed-dial__action.css-1nrgn0c-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab {
+    border-radius: 99px;
+}
+
+.css-u1qjuz-MuiSpeedDial-actions {
+    border-radius: 90px;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    -ms-border-radius: 90px;
+    -o-border-radius: 90px;
+}
+
+.css-ytbtp4-MuiSpeedDial-actions {
+    border-radius: 90px;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    -ms-border-radius: 90px;
+    -o-border-radius: 90px;
+}
+
+.MuiToolTip-popper {
+    border-radius: 90px;
+    background-color: #c4c4c4;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    -ms-border-radius: 90px;
+    -o-border-radius: 90px;
+    border: 1px solid red;
+}
 
 /* notifications */
 .homesearchbar__notifications{

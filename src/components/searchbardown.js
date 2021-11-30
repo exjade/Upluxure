@@ -18,7 +18,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
-import usePhotos from '../hooks/use-photos';
 
 import { v4 as uuidv4 } from 'uuid';
 /* Modal */
@@ -29,13 +28,11 @@ import TextField from '@mui/material/TextField';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc, doc, updateDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, updateDoc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
 const SearchBarDown = () => {
-
-    const { photos: docId } = usePhotos();
 
     /* Modal */
     let history = useHistory();
@@ -72,10 +69,6 @@ const SearchBarDown = () => {
         await uploadBytes(storageRef, localFile)
         downloadUrl = await getDownloadURL(storageRef)
         console.log('successfully uploaded! Dev: Exjade')
-
-        setTimeout(() => {
-            history.push(ROUTES.LOGIN)
-        }, 3500);
     }
 
     /* UPLOAD FILE*/
@@ -98,6 +91,10 @@ const SearchBarDown = () => {
         } catch (error) {
             console.log("Failed: processing your file :(", error.message);
         }
+
+         setTimeout(() => {
+            history.push(ROUTES.LOGIN)
+        }, 3500);
     }
     /* END UPLOAD FILE*/
     // const newDoc =  async (event)  => {
@@ -157,7 +154,7 @@ const SearchBarDown = () => {
                                     </ButtonBase>
                                 </div>
                                 <div className="homesearchbar__add">
-                                    <Box sx={{ height: 330, transform: 'translateZ(0px)', flexGrow: 2, transitionDuration: "100ms" }}>
+                                    <Box sx={{ transform: 'translateZ(0px)', flexGrow: 2, transitionDuration: "100ms" }}>
                                         <Backdrop open={openModal} />
                                         <SpeedDial
                                             ariaLabel="SpeedDial Home"
@@ -172,8 +169,9 @@ const SearchBarDown = () => {
                                                 <SpeedDialAction
                                                     key={action.name}
                                                     icon={action.icon}
-                                                    tooltipTitle={action.name}
+                                                    // tooltipTitle={action.name}
                                                     onClick={handleCloseModal}
+                                                    className="speed-dial__action "
                                                 >
                                                 </SpeedDialAction>
                                             ))}

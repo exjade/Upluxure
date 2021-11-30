@@ -1,5 +1,5 @@
 /*eslint-disable no-nested-ternary */
-import React,  { lazy, Suspense  }  from 'react';
+import React, { lazy, Suspense } from 'react';
 import Skeleton from 'react-loading-skeleton'
 import usePhotos from '../hooks/use-photos'
 import Post from './post'
@@ -28,9 +28,9 @@ const Timeline = () => {
                 ) : photos?.length > 0 ? (
                     photos.map((content) => <Post key={content.docId} content={content} />)
                 ) : (
-                   <Suspense>
-                       <p className="text-center text-2x1"><FollowPeople /> </p>
-                   </Suspense>
+                    <Suspense>
+                        <p className="text-center text-2x1"><FollowPeople /> </p>
+                    </Suspense>
                 )
             }
         </div>

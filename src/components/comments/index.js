@@ -50,7 +50,6 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                             comments={comments}
                                             setComments={setComments}
                                             username={username}
-                                            setComments={setComments}
                                         />
                                     </Box>
                                 </div>
