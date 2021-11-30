@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/css/stories.css';
 import Header from '../components/header'
 import Sidebar from '../components/sidebar'
@@ -12,22 +12,38 @@ function Dashboard() {
         document.title = 'Dashboard - Upluxure'
     }, [])
 
-    return (
-        <>
-            <div>
-                <Header />
-                <Stories />
-                <div className="grid grid-cols-3 gap-8 justify-between mx mx-auto max-w-screen-lg">
-                    <Suspense>
-                        <Timeline />
-                    </Suspense>
-                    <Sidebar />
-                </div>
-                <SearchBarDown />
-            </div>
-        </>
-    )
+    useEffect(() => {
 
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2000);
+
+    }, [])
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const loader = () => {
+        return (
+            <div className="loader"><span>Up</span><span>luxure</span></div>
+        )
+    }
+
+    if (isLoading) {
+        return loader()
+    } else {
+        return (
+            <>
+                <div>
+                    <Header />
+                    <Stories />
+                    <div className="grid grid-cols-3 gap-8 justify-between mx mx-auto max-w-screen-lg">
+                        <Timeline />
+                        <Sidebar />
+                    </div>
+                    <SearchBarDown />
+                </div>            </>
+        )
+    }
 }
 
 export default Dashboard

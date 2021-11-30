@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// import '../styles/css/header.css'
+import '../styles/css/header.css'
 import FirebaseContext from '../context/firebase'; // sign and signout functions
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
