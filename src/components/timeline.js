@@ -5,7 +5,6 @@ import usePhotos from '../hooks/use-photos'
 import Post from './post'
 import FollowPeople from './followpeople';
 
-
 const Timeline = () => {
 
     const { photos } = usePhotos();
@@ -28,11 +27,10 @@ const Timeline = () => {
                 ) : photos?.length > 0 ? (
                     photos.map((content) => <Post key={content.docId} content={content} />)
                 ) : (
-                    <Suspense>
-                        <p className="text-center text-2x1"><FollowPeople /> </p>
-                    </Suspense>
+                    <p className="text-center text-2x1"><FollowPeople /> </p>
                 )
             }
+            
         </div>
     )
 }
