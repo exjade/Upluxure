@@ -65,7 +65,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                 }
                 {
 
-                    comments.slice(0,0).map((item) => (
+                    comments.slice(0,1).map((item) => (
                         <div key={`${item.comment}-${item.displayName}`}>
 
                             <div

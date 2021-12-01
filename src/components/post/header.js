@@ -10,7 +10,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const Header = ({ username, docId, totalLikes, likedPhoto }) => {
 
     const {
-        user, user: { uid: userId = '', fullName },
+        user, user: { uid: userId = '' }
     } = useContext(UserContext)
     const { firebase, FieldValue } = useContext(FirebaseContext)
     // console.log(user)
