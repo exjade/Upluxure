@@ -30,3 +30,14 @@ button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.header_add
     -ms-transform: rotate(336deg);
     -o-transform: rotate(336deg);
 }
+
+.css-79ws1d-MuiModal-root {
+    z-index: 1300;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+    
+    
+    

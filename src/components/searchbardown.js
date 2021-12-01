@@ -201,7 +201,6 @@ const SearchBarDown = () => {
                                 onClose={handleClose}
                                 aria-labelledby="modal-modal-title"
                                 aria-describedby="modal-modal-description"
-                                className="container flex justify-center  "
                             >
                                 <Box
                                     className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
@@ -231,6 +230,8 @@ const SearchBarDown = () => {
                                                 multiline
                                                 fullWidth
                                                 rows={4}
+                                                maxlength="40"
+                                                required
                                                 name="caption"
                                                 value={caption.caption}
                                                 onChange={handleCaptionChange}

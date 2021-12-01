@@ -158,7 +158,6 @@ const Header = () => {
                                                         onClose={handleCloseModal}
                                                         aria-labelledby="modal-modal-title"
                                                         aria-describedby="modal-modal-description"
-                                                        className="container flex justify-center  "
                                                     >
                                                         <Box
                                                             className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
@@ -187,6 +186,8 @@ const Header = () => {
                                                                         label="Write a description for your post"
                                                                         multiline
                                                                         fullWidth
+                                                                        maxlength="40"
+                                                                        required
                                                                         rows={4}
                                                                         name="caption"
                                                                         value={caption.caption}
@@ -235,7 +236,7 @@ const Header = () => {
                                         <Link to={ROUTES.LOGIN} aria-label="Log in button">
                                             <button
                                                 type="button"
-                                                className="bg-brown-button font-bold text-sm rounded w-20 h-8 text-center text-white-primary"
+                                                className="bg-gray-button font-bold text-sm rounded w-20 h-8 text-center text-white-primary"
                                             >
                                                 Log In
                                             </button>

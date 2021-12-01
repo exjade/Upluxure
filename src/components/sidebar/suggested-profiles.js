@@ -47,7 +47,7 @@ export default function SuggestedProfile({
                 </div>
                 <button
                     // 20
-                    className="text-xs font-bold bg-brown-button rounded w-16 h-8 text-center text-white-primary"
+                    className="text-xs font-bold bg-gray-button rounded w-16 h-8 text-center text-white-primary"
                     type="button"
                     onClick={handleFollowUser}
                 >

@@ -25,7 +25,8 @@ module.exports = {
         },
         gray: {
           background: '#9F9F9F',
-          primary: '#9D9DAA'
+          primary: '#9D9DAA',
+          button: '#696969',
         },
         brown: {
           button: "#776A49"
