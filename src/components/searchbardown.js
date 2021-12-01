@@ -6,18 +6,17 @@ import * as ROUTES from '../constants/routes';
 import '../styles/css/searchbardown.css'
 /* Mateial */
 import Box from '@mui/material/Box';
-import Backdrop from '@mui/material/Backdrop';
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import SpeedDialAction from '@mui/material/SpeedDialAction';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
+import IconButton from '@mui/material/IconButton';
 
 import { v4 as uuidv4 } from 'uuid';
 /* Modal */
@@ -37,9 +36,6 @@ const SearchBarDown = () => {
     /* Modal */
     let history = useHistory();
     let downloadUrl;
-    const [openModal, setOpenModal] = useState(false);
-    const handleOpenModal = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
 
     const {
         user
@@ -50,6 +46,7 @@ const SearchBarDown = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const [openButton, setOpenButton] = useState(false);
     /* Mobile */
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => {
@@ -92,7 +89,7 @@ const SearchBarDown = () => {
             console.log("Failed: processing your file :(", error.message);
         }
 
-         setTimeout(() => {
+        setTimeout(() => {
             history.push(ROUTES.LOGIN)
         }, 3500);
     }
@@ -127,13 +124,6 @@ const SearchBarDown = () => {
     }
 
 
-    /* SpeedDial - ICONS */
-    const actions = [
-        { icon: <InsertPhotoIcon sx={{ color: 'black' }} onClick={handleOpen} />, name: 'Library' },
-        { icon: <PhotoCameraIcon sx={{ color: 'black' }} />, name: 'Camera' },
-        { icon: <VideocamIcon sx={{ color: 'black' }} />, name: 'Video' }
-    ];
-
     return (
         <>
             {
@@ -153,30 +143,19 @@ const SearchBarDown = () => {
                                         <SearchIcon />
                                     </ButtonBase>
                                 </div>
-                                <div className="homesearchbar__add">
-                                    <Box sx={{ transform: 'translateZ(0px)', flexGrow: 2, transitionDuration: "100ms" }}>
-                                        <Backdrop open={openModal} />
-                                        <SpeedDial
-                                            ariaLabel="SpeedDial Home"
-                                            className="speed-dial"
-                                            icon={<SpeedDialIcon />}
-                                            onClose={handleCloseModal}
-                                            onOpen={handleOpenModal}
-                                            open={openModal}
-
-                                        >
-                                            {actions.map((action) => (
-                                                <SpeedDialAction
-                                                    key={action.name}
-                                                    icon={action.icon}
-                                                    tooltipTitle={action.name}
-                                                    onClick={handleCloseModal}
-                                                    className="speed-dial__action "
-                                                >
-                                                </SpeedDialAction>
-                                            ))}
-                                        </SpeedDial>
-                                    </Box>
+                                <div className="homesearchbar__add"  >
+                                    <AddIcon className="ota-x" />
+                                    <div className="bolinhas">
+                                        <IconButton className="ota-bolinha" onClick={handleOpen}>
+                                            <PhotoCameraIcon sx={{ color: 'black' }} />
+                                        </IconButton>
+                                        <IconButton className="ota-bolinha" onClick={handleOpen}>
+                                            <VideocamIcon sx={{ color: 'black' }} />
+                                        </IconButton>
+                                        <IconButton className="ota-bolinha" onClick={handleOpen}>
+                                            <InsertPhotoIcon sx={{ color: 'black' }} />
+                                        </IconButton>
+                                    </div>
                                 </div>
                                 <div className="homesearchbar__notifications">
                                     <ButtonBase>
@@ -254,7 +233,7 @@ const SearchBarDown = () => {
                             </Modal>
                         </>
                     )
-                    : null 
+                    : null
             }
         </>
     )

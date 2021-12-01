@@ -77,13 +77,89 @@ button.MuiButtonBase-root.css-10d1a0h-MuiButtonBase-root {
 /* Add Content*/
 .homesearchbar__add {
     display: flex;
+    width: 80px;
+    height: 80px;
+    background: #C4C4C4;
+    color: black;
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-right: -2rem;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    box-shadow: 2px 1px 15px -5px #000;
+    cursor: pointer;
+    transition: box-shadow ease-in-out 350ms;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
+.homesearchbar__add:hover {
+    box-shadow: 2px 5px 25px -5px #000;
+}
+
+.homesearchbar__add .content {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.bolinhas {
+    bottom: -50%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: all ease-in-out 200ms;
+}
+
+.homesearchbar__add:hover .bolinhas,
+.homesearchbar__add .bolinhas:hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+.homesearchbar__add .bolinhas .ota-bolinha {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 100%;
+    background-color: #f1f1f1;
+    margin: 15px;
+    transform: scale(0);
+    transition-timing-function: ease-in-out;
+    transition-duration: 180ms;
+    transition-property: transform, visibility, opacity;
+}
+
+.homesearchbar__add:hover .bolinhas .ota-bolinha,
+.homesearchbar__add .bolinhas:hover .ota-bolinha {
+    transform: scale(1);
+}
+
+button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.ota-bolinha.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.ota-x {
+    display: flex;
+
+}
+
+/* END */
 
 button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-primary.MuiSpeedDial-fab.css-1i5alow-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab {
     display: flex;
     width: 80px;
     height: 80px;
+    margin-top: 2rem;
     background: #C4C4C4;
     color: black;
     border-radius: 100px;
@@ -131,13 +207,19 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 
 
 .speed-dial__action {
-    background-color: #c4c4c4;
-    border-radius: 90px;
-    -webkit-border-radius: 90px;
-    -moz-border-radius: 90px;
-    -ms-border-radius: 90px;
-    -o-border-radius: 90px;
+    display: flex;
+    width: 80px;
+    height: 80px;
+    margin-top: 2rem;
+    background: #C4C4C4;
+    color: black;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
 }
+
 
 /* notifications */
 .homesearchbar__notifications{
