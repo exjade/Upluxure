@@ -63,7 +63,7 @@ const Header = () => {
             const docRef = await addDoc(collection(firestore, "photos"), {
                 caption: "prueba de descripcion",
                 comments: [],
-                dateCreated:  Date.now(),
+                dateCreated: Date.now(),
                 imageSrc: downloadUrl,
                 likes: [],
                 userId: user.uid,
@@ -138,7 +138,7 @@ const Header = () => {
                                                             <HomeOutlinedIcon className="text-white-primary" />
                                                         </IconButton>
                                                     </Link>
-                                                    <IconButton className="header_notifications_icon"
+                                                    {/* <IconButton className="header_notifications_icon"
                                                         onClick={() =>
                                                             firebase.auth().signOut()
                                                         }
@@ -150,7 +150,7 @@ const Header = () => {
                                                     >
                                                         <LogoutOutlinedIcon className=" text-white-primary"
                                                         />
-                                                    </IconButton>
+                                                    </IconButton> */}
 
                                                     {/* Modal */}
                                                     <Modal
@@ -212,6 +212,19 @@ const Header = () => {
                                                 </>
                                             ) : null}
 
+                                        <IconButton className="header_notifications_icon"
+                                            onClick={() =>
+                                                firebase.auth().signOut()
+                                            }
+                                            onKeyDown={(event) => {
+                                                if (event.key === 'Enter') {
+                                                    firebase.auth().signOut()
+                                                }
+                                            }}
+                                        >
+                                            <LogoutOutlinedIcon className=" text-white-primary"
+                                            />
+                                        </IconButton>
 
                                         {/* <button
                                             type="button"
