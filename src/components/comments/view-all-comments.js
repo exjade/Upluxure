@@ -6,7 +6,7 @@ import FirebaseContext from '../../context/firebase';
 import Avatar from '@mui/material/Avatar';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import '../../styles/css/comments/view-all-comments.css';
-import {getPhotos} from '../../services/firebase';
+import { getPhotos } from '../../services/firebase';
 import { firebase } from '../../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { getFirestore, collection, addDoc, updateDoc, getDoc } from 'firebase/firestore'
@@ -18,7 +18,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
 
     // const [comments, setComments] = useState(allComments)
     const [comment, setComment] = useState('');
-    const { user, user: {displayName, uid: userId = ''} } = useContext(UserContext)
+    const { user, user: { displayName, uid: userId = '' } } = useContext(UserContext)
     const { firebase, FieldValue } = useContext(FirebaseContext);
 
     const handleSubmitComment = (event) => {
@@ -32,15 +32,15 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
             .collection('photos')
             .doc(docId)
             .update({
-                comments: FieldValue.arrayUnion({ displayName,  comment })
+                comments: FieldValue.arrayUnion({ displayName, comment })
             });
     }
     // let totalLikes = []
-    // const {  userLikedPhoto } = getPhotos()
+    // const { userLikedPhoto } = getPhotos()
     // const [toggleLiked, setToggleLiked] = useState(userLikedPhoto)
     // const [likes, setLikes] = useState(totalLikes)
 
-    // const handleToggleLiked = async () => {
+    // const handleToggleLikedComment = async () => {
     //     setToggleLiked((toggleLiked) => !toggleLiked);
 
     //     await firebase
@@ -48,13 +48,14 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
     //         .collection('photos')
     //         .doc(docId)
     //         .update({
-    //             comments: [{likeComment:   toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)}],
-    //         })
+    //             comments: [ 
+    //                { likeComment: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)}
+    //             ]
+    //          })
 
-    //     setLikes((likes) =>  (toggleLiked ? likes - 1 : likes + 1));
-
+    //     setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
     // }
-  
+
 
     return (
 
@@ -88,12 +89,11 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="viewallcomments__like_star"  key={`${index}-${item.displayName}`}>
+                        <div className="viewallcomments__like_star" key={`${index}-${item.displayName}`}>
                             <StarRateIcon
-                                className="text-white-primary"
-                            />
+                                className="text-white-primary" />
                             {/* CANTIDAD DE LIKES */}
-                            <p className="text-white-primary font-extralight text-sm"></p>
+                            <p className="text-white-primary font-extralight text-sm">0</p>
                         </div>
                     </div>
                 ))
@@ -127,7 +127,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                         disabled={comment.length < 1}
                         onClick={handleSubmitComment}
                     >
-                        Post 
+                        Post
                     </button>
                 </form>
             </div>
@@ -142,5 +142,5 @@ ViewAllComments.propTypes = {
     comments: PropTypes.array,
     docId: PropTypes.string.isRequired,
     setComments: PropTypes.func.isRequired,
-    totalLikes: PropTypes.number.isRequired,
+    totalLikes: PropTypes.array.isRequired,
 }

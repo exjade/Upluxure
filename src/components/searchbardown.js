@@ -209,7 +209,7 @@ const SearchBarDown = () => {
                                                 multiline
                                                 fullWidth
                                                 rows={4}
-                                                maxlength="40"
+                                                maxLength="40"
                                                 required
                                                 name="caption"
                                                 value={caption.caption}

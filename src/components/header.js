@@ -186,7 +186,7 @@ const Header = () => {
                                                                         label="Write a description for your post"
                                                                         multiline
                                                                         fullWidth
-                                                                        maxlength="40"
+                                                                        maxLength="40"
                                                                         required
                                                                         rows={4}
                                                                         name="caption"

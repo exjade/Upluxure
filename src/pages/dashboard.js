@@ -20,6 +20,10 @@ function Dashboard() {
 
     }, [])
 
+    const handleRefresh = () => { 
+        window.location.reload();
+    }
+
     const [isLoading, setIsLoading] = useState(true);
 
     const loader = () => {
@@ -33,15 +37,16 @@ function Dashboard() {
     } else {
         return (
             <>
-                <div>
-                    <Header />
-                    <Stories />
-                    <div className="grid grid-cols-3 gap-8 justify-between mx mx-auto max-w-screen-lg">
-                        <Timeline />
-                        <Sidebar />
+                    <div>
+                        <Header />
+                        <Stories />
+                        <div className="grid grid-cols-3 gap-8 justify-between mx mx-auto max-w-screen-lg">
+                            <Timeline />
+                            <Sidebar />
+                        </div>
+                        <SearchBarDown />
                     </div>
-                    <SearchBarDown />
-                </div>            </>
+            </>
         )
     }
 }

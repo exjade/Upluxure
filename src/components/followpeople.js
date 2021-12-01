@@ -4,8 +4,8 @@ import '../styles/css/followpeople.css'
 const FollowPeople = () => {
 
     return (
-        <div class="wrapper">
-            <div class="typing-demo">
+        <div className="wrapper">
+            <div className="typing-demo">
                 Follow <br/>
                 people <br/>
                 = <br/>
