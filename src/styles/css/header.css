@@ -6,38 +6,20 @@ header.h-16.border-b.mb-5 {
     z-index: 999;
 }
 
-/* .header_add_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root,
-.header_signup_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.header_signup.text-white-primary.css-i4bv87-MuiSvgIcon-root ,
-.header_home_icon > svg.MuiSvgIcon-root.text-white-primary,
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.header_signup.text-white-primary.css-i4bv87-MuiSvgIcon-root,
-.header_notifications_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root
-{
-    width: 30px;
-    height: 30px;
+@media (max-width: 700px) {
+    .text-center.text-white-primary.flex.items-center.align-items {
+        width: 3rem;
+        margin-right: 11rem;
+
+    }
+    
 }
 
-button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.header_add_icon.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
-    width: 30px;
-    height: 30px;
+@media (max-width: 690px) {
+    .text-center.text-white-primary.flex.items-center.align-items {
+        width: 3rem;
+        margin-right: 0;
+
+    }
+    
 }
-
-.header_inbox_icon > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.text-white-primary.css-i4bv87-MuiSvgIcon-root {
-    width: 30px;
-    height: 30px;
-    transform: rotate(336deg);
-    -webkit-transform: rotate(336deg);
-    -moz-transform: rotate(336deg);
-    -ms-transform: rotate(336deg);
-    -o-transform: rotate(336deg);
-}
-
-.css-79ws1d-MuiModal-root {
-    z-index: 1300;
-    display:flex;
-    justify-content: center;
-    align-items: center;
- } */
-
-    
-    
-    

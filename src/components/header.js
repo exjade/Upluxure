@@ -4,6 +4,7 @@ import '../styles/css/header.css'
 import FirebaseContext from '../context/firebase'; // sign and signout functions
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
+import BasicMenu from './menu/basic-menu'
 
 /* Material UI*/
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -112,7 +113,10 @@ const Header = () => {
                                 (
                                     <>
                                         {
-                                            isDesktop ? (
+                                            !isDesktop ? (
+                                                <BasicMenu className="mobile_menu"/>
+                                            ) : 
+                                            (
                                                 <>
                                                     <Link to={ROUTES.DASHBOARD} aria-label="inbox">
                                                         <IconButton className="header_inbox_icon">
@@ -138,6 +142,7 @@ const Header = () => {
                                                             <HomeOutlinedIcon className="text-white-primary" />
                                                         </IconButton>
                                                     </Link>
+                                                    <BasicMenu />
                                                     {/* <IconButton className="header_notifications_icon"
                                                         onClick={() =>
                                                             firebase.auth().signOut()
@@ -210,9 +215,12 @@ const Header = () => {
                                                         </Box>
                                                     </Modal>
                                                 </>
-                                            ) : null}
-
-                                        <IconButton className="header_notifications_icon"
+                                            )
+                                            
+                                            
+                                            }
+                                            
+                                        {/*  <IconButton className="header_notifications_icon"
                                             onClick={() =>
                                                 firebase.auth().signOut()
                                             }
@@ -224,7 +232,7 @@ const Header = () => {
                                         >
                                             <LogoutOutlinedIcon className=" text-white-primary"
                                             />
-                                        </IconButton>
+                                        </IconButton> */}
 
                                         {/* <button
                                             type="button"
