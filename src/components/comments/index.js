@@ -63,7 +63,8 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                         </p>
                     )
                 }
-                {
+                
+                {/* {
 
                     comments.slice(0,1).map((item) => (
                         <div key={`${item.comment}-${item.displayName}`}>
@@ -92,7 +93,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                         </div>
                     ))
 
-                }
+                } */}
 
                 <p className="text-gray-primary uppercase text-xs mt-2 flex justify-center"> {formatDistance(posted, new Date(), { addSuffix: true })}</p>
             </div>

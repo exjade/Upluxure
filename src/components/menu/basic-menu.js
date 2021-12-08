@@ -21,56 +21,56 @@ const BasicMenu = () => {
 
   return (
 
-    open ? (
-      <div className="menu-basic">
-        <IconButton
-          open={open}
-          onClose={handleClose}
-          onClick={handleOpen}
-          onClick={handleClose}
-        >
-          <MenuIcon 
-          className="text-white-primary" />
-        </IconButton >
+    open ?
+      (
+        <div className="menu-basic">
+          <div className="icon_menu_basic">
+            <IconButton
+              open={open}
+              onClose={handleClose}
+              onClick={handleOpen}
+              onClick={handleClose}
+            >
+              <MenuIcon
+                className="text-white-primary" />
+            </IconButton >
+          </div>
 
-        <div
-          open={open}
-          onClose={handleClose}
-          onClick={handleClose}
-          className="menu-basic-content"
-        >
-
-          <MenuItem >
-            <Avatar /> Profile
-          </MenuItem>
-          <MenuItem>
-            <Avatar /> My account
-          </MenuItem>
-          <Divider />
-          <MenuItem>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
-          <MenuItem
-            onClick={() =>
-              firebase.auth().signOut()
-            }
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
+          <div
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            className="menu-basic-content"
+          >
+            <MenuItem >
+              {/* <Avatar /> */}
+              Profile
+            </MenuItem>
+            <MenuItem>
+              {/* <Avatar /> */}
+              My account
+            </MenuItem>
+            <Divider />
+            <MenuItem
+              onClick={() =>
                 firebase.auth().signOut()
               }
-            }}
-          >
-            <ListItemIcon>
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  firebase.auth().signOut()
+                }
+              }}
+            >
+              {/* <ListItemIcon>
               <Logout fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
+            </ListItemIcon> */}
+              Logout
+            </MenuItem>
+
+          </div>
         </div>
-      </div>
-    ) :
+      )
+      :
       (
 
         <div className="menu-basic">

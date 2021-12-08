@@ -73,7 +73,7 @@ const SearchBarDown = () => {
     const newDoc = async () => {
         try {
             const docRef = await addDoc(collection(firestore, "photos"), {
-                caption: '',
+                caption: 'Prueba de captura',
                 comments: [],
                 dateCreated: Date.now(),
                 imageSrc: downloadUrl,
