@@ -142,5 +142,4 @@ ViewAllComments.propTypes = {
     comments: PropTypes.array,
     docId: PropTypes.string.isRequired,
     setComments: PropTypes.func.isRequired,
-    totalLikes: PropTypes.array.isRequired,
 }
