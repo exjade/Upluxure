@@ -16,12 +16,15 @@ module.exports = {
         white: {
           primary: "#e3e3e3",
           normal: "#ffffff",
-          ctitle: "#d2d2d3fc "
+          ctitle: "#d2d2d3fc",
+          followbtn: '#CFCFCF'
 
         },
         black: {
           background: '#181818',
-          border: '#ffffff0f'
+          border: '#ffffff0f',
+          followbutton: '#434343',
+          btnicon: '#313131'
         },
         gray: {
           background: '#9F9F9F',

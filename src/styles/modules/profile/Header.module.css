@@ -1,0 +1,24 @@
+.img {
+    display: flex;
+    object-fit:cover;
+    border-radius: 9999px;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    -ms-border-radius: 9999px;
+    -o-border-radius: 9999px;
+}
+.followbtn {
+    background: linear-gradient(267.25deg, #474747 1.2%, #2e2e2e 49.72%, #2c2c2c 115.25%);
+    width: 7em;
+    height: 2.5em;
+    /* border-radius: 9999px;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    -ms-border-radius: 9999px;
+    -o-border-radius: 9999px; */
+}
+.border{
+    border-right-width: 1px;
+    border-color: azure;
+    height: 2rem;
+}

@@ -14,7 +14,11 @@ const Profile = ({ user }) => {
         followerCount: 0,
         followingCount: 0,
     }
-    const [{ profile, photosCollection, followerCount, followingCount }, dispatch] = useReducer(reducer, initialState)
+    // dispatch - set values in state
+    const [{ profile, photosCollection, followerCount, followingCount }, dispatch] = useReducer(
+            reducer,
+            initialState
+        )
 
     useEffect(() => {
         async function getProfileInfoAndPhotos() {
@@ -31,9 +35,16 @@ const Profile = ({ user }) => {
 
     return (
         <>
-            <Header />
+            <Header 
+            PhotosCount={ photosCollection ? photosCollection.length : 0 }
+            profile={ profile }
+            followerCount={ followerCount }
+            followingCount={ followingCount }
+            setFollowerCount={ dispatch }
+            setFollowingCount={ dispatch }
+            />
             <Photos photos={photosCollection} />
-            <p>Working {user.username} 8:18:30 </p>
+            <p className='text-white-primary'>Working {user.username} 8:18:30 </p>
 
         </>
     )
@@ -43,7 +54,7 @@ export default Profile
 
 Profile.propTypes = {
     user: PropTypes.shape({
-        dateCreated: PropTypes.number.isRequired,
+        // dateCreated: PropTypes.number.isRequired,
         emailAddress: PropTypes.string.isRequired,
         followers: PropTypes.array.isRequired,
         following: PropTypes.array.isRequired,

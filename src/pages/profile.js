@@ -26,7 +26,7 @@ const Profile = () => {
 
     return (
         user?.username ? (
-            <div className="bg-gray-background">
+            <div className="bg-black-background">
                 <Header />
                 <div className="mx-auto max-w-screen-lg">
                     <UserProfile user={user}/>
