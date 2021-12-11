@@ -22,15 +22,68 @@
 }
 
 /* Media queries */
-
-@media (max-width: 780px) {
+@media (max-width: 506px) and (min-width: 480px) {
+    .tag {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        width: 6.5rem;
+        height: 2.4rem;
+        border: 3px solid rgba(255, 255, 255, 0.7);
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+    }
+}
+@media (max-width: 479px) and (min-width: 430px) {
+    .tag {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        width: 6.1rem;
+        height: 2.3rem;
+        border: 3px solid rgba(255, 255, 255, 0.7);
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+    }
+}
+@media (max-width: 429px) and (min-width: 380px) {
+    .tag {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        width: 5.5rem;
+        height: 2.3rem;
+        border: 3px solid rgba(255, 255, 255, 0.7);
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+    }
+}
+@media (max-width: 380px) and (min-width: 355px) {
     .tag {
         display: flex;
         align-items: center;
         align-content: center;
         justify-content: center;
         width: 5rem;
-        height: 2.5rem;
+        height: 2.2rem;
         border: 3px solid rgba(255, 255, 255, 0.7);
         box-sizing: border-box;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -40,20 +93,15 @@
         -ms-border-radius: 30px;
         -o-border-radius: 30px;
     }
-    .tagstext {
-        color: white;
-        font-weight: 300;
-        letter-spacing: 0.17rem;
-    }
 }
-@media (max-width: 700px) {
+@media (max-width: 354px) and (min-width: 320px) {
     .tag {
         display: flex;
         align-items: center;
         align-content: center;
         justify-content: center;
-        width: 5rem;
-        height: 2.5rem;
+        width: 4.6rem;
+        height: 2.0rem;
         border: 3px solid rgba(255, 255, 255, 0.7);
         box-sizing: border-box;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -65,18 +113,18 @@
     }
     .tagstext {
         color: white;
+        font-size: 15px;
         font-weight: 300;
-        letter-spacing: 0.17rem;
     }
 }
-@media (max-width: 627px) {
+@media (max-width: 320px) and (min-width: 280px) {
     .tag {
         display: flex;
         align-items: center;
         align-content: center;
         justify-content: center;
-        width: 4.7rem;
-        height: 2.5rem;
+        width: 4.1rem;
+        height: 1.8rem;
         border: 3px solid rgba(255, 255, 255, 0.7);
         box-sizing: border-box;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -88,18 +136,18 @@
     }
     .tagstext {
         color: white;
+        font-size: 10px;
         font-weight: 300;
-        letter-spacing: 0.17rem;
     }
 }
-@media (max-width: 515px) {
+@media (max-width: 280px) and (min-width: 260px) {
     .tag {
         display: flex;
         align-items: center;
         align-content: center;
         justify-content: center;
-        width: 4rem;
-        height: 2.5rem;
+        width: 3.5rem;
+        height: 1.8rem;
         border: 3px solid rgba(255, 255, 255, 0.7);
         box-sizing: border-box;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -111,77 +159,7 @@
     }
     .tagstext {
         color: white;
+        font-size: 10px;
         font-weight: 300;
-        letter-spacing: 0.1rem;
     }
 }
-@media (max-width: 536px) and (min-width: 450px) {
-    .tag {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        width: 4.2rem;
-        height: 2.5rem;
-        border: 3px solid rgba(255, 255, 255, 0.7);
-        box-sizing: border-box;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        border-radius: 30px;
-        -webkit-border-radius: 30px;
-        -moz-border-radius: 30px;
-        -ms-border-radius: 30px;
-        -o-border-radius: 30px;
-    }
-    .tagstext {
-        color: white;
-        font-weight: 300;
-        letter-spacing: 0.10rem;
-    }
-}
-@media (max-width: 375px) {
-    .tag {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        width: 5.7rem;
-        height: 2.5rem;
-        border: 3px solid rgba(255, 255, 255, 0.7);
-        box-sizing: border-box;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        border-radius: 30px;
-        -webkit-border-radius: 30px;
-        -moz-border-radius: 30px;
-        -ms-border-radius: 30px;
-        -o-border-radius: 30px;
-    }
-    .tagstext {
-        color: white;
-        font-weight: 300;
-        letter-spacing: 0.17rem;
-    }
-}
-@media (max-width: 320px) {
-    .tag {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        width: 5.7rem;
-        height: 2.5rem;
-        border: 3px solid rgba(255, 255, 255, 0.7);
-        box-sizing: border-box;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        border-radius: 30px;
-        -webkit-border-radius: 30px;
-        -moz-border-radius: 30px;
-        -ms-border-radius: 30px;
-        -o-border-radius: 30px;
-    }
-    .tagstext {
-        color: white;
-        font-weight: 300;
-        letter-spacing: 0.17rem;
-    }
-}
-

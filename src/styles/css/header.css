@@ -10,7 +10,7 @@ header.h-16.border-b.mb-5 {
 @media (max-width: 700px) {
     .text-center.text-white-primary.flex.items-center.align-items {
         width: 3rem;
-        margin-right: 11rem;
+        /* margin-right: 11rem; */
     }
     .menudesktop {
         display: none;

@@ -155,8 +155,6 @@ const Header = ({
                     <Tags />
                     <Tags />
                     <Tags />
-                    <Tags />
-                    <Tags />
                 </div>
             </div>
         </>
