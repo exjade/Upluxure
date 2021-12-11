@@ -12,6 +12,20 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
+const dividerstyle = {
+  width: '100%',
+  maxWidth: 360,
+  bgcolor: '#ffff',
+};
+
+
+const fontstyle = {
+  color: '#fff',
+  fontFamily: 'Red Hat Display',
+  fontSize: '1rem',
+  fontWeight: 'bold',
+};
+
 const BasicMenu = () => {
   const { firebase } = useContext(FirebaseContext);
   const [open, setOpen] = useState(false);
@@ -42,15 +56,16 @@ const BasicMenu = () => {
             onClick={handleClose}
             className="menu-basic-content"
           >
-            <MenuItem >
+            <MenuItem sx={fontstyle} className="basicmenu_profile">
               {/* <Avatar /> */}
               Profile
             </MenuItem>
-            <MenuItem>
+            <Divider sx={dividerstyle}/>
+            <MenuItem sx={fontstyle}>
               {/* <Avatar /> */}
               My account
             </MenuItem>
-            <Divider />
+            <Divider sx={dividerstyle}/>
             <MenuItem
               onClick={() =>
                 firebase.auth().signOut()
@@ -60,6 +75,7 @@ const BasicMenu = () => {
                   firebase.auth().signOut()
                 }
               }}
+              sx={fontstyle}
             >
               {/* <ListItemIcon>
               <Logout fontSize="small" />
