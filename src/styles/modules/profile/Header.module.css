@@ -23,6 +23,23 @@
     width: 7em;
     height: 2.5em;
 }
+
+@media screen and (max-width: 480px) {
+    .followbtn {
+        background: linear-gradient(267.25deg, #424242 1.2%, #313131 49.72%, #3b3b3b 115.25%);
+        width: 5em;
+        font-size: 14px;
+        height: 3.5em;
+    }
+    .divfollowing {
+        font-size: 30px;
+    }
+    .following {
+        font-size: 15px;
+        line-height: 1.5rem;
+    }
+}
+
 .border{
     border-right-width: 1px;
     border-color: azure;

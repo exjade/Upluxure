@@ -97,7 +97,7 @@ const Header = ({
                                 photos
                             </p> */}
                             <div className="mr-5 text-white-primary flex flex-col items-center tracking-wider">
-                                <span className='font-bold text-3xl'>
+                                <span className={`${styles.divfollowing} font-bold text-3xl`}  >
                                     {
                                         followers.length > 999 ?
                                             (`${followers.length}K`)
@@ -115,7 +115,7 @@ const Header = ({
                             <div className={`${styles.border} mr-5`}></div>
 
                             <div className="mr-5 text-white-primary flex flex-col items-center tracking-wider">
-                                <span className='font-bold text-3xl'>
+                                <span className={`${styles.divfollowing} font-bold text-3xl`} >
                                     {
                                         following.length > 999 ?
                                             (`${following.length}K`)
