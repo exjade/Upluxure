@@ -14,7 +14,7 @@ const Tags = () => {
     return (
         <>
             {
-                tags.map((item, i) => (
+                tags.map((i) => (
                     <div className={styles.tag} key={i} >
                         <p className={styles.tagstext} >
                             Travel

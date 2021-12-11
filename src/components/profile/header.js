@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
 import useUser from '../../hooks/use-user'
-import { isUserFollowingProfile } from '../../services/firebase'
+import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
 import styles from '../../styles/modules/profile/Header.module.css'
 import Tags from './tags'
 
@@ -17,8 +17,8 @@ import HomeSharpIcon from '@mui/icons-material/HomeSharp';
 const Header = ({
     PhotosCount,
     followerCount,
-    followingCount,
     setFollowerCount,
+    followingCount,
     setFollowingCount,
     profile: {
         fullName,
@@ -37,8 +37,10 @@ const Header = ({
     const handleToggleFollow = async () => {
         setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
         setFollowerCount({
-            followerCount: isFollowingProfile ? followers.length - 1 : followers.length + 1
+            followerCount: isFollowingProfile ? followerCount - 1 : followerCount + 1
         })
+        await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId)
+    
     }
 
     useEffect(() => {
@@ -72,7 +74,7 @@ const Header = ({
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="container flex flex-col">
-                            <p className="text-2xl text-white-primary font-medium">{profileUsername}</p>
+                            <p className={`${styles.headerusername} text-2xl text-white-primary font-medium`} >{profileUsername}</p>
                             <div className="container flex mt-2">
                                 <p className="font-medium text-white-primary ">
                                     {!fullName ? (
@@ -87,7 +89,7 @@ const Header = ({
 
             <div className='flex justify-center mx-auto max-w-screen-lg items-center'>
                 <div className="container flex justify-center mt-5 items-center">
-                    {followers === undefined || following === undefined ? (
+                    {followerCount === undefined || following === undefined ? (
                         <Skeleton count={1} width={677} height={24} />
                     ) : (
                         <>
@@ -99,16 +101,16 @@ const Header = ({
                             <div className="mr-5 text-white-primary flex flex-col items-center tracking-wider">
                                 <span className={`${styles.divfollowing} font-bold text-3xl`}  >
                                     {
-                                        followers.length > 999 ?
-                                            (`${followers.length}K`)
+                                        followerCount > 999 ?
+                                            (`${followerCount}K`)
                                             :
-                                            followers.length > 999999 ?
-                                                (`${followers.length}M`)
+                                            followerCount > 999999 ?
+                                                (`${followerCount}M`)
                                                 :
-                                                (`${followers.length}`)
+                                                (`${followerCount}`)
                                     }
                                 </span>{` `}
-                                <p className={`${styles.following} text-base`} >{followers.length === 1 ? 'Follower' : 'Followers'}</p>
+                                <p className={`${styles.following} text-base`} >{followerCount === 1 ? 'Follower' : 'Followers'}</p>
                             </div>
 
                             {/* border */}

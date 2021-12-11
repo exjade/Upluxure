@@ -24,6 +24,27 @@
     height: 2.5em;
 }
 
+@media (min-width: 500px) {
+    .img{
+        display: flex;
+        object-fit: cover;
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 9999px;
+        -webkit-border-radius: 9999px;
+        -moz-border-radius: 9999px;
+        -ms-border-radius: 9999px;
+        -o-border-radius: 9999px;
+    }
+    .headerusername {
+        font-family: 'Red Hat Text';
+        font-weight: 900;
+        letter-spacing: 0.5px;
+        font-size: 25px;
+        text-transform: capitalize;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .followbtn {
         background: linear-gradient(267.25deg, #424242 1.2%, #313131 49.72%, #3b3b3b 115.25%);
@@ -38,6 +59,7 @@
         font-size: 15px;
         line-height: 1.5rem;
     }
+
 }
 
 .border{
