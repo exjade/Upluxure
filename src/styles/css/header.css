@@ -6,7 +6,18 @@ header.h-16.border-b.mb-5 {
     z-index: 999;
 }
 
+
 @media (max-width: 700px) {
+    .text-center.text-white-primary.flex.items-center.align-items {
+        width: 3rem;
+        margin-right: 11rem;
+    }
+    .menudesktop {
+        display: none;
+    }
+}
+
+@media (max-width: 689px) {
     .text-center.text-white-primary.flex.items-center.align-items {
         width: 3rem;
         margin-right: 11rem;
@@ -14,7 +25,14 @@ header.h-16.border-b.mb-5 {
     }
     
 }
+@media (max-width: 69px) {
+    .text-center.text-white-primary.flex.items-center.align-items {
+        width: 3rem;
+        margin-right: 0;
 
+    }
+    
+}
 @media (max-width: 690px) {
     .text-center.text-white-primary.flex.items-center.align-items {
         width: 3rem;

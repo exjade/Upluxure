@@ -35,7 +35,7 @@ const Header = () => {
 
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => {
-        setDesktop(window.innerWidth > 700);
+        setDesktop(window.innerWidth > 701);
     }
 
     useEffect(() => {
@@ -118,6 +118,7 @@ const Header = () => {
                                             ) : 
                                             (
                                                 <>
+                                                <div className="menudesktop">
                                                     <Link to={ROUTES.DASHBOARD} aria-label="inbox">
                                                         <IconButton className="header_inbox_icon">
                                                             <SendOutlinedIcon className=" text-white-primary"
@@ -142,6 +143,7 @@ const Header = () => {
                                                             <HomeOutlinedIcon className="text-white-primary" />
                                                         </IconButton>
                                                     </Link>
+                                                    </div>
                                                     <BasicMenu />
                                                     {/* <IconButton className="header_notifications_icon"
                                                         onClick={() =>

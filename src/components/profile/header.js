@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import useUser from '../../hooks/use-user'
 import { isUserFollowingProfile } from '../../services/firebase'
 import styles from '../../styles/modules/profile/Header.module.css'
-
+import Tags from './tags'
 
 /* Material UI */
 import Avatar from '@mui/material/Avatar';
@@ -59,11 +59,11 @@ const Header = ({
             {/* Image and username */}
             <div className='grid justify-center mx-auto max-w-screen-lg'>
                 <div className="container flex justify-center mt-5 items-center">
-                    <div className='flex justify-center mr-6'>
+                    <div className='flex justify-center mr-8'>
                         {
                             user.username && (
                                 <img
-                                    className={`${styles.img} rounded-full h-32 w-32 flex`}
+                                    className={`${styles.img} rounded-full h-28 w-28 flex`}
                                     alt={`${user.username} profile picture`}
                                     src={`/images/avatars/${profileUsername}.jpg`}
                                 />
@@ -97,16 +97,36 @@ const Header = ({
                                 photos
                             </p> */}
                             <div className="mr-5 text-white-primary flex flex-col items-center tracking-wider">
-                                <span className='font-bold text-3xl'> {followers.length} </span>{` `}
-                                <p className='text-lg'>{followers.length === 1 ? 'Follower' : 'Followers'}</p>
+                                <span className='font-bold text-3xl'>
+                                    {
+                                        followers.length > 999 ?
+                                            (`${followers.length}K`)
+                                            :
+                                            followers.length > 999999 ?
+                                                (`${followers.length}M`)
+                                                :
+                                                (`${followers.length}`)
+                                    }
+                                </span>{` `}
+                                <p className={`${styles.following} text-base`} >{followers.length === 1 ? 'Follower' : 'Followers'}</p>
                             </div>
 
                             {/* border */}
                             <div className={`${styles.border} mr-5`}></div>
 
                             <div className="mr-5 text-white-primary flex flex-col items-center tracking-wider">
-                                <span className='font-bold text-3xl'> {following.length} </span>
-                                <p className='text-lg'>Following</p>
+                                <span className='font-bold text-3xl'>
+                                    {
+                                        following.length > 999 ?
+                                            (`${following.length}K`)
+                                            :
+                                            following.length > 999999 ?
+                                                (`${following.length}M`)
+                                                :
+                                                (`${following.length}`)
+                                    }
+                                </span>
+                                <p className={`${styles.following} text-base `} >Following</p>
                             </div>
 
                             {/* border */}
@@ -114,7 +134,7 @@ const Header = ({
 
                             {activeBtnFollow && (
                                 <button
-                                    className={`${styles.followbtn} bg-white-followbtn hover:bg-blue-700 text-white-primary font-bold rounded w-20 h-8`}
+                                    className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
                                     type='button'
                                     onClick={handleToggleFollow}
                                     onKeyDown={(event) => {
@@ -128,6 +148,15 @@ const Header = ({
                             )}
                         </>
                     )}
+                </div>
+            </div>
+            <div className={`${styles.parent} grid mx-auto max-w-screen-lg`} >
+                <div className={`${styles.child} container flex gap-3 justify-center mt-5 items-center`} >
+                    <Tags />
+                    <Tags />
+                    <Tags />
+                    <Tags />
+                    <Tags />
                 </div>
             </div>
         </>

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap');
+
+.following {
+    font-family: 'Red Hat Text', sans-serif;
+}
+
 .img {
     display: flex;
     object-fit:cover;
@@ -11,14 +17,37 @@
     background: linear-gradient(267.25deg, #474747 1.2%, #2e2e2e 49.72%, #2c2c2c 115.25%);
     width: 7em;
     height: 2.5em;
-    /* border-radius: 9999px;
-    -webkit-border-radius: 9999px;
-    -moz-border-radius: 9999px;
-    -ms-border-radius: 9999px;
-    -o-border-radius: 9999px; */
+}
+.followbtn:hover {
+    background: linear-gradient(267.25deg, #424242 1.2%, #313131 49.72%, #3b3b3b 115.25%);
+    width: 7em;
+    height: 2.5em;
 }
 .border{
     border-right-width: 1px;
     border-color: azure;
     height: 2rem;
+}
+
+.parent{
+    overflow: scroll;
+}
+.child {
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+.parent {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.parent::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+@media (max-width: 1024px) {
+    .parent {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        display: flex;
+        justify-content: center;
+    }
 }
