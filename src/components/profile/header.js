@@ -151,7 +151,7 @@ const Header = ({
                 </div>
             </div>
             <div className={`${styles.parent} grid mx-auto max-w-screen-lg`} >
-                <div className={`${styles.child} container flex gap-3 justify-center mt-5 items-center`} >
+                <div className={`${styles.child} flex gap-3 justify-center mt-5 items-center`} >
                     <Tags />
                     <Tags />
                     <Tags />

@@ -114,38 +114,38 @@ const Header = () => {
                                     <>
                                         {
                                             !isDesktop ? (
-                                                <BasicMenu className="mobile_menu"/>
-                                            ) : 
-                                            (
-                                                <>
-                                                <div className="menudesktop">
-                                                    <Link to={ROUTES.DASHBOARD} aria-label="inbox">
-                                                        <IconButton className="header_inbox_icon">
-                                                            <SendOutlinedIcon className=" text-white-primary"
-                                                            />
-                                                        </IconButton>
-                                                    </Link>
-                                                    <Link to={ROUTES.DASHBOARD} aria-label="add">
-                                                        <IconButton className="header_add_icon"
-                                                            onClick={handleOpenModal}>
-                                                            <AddCircleOutlineIcon className=" text-white-primary"
-                                                            />
-                                                        </IconButton>
-                                                    </Link>
-                                                    <Link to={ROUTES.DASHBOARD} aria-label="not">
-                                                        <IconButton className="header_notifications_icon">
-                                                            <NotificationsIcon className=" text-white-primary"
-                                                            />
-                                                        </IconButton>
-                                                    </Link>
-                                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                                                        <IconButton className="header_home_icon">
-                                                            <HomeOutlinedIcon className="text-white-primary" />
-                                                        </IconButton>
-                                                    </Link>
-                                                    </div>
-                                                    <BasicMenu />
-                                                    {/* <IconButton className="header_notifications_icon"
+                                                <BasicMenu className="mobile_menu" />
+                                            ) :
+                                                (
+                                                    <>
+                                                        <div className="menudesktop">
+                                                            <Link to={ROUTES.DASHBOARD} aria-label="inbox">
+                                                                <IconButton className="header_inbox_icon">
+                                                                    <SendOutlinedIcon className=" text-white-primary"
+                                                                    />
+                                                                </IconButton>
+                                                            </Link>
+                                                            <Link to={ROUTES.DASHBOARD} aria-label="add">
+                                                                <IconButton className="header_add_icon"
+                                                                    onClick={handleOpenModal}>
+                                                                    <AddCircleOutlineIcon className=" text-white-primary"
+                                                                    />
+                                                                </IconButton>
+                                                            </Link>
+                                                            <Link to={ROUTES.DASHBOARD} aria-label="not">
+                                                                <IconButton className="header_notifications_icon">
+                                                                    <NotificationsIcon className=" text-white-primary"
+                                                                    />
+                                                                </IconButton>
+                                                            </Link>
+                                                            <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                                <IconButton className="header_home_icon">
+                                                                    <HomeOutlinedIcon className="text-white-primary" />
+                                                                </IconButton>
+                                                            </Link>
+                                                        </div>
+                                                        <BasicMenu />
+                                                        {/* <IconButton className="header_notifications_icon"
                                                         onClick={() =>
                                                             firebase.auth().signOut()
                                                         }
@@ -159,69 +159,69 @@ const Header = () => {
                                                         />
                                                     </IconButton> */}
 
-                                                    {/* Modal */}
-                                                    <Modal
-                                                        open={openModal}
-                                                        onClose={handleCloseModal}
-                                                        aria-labelledby="modal-modal-title"
-                                                        aria-describedby="modal-modal-description"
-                                                    >
-                                                        <Box
-                                                            className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
+                                                        {/* Modal */}
+                                                        <Modal
+                                                            open={openModal}
+                                                            onClose={handleCloseModal}
+                                                            aria-labelledby="modal-modal-title"
+                                                            aria-describedby="modal-modal-description"
                                                         >
-                                                            <form
-                                                                onSubmit={() => {
-                                                                    setTimeout(() => {
-                                                                        newDoc()
-                                                                    }, 6500);
-                                                                }}
+                                                            <Box
+                                                                className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
                                                             >
-                                                                <label htmlFor="icon-button-file" className="btn-6">
-                                                                    <Input
-                                                                        accept="image/*"
-                                                                        id="icon-button-file"
-                                                                        type="file"
-                                                                        onChange={fileHandler}
-                                                                    />
-                                                                    <span>
-                                                                        Select Image
-                                                                    </span>
-                                                                </label>
-                                                                <label htmlFor="fiel-area-text" className="textfield-6">
-                                                                    <TextField
-                                                                        id="fiel-area-text"
-                                                                        label="Write a description for your post"
-                                                                        multiline
-                                                                        fullWidth
-                                                                        maxLength="40"
-                                                                        required
-                                                                        rows={4}
-                                                                        name="caption"
-                                                                        value={caption.caption}
-                                                                        onChange={handleCaptionChange}
-                                                                    />
-                                                                </label>
-                                                            </form>
-                                                            <button
-                                                                variant="contained"
-                                                                component="span"
-                                                                onClick={() => {
-                                                                    setTimeout(() => {
-                                                                        newDoc()
-                                                                    }, 6500);
-                                                                }}
-                                                                className="btn__upload"
-                                                            >
-                                                                Upload Image
-                                                            </button>
-                                                        </Box>
-                                                    </Modal>
-                                                </>
-                                            )
-                                            
-                                            
-                                            }
-                                            
+                                                                <form
+                                                                    onSubmit={() => {
+                                                                        setTimeout(() => {
+                                                                            newDoc()
+                                                                        }, 6500);
+                                                                    }}
+                                                                >
+                                                                    <label htmlFor="icon-button-file" className="btn-6">
+                                                                        <Input
+                                                                            accept="image/*"
+                                                                            id="icon-button-file"
+                                                                            type="file"
+                                                                            onChange={fileHandler}
+                                                                        />
+                                                                        <span>
+                                                                            Select Image
+                                                                        </span>
+                                                                    </label>
+                                                                    <label htmlFor="fiel-area-text" className="textfield-6">
+                                                                        <TextField
+                                                                            id="fiel-area-text"
+                                                                            label="Write a description for your post"
+                                                                            multiline
+                                                                            fullWidth
+                                                                            maxLength="40"
+                                                                            required
+                                                                            rows={4}
+                                                                            name="caption"
+                                                                            value={caption.caption}
+                                                                            onChange={handleCaptionChange}
+                                                                        />
+                                                                    </label>
+                                                                </form>
+                                                                <button
+                                                                    variant="contained"
+                                                                    component="span"
+                                                                    onClick={() => {
+                                                                        setTimeout(() => {
+                                                                            newDoc()
+                                                                        }, 6500);
+                                                                    }}
+                                                                    className="btn__upload"
+                                                                >
+                                                                    Upload Image
+                                                                </button>
+                                                            </Box>
+                                                        </Modal>
+                                                    </>
+                                                )
+
+
+                                        }
+
                                         {/*  <IconButton className="header_notifications_icon"
                                             onClick={() =>
                                                 firebase.auth().signOut()

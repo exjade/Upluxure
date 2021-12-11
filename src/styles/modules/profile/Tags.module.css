@@ -23,6 +23,29 @@
 
 /* Media queries */
 
+@media (max-width: 780px) {
+    .tag {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        width: 5rem;
+        height: 2.5rem;
+        border: 3px solid rgba(255, 255, 255, 0.7);
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+    }
+    .tagstext {
+        color: white;
+        font-weight: 300;
+        letter-spacing: 0.17rem;
+    }
+}
 @media (max-width: 700px) {
     .tag {
         display: flex;
@@ -75,7 +98,53 @@
         align-items: center;
         align-content: center;
         justify-content: center;
-        width: 4.4rem;
+        width: 4rem;
+        height: 2.5rem;
+        border: 3px solid rgba(255, 255, 255, 0.7);
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+    }
+    .tagstext {
+        color: white;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+    }
+}
+@media (max-width: 536px) and (min-width: 450px) {
+    .tag {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        width: 4.2rem;
+        height: 2.5rem;
+        border: 3px solid rgba(255, 255, 255, 0.7);
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+    }
+    .tagstext {
+        color: white;
+        font-weight: 300;
+        letter-spacing: 0.10rem;
+    }
+}
+@media (max-width: 375px) {
+    .tag {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        width: 5.7rem;
         height: 2.5rem;
         border: 3px solid rgba(255, 255, 255, 0.7);
         box-sizing: border-box;
@@ -92,7 +161,7 @@
         letter-spacing: 0.17rem;
     }
 }
-@media (max-width: 375px) {
+@media (max-width: 320px) {
     .tag {
         display: flex;
         align-items: center;
