@@ -43,6 +43,7 @@ const SignUp = () => {
                     fullName,
                     emailAddress: emailAddress.toLowerCase(),
                     following: [],
+                    followers: [],
                     dateCreated: new Date()
                 })
                 window.location.reload()
@@ -101,6 +102,7 @@ const SignUp = () => {
                                     className="form__signup_email"
                                     onChange={({ target }) => setUsername(target.value)}
                                     value={username}
+                                    maxlength="12"
                                 />
                                 <input
                                     aria-label="Enter your Full Name"
@@ -109,6 +111,7 @@ const SignUp = () => {
                                     className="form__signup_email"
                                     onChange={({ target }) => setFullName(target.value)}
                                     value={fullName}
+                                    maxlength="18"
                                 />
                                 <input
                                     aria-label="Enter your email address"
