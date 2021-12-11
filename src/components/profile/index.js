@@ -43,8 +43,8 @@ const Profile = ({ user }) => {
             setFollowerCount={ dispatch }
             setFollowingCount={ dispatch }
             />
+            {/* <p className='text-white-primary'>Working {user.username} 09:35:58 </p> */}
             <Photos photos={photosCollection} />
-            <p className='text-white-primary'>Working {user.username} 09:35:58 </p>
 
         </>
     )
