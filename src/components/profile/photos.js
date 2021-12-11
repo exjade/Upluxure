@@ -4,8 +4,6 @@ import styles from '../../styles/modules/profile/Photos.module.css'
 
 const Photos = ({ photos }) => {
 
-    console.log('photos', photos)
-
     return (
         <div className={`${styles.background} h-16 border-t border-gray-primary mt-12 pt-4`} >
             <div className={`${styles.post} grid grid-cols-2 justify-around`}>
@@ -14,7 +12,7 @@ const Photos = ({ photos }) => {
             </div>
             <div className='grid grid-cols-2 gap-8 justify-between mt- p-3'>
                 {
-                    photos.slice(0, 1).map((photo, index) => (
+                    photos.slice(1, 2).map((photo, index) => (
                         <div key={index} className=''>
                             <img
                                 src={photo.imageSrc}
@@ -25,8 +23,8 @@ const Photos = ({ photos }) => {
                     ))
                 }
                 {
-                    photos.slice(1, 2).map((photo, index) => (
-                        <div key={index} className={`${styles.imagesecondarycontainer}`} >
+                    photos.slice(0, 1).map((photo, i) => (
+                        <div key={i} className={`${styles.imagesecondarycontainer}`} >
                             <img
                                 src={photo.imageSrc}
                                 alt={photo.caption}
@@ -43,7 +41,7 @@ const Photos = ({ photos }) => {
                     </>
                 ) : photos.length > 0 ?
                     (
-                        photos.slice(0).map((photo) => (
+                        photos.slice(2, 100).map((photo) => (
                             <>
                                 <div key={photo.docId} className='relative group'>
                                     <img
