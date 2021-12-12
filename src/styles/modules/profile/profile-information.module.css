@@ -39,6 +39,7 @@
     letter-spacing: 0.1px;
     color: #6A757A;
     width: 70%;
+    justify-content: center;
 }
 /* Personal information */
 .information {
