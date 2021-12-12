@@ -125,7 +125,7 @@ const Header = () => {
                                                                     />
                                                                 </IconButton>
                                                             </Link>
-                                                            <Link to={ROUTES.DASHBOARD} aria-label="add">
+                                                            <Link aria-label="add">
                                                                 <IconButton className="header_add_icon"
                                                                     onClick={handleOpenModal}>
                                                                     <AddCircleOutlineIcon className=" text-white-primary"
@@ -145,19 +145,6 @@ const Header = () => {
                                                             </Link>
                                                         </div>
                                                         <BasicMenu />
-                                                        {/* <IconButton className="header_notifications_icon"
-                                                        onClick={() =>
-                                                            firebase.auth().signOut()
-                                                        }
-                                                        onKeyDown={(event) => {
-                                                            if (event.key === 'Enter') {
-                                                                firebase.auth().signOut()
-                                                            }
-                                                        }}
-                                                    >
-                                                        <LogoutOutlinedIcon className=" text-white-primary"
-                                                        />
-                                                    </IconButton> */}
 
                                                         {/* Modal */}
                                                         <Modal
@@ -221,36 +208,6 @@ const Header = () => {
 
 
                                         }
-
-                                        {/*  <IconButton className="header_notifications_icon"
-                                            onClick={() =>
-                                                firebase.auth().signOut()
-                                            }
-                                            onKeyDown={(event) => {
-                                                if (event.key === 'Enter') {
-                                                    firebase.auth().signOut()
-                                                }
-                                            }}
-                                        >
-                                            <LogoutOutlinedIcon className=" text-white-primary"
-                                            />
-                                        </IconButton> */}
-
-                                        {/* <button
-                                            type="button"
-                                            title="Sign Out"
-                                            onClick={() =>
-                                                firebase.auth().signOut()
-                                            }
-                                            onKeyDown={(event) => {
-                                                if (event.key === 'Enter') {
-                                                    firebase.auth().signOut()
-                                                }
-                                            }}
-                                            className="header_signup_icon"
-                                        >
-                                            <LogoutOutlinedIcon className="header_signup text-white-primary" />
-                                        </button> */}
                                     </>
                                 )
                                 :

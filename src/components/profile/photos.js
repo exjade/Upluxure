@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
 import styles from '../../styles/modules/profile/Photos.module.css'
 import ContentLoader from 'react-content-loader'
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Photos = ({ photos }) => {
-
 
     /* LOADER Skeleton*/
     const [isLoading, setIsLoading] = useState(true);
