@@ -32,7 +32,8 @@ const Header = ({
 
     const { user } = useUser(); // Information about the user 
     const [isFollowingProfile, setIsFollowingProfile] = useState(false);
-    const activeBtnFollow = user.username && user.username !== profileUsername;
+    const activeBtnFollow = user.username && user.username !== profileUsername; // If the user is logged in and is not the profile owner
+    const activeBtnEditProfile = user.username && user.username === profileUsername; // if the user is logged in and is the profile owner
 
     const handleToggleFollow = async () => {
         setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
@@ -146,6 +147,20 @@ const Header = ({
                                     }}
                                 >
                                     {isFollowingProfile ? 'Following' : 'Follow'}
+                                </button>
+                            )}
+                            {activeBtnEditProfile && (
+                                <button
+                                    className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
+                                    type='button'
+                                    onClick={handleToggleFollow}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            handleToggleFollow()
+                                        }
+                                    }}
+                                >
+                                    <p className=""> Edit Profile</p>
                                 </button>
                             )}
                         </>
