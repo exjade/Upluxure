@@ -1,8 +1,10 @@
 import { useReducer, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Header from './header'
+import HomeIconComponent from './home'
 import Photos from './photos'
 import { getUserPhotosByUsername } from '../../services/firebase'
+import Home from '@material-ui/icons/Home'
 
 
 const Profile = ({ user }) => {
@@ -45,7 +47,7 @@ const Profile = ({ user }) => {
             />
             {/* <p className='text-white-primary'>Working {user.username} 09:35:58 </p> */}
             <Photos photos={photosCollection} />
-
+            <HomeIconComponent />
         </>
     )
 }

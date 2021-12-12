@@ -1,0 +1,31 @@
+.HomeButton__Icon {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    height: 5rem;
+}
+
+.buttonbase {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(267.25deg, #434343 1.2%, #181818 49.72%, #3A3A3A 115.25%);
+    border-radius: 999px;
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    -ms-border-radius: 999px;
+    -o-border-radius: 999px;
+}
+
+a > .buttonbase {
+    border-radius: 999px;
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    -ms-border-radius: 999px;
+    -o-border-radius: 999px;
+}
+
+.homeicon {
+    color: white
+}

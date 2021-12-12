@@ -47,7 +47,7 @@ const Photos = ({ photos }) => {
                     <h2 className={styles.title} >Photos</h2>
                     <p className={styles.amount} >{photos.length}</p>
                 </div>
-                <div className='grid grid-cols-2 gap-8 justify-between mt- p-3'>
+                <div className='grid grid-cols-2 gap-8 justify-between p-3'>
                     {
                         photos.slice(1, 2).map((photo, index) => (
                             <div key={index} className=''>
@@ -71,13 +71,11 @@ const Photos = ({ photos }) => {
                         ))
                     }
                 </div>
-                <div className={` grid grid-cols-3 gap-5 mt-10 mb-2`} >
+                <div className={` grid grid-cols-3 gap-1 mt-2 mb-2`} >
                     {photos < 1 ? (
                         <>
                             {
-
                                 <Skeleton count={12} height={400} width={320} />
-
                             }
                         </>
                     ) : photos.length > 0 ?

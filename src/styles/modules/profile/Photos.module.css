@@ -1,5 +1,5 @@
 .background {
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 33px;
     margin-top: 2rem;
     width: 100%;
@@ -25,11 +25,11 @@
     align-content: center;
 }
 .image {
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
 }
 .post {
     display: flex;
