@@ -10,7 +10,6 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import AddIcon from '@mui/icons-material/Add';
-import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';

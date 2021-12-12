@@ -13,7 +13,9 @@ const SignUp = lazy(() => import("./pages/sign-up"));
 const Profile = lazy(() => import("./pages/profile"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const NotFound = lazy(() => import("./pages/not-found"));
+const MyAccount = lazy(() => import("./pages/myaccount"));
 const PruebaUpload = lazy(() => import("./pages/pruebas"));
+
 
 function App() {
 
@@ -30,10 +32,16 @@ function App() {
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.SIGN_UP}>
               <SignUp />
             </IsUserLoggedIn>
-            <Route path={ROUTES.PROFILE} component={Profile} />
+            {/* <Route path={ROUTES.PROFILE} component={Profile} /> */}
+            <ProtectedRoute user={user} path={ROUTES.PROFILE} exact>
+              <Profile />
+            </ProtectedRoute>
             <Route path={ROUTES.PRUEBA} component={PruebaUpload} />
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.MY_ACCOUNT} exact>
+              <MyAccount />
             </ProtectedRoute>
             <Route component={NotFound} />
           </Switch>

@@ -4,11 +4,13 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import FirebaseContext from '../../context/firebase';
 import '../../styles/css/menu/basic-menu.css'
+import * as ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom';
+import UserContext from '../../context/user';
+
 /* */
-import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import PersonAdd from '@mui/icons-material/PersonAdd';
+import PersonIcon from '@mui/icons-material/Person';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
@@ -24,11 +26,19 @@ const fontstyle = {
   fontFamily: 'Red Hat Display',
   fontSize: '1rem',
   fontWeight: 'bold',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  alignContent: 'center',
 };
 
 const BasicMenu = () => {
   const { firebase } = useContext(FirebaseContext);
   const [open, setOpen] = useState(false);
+
+  const {
+    user
+  } = useContext(UserContext);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -56,16 +66,21 @@ const BasicMenu = () => {
             onClick={handleClose}
             className="menu-basic-content"
           >
-            <MenuItem sx={fontstyle} className="basicmenu_profile">
-              {/* <Avatar /> */}
-              Profile
-            </MenuItem>
-            <Divider sx={dividerstyle}/>
-            <MenuItem sx={fontstyle}>
-              {/* <Avatar /> */}
-              My account
-            </MenuItem>
-            <Divider sx={dividerstyle}/>
+            <Divider sx={dividerstyle} />
+            <Link to={`/p/${user.displayName}`}>
+              <MenuItem sx={fontstyle} className="basicmenu_profile">
+                <PersonIcon />
+                Profile
+              </MenuItem>
+            </Link>
+            <Divider sx={dividerstyle} />
+            <Link to={ROUTES.MY_ACCOUNT}>
+              <MenuItem sx={fontstyle}>
+                <Settings />
+                My account
+              </MenuItem>
+            </Link>
+            <Divider sx={dividerstyle} />
             <MenuItem
               onClick={() =>
                 firebase.auth().signOut()
@@ -77,12 +92,10 @@ const BasicMenu = () => {
               }}
               sx={fontstyle}
             >
-              {/* <ListItemIcon>
-              <Logout fontSize="small" />
-            </ListItemIcon> */}
+              <Logout />
               Logout
             </MenuItem>
-
+            <Divider sx={dividerstyle} />
           </div>
         </div>
       )
