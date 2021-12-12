@@ -8,60 +8,81 @@
     border-bottom-right-radius: 0px;
     overflow: hidden;
 }
-.mainimage {
-    border-radius: 50px;
-    width: 100%;
-}
-.secondoneimage {
-    border-radius: 30px;
-    display: flex;
-    width: 100%;
-    height: 80%;
-}
-.imagesecondarycontainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-}
-.image {
-    border-radius: 40px;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    -ms-border-radius: 40px;
-    -o-border-radius: 40px;
-}
 .post {
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: center;
 }
-/* Photos title and amount of pics*/
-.title {
-    margin-left: 2rem;
-    font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: 5px;
+/* Profile fullname */
+.fullname {
+    font-family: 'Red Hat Text', sans-serif;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: #000000;
 }
-.amount{
-    font-weight: 400;
-    font-size: 1.6rem;
-    margin-right: 2rem;
+/* About quote*/
+.abouttitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about {
+    font-family: 'Red Hat Text', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    align-content: center;
+    letter-spacing: 0.1px;
+    color: #6A757A;
+    width: 70%;
 }
-
-/* FULL */
-
-.fullView > img {
+/* Personal information */
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* First Row */
+.firstrow {
+    display: flex;
+    align-items: center;
+    align-content: center;
     width: 100%;
-    height: 100%;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    -ms-border-radius: 50px;
-    -o-border-radius: 50px;
+    justify-content: space-between;
+}
+.iconandinfo {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+}
+.profileinfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+}
+/* Second Row */
+.secondrow {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    justify-content: space-evenly;
+}
+/* Third Row */
+.thirdrow {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    justify-content: space-evenly;
 }

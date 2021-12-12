@@ -6,20 +6,13 @@ import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
 import styles from '../../styles/modules/profile/Header.module.css'
 import Tags from './tags'
 
-/* Material UI */
-import Avatar from '@mui/material/Avatar';
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
-import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
-import HomeSharpIcon from '@mui/icons-material/HomeSharp';
-
 const Header = ({
     PhotosCount,
     followerCount,
     setFollowerCount,
     followingCount,
     setFollowingCount,
+    profile,
     profile: {
         fullName,
         following = [],
@@ -169,9 +162,7 @@ const Header = ({
             </div>
             <div className={`${styles.parent} grid mx-auto max-w-screen-lg`} >
                 <div className={`${styles.child} flex gap-3 justify-center mt-5 items-center`} >
-                    <Tags />
-                    <Tags />
-                    <Tags />
+                    <Tags profile={profile}/>
                 </div>
             </div>
         </>

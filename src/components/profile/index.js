@@ -81,14 +81,18 @@ const Profile = ({ user }) => {
 
             {/* TABS */}
             <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="IconsTab_color">
-                <Tab icon={<PhotoSizeSelectActualIcon sx={ openTabs.showPhoto ? {color: "#fff"} : {color : '#696969'} } />} aria-label="photo" onClick={() => showPhotoTab(setOpenTabs({ showInformation: false, showPhoto: true }))} />
-                <Tab icon={<AccountBoxIcon sx={ openTabs.showInformation ? {color: "#fff"} : {color : '#696969'} }  />} aria-label="information" onClick={() => showInfoTabs(setOpenTabs({ showInformation: true, showPhoto: false }))} />
+                <Tab icon={<PhotoSizeSelectActualIcon sx={openTabs.showPhoto ? { color: "#fff" } : { color: '#696969' }} />} aria-label="photo" onClick={() => showPhotoTab(setOpenTabs({ showInformation: false, showPhoto: true }))} />
+                <Tab icon={<AccountBoxIcon sx={openTabs.showInformation ? { color: "#fff" } : { color: '#696969' }} />} aria-label="information" onClick={() => showInfoTabs(setOpenTabs({ showInformation: true, showPhoto: false }))} />
             </Tabs>
             {
                 openTabs.showPhoto || !openTabs.showInformation ?
                     (<Photos photos={photosCollection} />)
                     :
-                    openTabs.showInformation || !openTabs.showPhoto ? (<ProfileInformation />) : null
+                    openTabs.showInformation || !openTabs.showPhoto ? (
+                        <ProfileInformation
+                            profile={profile}
+                        />
+                    ) : null
             }
 
             <HomeIconComponent />

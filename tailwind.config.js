@@ -30,6 +30,7 @@ module.exports = {
           background: '#9F9F9F',
           primary: '#9D9DAA',
           button: '#696969',
+          info: '#6A757A',
         },
         brown: {
           button: "#776A49"
