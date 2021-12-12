@@ -43,7 +43,7 @@ const Profile = ({ user }) => {
     }, [user.username])
 
 
-    /* TABS SWITCH*/
+    /* Component Switch*/
     const [openTabs, setOpenTabs] = useState({
         showPhoto: true,
         showInformation: false
@@ -51,16 +51,16 @@ const Profile = ({ user }) => {
 
     const showPhotoTab = () => {
         if (openTabs.showPhoto) {
-             <Photos /> 
-            
-        } 
+            <Photos />
+
+        }
     }
     const showInfoTabs = () => {
         if (openTabs.showInformation) {
-             <ProfileInformation />
-        } 
+            <ProfileInformation />
+        }
     }
-    /* TABS */
+    /* Switch Icons */
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -81,16 +81,14 @@ const Profile = ({ user }) => {
 
             {/* TABS */}
             <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="IconsTab_color">
-                <Tab icon={<PhotoSizeSelectActualIcon />} aria-label="photo" onClick={() => showPhotoTab( setOpenTabs({ showInformation: false, showPhoto: true }) )} />
-                <Tab icon={<AccountBoxIcon />} aria-label="information" onClick={() => showInfoTabs(  setOpenTabs({ showInformation: true, showPhoto: false })  )}/>
+                <Tab icon={<PhotoSizeSelectActualIcon sx={ openTabs.showPhoto ? {color: "#fff"} : {color : '#696969'} } />} aria-label="photo" onClick={() => showPhotoTab(setOpenTabs({ showInformation: false, showPhoto: true }))} />
+                <Tab icon={<AccountBoxIcon sx={ openTabs.showInformation ? {color: "#fff"} : {color : '#696969'} }  />} aria-label="information" onClick={() => showInfoTabs(setOpenTabs({ showInformation: true, showPhoto: false }))} />
             </Tabs>
             {
-                openTabs.showPhoto || !openTabs.showInformation  ? (
-                    <Photos photos={photosCollection} />
-                ) :
-                openTabs.showInformation || !openTabs.showPhoto  ? (
-                    <ProfileInformation />
-                ) : null
+                openTabs.showPhoto || !openTabs.showInformation ?
+                    (<Photos photos={photosCollection} />)
+                    :
+                    openTabs.showInformation || !openTabs.showPhoto ? (<ProfileInformation />) : null
             }
 
             <HomeIconComponent />
