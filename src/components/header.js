@@ -125,7 +125,7 @@ const Header = () => {
                                                                     />
                                                                 </IconButton>
                                                             </Link>
-                                                            <Link aria-label="add">
+                                                            <Link to="#" aria-label="add">
                                                                 <IconButton className="header_add_icon"
                                                                     onClick={handleOpenModal}>
                                                                     <AddCircleOutlineIcon className=" text-white-primary"
