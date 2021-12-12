@@ -1,0 +1,38 @@
+/* MAIN */
+.css-jpln7h-MuiTabs-scroller {
+    position: relative;
+    display: inline-block;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    margin-top: 2rem;
+    white-space: nowrap;
+    overflow-x: hidden;
+    width: 100%;
+    /* display: flex; */
+    /* align-content: center; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+/* iCONS */
+.css-heg063-MuiTabs-flexContainer {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff47;
+}
+/* iCONS ACTIVE*/
+span.MuiTabs-indicator.css-1aquho2-MuiTabs-indicator {
+    border: 1px solid white;
+}
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+    color: white;
+}
+.css-1t4lqmc-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: #ffffff;
+}

@@ -45,6 +45,8 @@ const Photos = ({ photos }) => {
             <div className={`${styles.background} h-16 border-t border-gray-primary mt-12 pt-4`} >
                 <div className={`${styles.post} grid grid-cols-2 justify-around`}>
                     <h2 className={styles.title} >Photos</h2>
+                    {/* Cambio de sección */}
+
                     <p className={styles.amount} >{photos.length}</p>
                 </div>
                 <div className='grid grid-cols-2 gap-8 justify-between p-3'>
