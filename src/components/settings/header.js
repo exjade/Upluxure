@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import styles from '../../styles/modules/my-account/header.module.css'
 import * as ROUTES from '../../constants/routes'
 import { Link } from 'react-router-dom'
@@ -8,9 +8,23 @@ import UserContext from '../../context/user';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { info } from 'autoprefixer';
+
+const URL = 'https://ip.nf/me.json';
 
 const Header = () => {
     const {user} = useContext(UserContext);
+
+
+    /* User Location */
+    const [userLocation, setUserLocation] = useState({ ip: "" })
+    useEffect(() => {
+       fetch(URL, {method: "get"})
+        .then(res => res.json())
+        .then(data => {
+            setUserLocation({...data})
+        })
+    }, [])
 
     return (
         <>
@@ -34,7 +48,7 @@ const Header = () => {
 
                             <div className={`${styles.info} container flex mt-2 `} >
                                 <LocationOnIcon className={`${styles.location} text-gray-primary`} />
-                                <p className="font-normal text-gray-primary text-2x1">Oslo, Norway</p>
+                                <p className="font-normal text-gray-primary text-2x1">{`${userLocation.ip.city} - ${userLocation.ip.country}`}</p>
                             </div>
                         </div>
                     </div>
