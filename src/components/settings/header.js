@@ -1,8 +1,9 @@
 import { useContext, useState, useEffect } from 'react';
 import styles from '../../styles/modules/my-account/header.module.css'
-import * as ROUTES from '../../constants/routes'
+// import * as ROUTES from '../../constants/routes'
 import { Link } from 'react-router-dom'
 import UserContext from '../../context/user';
+
 
 /* Material UI*/
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -28,7 +29,8 @@ const Header = () => {
         <>
             <div className={`${styles.main} grid mx-auto max-w-screen-lg`} >
                 <div className={`${styles.mainback}`} >
-                    <Link to={`/p/${user.displayName}`} >
+                    {/* to={`/p/${user.displayName}`} */}
+                    <Link  >
                         <KeyboardBackspaceIcon className={`${styles.back}`} />
                     </Link>
                     <p className='text-white-normal font-medium text-xl '>My Profile</p>

@@ -1,8 +1,7 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import Settings from '../components/settings'
-import '../styles/material.css'
 
-const MyAccount = () => {
+const MyAccount = () => { 
     
     useEffect(() => {
         document.title = 'My Account - Upluxure'

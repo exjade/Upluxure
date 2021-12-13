@@ -18,11 +18,11 @@ export async function getUserByUsername(username) {
     .where('username', '==', username.toLowerCase())
     .get();
 
-  return result.docs.map((item) => ({
-    ...item.data(),
-    docId: item.id
-  }))
-}
+    return result.docs.map((item) => ({
+      ...item.data(),
+      docId: item.id,
+    }))
+  }
 
 // get user from firestore where userId is equals to userId (obtained from the auth)
 export async function getUserByUserId(userId) {

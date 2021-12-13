@@ -1,10 +1,10 @@
 import React, { useReducer, useState, useEffect } from 'react'
+import { getUserPhotosByUsername } from '../../services/firebase'
 import PropTypes from 'prop-types'
 import Header from './header'
 import HomeIconComponent from './home'
 import Photos from './photos'
 import ProfileInformation from './profile-information';
-import { getUserPhotosByUsername } from '../../services/firebase'
 import '../../styles/modules/tabs.css';
 
 /* MATERIAL UI*/
