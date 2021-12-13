@@ -53,8 +53,8 @@
     flex-direction: column;
     /* width: 60%; */
     align-content: center;
-    align-items: flex-start;
     justify-content: center;
+    align-items: stretch;
 }
 .arrow {
     color: white;

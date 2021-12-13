@@ -14,6 +14,7 @@ const Profile = lazy(() => import("./pages/profile"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const NotFound = lazy(() => import("./pages/not-found"));
 const MyAccount = lazy(() => import("./pages/my-account"));
+const SettingsProfile = lazy(() => import("./components/settings/edit-profile"));
 const PruebaUpload = lazy(() => import("./pages/pruebas"));
 
 
@@ -42,6 +43,9 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute user={user} path={ROUTES.MY_ACCOUNT} exact>
               <MyAccount />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.SETTINGS_PROFILE} exact>
+              <SettingsProfile />
             </ProtectedRoute>
             <Route component={NotFound} />
           </Switch>

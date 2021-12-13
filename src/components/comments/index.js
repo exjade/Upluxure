@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { formatDistance } from 'date-fns'
-import { Link } from 'react-router-dom'
 import styles from '../../styles/css/comments/Comments.module.css'
 import AddComment from './add-comments'
 
 /**/
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ViewAllComments from './view-all-comments';
 

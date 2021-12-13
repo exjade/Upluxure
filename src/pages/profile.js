@@ -24,6 +24,11 @@ const Profile = () => {
         checkUserExists()
     }, [username, history])
 
+    
+    useEffect(() => {
+        document.title = 'Profile - Upluxure'
+    }, [])
+
     return (
         user?.username ? (
             <div className="bg-black-background">

@@ -1,5 +1,6 @@
 import styles from '../../styles/modules/my-account/menu.module.css'
-// import * as ROUTES from '../../constants/routes'
+import * as ROUTES from '../../constants/routes'
+import { Link } from 'react-router-dom'
 
 /* Material ui */
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -13,7 +14,7 @@ const Menu = () => {
     return (
         <>
             <div className={`${styles.main} grid mx-auto max-w-screen-lg`} >
-                    <p className={`${styles.title} text-white-normal text-3xl font-bold`} >Settings</p>
+                <p className={`${styles.title} text-white-normal text-3xl font-bold`} >Settings</p>
                 <div className={`${styles.container} container flex justify-center items-center flex-col`} >
                     <div className={styles.hola_grid}>
                         <div className={`${styles.spaceb} flex flex-row mb-5`} >
@@ -21,23 +22,25 @@ const Menu = () => {
                                 <NotificationsIcon />
                             </div>
                             <p className={`${styles.menu} text-white-ctitle font-normal`} >Notifications</p>
-                            <ArrowForwardIosIcon className={`${styles.arrow}`}/>
+                            <ArrowForwardIosIcon className={`${styles.arrow}`} />
                         </div>
                         <Divider />
-                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-5`} >
-                            <div className={`${styles.circle}`} >
-                                <EditIcon />
+                        <Link to={ROUTES.SETTINGS_PROFILE} >
+                            <div className={`${styles.spaceb} flex flex-row mt-8 mb-5`} >
+                                <div className={`${styles.circle}`} >
+                                    <EditIcon />
+                                </div>
+                                <p className={`${styles.menu} text-white-ctitle font-normal`} >Edit Profile</p>
+                                <ArrowForwardIosIcon className={`${styles.arrow}`} />
                             </div>
-                            <p className={`${styles.menu} text-white-ctitle font-normal`} >Edit Profile</p>
-                            <ArrowForwardIosIcon className={`${styles.arrow}`}/>
-                        </div>
+                        </Link>
                         <Divider />
                         <div className={`${styles.spaceb} flex flex-row mt-8 mb-5`} >
                             <div className={`${styles.circle}`} >
                                 <HelpIcon />
                             </div>
                             <p className={`${styles.menu} text-white-ctitle font-normal`} >Help</p>
-                            <ArrowForwardIosIcon className={`${styles.arrow}`}/>
+                            <ArrowForwardIosIcon className={`${styles.arrow}`} />
                         </div>
                         <Divider />
                         <div className={`${styles.spaceb} flex flex-row mt-8 mb-5`} >
@@ -45,7 +48,7 @@ const Menu = () => {
                                 <InfoIcon />
                             </div>
                             <p className={`${styles.menu} text-white-ctitle font-normal`} >About</p>
-                            <ArrowForwardIosIcon className={`${styles.arrow}`}/>
+                            <ArrowForwardIosIcon className={`${styles.arrow}`} />
                         </div>
                     </div>
                 </div>
