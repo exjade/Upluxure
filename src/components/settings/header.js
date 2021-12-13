@@ -8,29 +8,27 @@ import UserContext from '../../context/user';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { info } from 'autoprefixer';
 
 const URL = 'https://ip.nf/me.json';
 
 const Header = () => {
-    const {user} = useContext(UserContext);
-
+    const { user } = useContext(UserContext);
 
     /* User Location */
     const [userLocation, setUserLocation] = useState({ ip: "" })
     useEffect(() => {
-       fetch(URL, {method: "get"})
-        .then(res => res.json())
-        .then(data => {
-            setUserLocation({...data})
-        })
+        fetch(URL, { method: "get" })
+            .then(res => res.json())
+            .then(data => {
+                setUserLocation({ ...data })
+            })
     }, [])
 
     return (
         <>
             <div className={`${styles.main} grid mx-auto max-w-screen-lg`} >
                 <div className={`${styles.mainback}`} >
-                    <Link to={`/p/${user.displayName}`}>
+                    <Link to={`/p/${user.displayName}`} >
                         <KeyboardBackspaceIcon className={`${styles.back}`} />
                     </Link>
                     <p className='text-white-normal font-medium text-xl '>My Profile</p>
