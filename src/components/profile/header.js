@@ -5,6 +5,8 @@ import useUser from '../../hooks/use-user'
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
 import styles from '../../styles/modules/profile/Header.module.css'
 import Tags from './tags'
+import * as ROUTES from '../../constants/routes'
+import { Link, useHistory } from 'react-router-dom'
 
 const Header = ({
     PhotosCount,
@@ -22,7 +24,7 @@ const Header = ({
         username: profileUsername
     }
 }) => {
-
+    const history = useHistory()
     const { user } = useUser(); // Information about the user 
     const [isFollowingProfile, setIsFollowingProfile] = useState(false);
     const activeBtnFollow = user.username && user.username !== profileUsername; // If the user is logged in and is not the profile owner
@@ -34,7 +36,10 @@ const Header = ({
             followerCount: isFollowingProfile ? followerCount - 1 : followerCount + 1
         })
         await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId)
-    
+    }
+
+    const handleEditProfile = () => {
+        history.push(ROUTES.SETTINGS_PROFILE)
     }
 
     useEffect(() => {
@@ -146,10 +151,10 @@ const Header = ({
                                 <button
                                     className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
                                     type='button'
-                                    onClick={handleToggleFollow}
+                                    onClick={handleEditProfile}
                                     onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
-                                            handleToggleFollow()
+                                            handleEditProfile()
                                         }
                                     }}
                                 >
