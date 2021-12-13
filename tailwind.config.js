@@ -46,6 +46,9 @@ module.exports = {
         },
         blue: {
           primary: "#1B74BA"
+        },
+        pink: {
+          primary: "#EC4B89"
         }
       }
     },

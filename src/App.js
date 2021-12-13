@@ -13,7 +13,7 @@ const SignUp = lazy(() => import("./pages/sign-up"));
 const Profile = lazy(() => import("./pages/profile"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const NotFound = lazy(() => import("./pages/not-found"));
-const MyAccount = lazy(() => import("./pages/myaccount"));
+const MyAccount = lazy(() => import("./pages/my-account"));
 const PruebaUpload = lazy(() => import("./pages/pruebas"));
 
 

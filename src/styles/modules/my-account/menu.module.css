@@ -1,0 +1,72 @@
+.main {
+    /* background: #101010; */
+    /* height: 55%; */
+    z-index: 99px;
+    margin-top: -1rem;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.circle {
+    background: #EC4B89;
+    color:white;
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 99px;
+    -webkit-border-radius: 99px;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+}
+.title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+    margin-top: 3.5rem;
+    margin-bottom: 2.5rem;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-family: 'Red Hat Display', sans-serif;
+    margin-left: 1rem;
+    font-weight: 700;
+}
+.hola_grid {
+    display: flex;
+    flex-direction: column;
+    /* width: 60%; */
+    align-content: center;
+    align-items: flex-start;
+    justify-content: center;
+}
+.arrow {
+    color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.spaceb {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
