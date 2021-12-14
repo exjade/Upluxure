@@ -47,3 +47,14 @@ form.container.hola {
     height: 100%;
     width: 100%;
 }
+
+.css-1wnsr1i::-webkit-scrollbar {
+    width: 15px;
+  }
+.css-1wnsr1i::-webkit-scrollbar-thumb {
+    background: rgba(2, 2, 2, 0.513);
+  }
+  
+.css-1wnsr1i::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

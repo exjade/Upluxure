@@ -34,7 +34,6 @@ const SearchBarDown = () => {
 
     /* Modal */
     let history = useHistory();
-    let downloadUrl;
 
     const {
         user
@@ -57,6 +56,7 @@ const SearchBarDown = () => {
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
 
+    let downloadUrl;
 
     // Upload a file to firebase storage and get the download url
     const fileHandler = async (event) => {

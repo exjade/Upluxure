@@ -36,7 +36,7 @@ export default function SuggestedProfile({
                 <div className="flex items-center justify-between">
                     <Avatar
                         className="rounded-full w-8 flex mr-2"
-                        src={`/images/avatars/${username}.jpg`}
+                        src={`/images/profile/${username}.jpg`}
                         alt="suggested users"
                     />
                     <Link to={`/p/${username}`}>

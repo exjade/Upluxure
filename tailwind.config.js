@@ -31,15 +31,18 @@ module.exports = {
           primary: '#9D9DAA',
           button: '#696969',
           info: '#6A757A',
+          border: '#72757e',
         },
         brown: {
           button: "#776A49"
         },
         red: {
-          like: "#E63C27"
+          like: "#E63C27",
+          warning: "#fd2525e3"
         },
         purple: {
-          like: "#6469E3"
+          like: "#6469E3",
+          button: "#7f5af0"
         },
         yellow: {
           like: "#FFCF00"
@@ -49,6 +52,9 @@ module.exports = {
         },
         pink: {
           primary: "#EC4B89"
+        },
+        green: { 
+          button: "#00473e"
         }
       }
     },
