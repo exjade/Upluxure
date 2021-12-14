@@ -181,7 +181,9 @@ const Header = ({
                                 <button
                                     className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
                                     type='button'
-                                    onClick={handleOpenModal}
+                                    onClick={() => {
+                                        handleOpenModal()
+                                    }}
                                     onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
                                             handleOpenModal()

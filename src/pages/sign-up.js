@@ -44,7 +44,7 @@ const SignUp = () => {
                     emailAddress: emailAddress.toLowerCase(),
                     following: [],
                     followers: [],
-                    tags: ['No tags, No tags, No tags'],
+                    tags: ['No tag', 'No tag', 'No tag'],
                     dateCreated: new Date(),
                     AboutMe: 'Please update your profile information.',
                     Country: 'In mars',
@@ -54,7 +54,8 @@ const SignUp = () => {
                     Height: 0,
                     Weight: 0,
                     sxpreference: 'Not Answer',
-                    Gender: 'Not Answer'
+                    Gender: 'Not Answer',
+                    photoURL: ''
                 })
                 window.location.reload()
                 history.push(ROUTES.DASHBOARD)

@@ -15,6 +15,7 @@ const storage = getStorage(firebase)
 
 const EditProfile = ({
     handleCloseModal,
+    profile,
     profile: {
         Age,
         Height,
@@ -25,9 +26,10 @@ const EditProfile = ({
         Language,
         BodyType,
         fullName,
+        sxpreference,
         following = [],
         followers = [],
-        sxpreference,
+        tags = [],
         photoURL,
         docId: profileDocId,
         userId: profileUserId,
@@ -94,28 +96,309 @@ const EditProfile = ({
         }, 500);
     }
 
-    const [caption, setCaption] = useState({
-        caption: ''
+    const [infoUpdated, setInfoUpdated] = useState(null);
+    // const updateUserInfo = async () => {
+    //     try {
+    //         const docRef = doc(firestore, "users", profileDocId);
+    //         const docSnap = await getDoc(docRef);
+    //         if (docSnap.exists()) {
+    //             console.log("Document data:", docSnap.data());
+    //         } else {
+    //             // doc.data() will be undefined in this case
+    //             console.log("No such document!");
+    //         }
+    //         if (docRef) {
+    //             await updateDoc(docRef, {
+    //                 Age: infoUser.Age,
+    //             });
+    //         }
+    //         console.log("Successfully!", docRef.id);
+    //     } catch (error) {
+    //         console.log("Failed: Updating your file :(", error.message);
+    //     }
+    //     if (error) {
+    //         setError('try again in a few minutes')
+    //     } {
+    //         setInfoUpdated('Successful Updated!')
+    //     }
+    // }
+
+    /* TRASH CODE but MVP required */
+    const updateUserAbout = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    AboutMe: infoUser.AboutMe,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserCountry = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    Country: infoUser.Country,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserLanguage = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    Language: infoUser.Language,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserGender = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    Gender: infoUser.Gender,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserBodyType = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    BodyType: infoUser.BodyType,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserSexualPreference = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    sxpreference: infoUser.sxpreference,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserTag = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    tags: infoUser.tags
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserAge = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    Age: infoUser.Age,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserHeight = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    Height: infoUser.Height,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserWeight = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    Weight: infoUser.Weight,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+
+    /* END TRASH CODE */
+
+    const [infoUser, setinfoUser] = useState({
+        Age: '',
+        Height: '',
+        Weight: '',
+        Country: '',
+        AboutMe: '',
+        Language: '',
+        BodyType: '',
+        fullName: '',
+        Gender: '',
+        sxpreference: '',
+        tags: [],
     });
 
-    const handleCaptionChange = async (e) => {
-        setCaption(
+    const handleAboutChange = async (e) => {
+        setinfoUser(
             {
-                ...caption,
+                ...infoUser,
                 [e.target.name]: e.target.value
             }
         );
     }
 
+    const handleSubmit = (e) => e.preventDefault();
+
+
     return (
         <>
             <form
                 className="container"
-                onSubmit={
-                    (e) => {
-                        e.preventDefault()
-                    }
-                }
+                onSubmit={handleSubmit}
             >
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
@@ -159,7 +442,8 @@ const EditProfile = ({
                         onClick={() => {
                             newDoc()
                         }}
-                    >Update profile picture</button>
+                    >Update profile picture
+                    </button>
                 </div>
 
                 <div className="flex flex-wrap -mx-3 mb-1">
@@ -167,8 +451,12 @@ const EditProfile = ({
                         <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                             Full Name
                         </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane Lewis"
-                            minLength="4" maxLength="30"
+                        <input
+                            className=" w-full border-gray-border text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"
+                            type="text"
+                            placeholder="Jane Lewis"
+                            maxLength="30"
+                            minLength="4"
                         />
                     </div>
                 </div>
@@ -178,10 +466,32 @@ const EditProfile = ({
                         <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                             About me
                         </label>
-                        <textarea className="appearance-none resize-none w-full text-gray-700 border border-gray-border rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder=""
-                            minLength="4" maxLength="200"
+                        <textarea className="appearance-none resize-none w-full text-gray-700 border border-gray-border rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"
+                            type="text"
+                            placeholder=""
+                            minLength="4"
+                            maxLength="200"
+                            name="AboutMe"
+                            value={infoUser.AboutMe}
+                            onChange={handleAboutChange}
                         />
                         <p className="text-red-500 text-xs italic">Write a short description</p>
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserAbout()
+                            }}
+                        >Update Profile Description
+                        </button>
                     </div>
                 </div>
 
@@ -190,9 +500,39 @@ const EditProfile = ({
                         <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                             Language
                         </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="English, Spanish, Etc"
-                            minLength="4" maxLength="10"
-                        />
+                        <select
+                            className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-state"
+                            name="Language"
+                            value={infoUser.Language}
+                            onChange={handleAboutChange}
+                        >
+                            <option>No Answer</option>
+                            <option>Arabic </option>
+                            <option>English</option>
+                            <option>French </option>
+                            <option>Hindi </option>
+                            <option>Mandarin </option>
+                            <option>Portuguese</option>
+                            <option>Russian </option>
+                            <option>Spanish </option>
+                        </select>
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserLanguage()
+                            }}
+                        >Update Language
+                        </button>
                     </div>
                 </div>
 
@@ -202,7 +542,13 @@ const EditProfile = ({
                             Body Type
                         </label>
                         <div className="relative">
-                            <select className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <select
+                                className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="grid-state"
+                                name="BodyType"
+                                value={infoUser.BodyType}
+                                onChange={handleAboutChange}
+                            >
                                 <option>No Answer</option>
                                 <option>Average</option>
                                 <option>Slim/Petite</option>
@@ -217,6 +563,22 @@ const EditProfile = ({
                                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                             </div>
                         </div>
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserBodyType()
+                            }}
+                        >Update Body Type
+                        </button>
                     </div>
                 </div>
 
@@ -226,7 +588,12 @@ const EditProfile = ({
                             Country
                         </label>
                         <div className="relative">
-                            <select className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-button" id="grid-state">
+                            <select
+                                className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-button" id="grid-state"
+                                name="Country"
+                                value={infoUser.Country}
+                                onChange={handleAboutChange}
+                            >
                                 <option>No Answer</option>
                                 <option>Argentina</option>
                                 <option>Bolivia</option>
@@ -251,6 +618,22 @@ const EditProfile = ({
                                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                             </div>
                         </div>
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserCountry()
+                            }}
+                        >Add Country
+                        </button>
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
@@ -259,7 +642,12 @@ const EditProfile = ({
                             Gender
                         </label>
                         <div className="relative">
-                            <select className=" appearance-none w-full focus:border border border-gray-border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-button" id="grid-state">
+                            <select className=" appearance-none w-full focus:border border border-gray-border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-button"
+                                id="grid-state"
+                                name="Gender"
+                                value={infoUser.Gender}
+                                onChange={handleAboutChange}
+                            >
                                 <option>No Answer</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -270,6 +658,22 @@ const EditProfile = ({
                                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                             </div>
                         </div>
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserGender()
+                            }}
+                        >Update Gender
+                        </button>
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
@@ -278,7 +682,12 @@ const EditProfile = ({
                             Sexual Preference
                         </label>
                         <div className="relative">
-                            <select className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-button" id="grid-state">
+                            <select className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-button"
+                                id="grid-state"
+                                name="sxpreference"
+                                value={infoUser.sxpreference}
+                                onChange={handleAboutChange}
+                            >
                                 <option>No Answer</option>
                                 <option>Gay</option>
                                 <option>Straight</option>
@@ -291,28 +700,55 @@ const EditProfile = ({
                                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                             </div>
                         </div>
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserSexualPreference()
+                            }}
+                        >Update Preference
+                        </button>
                     </div>
                 </div>
 
 
                 <div className="flex flex-wrap -mx-3 mb-2">
-                    <div className="w-full md:w-1/3 px-2 mb-6 md:mb-0">
+                    <div className="w-full px-2 mb-6 ">
                         <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Hobby #1
+                            Add a New Hobby
                         </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Travel" />
-                    </div>
-                    <div className="w-full md:w-1/3 px-2 mb-6 md:mb-0">
-                        <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Hobby #2
-                        </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Shopping" />
-                    </div>
-                    <div className="w-full md:w-1/3 px-2 mb-6 md:mb-0">
-                        <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Hobby #3
-                        </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Food" />
+                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-city"
+                            type="text"
+                            placeholder="Travel"
+                            name="tags"
+                            value={infoUser.tags}
+                            onChange={handleAboutChange}
+                        />
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserTag()
+                            }}
+                        >New Hobby
+                        </button>
                     </div>
                 </div>
 
@@ -321,35 +757,109 @@ const EditProfile = ({
                         <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                             Age
                         </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" placeholder="26" min="18" />
+                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-city"
+                            type="number"
+                            placeholder="26"
+                            min="18"
+                            name="Age"
+                            value={infoUser.Age}
+                            onChange={handleAboutChange}
+                        />
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserAge()
+                            }}
+                        >Add
+                        </button>
                     </div>
                     <div className="w-full md:w-1/3 px-2 mb-6 md:mb-0">
                         <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                             Height
                         </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" placeholder="CM" min="0" />
+                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-city"
+                            type="number"
+                            placeholder="CM"
+                            min="0"
+                            name="Height"
+                            value={infoUser.Height}
+                            onChange={handleAboutChange}
+                        />
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserHeight()
+                            }}
+                        >Add
+                        </button>
                     </div>
                     <div className="w-full md:w-1/3 px-2 mb-6 md:mb-0">
                         <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                             Weight
                         </label>
-                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" placeholder="KG" min="0" />
+                        <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-city"
+                            type="number"
+                            placeholder="KG"
+                            min="0"
+                            name="Weight"
+                            value={infoUser.Weight}
+                            onChange={handleAboutChange}
+                        />
+                        {
+                            error ? (
+
+                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                            ) :
+                                success ? (
+                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                ) : null
+                        }
+                        <button
+                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                            onClick={() => {
+                                updateUserWeight()
+                            }}
+                        >Add
+                        </button>
                     </div>
                 </div>
 
                 <div className="flex flex-wrap -mx-3 mb-5">
+
+                    {
+                        infoUpdated ? (
+                            <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                        ) : null
+                    }
+
+
                     <div className="w-full px-3 mb-3 mt-3 flex flex-row items-center justify-around">
                         <button className="border-b-4 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border hover:bg-black-btnicon rounded border-black-background"
                             onClick={(e) => {
                                 e.preventDefault()
                                 handleCloseModal()
-                            }}
-                        >
-                            Cancel
-                        </button>
-                        <button className="border-b-4 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
-                            onClick={(e) => {
-                                e.preventDefault()
+                                window.location.reload()
                             }}
                         >
                             Done

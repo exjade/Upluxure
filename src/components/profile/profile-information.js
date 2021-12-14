@@ -10,6 +10,8 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import HeightIcon from '@mui/icons-material/Height';
 import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import Brightness1SharpIcon from '@mui/icons-material/Brightness1Sharp';
+import WcIcon from '@mui/icons-material/Wc';
+import TransgenderIcon from '@mui/icons-material/Transgender';
 
 const ProfileInformation = ({
     profile: {
@@ -29,7 +31,6 @@ const ProfileInformation = ({
         userId: profileUserId,
         username: profileUsername
     } }) => {
-
     return (
         <div className={`${styles.background} h-16 border-t border-gray-primary mt-12 pt-4`} >
             <div className={`${styles.post} grid grid-cols-2 justify-around ml-8 mt-3`}>
@@ -95,14 +96,14 @@ const ProfileInformation = ({
 
                 <div className={`${styles.fourrow}`} >
                     <div className={`${styles.iconandinfo}`}>
-                        <Brightness1SharpIcon sx={{ color: "#000" }} />
+                        <TransgenderIcon sx={{ color: "#000" }} />
                         <div className={`${styles.profileinfo}`}>
                             <p className="font-medium capitaliza">Gender:</p>
                             <p className="font-normal text-gray-info ">{Gender}</p>
                         </div>
                     </div>
                     <div className={`${styles.iconandinfo}`}>
-                        <HeightIcon sx={{ color: "#000" }} />
+                        <WcIcon sx={{ color: "#000" }} />
                         <div className={`${styles.profileinfo}`}>
                             <p className="font-medium capitaliza">Sexual Preference:</p>
                             <p className="font-normal text-gray-info ">{sxpreference}</p>
