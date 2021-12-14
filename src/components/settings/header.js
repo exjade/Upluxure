@@ -4,18 +4,20 @@ import styles from '../../styles/modules/my-account/header.module.css'
 import { Link } from 'react-router-dom'
 import UserContext from '../../context/user';
 
-
 /* Material UI*/
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
+/* Firebase, Firestore & Storage */
+import { firebase } from '../../lib/firebase'
+import { getFirestore, doc, onSnapshot, collection } from 'firebase/firestore'
+const firestore = getFirestore(firebase)
+
 const URL = 'https://ip.nf/me.json';
 
 const Header = () => {
-    const { user } = useContext(UserContext);
-
-    /* User Location */
+    const {user} = useContext(UserContext);  
     const [userLocation, setUserLocation] = useState({ ip: "" })
     useEffect(() => {
         fetch(URL, { method: "get" })
@@ -44,7 +46,7 @@ const Header = () => {
 
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="container flex flex-col mt-3">
-                            <p className={`text-3xl text-white-primary font-bold `} >Jon moller</p>
+                            <p className={`text-3xl text-white-primary font-bold `} >Jonh Mia</p>
 
                             <div className={`${styles.info} container flex mt-2 `} >
                                 <LocationOnIcon className={`${styles.location} text-gray-primary`} />

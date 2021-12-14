@@ -44,15 +44,17 @@ const SignUp = () => {
                     emailAddress: emailAddress.toLowerCase(),
                     following: [],
                     followers: [],
+                    tags: ['No tags, No tags, No tags'],
                     dateCreated: new Date(),
                     AboutMe: 'Please update your profile information.',
                     Country: 'In mars',
-                    BodyType: 'Not defined',
-                    Language: 'Not defined',
+                    BodyType: 'Not Asnwer',
+                    Language: 'Not Asnwer',
                     Age: 0,
                     Height: 0,
                     Weight: 0,
-                    
+                    sxpreference: 'Not Answer',
+                    Gender: 'Not Answer'
                 })
                 window.location.reload()
                 history.push(ROUTES.DASHBOARD)

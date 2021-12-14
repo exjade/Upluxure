@@ -16,11 +16,13 @@ const ProfileInformation = ({
         Age,
         Height,
         Weight,
+        Gender,
         Country,
         AboutMe,
         Language,
         BodyType,
         fullName,
+        sxpreference,
         following = [],
         followers = [],
         docId: profileDocId,
@@ -31,7 +33,7 @@ const ProfileInformation = ({
     return (
         <div className={`${styles.background} h-16 border-t border-gray-primary mt-12 pt-4`} >
             <div className={`${styles.post} grid grid-cols-2 justify-around ml-8 mt-3`}>
-                <h2 className={`${styles.fullname} `} >{fullName}</h2>
+                <h2 className={`${styles.fullname} capitalize`} >{fullName}</h2>
             </div>
             <div className={`${styles.abouttitle} grid grid-rows-2 gap-4 justify-between p-3`} >
                 <p className='flex items-center justify-center font-bold'> About me </p>
@@ -73,6 +75,7 @@ const ProfileInformation = ({
                         </div>
                     </div>
                 </div>
+
                 <div className={`${styles.thirdrow}`} >
                     <div className={`${styles.iconandinfo}`}>
                         <Brightness1SharpIcon sx={{ color: "#000" }} />
@@ -89,6 +92,24 @@ const ProfileInformation = ({
                         </div>
                     </div>
                 </div>
+
+                <div className={`${styles.fourrow}`} >
+                    <div className={`${styles.iconandinfo}`}>
+                        <Brightness1SharpIcon sx={{ color: "#000" }} />
+                        <div className={`${styles.profileinfo}`}>
+                            <p className="font-medium capitaliza">Gender:</p>
+                            <p className="font-normal text-gray-info ">{Gender}</p>
+                        </div>
+                    </div>
+                    <div className={`${styles.iconandinfo}`}>
+                        <HeightIcon sx={{ color: "#000" }} />
+                        <div className={`${styles.profileinfo}`}>
+                            <p className="font-medium capitaliza">Sexual Preference:</p>
+                            <p className="font-normal text-gray-info ">{sxpreference}</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     )

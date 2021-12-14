@@ -1,12 +1,31 @@
 import React, { useState, useEffect } from 'react'
+import * as ROUTES from '../../constants/routes'
 import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
 import useUser from '../../hooks/use-user'
-import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
 import styles from '../../styles/modules/profile/Header.module.css'
 import Tags from './tags'
-import * as ROUTES from '../../constants/routes'
+import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
 import { Link, useHistory } from 'react-router-dom'
+import EditProfile from '../settings/edit-profile'
+
+/* */
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 const Header = ({
     PhotosCount,
@@ -38,10 +57,6 @@ const Header = ({
         await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId)
     }
 
-    const handleEditProfile = () => {
-        history.push(ROUTES.SETTINGS_PROFILE)
-    }
-
     useEffect(() => {
         const isLoggedInUserFollowingProfile = async () => {
             const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
@@ -54,6 +69,10 @@ const Header = ({
 
     }, [user.username, profileUserId])
 
+    /* MODAL */
+    const [openModal, setOpenModal] = React.useState(false);
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
 
     return (
         <>
@@ -151,10 +170,10 @@ const Header = ({
                                 <button
                                     className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
                                     type='button'
-                                    onClick={handleEditProfile}
+                                    onClick={handleOpenModal}
                                     onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
-                                            handleEditProfile()
+                                            handleOpenModal()
                                         }
                                     }}
                                 >
@@ -167,8 +186,23 @@ const Header = ({
             </div>
             <div className={`${styles.parent} grid mx-auto max-w-screen-lg`} >
                 <div className={`${styles.child} flex gap-3 justify-center mt-5 items-center`} >
-                    <Tags profile={profile}/>
+                    <Tags profile={profile} />
                 </div>
+            </div>
+
+            {/* MODAL */}
+            <div>
+                <Modal
+                    open={openModal}
+                    onClose={handleCloseModal}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    className={styles.modal}
+                >
+                    <Box sx={style}>
+                        <EditProfile profile={profile} handleCloseModal={handleCloseModal}/>
+                    </Box>
+                </Modal>
             </div>
         </>
     )

@@ -20,13 +20,13 @@ const Tags = ({
     return (
         <>
             <div className='flex flex-row gap-5' >
-                <div className={styles.tag} >
+                <div className={`${styles.tag} `} >
                     <p className={styles.tagstext} >{tagsNotMine ? tags[0] : tags[0] } </p>
                 </div>
-                <div className={styles.tag} >
+                <div className={`${styles.tag} `} >
                     <p className={styles.tagstext} >{tagsNotMine ? tags[1] : tags[1]} </p>
                 </div>
-                <div className={styles.tag} >
+                <div className={`${styles.tag} `} >
                     <p className={styles.tagstext} >{tagsNotMine ? tags[2] : tags[2]} </p>
                 </div>
             </div>
