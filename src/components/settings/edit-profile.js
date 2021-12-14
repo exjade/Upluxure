@@ -1,6 +1,6 @@
 import { useEffect } from "react"
+import  '../../styles/css/profile/profile-information.css'
 /* Material UI*/
-import '../../styles/material.css'
 import { MDCTextField } from '@material/textfield';
 
 
@@ -33,7 +33,7 @@ const EditProfile = ({
 
     return (
         <>
-            <form class="container ">
+            <form class="container">
                 <div class="flex flex-wrap -mx-3 mb-3">
                     <div class="w-full px-3">
                         <p class="text-red-500 text-lg font-bold">Profile Information</p>

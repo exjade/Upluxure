@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
 import useUser from '../../hooks/use-user'
 import styles from '../../styles/modules/profile/Header.module.css'
+import '../../styles/css/profile/profile-information.css'
+
 import Tags from './tags'
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
 import { Link, useHistory } from 'react-router-dom'
