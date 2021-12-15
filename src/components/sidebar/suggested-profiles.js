@@ -14,6 +14,10 @@ const firestore = getFirestore(firebase)
 
 export default function SuggestedProfile({
     user,
+    user: {
+        username: profileUsername,
+        photoURL: profilePhotoURL
+    },
     profileDocId,
     username,
     profileId,
@@ -34,33 +38,44 @@ export default function SuggestedProfile({
             window.location.reload()
         }
     }
-
-    let userArray = []
-    useEffect(() => {
-        async function checkFollowed() {
-
-            const q = query(collection(firestore, "users"), where("username", "!=", user.username));
-
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
+    
+    // const activeBtnFollow = user.username && user.username !== profileUsername;
+    // const [photoSrc, setphotoSrc] = useState()
+    // const [notFollowingUsername , setNotFollowingUsername] = useState()
+    // let photosData = []
+    // useEffect(() => {
+    //     async function checkFollowed() {
+    //         let userData;
+    //         const q = query(collection(firestore, "users"), where("username", "!=", user.username));
+    //         const querySnapshot = await getDocs(q);
+    //         querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 // console.log(doc.id, " => ", doc.data());
-                userArray.push(q,doc.data())
-            });
-        }
-        return () => checkFollowed() 
-    }, [])
+                // photosData.push(doc.data().photoURL)
+                // userData.push(doc.data().photoURL) 
+                // I need to filter only the photoURL from doc.data() in userArray 
+                // console.log(userArray)
+            // });
+            // setNotFollowingUsername(userData)
+            // setphotoSrc(photosData)
+            // console.log(notFollowingUsername)
+    //     }   
+    //     return () => checkFollowed()
+    // }, [])
+    // console.log('userData:', notFollowingUsername)
 
     return (
         !followed ? (
             <div className="flex flex-row items-center align-items justify-between ml-3">
                 <div className="flex items-center justify-between">
-                    <img
-                        className="rounded-full w-8 flex mr-2"
-                        src={`/images/profile/${username}/${userArray}`}
-                        // src={`/images/profile/${username}/${user.photoURL}`}
-                        alt={`${username} pic`}
-                        />
+             
+                            <Avatar
+                                className="rounded-full w-8 flex mr-2"
+                                // src={`${photoSrc[3]}`}
+                                src={`/images/profile/${username}.jpg`}
+                                alt={`${username} pic`}
+                            />
+                   
                     <Link to={`/p/${username}`}>
                         <p className="font-bold text-sm text-white-primary ml-0.5 mr-2" >
                             {username}
