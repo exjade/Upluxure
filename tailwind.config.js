@@ -42,7 +42,8 @@ module.exports = {
         },
         purple: {
           like: "#6469E3",
-          button: "#7f5af0"
+          button: "#7f5af0",
+          stories: "#6469E3"
         },
         yellow: {
           like: "#FFCF00"
