@@ -26,7 +26,7 @@ export default function SuggestedProfile({
 }) {
     const [followed, setFollowed] = useState(false)
     const { photos } = usePhotos();
-
+    
     async function handleFollowUser() {
         setFollowed(true)
         // 0) create 2 functions

@@ -1,6 +1,6 @@
-import styles from '../../styles/modules/my-account/menu.module.css'
-import * as ROUTES from '../../constants/routes'
 import { Link } from 'react-router-dom'
+import * as ROUTES from '../../constants/routes'
+import styles from '../../styles/modules/my-account/menu.module.css'
 
 /* Material ui */
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -17,7 +17,7 @@ const Menu = () => {
                 <p className={`${styles.title} text-white-normal text-3xl font-bold`} >Settings</p>
                 <div className={`${styles.container} container flex justify-center items-center flex-col`} >
                     <div className={styles.hola_grid}>
-                        <div className={`${styles.spaceb} flex flex-row mb-5`} >
+                        <div className={`${styles.spaceb} flex flex-row mb-2`} >
                             <div className={`${styles.circle}`} >
                                 <NotificationsIcon />
                             </div>
@@ -25,8 +25,8 @@ const Menu = () => {
                             <ArrowForwardIosIcon className={`${styles.arrow}`} />
                         </div>
                         <Divider />
-                        <Link to={ROUTES.SETTINGS_PROFILE} >
-                            <div className={`${styles.spaceb} flex flex-row mt-8 mb-5`} >
+                        <Link  >
+                            <div className={`${styles.spaceb} flex flex-row mt-8 mb-2`} >
                                 <div className={`${styles.circle}`} >
                                     <EditIcon />
                                 </div>
@@ -35,7 +35,7 @@ const Menu = () => {
                             </div>
                         </Link>
                         <Divider />
-                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-5`} >
+                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-2`} >
                             <div className={`${styles.circle}`} >
                                 <HelpIcon />
                             </div>
@@ -43,7 +43,7 @@ const Menu = () => {
                             <ArrowForwardIosIcon className={`${styles.arrow}`} />
                         </div>
                         <Divider />
-                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-5`} >
+                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-2`} >
                             <div className={`${styles.circle}`} >
                                 <InfoIcon />
                             </div>

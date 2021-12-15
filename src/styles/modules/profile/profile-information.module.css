@@ -95,3 +95,11 @@
     width: 100%;
     justify-content: space-evenly;
 }
+
+.container_main_edit_profile {
+    width: 80%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
