@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, UseContext } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import { updateLoggedInUserFollowing, updateFollowedUserFollowers } from '../../services/firebase'
 import usePhotos from '../../hooks/use-photos'
 
+/* Firebase, Firestore & Storage */
+import { firebase } from '../../lib/firebase'
+import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+const storage = getStorage(firebase)
+const firestore = getFirestore(firebase)
+
 export default function SuggestedProfile({
+    user,
     profileDocId,
     username,
     profileId,
@@ -15,10 +23,8 @@ export default function SuggestedProfile({
     const [followed, setFollowed] = useState(false)
     const { photos } = usePhotos();
 
-
     async function handleFollowUser() {
         setFollowed(true)
-
         // 0) create 2 functions
         // 1) update following array if the actual user
         await updateLoggedInUserFollowing(LoggedInUserDocId, profileId, false)
@@ -27,18 +33,34 @@ export default function SuggestedProfile({
         if (photos) {
             window.location.reload()
         }
-           
     }
+
+    let userArray = []
+    useEffect(() => {
+        async function checkFollowed() {
+
+            const q = query(collection(firestore, "users"), where("username", "!=", user.username));
+
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                userArray.push(q,doc.data())
+            });
+        }
+        return () => checkFollowed() 
+    }, [])
 
     return (
         !followed ? (
             <div className="flex flex-row items-center align-items justify-between ml-3">
                 <div className="flex items-center justify-between">
-                    <Avatar
+                    <img
                         className="rounded-full w-8 flex mr-2"
-                        src={`/images/profile/${username}.jpg`}
-                        alt="suggested users"
-                    />
+                        src={`/images/profile/${username}/${userArray}`}
+                        // src={`/images/profile/${username}/${user.photoURL}`}
+                        alt={`${username} pic`}
+                        />
                     <Link to={`/p/${username}`}>
                         <p className="font-bold text-sm text-white-primary ml-0.5 mr-2" >
                             {username}

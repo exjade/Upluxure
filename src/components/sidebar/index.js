@@ -7,16 +7,16 @@ import UserContext from '../../context/user'
 
 const Sidebar = () => {
 
-    const { user: { docId, fullName, username, userId, following } } = useUser()
+    const { user, user: { docId, fullName, username, userId, following } } = useUser()
 
-    const user = useContext(UserContext)
+        // const user = useContext(UserContext)
     // console.log('docId', docId)
 
     // console.log('fullName, username, userId', fullName, username, userId)
     return (
         <div className="sidebar border-l-2 border-black-border">
-            <User username={username} fullName={fullName} />
-            <Suggestions userId={userId} following={following} LoggedInUserDocId={docId} />
+            <User username={username} fullName={fullName} user={user}/>
+            <Suggestions userId={userId} following={following} LoggedInUserDocId={docId} user={user} />
         </div>
     )
 }
