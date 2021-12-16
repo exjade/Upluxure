@@ -1,0 +1,73 @@
+/* Member gold */
+.gold {
+    margin-top: 2.5rem;
+    background: rgba(47, 47, 47, 0.144);
+    width: 30%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: -1px 1px 48px 0px rgba(0,0,0,0.67);
+    -webkit-box-shadow: -1px 1px 48px 0px rgba(0,0,0,0.67);
+    -moz-box-shadow: -1px 1px 48px 0px rgba(0,0,0,0.67);
+}
+
+/* MEMBERSHIPS */
+.divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(246, 246, 246, 0.144);
+    margin-bottom: 2rem;
+}
+.containerbenefits {
+    width: 80%;
+    font-family: 'Red Hat Display', sans-serif;
+}
+.benefits {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.2rem;
+}
+
+/* Platinum */
+.platinum {
+    margin-top: 2.5rem;
+    background: rgba(47, 47, 47, 0.144);
+    width: 30%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.platinotitle {
+    color: #E5E4E2;
+    color: linear-gradient(to bottom, #E5E4E2 0%, #D6D5D3 100%);
+    color: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #E5E4E2), color-stop(100%, #D6D5D3));
+}
+.platinotitle:hover {
+  color: #BEBEBE;
+}
+/* Diamond */
+.diamond {
+    background: rgba(47, 47, 47, 0.144);
+    width: 30%;
+    height: 60%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: -1px 1px 48px 0px rgba(61, 61, 61, 0.67);
+    -webkit-box-shadow: -1px 1px 48px 0px rgba(80, 80, 80, 0.67);
+    -moz-box-shadow: -1px 1px 48px 0px rgba(70, 70, 70, 0.67);
+
+}
+.diamondtitle {
+    color: #e5eef0;
+color: linear-gradient(to bottom, #B9F2FF 0%, #AAE3F0 100%);
+color: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B9F2FF), color-stop(100%, #AAE3F0));
+color: -webkit-linear-gradient(top, #B9F2FF 0%, #AAE3F0 100%);
+color: -moz-linear-gradient(top, #B9F2FF 0%, #AAE3F0 100%);
+color: -o-linear-gradient(top, #B9F2FF 0%, #AAE3F0 100%);
+color: -ms-linear-gradient(top, #B9F2FF 0%, #AAE3F0 100%);
+}
+.diamondtitle:hover {
+  color: #B9F2FF;
+}

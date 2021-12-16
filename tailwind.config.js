@@ -46,7 +46,8 @@ module.exports = {
           stories: "#6469E3"
         },
         yellow: {
-          like: "#FFCF00"
+          like: "#FFCF00",
+          gold: "#C8A634"
         },
         blue: {
           primary: "#1B74BA"

@@ -1,10 +1,14 @@
-import React from 'react'
+import Header from './header'
+import MembershipCards from './memberships'
+import Background from './background'
 
 const MemberShip = () => {
     return (
-        <div>
-            Membresias
-        </div>
+        <>
+            <Header />
+            <Background />
+            <MembershipCards />
+        </>
     )
 }
 
