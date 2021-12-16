@@ -114,14 +114,12 @@ const SearchBarDown = () => {
             }
         );
     }
-<<<<<<< HEAD
-=======
+
 
     const handleSubmit = async (event) => { 
         event.preventDefault()
     }
 
->>>>>>> settings
     return (
         <>
             {
