@@ -1,9 +1,10 @@
 .css-79ws1d-MuiModal-root {
     position: absolute;
     z-index: 1300;
-    bottom: -84rem;
+    /* bottom: -84rem;
     top: 30rem;
-    left: 60rem;
+    left: 60rem; */
+
     /* display: grid; */
     /* align-items: center; */
     /* align-content: center; */

@@ -69,7 +69,7 @@ const SearchBarDown = () => {
     const newDoc = async () => {
         try {
             const docRef = await addDoc(collection(firestore, "photos"), {
-                caption: 'Prueba de captura',
+                caption: '',
                 comments: [],
                 dateCreated: Date.now(),
                 imageSrc: downloadUrl,
@@ -84,10 +84,6 @@ const SearchBarDown = () => {
         } catch (error) {
             console.log("Failed: processing your file :(", error.message);
         }
-
-        setTimeout(() => {
-            history.push(ROUTES.LOGIN)
-        }, 3500);
     }
     /* END UPLOAD FILE*/
     // const newDoc =  async (event)  => {
@@ -118,6 +114,14 @@ const SearchBarDown = () => {
             }
         );
     }
+<<<<<<< HEAD
+=======
+
+    const handleSubmit = async (event) => { 
+        event.preventDefault()
+    }
+
+>>>>>>> settings
     return (
         <>
             {
@@ -179,11 +183,7 @@ const SearchBarDown = () => {
                                     className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
                                 >
                                     <form
-                                        onSubmit={() => {
-                                            setTimeout(() => {
-                                                newDoc()
-                                            }, 6500);
-                                        }}
+                                        onSubmit={handleSubmit}
                                     >
                                         <label htmlFor="icon-button-file" className="btn-6">
                                             <Input
@@ -217,7 +217,7 @@ const SearchBarDown = () => {
                                         onClick={() => {
                                             setTimeout(() => {
                                                 newDoc()
-                                            }, 6500);
+                                            }, 3500);
                                         }}
                                         className="btn__upload"
                                     >
