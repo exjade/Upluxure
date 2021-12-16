@@ -70,3 +70,8 @@
     align-content: center;
     align-items: center;
 }
+.memberships {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}

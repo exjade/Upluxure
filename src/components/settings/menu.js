@@ -21,8 +21,10 @@ const Menu = () => {
                             <div className={`${styles.circle}`} >
                                 <StarsIcon />
                             </div>
-                            <p className={`${styles.menu} text-white-ctitle font-normal hover:text-purple-stories`} >Memberships</p>
-                            <ArrowForwardIosIcon className={`${styles.arrow}`} />
+                            <Link className={styles.memberships} to={ROUTES.MEMBERSHIPS}>
+                                <p className={`${styles.menu} text-white-ctitle font-normal hover:text-purple-stories`} >Memberships</p>
+                                <ArrowForwardIosIcon className={`${styles.arrow}`} />
+                            </Link>
                         </div>
                         <Divider />
                         <Link  >
