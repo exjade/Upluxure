@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import UserContext from '../context/user';
 // import FirebaseContext from '../context/firebase'; // sign and signout functions
 import * as ROUTES from '../constants/routes';
 import '../styles/css/searchbardown.css'
-/* Mateial */
+import UserContext from '../context/user';
+import { v4 as uuidv4 } from 'uuid';
+/* Material UI*/
 import Box from '@mui/material/Box';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
@@ -16,10 +17,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
 import IconButton from '@mui/material/IconButton';
-
-import { v4 as uuidv4 } from 'uuid';
-/* Modal */
-/* Material UI*/
 import Input from '@mui/material/Input';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
@@ -121,8 +118,6 @@ const SearchBarDown = () => {
             }
         );
     }
-
-
     return (
         <>
             {
