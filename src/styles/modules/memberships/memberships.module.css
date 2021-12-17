@@ -10,6 +10,15 @@
     -webkit-box-shadow: -1px 1px 48px 0px rgba(0,0,0,0.67);
     -moz-box-shadow: -1px 1px 48px 0px rgba(0,0,0,0.67);
 }
+.gold_container {
+    display: flex;
+    justify-content: center;
+}
+.gold_img {
+    width: 150px;
+    height: 150px;
+    margin-top: 2rem;
+}
 
 /* MEMBERSHIPS */
 .divider {

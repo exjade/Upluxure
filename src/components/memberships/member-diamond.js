@@ -9,6 +9,14 @@ const MemberDiamond = () => {
         <div className={`${styles.diamond} text-white-primary`} >
             <div className='flex flex-col'>
 
+            <div className={styles.gold_container} >
+                    <img
+                        src="/images/members/diamond/diamondmember.png"
+                        alt="diamond member" 
+                        className={`${styles.gold_img}`}
+                        />
+                </div>
+
                 <div className={`${styles.title} flex ml-5 mt-5 uppercase font-bold text-2xl`} >
                     <p className={styles.diamondtitle} >Diamond</p>
                 </div>
@@ -23,7 +31,7 @@ const MemberDiamond = () => {
                 </div>
 
                 <div className='mt-5 flex justify-center items-center'>
-                    <button class="bg-purple-button hover:bg-white-normal text-white-normal animate-bounce hover:text-purple-button  font-bold py-2 px-4 border-b-4 rounded w-10/12">
+                    <button class="bg-blue-emblema hover:bg-white-normal text-white-normal animate-bounce hover:text-blue-emblema font-bold py-2 px-4 border-b-4 rounded w-10/12">
                         Buy Diamond
                     </button>
                 </div>

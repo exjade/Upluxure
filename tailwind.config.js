@@ -47,10 +47,13 @@ module.exports = {
         },
         yellow: {
           like: "#FFCF00",
-          gold: "#C8A634"
+          gold: "#C8A634",
+          emblema: "#FE8200"
         },
         blue: {
-          primary: "#1B74BA"
+          primary: "#1B74BA",
+          emblema: "#003BB6",
+          platino: "#677478"
         },
         pink: {
           primary: "#EC4B89"

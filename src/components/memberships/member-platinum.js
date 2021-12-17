@@ -9,6 +9,14 @@ const MemberPlatinum = () => {
         <div className={`${styles.platinum} text-white-primary`} >
             <div className='flex flex-col'>
 
+                <div className={styles.gold_container} >
+                    <img
+                        src="/images/members/platinum/platinummember.png"
+                        alt="platinum member"
+                        className={`${styles.gold_img}`}
+                    />
+                </div>
+
                 <div className='flex ml-5 mt-5 uppercase font-bold text-2xl'>
                     <p className={`${styles.platinotitle}`} >Platinum</p>
                 </div>
@@ -23,14 +31,14 @@ const MemberPlatinum = () => {
                 </div>
 
                 <div className='mt-5 flex justify-center items-center'>
-                    <button class="bg-purple-button hover:bg-white-normal text-white-normal hover:text-purple-button  font-bold py-2 px-4 border-b-4 rounded w-10/12">
+                    <button class="bg-blue-platino hover:bg-white-normal text-white-normal hover:text-blue-platino   font-bold py-2 px-4 border-b-4 rounded w-10/12">
                         Buy Platinum
                     </button>
                 </div>
 
                 <div className='flex mt-5 justify-center items-center'>
                     <span className={`${styles.containerbenefits} grid`} >
-                    <Tooltip
+                        <Tooltip
                             title="Page currency"
                             enterDelay={400}
                             leaveDelay={100}
