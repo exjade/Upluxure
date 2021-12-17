@@ -1,7 +1,7 @@
 .background {
     font-family: 'Red Hat Display', sans-serif;
     border-radius: 10px;
-    background: linear-gradient(196deg, rgb(252 129 0 / 0%) 28%, rgb(103 116 120 / 49%) 51%, rgb(0 125 214 / 0%) 94%);
+    background: linear-gradient(196deg, rgb(252 129 0 / 0%) 28%, rgb(35 35 35 / 49%) 51%, rgb(255 255 255 / 1%) 94%);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;

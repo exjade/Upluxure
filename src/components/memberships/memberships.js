@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import MemberGold from './member-gold'
 import MemberPlatinum from './member-platinum'
 import MemberDiamond from './member-diamond'
+import '../../styles/modules/memberships/memberships.css'
 
 /* MATERIAL UI*/
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
+import StarsIcon from '@mui/icons-material/Stars';
 
 const MembershipCards = () => {
 
@@ -24,8 +26,9 @@ const MembershipCards = () => {
 
     /* Component Switch*/
     const [openTabs, setOpenTabs] = useState({
-        showGold: true,
-        showDiamond: false
+        showGold: false,
+        showDiamond: true,
+        showPlatinum: false
     });
 
     const showMemberGold = () => {
@@ -39,6 +42,11 @@ const MembershipCards = () => {
             <MemberDiamond />
         }
     }
+    const showMemberPlatinum = () => {
+        if (openTabs.showPlatinum) {
+            <MemberPlatinum />
+        }
+    }
     /* Switch Icons */
     const [value, setValue] = React.useState(0);
 
@@ -46,29 +54,57 @@ const MembershipCards = () => {
         setValue(newValue);
     };
 
-
     return (
-        <div className="upluxure_membresias_breakpoints flex justify-evenly mt-8 mb-10 ">
+        <>
             {
                 isDesktop ? (
                     <>
-                        <MemberGold />
-                        <MemberDiamond />
-                        <MemberPlatinum />
+                        <div className="upluxure_membresias_breakpoints flex justify-evenly mt-8 mb-10 ">
+                            <MemberGold />
+                            <MemberDiamond />
+                            <MemberPlatinum />
+                        </div>
                     </>
                 ) : (
                     <>
-                        <div className='flex justify-center items-center'>
+                        <div className="flex justify-center items-center mt-5">
                             {/* TABS */}
-                            <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="IconsTab_color">
-                                <Tab icon={<PhotoSizeSelectActualIcon sx={openTabs.showGold ? { color: "#fff" } : { color: '#696969' }} />} aria-label="photo" onClick={() => showMemberGold(setOpenTabs({ showDiamond: false, showGold: true }))} />
-                                <Tab icon={<AccountBoxIcon sx={openTabs.showDiamond ? { color: "#fff" } : { color: '#696969' }} />} aria-label="information" onClick={() => showMemberDiamond(setOpenTabs({ showDiamond: true, showGold: false }))} />
+                            <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" >
+                                <Tab
+                                    icon={<StarsIcon
+                                        sx={openTabs.showGold ? { color: "#FE8200" } : { color: '#696969' }} />} aria-label="photo"
+                                    onClick={() => showMemberGold(setOpenTabs({ showDiamond: false, showGold: true, showPlatinum: false }))}
+                                />
+                                <Tab
+                                    icon={<StarsIcon
+                                        sx={openTabs.showDiamond ? { color: "#003BB6" } : { color: '#696969' }} />} aria-label="information"
+                                    onClick={() => showMemberDiamond(setOpenTabs({ showDiamond: true, showGold: false, showPlatinum: false }))}
+                                />
+                                <Tab
+                                    icon={<StarsIcon
+                                        sx={openTabs.showPlatinum ? { color: "#435157" } : { color: '#696969' }} />} aria-label="information"
+                                    onClick={() => showMemberPlatinum(setOpenTabs({ showPlatinum: true, showDiamond: false, showGold: false }))}
+                                />
                             </Tabs>
+                        </div>
+                        <div className="upluxure_membresias_breakpoints flex justify-center mb-10 overflow-hidden">
+                            {
+                                openTabs.showGold && !openTabs.showDiamond && !openTabs.showPlatinum ?
+                                    (<MemberGold />)
+                                    :
+                                    openTabs.showDiamond ?
+                                        (<MemberDiamond />)
+                                        :
+                                        openTabs.showPlatinum ?
+                                            (<MemberPlatinum />)
+                                            :
+                                            null
+                            }
                         </div>
                     </>
                 )
             }
-        </div>
+        </>
     )
 }
 
