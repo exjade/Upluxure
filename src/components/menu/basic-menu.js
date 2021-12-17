@@ -66,14 +66,12 @@ const BasicMenu = () => {
             onClick={handleClose}
             className="menu-basic-content"
           >
-            <Divider sx={dividerstyle} />
             <Link to={`/p/${user.displayName}`}>
               <MenuItem sx={fontstyle} className="basicmenu_profile">
                 <PersonIcon />
                 Profile
               </MenuItem>
             </Link>
-            <Divider sx={dividerstyle} />
             <Link to={ROUTES.MY_ACCOUNT}>
               <MenuItem sx={fontstyle}>
                 <Settings />
@@ -95,7 +93,6 @@ const BasicMenu = () => {
               <Logout />
               Logout
             </MenuItem>
-            <Divider sx={dividerstyle} />
           </div>
         </div>
       )

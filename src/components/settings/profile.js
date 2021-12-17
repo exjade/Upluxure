@@ -16,7 +16,7 @@ const firestore = getFirestore(firebase)
 
 const URL = 'https://ip.nf/me.json';
 
-const Header = () => {
+const Profile = () => {
     const {
         user,
         user: {
@@ -111,4 +111,4 @@ const Header = () => {
 }
 
 
-export default Header
+export default Profile

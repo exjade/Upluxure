@@ -45,7 +45,7 @@ const Menu = () => {
                             <ArrowForwardIosIcon className={`${styles.arrow}`} />
                         </div>
                         <Divider />
-                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-1`} >
+                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-10`} >
                             <div className={`${styles.circle}`} >
                                 <ExitToAppIcon />
                             </div>
