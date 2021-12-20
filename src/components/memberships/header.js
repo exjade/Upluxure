@@ -5,15 +5,6 @@ import UserContext from '../../context/user';
 import * as ROUTES from '../../constants/routes';
 import BasicMenu from '../menu/basic-menu'
 
-/* Material UI*/
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import IconButton from '@mui/material/IconButton';
-/* Firebase, Firestore & Storage */
-import { firebase } from '../../lib/firebase'
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc, updateDoc } from 'firebase/firestore'
-const firestore = getFirestore(firebase)
-const storage = getStorage(firebase)
 
 const Header = () => {
 

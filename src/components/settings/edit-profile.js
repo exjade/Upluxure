@@ -619,6 +619,7 @@ const EditProfile = ({
                                     onChange={handleAboutChange}
                                 >
                                     <option>No Answer</option>
+                                    <option>México</option>
                                     <option>Argentina</option>
                                     <option>Bolivia</option>
                                     <option>Brasil</option>
@@ -634,7 +635,7 @@ const EditProfile = ({
                                     <option>Perú</option>
                                     <option>Suriname</option>
                                     <option>Uruguay</option>
-                                    <option>United Stated</option>
+                                    <option>United States</option>
                                     <option>Venezuela</option>
                                     <option>Other</option>
                                 </select>

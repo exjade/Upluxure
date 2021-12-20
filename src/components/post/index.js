@@ -11,7 +11,6 @@ import ContentLoader from 'react-content-loader'
 const Post = ({ content }) => {
     const commentInput = useRef(null)
     const handleFocus = () => commentInput.current.focus();
-
     //Components
     // => Header, Image, actions (like, comment icons), footer, comments
     useEffect(() => {

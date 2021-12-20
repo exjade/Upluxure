@@ -7,7 +7,7 @@ import usePhotos from '../../hooks/use-photos'
 
 /* Firebase, Firestore & Storage */
 import { firebase } from '../../lib/firebase'
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore'
+import { getFirestore, collection, query, where, getDocs, getDoc, doc } from 'firebase/firestore'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 const storage = getStorage(firebase)
 const firestore = getFirestore(firebase)
@@ -16,7 +16,7 @@ export default function SuggestedProfile({
     user,
     user: {
         username: profileUsername,
-        photoURL: profilePhotoURL
+        photoURL: photoURL
     },
     profileDocId,
     username,
@@ -26,7 +26,7 @@ export default function SuggestedProfile({
 }) {
     const [followed, setFollowed] = useState(false)
     const { photos } = usePhotos();
-    
+
     async function handleFollowUser() {
         setFollowed(true)
         // 0) create 2 functions
@@ -38,44 +38,41 @@ export default function SuggestedProfile({
             window.location.reload()
         }
     }
-    
-    // const activeBtnFollow = user.username && user.username !== profileUsername;
+
+    /* INTENTO DE PERFIL DE OTROS USUARIOS */
+    const activeBtnFollow = userId && userId !== profileDocId;
     // const [photoSrc, setphotoSrc] = useState()
-    // const [notFollowingUsername , setNotFollowingUsername] = useState()
-    // let photosData = []
-    // useEffect(() => {
-    //     async function checkFollowed() {
-    //         let userData;
-    //         const q = query(collection(firestore, "users"), where("username", "!=", user.username));
-    //         const querySnapshot = await getDocs(q);
-    //         querySnapshot.forEach((doc) => {
+    const [usersData, setUsersData] = useState()
+
+    let userData = [];
+
+    useEffect(() => {
+
+        async function checkFollowed() {
+            const q = query(collection(firestore, "users"), where("username", "!=", user.username));
+
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 // console.log(doc.id, " => ", doc.data());
-                // photosData.push(doc.data().photoURL)
-                // userData.push(doc.data().photoURL) 
-                // I need to filter only the photoURL from doc.data() in userArray 
-                // console.log(userArray)
-            // });
-            // setNotFollowingUsername(userData)
-            // setphotoSrc(photosData)
-            // console.log(notFollowingUsername)
-    //     }   
-    //     return () => checkFollowed()
-    // }, [])
-    // console.log('userData:', notFollowingUsername)
+                userData.push(doc.data().photoURL)
+            });
+            setUsersData(userData)
+        }
+        checkFollowed()
+    }, [])
+    console.log('photo', '=>', usersData)
 
     return (
         !followed ? (
             <div className="flex flex-row items-center align-items justify-between ml-3">
                 <div className="flex items-center justify-between">
-             
-                            <Avatar
-                                className="rounded-full w-8 flex mr-2"
-                                // src={`${photoSrc[3]}`}
-                                src={`/images/profile/${username}.jpg`}
-                                alt={`${username} pic`}
-                            />
-                   
+
+                    <Avatar
+                        className="rounded-full w-8 flex mr-2"
+                        src={`/images/avatars/${username}.jpg`}
+                        alt={`${username} pic`}
+                    />
                     <Link to={`/p/${username}`}>
                         <p className="font-bold text-sm text-white-primary ml-0.5 mr-2" >
                             {username}

@@ -31,7 +31,7 @@ const MemberDiamond = () => {
                 </div>
 
                 <div className='mt-5 flex justify-center items-center'>
-                    <button class="bg-blue-emblema hover:bg-white-normal text-white-normal animate-bounce hover:text-blue-emblema font-bold py-2 px-4 border-b-4 rounded w-10/12">
+                    <button className="bg-blue-emblema hover:bg-white-normal text-white-normal animate-bounce hover:text-blue-emblema font-bold py-2 px-4 border-b-4 rounded w-10/12">
                         Buy Diamond
                     </button>
                 </div>

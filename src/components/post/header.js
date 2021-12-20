@@ -2,13 +2,20 @@ import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import '../../styles/css/post/header.css'
+import useUser from '../../hooks/use-user'
 import FirebaseContext from '../../context/firebase'
 import UserContext from '../../context/user'
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const Header = ({ username, docId, totalLikes, likedPhoto }) => {
+/* Firebase, Firestore & Storage */
+import { firebase } from '../../lib/firebase'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { getFirestore, collection, addDoc, updateDoc, getDoc, doc, query, where, getDocs  } from 'firebase/firestore'
+const firestore = getFirestore(firebase)
+const storage = getStorage(firebase)
 
+const Header = ({ username, docId, totalLikes, likedPhoto }) => {
     const {
         user, user: { uid: userId = '' }
     } = useContext(UserContext)
@@ -27,10 +34,32 @@ const Header = ({ username, docId, totalLikes, likedPhoto }) => {
             .update({
                 likes: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId),
             })
-
         setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
+    }
+
+    const {
+        user: {
+            fullName,
+            photoURL,
+            token,
+            Country,
+
+        } } = useUser()
+
+    // I need to get photoURL from username !== user.username
+    const getPhotoURL = async () => {
+
+        const q = query(collection(firestore, "users"), where("photoURL", "!=", photoURL));
+
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+        });
+
 
     }
+
 
     return (
         <>
@@ -38,8 +67,8 @@ const Header = ({ username, docId, totalLikes, likedPhoto }) => {
                 <div className="flex items-center p-4">
                     <Link to={`/p/${username}`} className="flex items-center">
                         <img
-                            className="rounded-full h-10 w-10 mr-3"
-                            src={`/images/avatars/${username}.jpg`} // IMPORTANTE!!! CAMBIAR cat POR ${username}
+                            className="rounded-full h-12 w-16 mr-3 object-cover"
+                            src={`/images/avatars/${username}.jpg`}//  IMPORTANTE!!! CAMBIAR cat POR ${username}
                             alt={`${username} profile`}
                         />
                     </Link>
@@ -67,7 +96,7 @@ const Header = ({ username, docId, totalLikes, likedPhoto }) => {
                             )
                         } */}
                         <IconButton className="header_more_info w-4 h-4">
-                            <MoreVertIcon className="header_more_info text-white-primary w-4 h-4"/>
+                            <MoreVertIcon className="header_more_info text-white-primary w-4 h-4" />
                         </IconButton>
                     </div>
                 </div>

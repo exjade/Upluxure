@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
+import useUser from '../../hooks/use-user';
 import Avatar from '@mui/material/Avatar';
 import {Link} from 'react-router-dom'
 
@@ -9,7 +10,7 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
 
     const { firebase, FieldValue } = useContext(FirebaseContext);
     const { user, user: { displayName } } = useContext(UserContext);
-
+    const { user: {photoURL} } = useUser();
     const [comment, setComment] = useState('');
 
 
@@ -38,7 +39,8 @@ const AddComment = ({ docId, comments, setComments, commentInput }) => {
                 <Link to={`/p/${user.displayName}`}>
                     <Avatar
                         className="rounded-full h-10 w-10 mt-4 ml-2"
-                        src={`/images/avatars/${user.displayName}.jpg`}
+                        src={`${photoURL}`}
+                        // src={`/images/avatars/${user.displayName}.jpg`}
                     />
                 </Link>
                 <input
