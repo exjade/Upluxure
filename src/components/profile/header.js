@@ -92,7 +92,18 @@ const Header = ({
                                 ) : (
                                     <>
                                         <img
-                                            className={`${styles.img} rounded-full h-28 w-28 flex`}
+                                            className={`${styles.img} rounded-full h-28 w-28 flex 
+                                            ${user.rol === 'diamond' ?
+                                                    'border-4 border-badges-diamond'
+                                                    :
+                                                    user.rol === 'platinum' ? 'border-4 border-badges-platinum'
+                                                        :
+                                                        user.rol === 'gold' ? 'border-4 border-badges-gold'
+                                                            :
+                                                            user.rol === 'admin' ? 'border-4 border-badges-admin'
+                                                                :
+                                                                user.rol === 'model' ? 'border-4 border-badges-model'
+                                                                    : null}`}
                                             alt={`${user.username} profile picture`}
                                             src={`${photoURL}`}
                                         />
@@ -111,6 +122,7 @@ const Header = ({
                                                                     : user.rol === 'admin' ?
                                                                         <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fadmin.png?alt=media&token=4fcf7675-f9b8-4800-814a-a61b75d9ae42" />
                                                                         : null
+
                                             }
                                         </div>
                                     </>

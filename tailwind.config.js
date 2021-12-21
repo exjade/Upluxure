@@ -60,6 +60,13 @@ module.exports = {
         },
         green: { 
           button: "#00473e"
+        },
+        badges: {
+          diamond: "#3FA4B4",
+          platinum: "#677478",
+          gold: "#FE8200",
+          admin: "#8D1717",
+          model: "#6469E3",
         }
       }
     },
