@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import '../styles/css/searchbardown.css'
 import UserContext from '../context/user';
+import useUser from '../hooks/use-user';
 import { v4 as uuidv4 } from 'uuid';
 /* Material UI*/
 import Box from '@mui/material/Box';
@@ -31,10 +32,11 @@ const SearchBarDown = () => {
 
     /* Modal */
     let history = useHistory();
+    const { user: { photoURL } } = useUser();
 
     const {
         user
-    } = useContext(UserContext);
+    } = useContext(UserContext)
     const [open, setOpen] = useState(false);
 
     /* Speel Dial*/
@@ -116,119 +118,139 @@ const SearchBarDown = () => {
     }
 
 
-    const handleSubmit = async (event) => { 
+    const handleSubmit = async (event) => {
         event.preventDefault()
     }
 
-    return (
-        <>
-            {
-                user && !isDesktop ?
-                    (
-                        <>
-                            <div className="homesearch__card">
-                                <div className="homesearchbar__dashboard">
-                                    <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                                        <ButtonBase>
-                                            <HomeIcon />
-                                        </ButtonBase>
-                                    </Link>
-                                </div>
-                                <div className="homesearchbar__search">
-                                    <ButtonBase >
-                                        <SearchIcon />
-                                    </ButtonBase>
-                                </div>
-                                <div className="homesearchbar__add"  >
-                                    <AddIcon className="ota-x" />
-                                    <div className="bolinhas">
-                                        <IconButton className="ota-bolinha" onClick={handleOpen}>
-                                            <PhotoCameraIcon sx={{ color: 'black' }} />
-                                        </IconButton>
-                                        <IconButton className="ota-bolinha" onClick={handleOpen}>
-                                            <VideocamIcon sx={{ color: 'black' }} />
-                                        </IconButton>
-                                        <IconButton className="ota-bolinha" onClick={handleOpen}>
-                                            <InsertPhotoIcon sx={{ color: 'black' }} />
-                                        </IconButton>
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => { 
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
+    }, []);
+
+    if (isLoading) {
+        return <></>
+    } else {
+        return (
+            <>
+                {
+                    user && !isDesktop ?
+                        (
+                            <>
+                                <div className="homesearch__card">
+                                    <div className="homesearchbar__dashboard">
+                                        <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                            <ButtonBase>
+                                                <HomeIcon />
+                                            </ButtonBase>
+                                        </Link>
                                     </div>
-                                </div>
-                                <div className="homesearchbar__notifications">
-                                    <ButtonBase>
-                                        <NotificationsIcon
-                                        />
-                                    </ButtonBase>
-                                </div>
-                                <div className="homesearchbar__search">
-                                    <Link to={`/p/${user.displayName}`}>
-                                        <Avatar
-                                            src={`/images/avatars/${user.displayName}.jpg`}
-                                            alt={`${user.displayName} profile picture`}
-                                        />
-                                    </Link>
+                                    <div className="homesearchbar__search">
+                                        <ButtonBase >
+                                            <SearchIcon />
+                                        </ButtonBase>
+                                    </div>
+                                    <div className="homesearchbar__add"  >
+                                        <AddIcon className="ota-x" />
+                                        <div className="bolinhas">
+                                            <IconButton className="ota-bolinha" onClick={handleOpen}>
+                                                <PhotoCameraIcon sx={{ color: 'black' }} />
+                                            </IconButton>
+                                            <IconButton className="ota-bolinha" onClick={handleOpen}>
+                                                <VideocamIcon sx={{ color: 'black' }} />
+                                            </IconButton>
+                                            <IconButton className="ota-bolinha" onClick={handleOpen}>
+                                                <InsertPhotoIcon sx={{ color: 'black' }} />
+                                            </IconButton>
+                                        </div>
+                                    </div>
+                                    <div className="homesearchbar__notifications">
+                                        <ButtonBase>
+                                            <NotificationsIcon
+                                            />
+                                        </ButtonBase>
+                                    </div>
+                                    <div className="homesearchbar__search">
+                                        <Link to={`/p/${user.displayName}`}>
+                                            {
+                                                !photoURL ? (
+                                                    <Avatar
+                                                        alt={`${user.displayName} profile `}
+                                                    />
+                                                ) : (
+                                                    <Avatar
+                                                        src={photoURL}
+                                                        alt={`${user.displayName} profile `}
+                                                    />
+                                                )
+                                            }
+                                        </Link>
+                                    </div>
+
                                 </div>
 
-                            </div>
-
-                            {/* Modal */}
-                            <Modal
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="modal-modal-title"
-                                aria-describedby="modal-modal-description"
-                            >
-                                <Box
-                                    className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
+                                {/* Modal */}
+                                <Modal
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
                                 >
-                                    <form
-                                        onSubmit={handleSubmit}
+                                    <Box
+                                        className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
                                     >
-                                        <label htmlFor="icon-button-file" className="btn-6">
-                                            <Input
-                                                accept="image/*"
-                                                id="icon-button-file"
-                                                type="file"
-                                                onChange={fileHandler}
-                                            />
-                                            <span>
-                                                Select Image
-                                            </span>
-                                        </label>
-                                        <label htmlFor="fiel-area-text" className="textfield-6">
-                                            <TextField
-                                                id="fiel-area-text"
-                                                label="Write a description for your post"
-                                                multiline
-                                                fullWidth
-                                                rows={4}
-                                                maxLength="40"
-                                                required
-                                                name="caption"
-                                                value={caption.caption}
-                                                onChange={handleCaptionChange}
-                                            />
-                                        </label>
-                                    </form>
-                                    <button
-                                        variant="contained"
-                                        component="span"
-                                        onClick={() => {
-                                            setTimeout(() => {
-                                                newDoc()
-                                            }, 3500);
-                                        }}
-                                        className="btn__upload"
-                                    >
-                                        Upload Image
-                                    </button>
-                                </Box>
-                            </Modal>
-                        </>
-                    )
-                    : null
-            }
-        </>
-    )
+                                        <form
+                                            onSubmit={handleSubmit}
+                                        >
+                                            <label htmlFor="icon-button-file" className="btn-6">
+                                                <Input
+                                                    accept="image/*"
+                                                    id="icon-button-file"
+                                                    type="file"
+                                                    onChange={fileHandler}
+                                                />
+                                                <span>
+                                                    Select Image
+                                                </span>
+                                            </label>
+                                            <label htmlFor="fiel-area-text" className="textfield-6">
+                                                <TextField
+                                                    id="fiel-area-text"
+                                                    label="Write a description for your post"
+                                                    multiline
+                                                    fullWidth
+                                                    rows={4}
+                                                    maxLength="40"
+                                                    required
+                                                    name="caption"
+                                                    value={caption.caption}
+                                                    onChange={handleCaptionChange}
+                                                />
+                                            </label>
+                                        </form>
+                                        <button
+                                            variant="contained"
+                                            component="span"
+                                            onClick={() => {
+                                                setTimeout(() => {
+                                                    newDoc()
+                                                }, 3500);
+                                            }}
+                                            className="btn__upload"
+                                        >
+                                            Upload Image
+                                        </button>
+                                    </Box>
+                                </Modal>
+                            </>
+                        )
+                        : null
+                }
+            </>
+        )
+    }
 }
 
 export default SearchBarDown

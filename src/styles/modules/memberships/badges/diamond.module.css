@@ -6,8 +6,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    /* width: 70%; */
     font-weight: 900;
+    width: 4.5rem;
     border-radius: 999px;
     border-bottom-width: 2px;
     border-bottom-color: white;

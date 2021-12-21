@@ -6,7 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 4.5rem;
+    /* width: 70%; */
     border-radius: 999px;
     border-bottom-color: azure;
     border-bottom-width: 1px;

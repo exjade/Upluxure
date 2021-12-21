@@ -6,7 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    /* width: 50%; */
+    width: 4.5rem;
     font-weight: 900;
     border-radius: 999px;
 }
