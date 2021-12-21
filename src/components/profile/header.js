@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import * as ROUTES from '../../constants/routes'
 import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
+import { Link, useHistory } from 'react-router-dom'
+import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
+import * as ROUTES from '../../constants/routes'
 import useUser from '../../hooks/use-user'
 import styles from '../../styles/modules/profile/Header.module.css'
 import '../../styles/css/profile/profile-information.css'
 
 import Tags from './tags'
-import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
-import { Link, useHistory } from 'react-router-dom'
 import EditProfile from '../settings/edit-profile'
+import UserBadge from '../memberships/badges/user'
+import DiamondBadge from '../memberships/badges/diamond'
+import PlatinumBadge from '../memberships/badges/platinum'
+import GoldBadge from '../memberships/badges/gold'
+import ModelBadge from '../memberships/badges/model'
+import AdminBadge from '../memberships/badges/admin'
 
-/* */
+/*Material UI */
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 const style = {
@@ -30,17 +34,14 @@ const style = {
 };
 
 const Header = ({
-    PhotosCount,
     followerCount,
     setFollowerCount,
-    followingCount,
-    setFollowingCount,
     profile,
     profile: {
+        rol,
         photoURL,
         fullName,
         following = [],
-        followers = [],
         docId: profileDocId,
         userId: profileUserId,
         username: profileUsername
@@ -90,20 +91,37 @@ const Header = ({
                                     <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Fdefault.png?alt=media&token=b45aa922-e61e-4af9-befd-cba374ef67a9" height="100" width="100" />
                                 ) : (
                                     <img
-                                    className={`${styles.img} rounded-full h-28 w-28 flex`}
-                                    alt={`${user.username} profile picture`}
-                                    src={`${photoURL}`}
+                                        className={`${styles.img} rounded-full h-28 w-28 flex`}
+                                        alt={`${user.username} profile picture`}
+                                        src={`${photoURL}`}
                                     // src={`/images/profile/${profileUsername}.jpg`}
-                                />
+                                    />
                                 )
 
-                             
+
                             )
                         }
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="container flex flex-col">
-                            <p className={`${styles.headerusername} text-2xl text-white-primary font-medium`} >{profileUsername}</p>
+                            <p className={`${styles.headerusername} text-2xl text-white-primary font-medium`} >
+                                {profileUsername}
+                            </p>
+                            {
+                                user.rol === 'free' ? <UserBadge />
+                                    : user.rol === 'diamond' ?
+                                        <DiamondBadge />
+                                        : user.rol === 'platinum' ?
+                                            <PlatinumBadge /> 
+                                            : user.rol === 'gold' ? 
+                                            <GoldBadge /> 
+                                            : user.rol === 'model' ? 
+                                            <ModelBadge /> 
+                                            : user.rol === 'admin' ?
+                                            <AdminBadge /> 
+                                            : null
+
+                            }
                             <div className="container flex mt-2">
                                 <p className="font-medium text-white-primary ">
                                     {!fullName ? (
@@ -213,7 +231,7 @@ const Header = ({
                     className={styles.modal}
                 >
                     <Box sx={style}>
-                        <EditProfile profile={profile} handleCloseModal={handleCloseModal}/>
+                        <EditProfile profile={profile} handleCloseModal={handleCloseModal} />
                     </Box>
                 </Modal>
             </div>

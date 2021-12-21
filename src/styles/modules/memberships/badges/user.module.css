@@ -1,0 +1,17 @@
+.container {
+    margin-top: 10px;
+}
+.border {
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    font-weight: 900;
+    border-radius: 999px;
+}
+.text {
+    font-family: 'Red Hat Text';
+    font-size: small;
+    color:white;
+}
