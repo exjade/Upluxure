@@ -83,19 +83,37 @@ const Header = ({
             {/* Image and username */}
             <div className='grid justify-center mx-auto max-w-screen-lg'>
                 <div className="container flex justify-center mt-5 items-center">
-                    <div className='flex justify-center mr-8'>
+                    <div className='flex justify-center flex-col mr-8'>
                         {
                             user.username && (
 
                                 photoURL === '' ? (
                                     <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Fdefault.png?alt=media&token=b45aa922-e61e-4af9-befd-cba374ef67a9" height="100" width="100" />
                                 ) : (
-                                    <img
-                                        className={`${styles.img} rounded-full h-28 w-28 flex`}
-                                        alt={`${user.username} profile picture`}
-                                        src={`${photoURL}`}
-                                    // src={`/images/profile/${profileUsername}.jpg`}
-                                    />
+                                    <>
+                                        <img
+                                            className={`${styles.img} rounded-full h-28 w-28 flex`}
+                                            alt={`${user.username} profile picture`}
+                                            src={`${photoURL}`}
+                                        />
+                                        <div className={styles.roles}>
+                                            {
+                                                user.rol === 'free' ?
+                                                    null
+                                                    : user.rol === 'diamond' ?
+                                                        <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fdiamond.png?alt=media&token=36ab1cd8-f9b5-49ca-a708-d55f199c7d3a" />
+                                                        : user.rol === 'platinum' ?
+                                                            <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fplatinum.png?alt=media&token=c4bf4abb-8c53-41ff-884d-85437a56c94e" />
+                                                            : user.rol === 'gold' ?
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fgold.png?alt=media&token=6e38a7c1-2fb2-44ee-b3ed-3bb4f1dd27df" />
+                                                                : user.rol === 'model' ?
+                                                                    <img src="" />
+                                                                    : user.rol === 'admin' ?
+                                                                        <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fadmin.png?alt=media&token=4fcf7675-f9b8-4800-814a-a61b75d9ae42" />
+                                                                        : null
+                                            }
+                                        </div>
+                                    </>
                                 )
 
 
@@ -108,18 +126,19 @@ const Header = ({
                                 {profileUsername}
                             </p>
                             {
-                                user.rol === 'free' ? <UserBadge />
+                                user.rol === 'free' ?
+                                    <UserBadge />
                                     : user.rol === 'diamond' ?
                                         <DiamondBadge />
                                         : user.rol === 'platinum' ?
-                                            <PlatinumBadge /> 
-                                            : user.rol === 'gold' ? 
-                                            <GoldBadge /> 
-                                            : user.rol === 'model' ? 
-                                            <ModelBadge /> 
-                                            : user.rol === 'admin' ?
-                                            <AdminBadge /> 
-                                            : null
+                                            <PlatinumBadge />
+                                            : user.rol === 'gold' ?
+                                                <GoldBadge />
+                                                : user.rol === 'model' ?
+                                                    <ModelBadge />
+                                                    : user.rol === 'admin' ?
+                                                        <AdminBadge />
+                                                        : null
 
                             }
                             <div className="container flex mt-2">

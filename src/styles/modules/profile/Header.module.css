@@ -90,3 +90,11 @@
         justify-content: center;
     }
 }
+
+ /* ROLES */
+ .roles {
+    width: 2.5rem;
+    margin-top: -2rem;
+    display: flex;
+    margin-left: 5rem;
+}
