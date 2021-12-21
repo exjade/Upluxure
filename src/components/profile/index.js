@@ -95,7 +95,7 @@ const Profile = ({ user }) => {
                     ) : null
             }
 
-            <HomeIconComponent />
+            {/* <HomeIconComponent /> */}
         </>
     )
 }

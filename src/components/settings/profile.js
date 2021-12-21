@@ -23,9 +23,9 @@ const Profile = () => {
             fullName,
             photoURL,
             token,
-            Country
+            Country,
+            rol
         } } = useUser()
-    console.log(user)
     let history = useHistory()
 
     useEffect(() => {
@@ -63,7 +63,17 @@ const Profile = () => {
                     <div className={`${styles.container} container flex justify-center mt-10 items-center`} >
                         <>
                             <div className={`${styles.avatarcontainer} flex justify-center`} >
-                                <Avatar className={`${styles.avatar} animate-pulse `} src={photoURL} height="112" width="112" />
+                                <Avatar
+                                    className={`${styles.avatar} animate-pulse 
+                                    ${
+                                        rol === 'gold' ? 'border-2 border-badges-gold' 
+                                        : rol === 'diamond' ? 'border-2 border-badges-diamond' 
+                                        : rol === 'platinum' ? 'border-2 border-badges-platinum' 
+                                    
+                                    : null}`}
+                                    src={photoURL}
+                                    height="112"
+                                    width="112" />
                             </div>
                         </>
                         <div className="flex items-center justify-center flex-col col-span-2">
@@ -78,7 +88,7 @@ const Profile = () => {
                                         ) : (
                                             <>
                                                 <LocationOnIcon className={`${styles.location} text-gray-primary`} />
-                                                <p className="font-normal text-gray-primary text-2x1 mb-2 hover:text-purple-stories ">{Country}</p>
+                                                <p className={`font-normal text-gray-primary text-2x1 mb-2 `}>{Country}</p>
                                             </>
                                         )
                                     }
@@ -89,7 +99,13 @@ const Profile = () => {
 
                         <div className="flex items-center justify-center flex-col col-span-2 mt-2">
                             <div className="container flex flex-col mb-10 ">
-                                <div className={`${styles.coin} hover:bg-purple-stories cursor-pointer`}>
+                                <div className={`${styles.coin} 
+                                ${
+                                    rol === 'gold' ? 'hover:bg-badges-gold' 
+                                    : rol === 'diamond' ? ' hover:bg-badges-diamond' 
+                                    : rol === 'platinum' ? ' hover:bg-badges-platinum' 
+                                    : null} 
+                                cursor-pointer`}>
                                     <span className='text-white-primary font-medium flex flex-row'>Saldo:
                                         {
                                             token > 0 ? (
