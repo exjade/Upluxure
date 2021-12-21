@@ -10,7 +10,7 @@ const MemberGold = () => {
             <div className='flex flex-col'>
                 <div className={styles.gold_container} >
                     <img
-                        src="/images/members/gold/goldmember.png"
+                        src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fgold.png?alt=media&token=6e38a7c1-2fb2-44ee-b3ed-3bb4f1dd27df"
                         alt="gold member" 
                         className={`${styles.gold_img}`}
                         />

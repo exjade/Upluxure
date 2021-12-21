@@ -11,7 +11,7 @@ const MemberDiamond = () => {
 
             <div className={styles.gold_container} >
                     <img
-                        src="/images/members/diamond/diamondmember.png"
+                        src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fdiamond.png?alt=media&token=36ab1cd8-f9b5-49ca-a708-d55f199c7d3a"
                         alt="diamond member" 
                         className={`${styles.gold_img}`}
                         />
@@ -31,7 +31,7 @@ const MemberDiamond = () => {
                 </div>
 
                 <div className='mt-5 flex justify-center items-center'>
-                    <button className="bg-blue-emblema hover:bg-white-normal text-white-normal animate-bounce hover:text-blue-emblema font-bold py-2 px-4 border-b-4 rounded w-10/12">
+                    <button className="bg-badges-diamond hover:bg-white-normal text-white-normal animate-bounce hover:text-badges-diamond font-bold py-2 px-4 border-b-4 rounded w-10/12">
                         Buy Diamond
                     </button>
                 </div>

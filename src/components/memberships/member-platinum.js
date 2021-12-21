@@ -11,7 +11,7 @@ const MemberPlatinum = () => {
 
                 <div className={styles.gold_container} >
                     <img
-                        src="/images/members/platinum/platinummember.png"
+                        src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fplatinum.png?alt=media&token=c4bf4abb-8c53-41ff-884d-85437a56c94e"
                         alt="platinum member"
                         className={`${styles.gold_img}`}
                     />
