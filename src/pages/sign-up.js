@@ -56,7 +56,8 @@ const SignUp = () => {
                     sxpreference: 'Not Answer',
                     Gender: 'Not Answer',
                     photoURL: '',
-                    rol: 'free'
+                    rol: 'free',
+                    privateorpublic: 'Public',
                 })
                 window.location.reload()
                 history.push(ROUTES.DASHBOARD)
