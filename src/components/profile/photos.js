@@ -1,11 +1,31 @@
-import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
 import styles from '../../styles/modules/profile/Photos.module.css'
+import '../../styles/modules/profile/photos.css'
+import { SRLWrapper } from "simple-react-lightbox";
 import ContentLoader from 'react-content-loader'
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Photos = ({ photos }) => {
+
+    const options = {
+        buttons: {
+            backgroundColor: 'rgba(30,30,36,0.8)',
+            iconColor: 'rgba(255, 255, 255, 0.8)',
+            iconPadding: '10px',
+            showAutoplayButton: false,
+            showDownloadButton: false,
+            showNextButton: false,
+            showPrevButton: false,
+            showCloseButton: true,
+            showFullscreenButton: true,
+            showThumbnailsButton: false,
+        },
+        thumbnails: {
+            showThumbnails: false,
+        }
+    }
+
 
     return (
         <div className={`${styles.background} h-16 border-t border-gray-primary mt-12 pt-4`} >
@@ -19,22 +39,26 @@ const Photos = ({ photos }) => {
                 {
                     photos.slice(1, 2).map((photo, index) => (
                         <div key={index} className=''>
-                            <img
-                                src={photo.imageSrc}
-                                alt={photo.caption}
-                                className={`${styles.mainimage}  object-cover p-2`}
-                            />
+                            <SRLWrapper options={options}>
+                                <img
+                                    src={photo.imageSrc}
+                                    alt={photo.caption}
+                                    className={`${styles.mainimage}  object-cover p-2`}
+                                />
+                            </SRLWrapper>
                         </div>
                     ))
                 }
                 {
                     photos.slice(0, 1).map((photo, i) => (
                         <div key={i} className={`${styles.imagesecondarycontainer}`} >
-                            <img
-                                src={photo.imageSrc}
-                                alt={photo.caption}
-                                className={`${styles.secondoneimage} object-cover p-2`}
-                            />
+                            <SRLWrapper options={options}>
+                                <img
+                                    src={photo.imageSrc}
+                                    alt={photo.caption}
+                                    className={`${styles.secondoneimage} object-cover p-2`}
+                                />
+                            </SRLWrapper>
                         </div>
                     ))
                 }
@@ -50,55 +74,21 @@ const Photos = ({ photos }) => {
                     (
                         photos.slice(2, 100).map((photo) => (
                             <>
-                                <div key={photo.docId} className='relative group'>
-                                    <img
-                                        src={photo.imageSrc}
-                                        alt={photo.caption}
-                                        className={`${styles.image} w-full h-full object-cover p-3`}
-                                    />
-
-                                    {/* <div className="absolute p-3 bottom-0 left-0 z-10 w-full justify-evenly items-center h-full bg-white-faded group-hover:flex">
-                                        <p className='flex items-center text-white-ctitle font-bold'>
-
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                                className="w-8 mr-4"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                            {photo.likes.length}
-                                        </p>
-
-                                        <p className="flex items-center text-white-ctitle font-bold">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                                className="w-8 mr-4"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                            {photo.comments.length}
-                                        </p>
-
-                                    </div> */}
+                                <div key={photo.docId} className={`relative group`}  >
+                                    <SRLWrapper options={options}>
+                                        <img
+                                            src={photo.imageSrc}
+                                            alt={photo.caption}
+                                            className={`${styles.image} w-full h-full object-cover p-3`}
+                                        />
+                                    </SRLWrapper>
                                 </div>
                             </>
                         ))
                     )
                     : null}
             </div>
-        </div>
+        </div >
     )
 
 }

@@ -6,6 +6,7 @@ import HomeIconComponent from './home'
 import Photos from './photos'
 import ProfileInformation from './profile-information';
 import '../../styles/modules/tabs.css';
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 /* MATERIAL UI*/
 import Tabs from '@mui/material/Tabs';
@@ -86,7 +87,11 @@ const Profile = ({ user }) => {
             </Tabs>
             {
                 openTabs.showPhoto || !openTabs.showInformation ?
-                    (<Photos photos={photosCollection} />)
+                    (
+                        <SimpleReactLightbox>
+                            <Photos photos={photosCollection} />
+                        </SimpleReactLightbox>
+                    )
                     :
                     openTabs.showInformation || !openTabs.showPhoto ? (
                         <ProfileInformation
