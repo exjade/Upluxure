@@ -14,15 +14,12 @@ const firestore = getFirestore(firebase)
 
 export default function SuggestedProfile({
     user,
-    user: {
-        username: profileUsername,
-        photoURL: photoURL
-    },
     profileDocId,
     username,
     profileId,
     userId,
-    LoggedInUserDocId
+    LoggedInUserDocId,
+    photoURL
 }) {
     const [followed, setFollowed] = useState(false)
     const { photos } = usePhotos();
@@ -41,27 +38,25 @@ export default function SuggestedProfile({
 
     /* INTENTO DE PERFIL DE OTROS USUARIOS */
     const activeBtnFollow = userId && userId !== profileDocId;
-    // const [photoSrc, setphotoSrc] = useState()
+    const [photoSrc, setphotoSrc] = useState()
     const [usersData, setUsersData] = useState()
 
-    let userData = [];
+    let userData = []
 
     useEffect(() => {
-
-        async function checkFollowed() {
-            const q = query(collection(firestore, "users"), where("username", "!=", user.username));
-
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
-                userData.push(doc.data().photoURL)
-            });
-            setUsersData(userData)
+        async function getProfilePicture() {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                userData.push(docSnap.data().photoURL)
+                setUsersData(userData)
+            } else {
+                console.log("No such document!");
+            }
         }
-        checkFollowed()
+        getProfilePicture()
     }, [])
-    console.log('photo', '=>', usersData)
+
 
     return (
         !followed ? (
@@ -70,7 +65,7 @@ export default function SuggestedProfile({
 
                     <Avatar
                         className="rounded-full w-8 flex mr-2"
-                        src={`/images/avatars/${username}.jpg`}
+                        src={usersData}
                         alt={`${username} pic`}
                     />
                     <Link to={`/p/${username}`}>

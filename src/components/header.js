@@ -119,6 +119,11 @@ const Header = () => {
                                                 (
                                                     <>
                                                         <div className="menudesktop">
+                                                        <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                                <IconButton className="header_home_icon">
+                                                                    <HomeOutlinedIcon className="text-white-primary" />
+                                                                </IconButton>
+                                                            </Link>
                                                             <Link to={ROUTES.DASHBOARD} aria-label="inbox">
                                                                 <IconButton className="header_inbox_icon">
                                                                     <SendOutlinedIcon className=" text-white-primary"
@@ -138,11 +143,7 @@ const Header = () => {
                                                                     />
                                                                 </IconButton>
                                                             </Link>
-                                                            <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                                                                <IconButton className="header_home_icon">
-                                                                    <HomeOutlinedIcon className="text-white-primary" />
-                                                                </IconButton>
-                                                            </Link>
+                                                            
                                                         </div>
                                                         <BasicMenu />
 
