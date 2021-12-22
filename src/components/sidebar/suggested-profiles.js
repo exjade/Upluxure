@@ -13,13 +13,11 @@ const storage = getStorage(firebase)
 const firestore = getFirestore(firebase)
 
 export default function SuggestedProfile({
-    user,
     profileDocId,
     username,
     profileId,
     userId,
     LoggedInUserDocId,
-    photoURL
 }) {
     const [followed, setFollowed] = useState(false)
     const { photos } = usePhotos();
@@ -36,9 +34,7 @@ export default function SuggestedProfile({
         }
     }
 
-    /* INTENTO DE PERFIL DE OTROS USUARIOS */
-    const activeBtnFollow = userId && userId !== profileDocId;
-    const [photoSrc, setphotoSrc] = useState()
+    /*PERFIL DE OTROS USUARIOS*/
     const [usersData, setUsersData] = useState()
 
     let userData = []
