@@ -2,12 +2,12 @@ import React, { useReducer, useState, useEffect } from 'react'
 import { getUserPhotosByUsername } from '../../services/firebase'
 import PropTypes from 'prop-types'
 import Header from './header'
-import HomeIconComponent from './home'
+import Private from './private'
 import Photos from './photos'
 import ProfileInformation from './profile-information';
 import '../../styles/modules/tabs.css';
 import SimpleReactLightbox from 'simple-react-lightbox'
-
+import useUser from '../../hooks/use-user'
 /* MATERIAL UI*/
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -15,7 +15,18 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 
 
-const Profile = ({ user }) => {
+const Profile = ({
+    user,
+    user: {
+        privateorpublic,
+        followers,
+        userId,
+        username: profileUsername
+    } }) => {
+
+    const { user: { userId: currentId } } = useUser()
+    console.log(profileUsername)
+    console.log(currentId)
 
     const reducer = (state, newState) => ({ ...state, ...newState })
     const initialState = {
@@ -68,6 +79,7 @@ const Profile = ({ user }) => {
         setValue(newValue);
     };
 
+    const activeUserProfile = user.username && user.username === profileUsername; // if the user is logged in and is the profile owner
     return (
         <>
             <Header
@@ -89,7 +101,15 @@ const Profile = ({ user }) => {
                 openTabs.showPhoto || !openTabs.showInformation ?
                     (
                         <SimpleReactLightbox>
-                            <Photos photos={photosCollection} />
+                            {
+                                privateorpublic === 'Public' ?
+                                    <Photos photos={photosCollection} />
+                                    : followers.includes(currentId) && privateorpublic === 'Private' ?
+                                        <Photos photos={photosCollection} />
+                                        : activeUserProfile && currentId === user.userId ?
+                                            <Photos photos={photosCollection} />
+                                            : <Private />
+                            }
                         </SimpleReactLightbox>
                     )
                     :

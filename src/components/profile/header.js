@@ -45,7 +45,8 @@ const Header = ({
         following = [],
         docId: profileDocId,
         userId: profileUserId,
-        username: profileUsername
+        username: profileUsername,
+        privateorpublic
     }
 }) => {
     const history = useHistory()
@@ -234,36 +235,57 @@ const Header = ({
                                 {/* border */}
                                 <div className={`${styles.border} mr-5`}></div>
 
-                                {activeBtnFollow && (
-                                    <button
-                                        className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
-                                        type='button'
-                                        onClick={handleToggleFollow}
-                                        onKeyDown={(event) => {
-                                            if (event.key === 'Enter') {
-                                                handleToggleFollow()
-                                            }
-                                        }}
-                                    >
-                                        {isFollowingProfile ? 'Following' : 'Follow'}
-                                    </button>
-                                )}
-                                {activeBtnEditProfile && (
-                                    <button
-                                        className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
-                                        type='button'
-                                        onClick={() => {
-                                            handleOpenModal()
-                                        }}
-                                        onKeyDown={(event) => {
-                                            if (event.key === 'Enter') {
-                                                handleOpenModal()
-                                            }
-                                        }}
-                                    >
-                                        <p className=""> Edit Profile</p>
-                                    </button>
-                                )}
+                                {
+                                    privateorpublic === 'Private' && !activeBtnEditProfile ? (
+                                        <button
+                                            disabled
+                                            className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8 opacity-50 `}
+                                            type='button'
+
+                                        >
+                                            {isFollowingProfile ? 'Following' : 'Follow'}
+                                        </button>
+                                    )
+                                        : activeBtnEditProfile && !activeBtnFollow ? (
+
+                                            <>
+
+                                                <button
+                                                    className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
+                                                    type='button'
+                                                    onClick={() => {
+                                                        handleOpenModal()
+                                                    }}
+                                                    onKeyDown={(event) => {
+                                                        if (event.key === 'Enter') {
+                                                            handleOpenModal()
+                                                        }
+                                                    }}
+                                                >
+                                                    <p className=""> Edit Profile</p>
+                                                </button>
+
+                                            </>
+                                        ) : (
+                                            activeBtnFollow ? (
+                                                <button
+                                                    type='button'
+                                                    className={`${styles.followbtn} text-white-primary font-bold rounded w-20 h-8`}
+                                                    onClick={handleToggleFollow}
+                                                    onKeyDown={(event) => {
+                                                        if (event.key === 'Enter') {
+                                                            handleToggleFollow()
+                                                        }
+                                                    }}
+                                                >
+                                                    {isFollowingProfile ? 'Following' : 'Follow'}
+                                                </button>
+                                            )
+                                                : null
+                                        )
+
+                                }
+
                             </>
                         )}
                     </div>

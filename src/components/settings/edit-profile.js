@@ -37,6 +37,8 @@ const EditProfile = ({
             followers = [],
             tags = [],
             photoURL,
+            rol,
+            privateorpublic = false,
             docId: profileDocId,
             userId: profileUserId,
             username: profileUsername
@@ -369,6 +371,30 @@ const EditProfile = ({
             setInfoUpdated('Successful Updated!')
         }
     }
+    const updateUserPrivacity = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+            if (docRef) {
+                await updateDoc(docRef, {
+                    privateorpublic: infoUser.Privacity,
+                });
+            }
+            console.log("Successfully!", docRef.id);
+        } catch (error) {
+            console.log("Failed: Updating your file :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
 
     /* END TRASH CODE */
 
@@ -384,6 +410,7 @@ const EditProfile = ({
         Gender: '',
         sxpreference: '',
         tags: [],
+        privateorpublic: '',
     });
 
     const handleAboutChange = async (e) => {
@@ -518,6 +545,172 @@ const EditProfile = ({
                             </button>
                         </div>
                     </div>
+
+                    {
+                        rol === 'admin' ?
+
+                            <>
+                                {/* Private or public profile */}
+                                <div className="flex flex-wrap -mx-3 mb-1 ">
+                                    <div className="w-full px-3">
+                                        <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                            Private or Public
+                                        </label>
+                                        <select
+                                            className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            id="grid-state"
+                                            name="Privacity"
+                                            value={infoUser.Privacity}
+                                            onChange={handleAboutChange}
+                                        >
+                                            <option>No Answer</option>
+                                            <option>Public </option>
+                                            <option>Private</option>
+                                        </select>
+                                        {
+                                            error ? (
+
+                                                <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                                            ) :
+                                                success ? (
+                                                    <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                                ) : null
+                                        }
+                                        <button
+                                            className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                                            onClick={() => {
+                                                updateUserPrivacity()
+                                            }}
+                                        >Update Privacity
+                                        </button>
+                                    </div>
+                                </div>
+                                {/* End privacity */}
+                            </>
+                            : rol === 'diamond' ?
+
+                                <>
+                                    {/* Private or public profile */}
+                                    <div className="flex flex-wrap -mx-3 mb-1 ">
+                                        <div className="w-full px-3">
+                                            <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                                Private or Public
+                                            </label>
+                                            <select
+                                                className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                id="grid-state"
+                                                name="Privacity"
+                                                value={infoUser.Privacity}
+                                                onChange={handleAboutChange}
+                                            >
+                                                <option>No Answer</option>
+                                                <option>Public </option>
+                                                <option>Private</option>
+                                            </select>
+                                            {
+                                                error ? (
+
+                                                    <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                                                ) :
+                                                    success ? (
+                                                        <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                                    ) : null
+                                            }
+                                            <button
+                                                className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                                                onClick={() => {
+                                                    updateUserPrivacity()
+                                                }}
+                                            >Update Privacity
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {/* End privacity */}
+                                </>
+                                : rol === 'platinum' ?
+
+                                    <>
+                                        {/* Private or public profile */}
+                                        <div className="flex flex-wrap -mx-3 mb-1 ">
+                                            <div className="w-full px-3">
+                                                <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                                    Private or Public
+                                                </label>
+                                                <select
+                                                    className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                    id="grid-state"
+                                                    name="Privacity"
+                                                    value={infoUser.Privacity}
+                                                    onChange={handleAboutChange}
+                                                >
+                                                    <option>No Answer</option>
+                                                    <option>Public </option>
+                                                    <option>Private</option>
+                                                </select>
+                                                {
+                                                    error ? (
+
+                                                        <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                                                    ) :
+                                                        success ? (
+                                                            <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                                        ) : null
+                                                }
+                                                <button
+                                                    className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                                                    onClick={() => {
+                                                        updateUserPrivacity()
+                                                    }}
+                                                >Update Privacity
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {/* End privacity */}
+                                    </>
+                                    : rol === 'gold' ?
+
+                                        <>
+                                            {/* Private or public profile */}
+                                            <div className="flex flex-wrap -mx-3 mb-1 ">
+                                                <div className="w-full px-3">
+                                                    <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                                        Private or Public
+                                                    </label>
+                                                    <select
+                                                        className=" appearance-none w-full border-gray-border border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                        id="grid-state"
+                                                        name="Privacity"
+                                                        value={infoUser.Privacity}
+                                                        onChange={handleAboutChange}
+                                                    >
+                                                        <option>No Answer</option>
+                                                        <option>Public </option>
+                                                        <option>Private</option>
+                                                    </select>
+                                                    {
+                                                        error ? (
+
+                                                            <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                                                        ) :
+                                                            success ? (
+                                                                <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                                            ) : null
+                                                    }
+                                                    <button
+                                                        className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                                                        onClick={() => {
+                                                            updateUserPrivacity()
+                                                        }}
+                                                    >Update Privacity
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            {/* End privacity */}
+                                        </>
+                                        : (null)
+                    }
+
+
 
                     <div className="flex flex-wrap -mx-3 mb-1 ">
                         <div className="w-full px-3">
