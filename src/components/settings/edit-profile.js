@@ -8,8 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 /* Firebase, Firestore & Storage */
 import { firebase } from '../../lib/firebase'
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc, updateDoc, getDoc, doc } from 'firebase/firestore'
+import { getStorage, ref, uploadBytes, getDownloadURL, storageRef } from 'firebase/storage'
+import { getFirestore, deleteField , updateDoc, getDoc, doc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
@@ -58,10 +58,9 @@ const EditProfile = ({
     const fileHandler = async (event) => {
         try {
             const localFile = event.target.files[0];
-            const storageRef = ref(storage, `/images/profile/${user.displayName}/${uuidv4() + localFile.name} `)
+            const storageRef = ref(storage, `/images/profile/${profileUsername}/${uuidv4()}${localFile.name} `)
             await uploadBytes(storageRef, localFile)
             downloadUrl = await getDownloadURL(storageRef)
-            console.log('successfully uploaded! Dev: Exjade')
         } catch (error) {
             console.log('Failed to upload: ', error)
         }
@@ -80,8 +79,14 @@ const EditProfile = ({
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
+            // delete fields in photoURL
+            await updateDoc(docRef, {
+                photoURL: deleteField(),
+            });
+        
             if (docRef) {
                 await updateDoc(docRef, {
+                    photoURL: '',
                     photoURL: downloadUrl,
                 });
             }
@@ -440,7 +445,7 @@ const EditProfile = ({
 
                     <div className="flex flex-wrap -mx-3 mb-6 justify-center items-center ">
                         {
-                            photoURL === '' ? (
+                            photoURL === ''|| photoURL === undefined || photoURL === null  ?  (
                                 <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Fdefault.png?alt=media&token=b45aa922-e61e-4af9-befd-cba374ef67a9" height="100" width="100" />
                             ) : (
                                 <img

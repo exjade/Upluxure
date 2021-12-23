@@ -114,7 +114,7 @@ const Header = ({
                             {
                                 user.username && (
 
-                                    photoURL === '' ? (
+                                    photoURL === '' || photoURL === null || photoURL === undefined  ? (
                                         <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Fdefault.png?alt=media&token=b45aa922-e61e-4af9-befd-cba374ef67a9" height="100" width="100" />
                                     ) : (
                                         <>

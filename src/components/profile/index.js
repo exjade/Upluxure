@@ -25,8 +25,8 @@ const Profile = ({
     } }) => {
 
     const { user: { userId: currentId } } = useUser()
-    console.log(profileUsername)
-    console.log(currentId)
+    // console.log(profileUsername)
+    // console.log(currentId)
 
     const reducer = (state, newState) => ({ ...state, ...newState })
     const initialState = {
@@ -102,13 +102,16 @@ const Profile = ({
                     (
                         <SimpleReactLightbox>
                             {
-                                privateorpublic === 'Public' ?
+                                privateorpublic === 'Public' || privateorpublic === '' || privateorpublic === undefined || privateorpublic === null ?
                                     <Photos photos={photosCollection} />
                                     : followers.includes(currentId) && privateorpublic === 'Private' ?
                                         <Photos photos={photosCollection} />
                                         : activeUserProfile && currentId === user.userId ?
                                             <Photos photos={photosCollection} />
-                                            : <Private />
+                                            : privateorpublic === 'Private' ?
+                                                <Private />
+                                                : null
+
                             }
                         </SimpleReactLightbox>
                     )
