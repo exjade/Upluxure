@@ -12,6 +12,7 @@ const Login = lazy(() => import("./pages/login"));
 const SignUp = lazy(() => import("./pages/sign-up"));
 const Profile = lazy(() => import("./pages/profile"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
+const Messages = lazy(() => import("./pages/inbox"));
 const NotFound = lazy(() => import("./pages/not-found"));
 const MyAccount = lazy(() => import("./pages/my-account"));
 const Memberships = lazy(() => import("./pages/memberships"));
@@ -40,6 +41,9 @@ function App() {
             <Route path={ROUTES.PRUEBA} component={PruebaUpload} />
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.MESSENGER} exact>
+              <Messages />
             </ProtectedRoute>
             <ProtectedRoute user={user} path={ROUTES.MY_ACCOUNT} exact>
               <MyAccount />

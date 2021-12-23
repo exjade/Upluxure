@@ -6,6 +6,7 @@ export const NOT_FOUND = '/not-found'
 export const MY_ACCOUNT = '/my-account'
 export const MEMBERSHIPS = '/my-account/memberships'
 export const PRUEBA = '/pruebas'
+export const MESSENGER = '/messages'
 
 
 
