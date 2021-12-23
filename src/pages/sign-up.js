@@ -58,6 +58,7 @@ const SignUp = () => {
                     photoURL: '',
                     rol: 'free',
                     privateorpublic: 'Public',
+                    token: '',
                 })
                 window.location.reload()
                 history.push(ROUTES.DASHBOARD)
