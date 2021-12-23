@@ -108,7 +108,7 @@ const Profile = ({
                                         <Photos photos={photosCollection} />
                                         : activeUserProfile && currentId === user.userId ?
                                             <Photos photos={photosCollection} />
-                                            : privateorpublic === 'Private' ?
+                                            : privateorpublic === 'Private' && privateorpublic !== 'Public' ?
                                                 <Private />
                                                 : null
 
