@@ -23,6 +23,8 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    flex-direction: column;
+
 }
 .image {
     border-radius: 40px;
@@ -66,4 +68,162 @@
     -o-border-radius: 50px;
 }
 
-  
+/* ACTIONS CONTAINER */
+
+/* Main img*/
+
+
+/* second img*/
+.actions_containertwo {
+    color: white;
+    display: flex;
+    font-size: large;
+    width: 75%;
+    height: 2.33rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: #00000047;
+    align-items: center;
+    justify-content: center;
+    margin-top: -8rem;
+}
+.likestwo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* All img */
+.actions_container {
+    display: flex;
+    align-items: center;
+    margin-top: -3rem;
+    justify-content: center;
+}
+.likes{
+    color: white;
+    display: flex;
+    font-size: large;
+    width: 92%;
+    height: 2.2rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: #00000047;
+    align-items: center;
+    justify-content: center;
+}
+/* Meddia queries */
+/* Photos  */
+@media (max-width: 974px) and (min-width: 900px) {
+    .actions_containertwo {
+        color: white;
+        display: flex;
+        font-size: large;
+        width: 75%;
+        height: 2.33rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: #00000047;
+        align-items: center;
+        justify-content: center;
+        margin-top: -7.5rem;
+    }
+}
+@media (max-width: 899px) and (min-width: 857px) {
+    .actions_containertwo {
+        color: white;
+        display: flex;
+        font-size: large;
+        width: 75%;
+        height: 2.33rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: #00000047;
+        align-items: center;
+        justify-content: center;
+        margin-top: -7.3rem;
+    }
+}
+@media (max-width: 856px) and (min-width: 780px) {
+    .actions_containertwo {
+        color: white;
+        display: flex;
+        font-size: large;
+        width: 75%;
+        height: 2.33rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: #00000047;
+        align-items: center;
+        justify-content: center;
+        margin-top: -6.9rem;
+    }
+}
+@media (max-width: 789px) and (min-width: 720px) {
+    .actions_containertwo {
+        color: white;
+        display: flex;
+        font-size: large;
+        width: 75%;
+        height: 2.33rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: #00000047;
+        align-items: center;
+        justify-content: center;
+        margin-top: -6.6rem;
+    }
+}
+@media (max-width: 719px) and (min-width: 620px) {
+    .actions_containertwo {
+        color: white;
+        display: flex;
+        font-size: large;
+        width: 75%;
+        height: 2.33rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: #00000047;
+        align-items: center;
+        justify-content: center;
+        margin-top: -6.1rem;
+    }
+}
+@media (max-width: 619px) and (min-width: 550px) {
+    .actions_containertwo {
+        color: white;
+        display: flex;
+        font-size: large;
+        width: 75%;
+        height: 2.33rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: #00000047;
+        align-items: center;
+        justify-content: center;
+        margin-top: -5.5rem;
+    }
+}
+@media (max-width: 549px)  {
+    .actions_containertwo {
+     display: none;
+    }
+    .imagesecondarycontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-direction: row !important;
+    }
+    .actions_container {
+     display: none;
+    }
+    .imageprimarycontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-direction: row !important;
+        width: 120%;
+    }
+}

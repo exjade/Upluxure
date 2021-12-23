@@ -24,6 +24,7 @@ const Profile = ({
         username: profileUsername
     } }) => {
 
+
     const { user: { userId: currentId } } = useUser()
     // console.log(profileUsername)
     // console.log(currentId)

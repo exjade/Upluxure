@@ -1,12 +1,18 @@
+import { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
-import Skeleton from 'react-loading-skeleton'
+import FirebaseContext from '../../context/firebase'
+import UserContext from '../../context/user'
 import styles from '../../styles/modules/profile/Photos.module.css'
 import '../../styles/modules/profile/photos.css'
 import { SRLWrapper } from "simple-react-lightbox";
 import ContentLoader from 'react-content-loader'
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
-const Photos = ({ photos }) => {
+const Photos = ({
+    photos
+}) => {
+
 
     const options = {
         buttons: {
@@ -27,6 +33,27 @@ const Photos = ({ photos }) => {
     }
 
 
+    /* Like function */
+    const { user: { uid: userId = '' } } = useContext(UserContext)
+    const { firebase, FieldValue } = useContext(FirebaseContext)
+    const [toggleLiked, setToggleLiked] = useState()
+    const [likes, setLikes] = useState(photos.likes)
+
+    const handleToggleLiked = async () => {
+        setToggleLiked((toggleLiked) => !toggleLiked);
+
+        await firebase
+            .firestore()
+            .collection('photos')
+            .doc(photos.docId)
+            .update({
+                likes: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId),
+            })
+
+        setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
+
+    }
+
     return (
         <div className={`${styles.background} h-16 border-t border-gray-primary mt-12 pt-4`} >
             <div className={`${styles.post} grid grid-cols-2 justify-around`}>
@@ -38,7 +65,7 @@ const Photos = ({ photos }) => {
             <div className='grid grid-cols-2 gap-8 justify-between p-3'>
                 {
                     photos.slice(1, 2).map((photo, index) => (
-                        <div key={index} className=''>
+                        <div key={index} className={`${styles.imageprimarycontainer}`} >
                             <SRLWrapper options={options}>
                                 <img
                                     src={photo.imageSrc}
@@ -46,6 +73,20 @@ const Photos = ({ photos }) => {
                                     className={`${styles.mainimage}  object-cover p-2`}
                                 />
                             </SRLWrapper>
+                            {/* POR IMPLEMENTAR */}
+                            {/* <div className={`${styles.actions_container}`} >
+                                <div className={styles.likes} >
+                                    <StarBorderIcon
+                                        onClick={handleToggleLiked}
+                                        onKeyDown={event => {
+                                            if (event.key === 'Enter') {
+                                                handleToggleLiked()
+                                            }
+                                        }}
+                                    />
+                                    {photo.likes.length}
+                                </div>
+                            </div> */}
                         </div>
                     ))
                 }
@@ -59,6 +100,20 @@ const Photos = ({ photos }) => {
                                     className={`${styles.secondoneimage} object-cover p-2`}
                                 />
                             </SRLWrapper>
+                            {/* POR IMPLEMENTAR */}
+                            {/* <div className={`${styles.actions_containertwo}`} >
+                                <div className={styles.likestwo} >
+                                    <StarBorderIcon
+                                        onClick={handleToggleLiked}
+                                        onKeyDown={event => {
+                                            if (event.key === 'Enter') {
+                                                handleToggleLiked()
+                                            }
+                                        }}
+                                    />
+                                    {photo.likes.length}
+                                </div>
+                            </div> */}
                         </div>
                     ))
                 }
@@ -81,14 +136,28 @@ const Photos = ({ photos }) => {
                     (
                         photos.slice(2, 100).map((photo) => (
                             <>
-                                <div key={photo.docId} className={`relative group`}  >
+                                <div key={photo.docId} className={`relative group mb-8 `}  >
                                     <SRLWrapper options={options}>
                                         <img
                                             src={photo.imageSrc}
                                             alt={photo.caption}
-                                            className={`${styles.image} w-full h-full object-cover p-3`}
+                                            className={`${styles.image} w-full h-full object-cover p-3 `}
                                         />
                                     </SRLWrapper>
+                                    {/* POR IMPLEMENTAR */}
+                                    {/* <div className={`${styles.actions_container}`} >
+                                        <div className={styles.likes} >
+                                            <StarBorderIcon
+                                                onClick={handleToggleLiked}
+                                                onKeyDown={event => {
+                                                    if (event.key === 'Enter') {
+                                                        handleToggleLiked()
+                                                    }
+                                                }}
+                                            />
+                                            {photo.likes.length}
+                                        </div>
+                                    </div> */}
                                 </div>
                             </>
                         ))
