@@ -1,0 +1,74 @@
+.avatar_size > .css-1wlk0hk-MuiAvatar-root {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 75px;
+    height: 75px;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 1.25rem;
+    line-height: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 5px;
+   /* border-width: 3px; */
+   /* border-color: rgb(41, 92, 48); */
+}
+
+/* ScrollBar */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+    ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Status Online / Offline */
+.user_online {
+    widows: 100%;
+    height: 100%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.Online-border {
+    border: 3px double #306F6A;
+}
+.Offline-border {
+    border: 3px groove #677478;
+}
+/* .Online {
+    background:#34eb52;
+    widows: 10px;
+    height: 10px;
+    border-radius: 30px;
+}
+.Offline {
+    background:#eb4034;
+    widows: 10px;
+    height: 10px;
+    border-radius: 30px;
+} */

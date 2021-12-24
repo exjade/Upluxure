@@ -124,7 +124,7 @@ const Header = () => {
                                                                     <HomeOutlinedIcon className="text-white-primary" />
                                                                 </IconButton>
                                                             </Link>
-                                                            <Link to={ROUTES.DASHBOARD} aria-label="inbox">
+                                                            <Link to={ROUTES.MESSENGER} aria-label="inbox">
                                                                 <IconButton className="header_inbox_icon">
                                                                     <SendOutlinedIcon className=" text-white-primary"
                                                                     />
