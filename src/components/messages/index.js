@@ -1,13 +1,16 @@
-import { useEffect, useContext, useState } from 'react'
+import React,{ useEffect, useContext, useState } from 'react'
+/* Components*/
 import Header from './header'
 import Message from './message'
 import ChatList from './chat-list'
 import SearchBarDown from '../searchbardown'
+/*Context*/
 import UserContext from '../../context/user'
 /* Firebase */
 import { firebase } from '../../lib/firebase'
 import { getFirestore, collection, query, where, onSnapshot } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
+
 
 const Messages = () => {
     const { user, user: { uid } } = useContext(UserContext)
@@ -29,19 +32,23 @@ const Messages = () => {
         return () => unsub()
     }, [])
     // console.log(users)
-    const premiumUsers = users.filter(user => user.rol !==  'free')
+    const premiumUsers = users.filter(user => user.rol !== 'free')
 
-    const selectUser = (user) => { 
+    /* Select User in Chat List */
+    const selectUser = (user) => {
         setChat(user)
         console.log(user)
     }
+    console.log('chat', chat)
 
     return (
         <>
-            <Header premiumUsers={premiumUsers} selectUser={selectUser}/>
-            <ChatList premiumUsers={premiumUsers} selectUser={selectUser}/>
+            <Header premiumUsers={premiumUsers} selectUser={selectUser} />
+            <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/>
             {/* <Message /> */}
-            <SearchBarDown userSearch={premiumUsers}/>
+            <SearchBarDown userSearch={premiumUsers} />
+
+          
         </>
     )
 

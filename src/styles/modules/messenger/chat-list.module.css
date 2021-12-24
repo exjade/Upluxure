@@ -6,7 +6,7 @@
     overflow-x: hidden;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    
+    align-items: center;
 }
 .container {
 
@@ -35,5 +35,5 @@
 }
 /* Chat list */
 .chatusers {
-
+    width: 100%;
 }
