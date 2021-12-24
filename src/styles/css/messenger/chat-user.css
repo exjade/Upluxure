@@ -1,17 +1,5 @@
-/* ScrollBar */
-  ::-webkit-scrollbar {
-    width: 3px;
-  }
-    ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
   /* Status Online / Offline */
-.user_online {
+  .user_online {
     widows: 100%;
     height: 100%;
     border-radius: 50%;
@@ -27,3 +15,16 @@
 .Offline-border {
     border: 4px groove #677478;
 }
+
+/* ScrollBar */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+    ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+

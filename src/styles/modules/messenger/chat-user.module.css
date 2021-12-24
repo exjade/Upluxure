@@ -8,22 +8,21 @@
     overflow-x: scroll;
 }
 .container {
-    margin: 0.3rem;
+    margin-bottom: 0px;
+    padding: 15px;
 }
 /* Avatar */
-.avatar {
+.chat_avatar {
     
 
 }
-.avatar_user {
+.chat_avatar_size {
     cursor: pointer;
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border-radius: 90px;
 }
 
 
-/* SEARCHBAR  */
-.searchbar {
-    
-}
+
+
