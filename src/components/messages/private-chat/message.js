@@ -2,7 +2,7 @@ import React from 'react'
 
 const Message = () => {
     return (
-        <div className='text-white-primary'>
+        <div className={`items-center mt-8 flex justify-center max-w-screen-lg w-full`} >
             mensajes
         </div>
     )

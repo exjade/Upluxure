@@ -1,7 +1,6 @@
 import React,{ useEffect, useContext, useState } from 'react'
 /* Components*/
 import Header from './header'
-import Message from './message'
 import ChatList from './chat-list'
 import SearchBarDown from '../searchbardown'
 /*Context*/
@@ -45,10 +44,7 @@ const Messages = () => {
         <>
             <Header premiumUsers={premiumUsers} selectUser={selectUser} />
             <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/>
-            {/* <Message /> */}
             <SearchBarDown userSearch={premiumUsers} />
-
-          
         </>
     )
 
