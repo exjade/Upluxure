@@ -1,0 +1,39 @@
+/* SEARCHBOX */
+
+.notfound_searchbox_inbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    z-index: 9999;
+    text-align: center;
+}
+.notfound_searchbox_card_inbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #5E6261;
+    opacity: 0.3;
+    border-radius: 136px;
+    width: 70%;
+    height: 60px;
+    border: 1px solid #ffffff;
+    z-index: 3;
+}
+
+.notfound_searchbox_card > input {
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.17em;
+    outline: none;
+    background:transparent;
+    word-break: break-all;
+    width: 90%;
+}
+.searchbar_input_inbox {
+    background: transparent;
+    outline: none;
+    color: white;
+    z-index: 30;
+}

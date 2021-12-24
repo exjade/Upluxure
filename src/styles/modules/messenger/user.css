@@ -15,8 +15,8 @@
     -webkit-flex-shrink: 0;
     -ms-flex-negative: 0;
     flex-shrink: 0;
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-size: 1.25rem;
     line-height: 1;
@@ -29,6 +29,22 @@
     margin: 5px;
    /* border-width: 3px; */
    /* border-color: rgb(41, 92, 48); */
+}
+.avatar_size > .MuiAvatar-root.MuiAvatar-circular.css-1wlk0hk-MuiAvatar-root{
+  width: 85px;
+  height: 85px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
 }
 
 /* ScrollBar */
@@ -55,10 +71,10 @@
 }
 
 .Online-border {
-    border: 3px double #306F6A;
+    border: 5px double #369762;
 }
 .Offline-border {
-    border: 3px groove #677478;
+    border: 4px groove #677478;
 }
 /* .Online {
     background:#34eb52;

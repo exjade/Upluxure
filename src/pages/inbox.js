@@ -5,7 +5,7 @@ import Header from '../components/memberships/header'
 const Inbox = () => {
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Messages />
         </>
     )

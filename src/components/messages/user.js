@@ -14,8 +14,9 @@ const User = ({ user }) => {
 
             <div className={styles.container}>
                 <div className={`${styles.avatar} avatar_size `} >
-                    <Avatar src={
-                        user.photoURL < 1 ? Img : user.photoURL}
+                    <Avatar
+                        src={
+                            user.photoURL < 1 ? Img : user.photoURL}
                         alt={user.displayName}
                         className={`
                         ${styles.avatar_size} 
