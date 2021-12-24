@@ -20,9 +20,14 @@ const ChatUser = ({ user }) => {
                         alt={user.displayName}
                         className={`
                         ${styles.chat_avatar_size} 
-                        ${user.isOnline ? 'Online-border' : 'Offline-border'}
+                        
                         `}
                     />
+                </div>
+                <div className={`${styles.circle_online_chat} ${user.isOnline ? 'Online-chat_user' : 'Offline_chat_user'}`} >
+                </div>
+                <div className={styles.username} >
+                    <h4>{user.fullName}</h4>
                 </div>
             </div>
         </>

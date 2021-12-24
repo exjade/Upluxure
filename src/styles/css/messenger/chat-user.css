@@ -9,11 +9,13 @@
     -o-border-radius: 50%;
 }
 
-.Online-border {
-    border: 5px double #369762;
+.Online-chat_user {
+  background: #369762;
+  border: 2px solid black;
 }
-.Offline-border {
-    border: 4px groove #677478;
+.Offline_chat_user {
+    background: #4a4b4b;
+    border: 2px solid black;
 }
 
 /* ScrollBar */
