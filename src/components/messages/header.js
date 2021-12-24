@@ -2,7 +2,7 @@ import User from './user'
 import SearchBar from './searchbar'
 import styles from '../../styles/modules/messenger/header.module.css'
 
-const Header = ({premiumUsers}) => {
+const Header = ({premiumUsers, selectUser}) => {
 
     return (
         <>
@@ -15,6 +15,7 @@ const Header = ({premiumUsers}) => {
                         <User
                             key={user.uid}
                             user={user}
+                            selectUser={selectUser}
                         />)}
                 </div>
             </div>

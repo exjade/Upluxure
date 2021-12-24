@@ -2,7 +2,7 @@ import ChatUser from './chat-user'
 import styles from '../../styles/modules/messenger/chat-list.module.css'
 import ChatsStories from './chats-stories'
 
-const ChatList = ({ premiumUsers }) => {
+const ChatList = ({ premiumUsers, selectUser }) => {
 
     return (
         <>
@@ -16,6 +16,7 @@ const ChatList = ({ premiumUsers }) => {
                             <ChatUser
                                 key={user.uid}
                                 user={user}
+                                selectUser={selectUser}
                             />)}
                     </div>
                 </div>

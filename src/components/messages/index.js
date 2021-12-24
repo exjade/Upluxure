@@ -12,6 +12,7 @@ const firestore = getFirestore(firebase)
 const Messages = () => {
     const { user, user: { uid } } = useContext(UserContext)
     const [users, setUsers] = useState([])
+    const [chat, setChat] = useState('')
 
     useEffect(() => {
         const usersRef = collection(firestore, 'users')
@@ -29,12 +30,16 @@ const Messages = () => {
     }, [])
     // console.log(users)
     const premiumUsers = users.filter(user => user.rol !==  'free')
-    console.log(premiumUsers)
+
+    const selectUser = (user) => { 
+        setChat(user)
+        console.log(user)
+    }
 
     return (
         <>
-            <Header premiumUsers={premiumUsers}/>
-            <ChatList premiumUsers={premiumUsers}/>
+            <Header premiumUsers={premiumUsers} selectUser={selectUser}/>
+            <ChatList premiumUsers={premiumUsers} selectUser={selectUser}/>
             {/* <Message /> */}
             <SearchBarDown userSearch={premiumUsers}/>
         </>
