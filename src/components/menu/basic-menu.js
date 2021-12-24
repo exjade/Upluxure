@@ -7,12 +7,17 @@ import '../../styles/css/menu/basic-menu.css'
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/user';
+import useUser from '../../hooks/use-user';
 
-/* */
+/*Material UI*/
 import MenuItem from '@mui/material/MenuItem';
 import PersonIcon from '@mui/icons-material/Person';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+/* Firebase, Firestore  */
+import { firebase } from '../../lib/firebase'
+import { getFirestore, collection, addDoc, updateDoc, doc } from 'firebase/firestore'
+const firestore = getFirestore(firebase)
 
 const dividerstyle = {
   width: '100%',
@@ -42,6 +47,18 @@ const BasicMenu = () => {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  /* Update UserStatus */
+  const { user: { docId } } = useUser();
+
+  async function updateUserStatus() {
+      const statusRef = doc(firestore, "users", docId);
+
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(statusRef, {
+          isOnline: false
+      });
+  }
 
   return (
 
@@ -81,7 +98,7 @@ const BasicMenu = () => {
             <Divider sx={dividerstyle} />
             <MenuItem
               onClick={() =>
-                firebase.auth().signOut()
+                firebase.auth().signOut().then(() => { updateUserStatus(); })
               }
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {

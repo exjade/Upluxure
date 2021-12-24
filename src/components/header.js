@@ -5,10 +5,10 @@ import FirebaseContext from '../context/firebase'; // sign and signout functions
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import BasicMenu from './menu/basic-menu'
+import useUser from '../hooks/use-user';
 
 /* Material UI*/
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import IconButton from '@mui/material/IconButton';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
@@ -24,7 +24,7 @@ import TextField from '@mui/material/TextField';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc, updateDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, updateDoc, doc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
@@ -94,6 +94,18 @@ const Header = () => {
         );
     }
 
+    const { user: { docId } } = useUser();
+
+    async function updateUserStatus() {
+        const statusRef = doc(firestore, "users", docId);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(statusRef, {
+            isOnline: true
+        });
+    }
+
+
     return (
         <header className="h-16 border-b  mb-5">
             <div className="container mx-auto max-w-screen-lg h-full">
@@ -119,13 +131,16 @@ const Header = () => {
                                                 (
                                                     <>
                                                         <div className="menudesktop">
-                                                        <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                                                            <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                                                                 <IconButton className="header_home_icon">
                                                                     <HomeOutlinedIcon className="text-white-primary" />
                                                                 </IconButton>
                                                             </Link>
                                                             <Link to={ROUTES.MESSENGER} aria-label="inbox">
-                                                                <IconButton className="header_inbox_icon">
+                                                                <IconButton
+                                                                    className="header_inbox_icon"
+                                                                    onClick={() => updateUserStatus()}
+                                                                >
                                                                     <SendOutlinedIcon className=" text-white-primary"
                                                                     />
                                                                 </IconButton>
@@ -143,7 +158,7 @@ const Header = () => {
                                                                     />
                                                                 </IconButton>
                                                             </Link>
-                                                            
+
                                                         </div>
                                                         <BasicMenu />
 

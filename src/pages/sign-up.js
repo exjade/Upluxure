@@ -59,6 +59,7 @@ const SignUp = () => {
                     rol: 'free',
                     privateorpublic: 'Public',
                     token: '',
+                    online: false,
                 })
                 window.location.reload()
                 history.push(ROUTES.DASHBOARD)
