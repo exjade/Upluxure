@@ -12,7 +12,7 @@ const firestore = getFirestore(firebase)
 
 
 const Messages = () => {
-    const { user, user: { uid } } = useContext(UserContext)
+    const {  user: { uid } } = useContext(UserContext)
     const [users, setUsers] = useState([])
     const [chat, setChat] = useState('')
 
@@ -36,9 +36,9 @@ const Messages = () => {
     /* Select User in Chat List */
     const selectUser = (user) => {
         setChat(user)
-        console.log(user)
+        // console.log(user)
     }
-    console.log('chat', chat)
+    // console.log('chat', chat)
 
     return (
         <>
@@ -46,6 +46,8 @@ const Messages = () => {
             <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/>
             <SearchBarDown userSearch={premiumUsers} />
         </>
+
+        
     )
 
 }

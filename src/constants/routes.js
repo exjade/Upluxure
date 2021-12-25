@@ -5,8 +5,9 @@ export const PROFILE = '/p/:username'
 export const NOT_FOUND = '/not-found'
 export const MY_ACCOUNT = '/my-account'
 export const MEMBERSHIPS = '/my-account/memberships'
+export const INBOX = '/inbox'
+export const MESSAGES = '/inbox/:username'
 export const PRUEBA = '/pruebas'
-export const MESSENGER = '/messages'
 
 
 

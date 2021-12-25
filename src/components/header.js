@@ -136,7 +136,7 @@ const Header = () => {
                                                                     <HomeOutlinedIcon className="text-white-primary" />
                                                                 </IconButton>
                                                             </Link>
-                                                            <Link to={ROUTES.MESSENGER} aria-label="inbox">
+                                                            <Link to={ROUTES.INBOX} aria-label="inbox">
                                                                 <IconButton
                                                                     className="header_inbox_icon"
                                                                     onClick={() => updateUserStatus()}
