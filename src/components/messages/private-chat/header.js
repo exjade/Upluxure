@@ -5,8 +5,8 @@ import styles from '../../../styles/modules/messenger/private-chat/private-chat.
 const Header = () => {
     return (
         <div className={`items-center mt-8 flex justify-center max-w-screen-lg w-full`} >
-            header
-        </div>
+            header - 1:52.11
+        </div> 
     )
 }
 
