@@ -11,8 +11,7 @@ const PrivateChat = ({ user }) => {
     return (
         <>
             <div className={`${styles.private_header}`} >
-                <Header user={user} 
-                 />
+                <Header />
                 <Message />
                 <Send />
             </div>
