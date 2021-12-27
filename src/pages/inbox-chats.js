@@ -1,17 +1,17 @@
 import React, { useEffect, useContext, useState } from 'react'
-import PropTypes from 'prop-types'
+import useUser from '../hooks/use-user'
 /* Components */
 import PrivateChat from '../components/messages/private-chat/'
 /*Context*/
 import UserContext from '../context/user'
 /* Firebase */
 import { firebase } from '../lib/firebase'
-import { getFirestore, collection, query, where, onSnapshot } from 'firebase/firestore'
+import { getFirestore, collection, query, where, onSnapshot, getDoc, doc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 
 const InboxChats = () => {
     const [chat, setChat] = useState('')
-    const { user: { uid  } } = useContext(UserContext)
+    const { user: { uid } } = useContext(UserContext)
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -22,22 +22,24 @@ const InboxChats = () => {
             querySnapshot.forEach(doc => {
                 users.push(doc.data())
             })
-            setUsers(users)
+            const premiumUsers = users.filter(user => user.rol !== 'free')
+            setUsers(premiumUsers)
         })
         return () => unsub()
     }, [])
-    const premiumUsers = users.filter(user => user.rol !== 'free')
-    
+
+
+
     const selectUser = (user) => {
-        setChat(user)
+        // setChat(user)
         // console.log(user)
     }
-    // console.log(premiumUsers)
+    // console.log(users)
 
 
     return (
         <>
-            <PrivateChat user={premiumUsers} chat={chat}/>
+            <PrivateChat user={users}  />
         </>
     )
 }

@@ -1,8 +1,8 @@
 import React,{ useEffect, useContext, useState } from 'react'
 /* Components*/
-import Header from './header'
-import ChatList from './chat-list'
-import SearchBarDown from '../searchbardown'
+import ActiveUsers from './active-users'
+// import ChatList from './user-list/chat-list'
+// import SearchBarDown from './searchbar/searchbardown'
 /*Context*/
 import UserContext from '../../context/user'
 /* Firebase */
@@ -42,9 +42,9 @@ const Messages = () => {
 
     return (
         <>
-            <Header premiumUsers={premiumUsers} selectUser={selectUser} />
-            <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/>
-            <SearchBarDown userSearch={premiumUsers} />
+            <ActiveUsers premiumUsers={premiumUsers} selectUser={selectUser} />
+            {/* <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/> */}
+            {/* <SearchBarDown userSearch={premiumUsers} /> */}
         </>
 
         

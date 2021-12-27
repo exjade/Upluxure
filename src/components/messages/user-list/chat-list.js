@@ -1,6 +1,6 @@
-import ChatUser from './chat-user'
+import ChatUser from '../chat-user'
 import styles from '../../styles/modules/messenger/chat-list.module.css'
-import ChatsStories from './chats-stories'
+import ChatsStories from '../chats-stories'
 
 
 const ChatList = ({ premiumUsers, selectUser, chat }) => {

@@ -10,9 +10,9 @@ const User = ({ user, selectUser }) => {
     return (
         <>
 
-            <div 
-            className={styles.container} 
-            onClick={ () => selectUser(user) }
+            <div
+                className={styles.container}
+                onClick={() => selectUser(user)}
             >
                 <div className={`${styles.avatar} avatar_size `} >
                     <img

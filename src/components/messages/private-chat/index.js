@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
-import PropTypes from 'prop-types';
+
 /* Components */
 import Header from './header'
 import Message from './message'
@@ -9,11 +8,11 @@ import styles from '../../../styles/modules/messenger/private-chat/private-chat.
 
 const PrivateChat = ({ user }) => {
 
-
     return (
         <>
             <div className={`${styles.private_header}`} >
-                <Header user={user} />
+                <Header user={user} 
+                 />
                 <Message />
                 <Send />
             </div>
