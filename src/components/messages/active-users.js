@@ -13,6 +13,7 @@ const ActiveUsers = ({
     setText,
     handleSubmit,
     setImg,
+    msgs,
 }) => {
 
 
@@ -51,6 +52,7 @@ const ActiveUsers = ({
                                 setText={setText}
                                 handleSubmit={handleSubmit}
                                 setImg={setImg}
+                                msgs={msgs}
                             />
 
 

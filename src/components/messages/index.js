@@ -9,7 +9,16 @@ import UserContext from '../../context/user'
 /* Firebase */
 import { firebase } from '../../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, query, where, onSnapshot, addDoc, Timestamp } from 'firebase/firestore'
+import { 
+    getFirestore, 
+    collection, 
+    query, 
+    where, 
+    onSnapshot, 
+    addDoc, 
+    Timestamp,
+    orderBy,
+} from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
@@ -20,6 +29,7 @@ const Messages = () => {
     const [chat, setChat] = useState('')
     const [text, setText] = useState('')
     const [img, setImg] = useState('')
+    const [msgs, setMsgs] = useState([])
 
     const CurrentLoggedInUser = uid;
 
@@ -43,8 +53,25 @@ const Messages = () => {
     /* Select User in Chat List */
     const selectUser = (user) => {
         setChat(user)
-        // console.log(user)
+        const CurrentLoggedInUser2 = user.userId;
+
+        const id = CurrentLoggedInUser > CurrentLoggedInUser2 ?
+            `${CurrentLoggedInUser}${CurrentLoggedInUser2}`
+            :
+            `${CurrentLoggedInUser2}${CurrentLoggedInUser}`
+
+        const messagesRef = collection(firestore, 'messages', id, 'chat')
+        const q = query(messagesRef, orderBy('createdAt', 'asc'))
+
+        onSnapshot(q, querySnaopshot => {
+            let msgs = []
+            querySnaopshot.forEach(doc => {
+                msgs.push(doc.data())
+            })
+            setMsgs(msgs)
+        })
     }
+    console.log(msgs)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -92,6 +119,7 @@ const Messages = () => {
                 setText={setText}
                 handleSubmit={handleSubmit}
                 setImg={setImg}
+                msgs={msgs}
             />
             {/* <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/> */}
             {/* <SearchBarDown userSearch={premiumUsers} /> */}

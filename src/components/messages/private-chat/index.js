@@ -13,6 +13,7 @@ const PrivateChat = ({
     setText,
     handleSubmit,
     setImg,
+    msgs,
 }) => {
 
     return (
@@ -23,13 +24,14 @@ const PrivateChat = ({
                     setChat={setChat}
                 />
                 <Message
+                    msgs={msgs}
                 />
                 <Send
                     text={text}
                     setText={setText}
-                    handleSubmit={handleSubmit} 
+                    handleSubmit={handleSubmit}
                     setImg={setImg}
-                    />
+                />
             </div>
         </>
     )
