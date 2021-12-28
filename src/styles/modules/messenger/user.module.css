@@ -8,7 +8,7 @@
     overflow-x: scroll;
 }
 .container {
-    margin: 0.4rem;
+    padding: 0.5rem;
     width: 100%;
 }
 /* Avatar */
@@ -18,8 +18,8 @@
 }
 .avatar_user {
     cursor: pointer;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 90px;
 }
 
@@ -27,4 +27,11 @@
 /* SEARCHBAR  */
 .searchbar {
     
+}
+/* Status Online / Offline */
+.status{
+    margin-left: 2.8rem;
+    z-index: 999;
+    position: absolute;
+    margin-top: -1rem;
 }

@@ -6,12 +6,15 @@ import Send from './send'
 /* Styles */
 import styles from '../../../styles/modules/messenger/private-chat/private-chat.module.css'
 
-const PrivateChat = ({ user }) => {
+const PrivateChat = ({ chat, setChat }) => {
 
     return (
         <>
             <div className={`${styles.private_header}`} >
-                <Header />
+                <Header
+                    chat={chat}
+                    setChat={setChat}
+                />
                 <Message />
                 <Send />
             </div>

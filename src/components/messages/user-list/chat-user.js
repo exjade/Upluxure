@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 // import { v4 as uuidv4 } from 'uuid';
 /* Styles */
 import styles from '../../styles/modules/messenger/chat-user.module.css'
@@ -18,7 +17,7 @@ const ChatUser = ({ user, selectUser, chat }) => {
 
     return (
         <>
-            {/* <Link to={`/inbox/${user.username}`} > */}
+
             <div
                 className={`${styles.container} cursor-pointer`}
                 onClick={() => selectUser(user)}
@@ -41,7 +40,6 @@ const ChatUser = ({ user, selectUser, chat }) => {
                     <h4>{user.fullName}</h4>
                 </div>
             </div>
-            {/* </Link> */}
 
         </>
     )

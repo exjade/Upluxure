@@ -1,4 +1,4 @@
-import React,{ useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 /* Components*/
 import ActiveUsers from './active-users'
 import Header from './header'
@@ -13,7 +13,7 @@ const firestore = getFirestore(firebase)
 
 
 const Messages = () => {
-    const {  user: { uid } } = useContext(UserContext)
+    const { user: { uid } } = useContext(UserContext)
     const [users, setUsers] = useState([])
     const [chat, setChat] = useState('')
 
@@ -44,12 +44,17 @@ const Messages = () => {
     return (
         <>
             <Header />
-            <ActiveUsers premiumUsers={premiumUsers} selectUser={selectUser} chat={chat} />
+            <ActiveUsers
+                premiumUsers={premiumUsers}
+                selectUser={selectUser}
+                chat={chat}
+                setChat={setChat}
+            />
             {/* <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/> */}
             {/* <SearchBarDown userSearch={premiumUsers} /> */}
         </>
 
-        
+
     )
 
 }

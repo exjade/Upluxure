@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+/* Styles */
 import styles from '../../styles/modules/messenger/user.module.css'
 import '../../styles/modules/messenger/user.css'
 /* Material UI */
@@ -9,7 +11,6 @@ const User = ({ user, selectUser }) => {
 
     return (
         <>
-
             <div
                 className={styles.container}
                 onClick={() => selectUser(user)}
@@ -21,9 +22,9 @@ const User = ({ user, selectUser }) => {
                         alt={user.displayName}
                         className={`
                         ${styles.avatar_user} 
-                        ${user.isOnline ? 'Online-border' : 'Offline-border'}
                         `}
                     />
+                    <div className={`${styles.status} ${user.isOnline ? 'Online-border' : 'Offline-border'}`} ></div>
                 </div>
             </div>
         </>
