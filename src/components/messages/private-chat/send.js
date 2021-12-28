@@ -7,11 +7,17 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import SendIcon from '@mui/icons-material/Send';
 
 
-const Send = () => {
+const Send = ({
+    text,
+    setText,
+    handleSubmit,
+    setImg,
+}) => {
     return (
         <div className={`${styles.send_container} mt-8 flex max-w-screen-lg`} >
             <form
                 className={`${styles.send_wrapper_form}`}
+                onSubmit={handleSubmit}
             >
 
                 <div className={`${styles.send_upload_img}`} >
@@ -19,6 +25,7 @@ const Send = () => {
                         <InsertPhotoIcon className={styles.send_photo_icon} />
                     </label>
                     <input
+                    onChange={(event) => setImg(event.target.files[0])}
                         type='file'
                         id='img'
                         accept='image/*'
@@ -31,6 +38,8 @@ const Send = () => {
                         type="text"
                         placeholder='Send a message'
                         className={styles.send_input}
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
                     />
                 </div>
 

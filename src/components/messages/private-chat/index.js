@@ -6,7 +6,14 @@ import Send from './send'
 /* Styles */
 import styles from '../../../styles/modules/messenger/private-chat/private-chat.module.css'
 
-const PrivateChat = ({ chat, setChat }) => {
+const PrivateChat = ({
+    chat,
+    setChat,
+    text,
+    setText,
+    handleSubmit,
+    setImg,
+}) => {
 
     return (
         <>
@@ -15,8 +22,14 @@ const PrivateChat = ({ chat, setChat }) => {
                     chat={chat}
                     setChat={setChat}
                 />
-                <Message />
-                <Send />
+                <Message
+                />
+                <Send
+                    text={text}
+                    setText={setText}
+                    handleSubmit={handleSubmit} 
+                    setImg={setImg}
+                    />
             </div>
         </>
     )

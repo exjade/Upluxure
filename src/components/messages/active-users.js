@@ -4,7 +4,16 @@ import PrivateChat from './private-chat/'
 // import SearchBar from './searchbar'
 import styles from '../../styles/modules/messenger/active-users.module.css'
 
-const ActiveUsers = ({ premiumUsers, selectUser, chat, setChat }) => {
+const ActiveUsers = ({
+    premiumUsers,
+    selectUser,
+    chat,
+    setChat,
+    text,
+    setText,
+    handleSubmit,
+    setImg,
+}) => {
 
 
     return (
@@ -38,6 +47,10 @@ const ActiveUsers = ({ premiumUsers, selectUser, chat, setChat }) => {
                                 chat={chat}
                                 key={premiumUsers.userId}
                                 setChat={setChat}
+                                text={text}
+                                setText={setText}
+                                handleSubmit={handleSubmit}
+                                setImg={setImg}
                             />
 
 
