@@ -20,7 +20,6 @@ const MyAccount = lazy(() => import("./pages/my-account"));
 const Memberships = lazy(() => import("./pages/memberships"));
 // Chats
 const Inbox = lazy(() => import("./pages/inbox"));
-const InboxChat = lazy(() => import("./pages/inbox-chats"));
 //Others
 const NotFound = lazy(() => import("./pages/not-found"));
 const PruebaUpload = lazy(() => import("./pages/pruebas"));
@@ -61,9 +60,6 @@ function App() {
             {/* Messenger */}
             <ProtectedRoute user={user} path={ROUTES.INBOX} exact>
               <Inbox />
-            </ProtectedRoute>
-            <ProtectedRoute user={user} path={ROUTES.MESSAGES} exact>
-              <InboxChat />
             </ProtectedRoute>
 
             {/* Memberships */}
