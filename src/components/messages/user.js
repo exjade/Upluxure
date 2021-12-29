@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import styles from '../../styles/modules/messenger/user.module.css'
 import '../../styles/modules/messenger/user.css'
 /* Material UI */
+import EmailIcon from '@mui/icons-material/Email';
+/* Firebase */
 import { firebase } from '../../lib/firebase'
 import {
     getFirestore,
@@ -52,7 +54,7 @@ const User = ({
                     <div className={` ${styles.avatar_user}  ${styles.status} ${user.isOnline ? 'Online-border' : 'Offline-border'}`} ></div>
                 </div>
                 {data?.from !== CurrentLoggedInUser && data?.unread && (
-                    <small className={`${styles.unread} animate-pulse text-red-like cursor-pointer`} >New</small>
+                    <small className={`${styles.unread} animate-pulse text-white-normal cursor-pointer`} ><EmailIcon /></small>
                 )}
             </div>
         </>
