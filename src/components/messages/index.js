@@ -2,8 +2,6 @@ import React, { useEffect, useContext, useState } from 'react'
 /* Components*/
 import ActiveUsers from './active-users'
 import Header from './header'
-// import ChatList from './user-list/chat-list'
-// import SearchBarDown from './searchbar/searchbardown'
 /*Context*/
 import UserContext from '../../context/user'
 /* Firebase */
@@ -149,8 +147,6 @@ const Messages = () => {
                 msgs={msgs}
                 CurrentLoggedInUser={CurrentLoggedInUser}
             />
-            {/* <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/> */}
-            {/* <SearchBarDown userSearch={premiumUsers} /> */}
         </>
 
 

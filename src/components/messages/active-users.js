@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import User from './user'
 import PrivateChat from './private-chat/'
 // import SearchBar from './searchbar'
@@ -64,9 +63,10 @@ const ActiveUsers = ({
                         :
                         (
                             <>
-                                {/* <div className={styles.start_conversation} >
+                                <div className={styles.start_conversation} >
                                     <h3>Select a user to start a conversation</h3>
-                                </div> */}
+                                </div>
+
                             </>
                         )
                     }

@@ -17,7 +17,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    z-index: 999;
     width: 5rem;
+    position: absolute;
     align-content: center;
     justify-content: center;
     box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
@@ -25,7 +27,11 @@
     -moz-box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
 }
 .start_conversation {
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4rem;
+    word-break: break-all;
 }
 
 /* Avatar */
@@ -51,5 +57,5 @@
     justify-content: center;
     align-content: center;
     position: absolute;
-    z-index: 999;
+    margin-top: 4rem;
 }
