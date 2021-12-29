@@ -36,28 +36,22 @@ const Message = ({ msgs, CurrentLoggedInUser }) => {
     }
 
     return (
-        <div
-            // className={`
-            // ${styles.message_conteiner}
-            //  items-center flex flex-col justify-center max-w-screen-lg w-full`} 
-
-            className={` 
-         ${msgs.from === CurrentLoggedInUser ?
-                    (`${styles.message_conteiner}`)
-                    :
-                    (`${styles.message_friend_container}`)
-                } 
-             `}
-        >
+        <>
 
             {
                 msgs.length ?
                     msgs.map((msg, i) =>
-                        <>
+                        <div
+                            key={msg.from + msg.createdAt + i}
+                            className={`  ${msg.from === CurrentLoggedInUser ?
+                                `${styles.message_conteiner}`
+                                : `${styles.message_friend_container}`}
+                                        items-center flex flex-col justify-center max-w-screen-lg w-full
+            `}
+                        >
                             <div
                                 className={`${styles.message_wrapper} 
                                 `}
-                                key={i}
                                 ref={messagesEndRef}
                             >
                                 {
@@ -71,20 +65,17 @@ const Message = ({ msgs, CurrentLoggedInUser }) => {
                                         </SRLWrapper>
                                         : null
                                 }
-                                <div
-                                    className={` 
+                                <div className={` 
                                 ${msg.from === CurrentLoggedInUser ?
-                                            `${styles.message_text_container}`
-                                            : `${styles.message_friend}`}
-                                `}
-
+                                        `${styles.message_text_container}`
+                                        : `${styles.message_friend}`}`}
                                 >
                                     <p className={`${styles.message_text}`} >
                                         {msg.text}
                                     </p>
                                 </div>
-                                {/* <div className={styles.messagee_text_dialog} ></div> */}
-                                <div className={`${styles.message_date}`} >
+                                <div className={`${styles.message_date}`}
+                                >
                                     <small>
                                         <Moment fromNow>
                                             {msg.createdAt.toDate()}
@@ -92,11 +83,12 @@ const Message = ({ msgs, CurrentLoggedInUser }) => {
                                     </small>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     )
                     : null
             }
-        </div>
+
+        </>
     )
 }
 

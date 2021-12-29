@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    margin-bottom:4rem;
 }
 
 /* Header */
@@ -15,8 +16,10 @@
     align-items: center;
     position: fixed;
     width: 100%;
+    word-break: break-all;
+    text-overflow: ellipsis;
     top: 0;
-    height: 7rem;
+    height: 5.5rem;
     background: #181818;
     z-index: 99;
     /* background: linear-gradient(59deg,#1b2a26 0%, #1c2322 80%); */
@@ -28,11 +31,12 @@
 .header_wrapper {
     display: flex;
     align-items: center;
-    width: 33%;
+    width: 60%;
+    justify-content: center;
 }
 .header_avatar {
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     border-radius: 60px;
     -webkit-border-radius: 60px;
     -moz-border-radius: 30px;
@@ -42,10 +46,13 @@
 .header_username {
     font-family: 'Red Hat Text', sans-serif;
     font-style: normal;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.17rem;
     text-transform: capitalize;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    text-align: start;
 }
 .header_text_container {
     display: flex;
@@ -67,10 +74,10 @@
     letter-spacing: 0.17em;
 }
 .header_last {
-    width: 33%;
+    width: 20%;
 }
 .header_icon {
-    width: 33%;
+    width: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,18 +92,7 @@
     align-items: center;
     justify-content: center;
 }
-/* .send_container {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    bottom: 0;
-    position: fixed;
-    margin-bottom: 1rem;
-    border: 1px solid white;
-    border-radius: 30px;
-    background: #181818;
-} */
+
 .send_container {
     display: flex;
     width: 100%;
@@ -105,9 +101,6 @@
     justify-content: center;
     bottom: 0;
     position: fixed;
-    /* margin-bottom: 1rem; */
-    /* border: 1px solid white; */
-    /* border-radius: 30px; */
     background: #181818;
 }
 .send_border {
@@ -154,25 +147,22 @@
 }
 
 /* Messages */
-/* .message_conteiner {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 5rem;
-} */
 .message_conteiner {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 5rem;
-    width: 80%;
-    margin-top: 3rem;
+    margin-right: 2rem;
+    /* margin-bottom: 5rem; */
+    /* width: 80%; */
+    /* margin-top: 3rem; */
     flex-direction: column;
 }
 .message_friend_container {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 5rem;
-    width: 80%;
-    margin-top: 3rem;
+    margin-left: 2rem;
+    /* margin-bottom: 5rem; */
+    /* width: 80%; */
+    /* margin-top: 3rem; */
     flex-direction: column;
 
 }

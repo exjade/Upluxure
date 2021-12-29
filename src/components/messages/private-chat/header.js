@@ -10,7 +10,7 @@ const Header = ({ chat, setChat }) => {
     console.log()
     return (
         <>
-            <div className={` text-white-normal items-center flex justify-center w-full`} >
+            <div className={` text-white-normal items-center flex justify-center w-full mb-16`} >
                 {/* header - 1:52.11 */}
 
                 <div className={`${styles.header_container}`} >
