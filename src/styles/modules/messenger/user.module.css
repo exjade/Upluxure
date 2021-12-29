@@ -21,6 +21,7 @@
     width: 70px;
     height: 70px;
     border-radius: 90px;
+    z-index: 41;
 }
 
 
@@ -34,4 +35,23 @@
     z-index: 999;
     position: absolute;
     margin-top: -1rem;
+}
+/* Unread */
+.unread {
+    z-index: 0;
+    width: 71px;
+    background: #da33330e;
+    height: 71px;
+    border: 3px groove #ab151583;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-family: ui-serif;
+    font-size: inherit;
+    margin-top: -3.5rem;
+    margin-left: 0rem;
+    font-weight: bold;
+    border-radius: 60px;
+    text-transform: uppercase;
 }

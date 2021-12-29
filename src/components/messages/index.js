@@ -18,6 +18,10 @@ import {
     addDoc, 
     Timestamp,
     orderBy,
+    setDoc,
+    doc,
+    getDoc,
+    updateDoc,
 } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
@@ -51,7 +55,7 @@ const Messages = () => {
     const premiumUsers = users.filter(user => user.rol !== 'free')
 
     /* Select User in Chat List */
-    const selectUser = (user) => {
+    const selectUser = async (user) => {
         setChat(user)
         const CurrentLoggedInUser2 = user.userId;
 
@@ -70,8 +74,15 @@ const Messages = () => {
             })
             setMsgs(msgs)
         })
+
+        // User who received the message will see 'unread' and when he click the sender name,
+        // the 'unread' will be removed = false
+        const docSnap = await getDoc(doc(firestore, 'lastMessages', id))
+        if(docSnap.data()?.from !== CurrentLoggedInUser) {
+           await updateDoc(doc(firestore, 'lastMessages', id), { unread: false })
+        }
     }
-    console.log(msgs)
+    // console.log(msgs)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -104,8 +115,21 @@ const Messages = () => {
             createdAt: Timestamp.fromDate(new Date()),
             media: url || '',
         })
+
+        // Will look for docId, if it exists it will replace the existing doc
+        // otherwise it will create a new doc
+        await setDoc(doc(firestore, 'lastMessages', id), {
+            text,
+            from: CurrentLoggedInUser,
+            to: CurrentLoggedInUser2,
+            createdAt: Timestamp.fromDate(new Date()),
+            media: url || '',
+            unread: true,
+        })
+
+
         setText('')
-        url = null
+
     }
 // console.log(chat)
     return (

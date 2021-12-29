@@ -35,6 +35,7 @@ const ActiveUsers = ({
                                                 key={user.username}
                                                 user={user}
                                                 selectUser={selectUser}
+                                                CurrentLoggedInUser={CurrentLoggedInUser}
                                             />)}
                                     </div>
                                 </>
