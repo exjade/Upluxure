@@ -1082,6 +1082,14 @@ const EditProfile = ({
                                 onClick={(e) => {
                                     e.preventDefault()
                                     handleCloseModal()
+                                }}
+                            >
+                                Cancel
+                            </button>
+                            <button className="border-b-4 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border hover:bg-black-btnicon rounded border-black-background"
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    handleCloseModal()
                                     window.location.reload()
                                 }}
                             >

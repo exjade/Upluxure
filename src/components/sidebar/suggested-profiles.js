@@ -36,24 +36,22 @@ export default function SuggestedProfile({
 
     /*PERFIL DE OTROS USUARIOS*/
     const [usersData, setUsersData] = useState()
-
     let userData = []
-
+    
     useEffect(() => {
         async function getProfilePicture() {
             const docRef = doc(firestore, "users", profileDocId);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 userData.push(docSnap.data().photoURL)
-                setUsersData(userData)
+                setUsersData(userData.toString())
             } else {
                 console.log("No such document!");
             }
         }
         getProfilePicture()
     }, [])
-
-
+    
     return (
         !followed ? (
             <div className="flex flex-row items-center align-items justify-between ml-3">
@@ -86,9 +84,9 @@ export default function SuggestedProfile({
 }
 
 SuggestedProfile.propTypes = {
-    profileDocId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    profileId: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    LoggedInUserDocId: PropTypes.string.isRequired
+    profileDocId: PropTypes.string,
+    username: PropTypes.string,
+    profileId: PropTypes.string,
+    userId: PropTypes.string,
+    LoggedInUserDocId: PropTypes.string
 }

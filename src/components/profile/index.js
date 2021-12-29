@@ -20,7 +20,6 @@ const Profile = ({
     user: {
         privateorpublic,
         followers,
-        userId,
         username: profileUsername
     } }) => {
 
@@ -133,7 +132,6 @@ export default Profile
 
 Profile.propTypes = {
     user: PropTypes.shape({
-        dateCreated: PropTypes.number,
         emailAddress: PropTypes.string,
         followers: PropTypes.array,
         following: PropTypes.array,
