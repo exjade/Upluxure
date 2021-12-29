@@ -13,6 +13,9 @@ const Send = ({
     handleSubmit,
     setImg,
 }) => {
+
+    const isInvalid = text === '' || setImg === '';
+
     return (
         <div className={`${styles.send_container} mt-8 flex max-w-screen-lg`} >
             <div className={styles.send_border} >
@@ -45,7 +48,11 @@ const Send = ({
                     </div>
 
                     <div className={`${styles.send_btn_container} `} >
-                        <button className={styles.send_btn} >
+                        <button 
+                        disabled={isInvalid}
+                        className={`${styles.send_btn} ${isInvalid && 'opacity-70'}`} 
+                        
+                        >
                             <SendIcon className={styles.send_btn_icon} />
                         </button>
                     </div>

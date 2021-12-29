@@ -115,6 +115,11 @@ const Messages = () => {
             createdAt: Timestamp.fromDate(new Date()),
             media: url || '',
         })
+        
+        setTimeout(() => {
+            setText('')
+            setImg('')
+        }, 100)
 
         // Will look for docId, if it exists it will replace the existing doc
         // otherwise it will create a new doc
@@ -126,9 +131,6 @@ const Messages = () => {
             media: url || '',
             unread: true,
         })
-
-
-        setText('')
 
     }
 // console.log(chat)
