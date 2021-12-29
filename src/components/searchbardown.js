@@ -14,7 +14,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import AddIcon from '@mui/icons-material/Add';
 import Avatar from '@mui/material/Avatar';
 import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
+import SendIcon from '@mui/icons-material/Send';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ButtonBase from '@mui/material/ButtonBase';
 import IconButton from '@mui/material/IconButton';
@@ -124,7 +124,7 @@ const SearchBarDown = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => { 
+    useEffect(() => {
         setTimeout(() => {
             setIsLoading(false)
         }, 1000);
@@ -147,31 +147,33 @@ const SearchBarDown = () => {
                                             </ButtonBase>
                                         </Link>
                                     </div>
-                                    <div className="homesearchbar__search">
+                                    <div className="homesearchbar__search cursor-pointer ">
                                         <ButtonBase >
-                                            <SearchIcon />
+                                            <NotificationsIcon />
                                         </ButtonBase>
                                     </div>
                                     <div className="homesearchbar__add"  >
                                         <AddIcon className="ota-x" />
                                         <div className="bolinhas">
-                                            <IconButton className="ota-bolinha" onClick={handleOpen}>
+                                            {/* <IconButton className="ota-bolinha" onClick={handleOpen}>
                                                 <PhotoCameraIcon sx={{ color: 'black' }} />
                                             </IconButton>
                                             <IconButton className="ota-bolinha" onClick={handleOpen}>
                                                 <VideocamIcon sx={{ color: 'black' }} />
-                                            </IconButton>
+                                            </IconButton> */}
                                             <IconButton className="ota-bolinha" onClick={handleOpen}>
                                                 <InsertPhotoIcon sx={{ color: 'black' }} />
                                             </IconButton>
                                         </div>
                                     </div>
-                                    <div className="homesearchbar__notifications">
-                                        <ButtonBase>
-                                            <NotificationsIcon
-                                            />
-                                        </ButtonBase>
-                                    </div>
+                                    <Link to={ROUTES.INBOX}>
+                                        <div className="homesearchbar__notifications">
+                                            <ButtonBase>
+                                                <SendIcon
+                                                />
+                                            </ButtonBase>
+                                        </div>
+                                    </Link>
                                     <div className="homesearchbar__search">
                                         <Link to={`/p/${user.displayName}`}>
                                             {

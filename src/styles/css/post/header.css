@@ -13,6 +13,10 @@
 
  .post__index_header {
     width: 100%;
+    width: 100%;
+    border: 1px ridge #484848;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
  }
 
 
