@@ -5,9 +5,8 @@ import styles from '../../../styles/modules/messenger/private-chat/private-chat.
 import '../../../styles/css/messenger/private-chat/private-chat.css'
 import { SRLWrapper } from "simple-react-lightbox";
 
-const Message = ({ msgs }) => {
+const Message = ({ msgs, CurrentLoggedInUser }) => {
     // console.log(msgs.media)
-
     /* Hook Scroll To Bottom */
     const messagesEndRef = useRef(null)
     const scrollToBottom = () => {
@@ -37,13 +36,27 @@ const Message = ({ msgs }) => {
     }
 
     return (
-        <div className={`${styles.message_conteiner} items-center flex flex-col justify-center max-w-screen-lg w-full`} >
+        <div
+            // className={`
+            // ${styles.message_conteiner}
+            //  items-center flex flex-col justify-center max-w-screen-lg w-full`} 
+
+            className={` 
+         ${msgs.from === CurrentLoggedInUser ?
+                    (`${styles.message_conteiner}`)
+                    :
+                    (`${styles.message_friend_container}`)
+                } 
+             `}
+        >
+
             {
                 msgs.length ?
                     msgs.map((msg, i) =>
                         <>
                             <div
-                                className={`${styles.message_wrapper}`}
+                                className={`${styles.message_wrapper} 
+                                `}
                                 key={i}
                                 ref={messagesEndRef}
                             >
@@ -58,7 +71,14 @@ const Message = ({ msgs }) => {
                                         </SRLWrapper>
                                         : null
                                 }
-                                <div className={`${styles.message_text_container}`} >
+                                <div
+                                    className={` 
+                                ${msg.from === CurrentLoggedInUser ?
+                                            `${styles.message_text_container}`
+                                            : `${styles.message_friend}`}
+                                `}
+
+                                >
                                     <p className={`${styles.message_text}`} >
                                         {msg.text}
                                     </p>

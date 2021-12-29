@@ -121,6 +121,7 @@ const Messages = () => {
                 handleSubmit={handleSubmit}
                 setImg={setImg}
                 msgs={msgs}
+                CurrentLoggedInUser={CurrentLoggedInUser}
             />
             {/* <ChatList premiumUsers={premiumUsers} selectUser={selectUser} chat={chat}/> */}
             {/* <SearchBarDown userSearch={premiumUsers} /> */}

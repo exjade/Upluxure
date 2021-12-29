@@ -15,6 +15,7 @@ const PrivateChat = ({
     handleSubmit,
     setImg,
     msgs,
+    CurrentLoggedInUser,
 }) => {
 
     return (
@@ -27,6 +28,7 @@ const PrivateChat = ({
                 <SimpleReactLightbox>
                     <Message
                         msgs={msgs}
+                        CurrentLoggedInUser={CurrentLoggedInUser}
                     />
                 </SimpleReactLightbox>
                 <Send

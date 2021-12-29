@@ -14,6 +14,7 @@ const ActiveUsers = ({
     handleSubmit,
     setImg,
     msgs,
+    CurrentLoggedInUser,
 }) => {
 
 
@@ -53,6 +54,7 @@ const ActiveUsers = ({
                                 handleSubmit={handleSubmit}
                                 setImg={setImg}
                                 msgs={msgs}
+                                CurrentLoggedInUser={CurrentLoggedInUser}
                             />
 
 
