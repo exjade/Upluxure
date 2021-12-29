@@ -63,7 +63,7 @@ const Message = ({ msgs }) => {
                                         {msg.text}
                                     </p>
                                 </div>
-                                <div className={styles.messagee_text_dialog} ></div>
+                                {/* <div className={styles.messagee_text_dialog} ></div> */}
                                 <div className={`${styles.message_date}`} >
                                     <small>
                                         <Moment fromNow>

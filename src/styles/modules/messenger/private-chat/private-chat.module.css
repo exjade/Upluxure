@@ -111,10 +111,11 @@
     background: #181818;
 }
 .send_border {
-    width: 90%;
+    width: 100%;
     border: 1px solid white;
     border-radius: 30px;
     display: flex;
+    margin: 15px;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -162,7 +163,7 @@
     display: flex;
     align-items: flex-end;
     margin-bottom: 5rem;
-    width: 70%;
+    width: 80%;
 }
 .message_wrapper {
     display: flex;
