@@ -6,8 +6,6 @@ import styles from '../../styles/modules/profile/Photos.module.css'
 import '../../styles/modules/profile/photos.css'
 import { SRLWrapper } from "simple-react-lightbox";
 import ContentLoader from 'react-content-loader'
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarRateIcon from '@mui/icons-material/StarRate';
 
 const Photos = ({
     photos

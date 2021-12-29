@@ -5,6 +5,7 @@ import Message from './message'
 import Send from './send'
 /* Styles */
 import styles from '../../../styles/modules/messenger/private-chat/private-chat.module.css'
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 const PrivateChat = ({
     chat,
@@ -23,9 +24,11 @@ const PrivateChat = ({
                     chat={chat}
                     setChat={setChat}
                 />
-                <Message
-                    msgs={msgs}
-                />
+                <SimpleReactLightbox>
+                    <Message
+                        msgs={msgs}
+                    />
+                </SimpleReactLightbox>
                 <Send
                     text={text}
                     setText={setText}

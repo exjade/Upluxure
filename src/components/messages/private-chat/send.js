@@ -15,41 +15,43 @@ const Send = ({
 }) => {
     return (
         <div className={`${styles.send_container} mt-8 flex max-w-screen-lg`} >
-            <form
-                className={`${styles.send_wrapper_form}`}
-                onSubmit={handleSubmit}
-            >
+            <div className={styles.send_border} >
+                <form
+                    className={`${styles.send_wrapper_form}`}
+                    onSubmit={handleSubmit}
+                >
 
-                <div className={`${styles.send_upload_img}`} >
-                    <label htmlFor='img'>
-                        <InsertPhotoIcon className={styles.send_photo_icon} />
-                    </label>
-                    <input
-                    onChange={(event) => setImg(event.target.files[0])}
-                        type='file'
-                        id='img'
-                        accept='image/*'
-                        style={{ display: 'none' }}
-                    />
-                </div>
+                    <div className={`${styles.send_upload_img}`} >
+                        <label htmlFor='img'>
+                            <InsertPhotoIcon className={styles.send_photo_icon} />
+                        </label>
+                        <input
+                            onChange={(event) => setImg(event.target.files[0])}
+                            type='file'
+                            id='img'
+                            accept='image/*'
+                            style={{ display: 'none' }}
+                        />
+                    </div>
 
-                <div className={`${styles.send_text}`} >
-                    <input
-                        type="text"
-                        placeholder='Send a message'
-                        className={styles.send_input}
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                    />
-                </div>
+                    <div className={`${styles.send_text}`} >
+                        <input
+                            type="text"
+                            placeholder='Send a message'
+                            className={styles.send_input}
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                        />
+                    </div>
 
-                <div className={`${styles.send_btn_container} `} >
-                    <button className={styles.send_btn} >
-                        <SendIcon className={styles.send_btn_icon} />
-                    </button>
-                </div>
+                    <div className={`${styles.send_btn_container} `} >
+                        <button className={styles.send_btn} >
+                            <SendIcon className={styles.send_btn_icon} />
+                        </button>
+                    </div>
 
-            </form>
+                </form>
+            </div>
         </div>
     )
 }

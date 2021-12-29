@@ -89,13 +89,13 @@ const Messages = () => {
             // If the user selected an image, I upload it to firebase storage
             const imgRef = ref(
                 storage,
-                `messages/images/${new Date().getTime()} - ${img.name}`
+                `messages/images/${chat.username}/${new Date().getTime()} - ${img.name}`
             )
             const snap = await uploadBytes(imgRef, img)
             // I get the download url of the image
             const downloadUrl = await getDownloadURL(ref(storage, snap.ref.fullPath))
             url = downloadUrl
-        };
+        } 
 
         await addDoc(collection(firestore, 'messages', id, 'chat'), {
             text,
@@ -105,8 +105,9 @@ const Messages = () => {
             media: url || '',
         })
         setText('')
+        url = null
     }
-
+// console.log(chat)
     return (
         <>
             <Header />

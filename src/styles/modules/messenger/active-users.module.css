@@ -46,10 +46,19 @@
     align-items: center;
 }
 /* Private chat */
+/* .privatechat {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+} */
 .privatechat {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
+    position: absolute;
+    z-index: 999;
 }
