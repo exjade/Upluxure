@@ -13,20 +13,34 @@
 
 }
 /* HEADER */
-.header {
+/* .header {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 6rem;
-    height: 100%;
+    height: 100%; */
     /* margin-top: 3rem; */
-    align-content: center;
-    justify-content: center;
+    /* align-content: center;
+    justify-content: center; */
     /* background: rgb(16 25 22); */
     /* background: linear-gradient(193deg, rgb(14 21 19 / 97%) 0%, rgb(16 25 22) 100%); */
+    /* box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
+} */
+.header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 5rem;
+    align-content: center;
+    justify-content: center;
     box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
     -webkit-box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 1px 11px -1px rgba(0,0,0,0.75);
+}
+.start_conversation {
+
 }
 
 /* Avatar */

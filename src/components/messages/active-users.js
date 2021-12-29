@@ -61,7 +61,9 @@ const ActiveUsers = ({
                         :
                         (
                             <>
-                                <h3>Select a user to start a conversation</h3>
+                                {/* <div className={styles.start_conversation} >
+                                    <h3>Select a user to start a conversation</h3>
+                                </div> */}
                             </>
                         )
                     }
