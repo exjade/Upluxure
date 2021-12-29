@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import * as ROUTES from '../../constants/routes'
+/* Hooks */
+import useUser from '../../hooks/use-user'
 /* Styles */
 import styles from '../../styles/modules/messenger/user.module.css'
 import '../../styles/modules/messenger/user.css'
@@ -21,6 +25,7 @@ const User = ({
     CurrentLoggedInUser,
 }) => {
 
+    const { user: { rol } } = useUser()
     //Get the last message
     const notCurrentLoggedInUser = user?.userId
     const id = CurrentLoggedInUser > notCurrentLoggedInUser ?
@@ -37,26 +42,51 @@ const User = ({
 
     return (
         <>
-            <div
-                className={styles.container}
-                onClick={() => selectUser(user)}
-            >
+            {rol === 'free' ? (
+                <Link to={ROUTES.MEMBERSHIPS}>
+                    <div
+                        className={styles.container}
+                    >
+                        <div
+                            className={`${styles.avatar} avatar_size `}
+                        >
+                            <img
+                                src={
+                                    user.photoURL < 1 ? Img : user.photoURL}
+                                alt={user.displayName}
+                                className={`
+                      ${styles.avatar_user} `}
+                            />
+                            <div className={` ${styles.avatar_user}  ${styles.status} ${user.isOnline ? 'Online-border' : 'Offline-border'}`} ></div>
+                        </div>
+                        {data?.from !== CurrentLoggedInUser && data?.unread && (
+                            <small className={`${styles.unread} animate-pulse text-white-normal cursor-pointer`} ><EmailIcon /></small>
+                        )}
+                    </div>
+                </Link>
+            ) : (
                 <div
-                    className={`${styles.avatar} avatar_size `}
+                    className={styles.container}
+                    onClick={() => selectUser(user)}
                 >
-                    <img
-                        src={
-                            user.photoURL < 1 ? Img : user.photoURL}
-                        alt={user.displayName}
-                        className={`
+                    <div
+                        className={`${styles.avatar} avatar_size `}
+                    >
+                        <img
+                            src={
+                                user.photoURL < 1 ? Img : user.photoURL}
+                            alt={user.displayName}
+                            className={`
                         ${styles.avatar_user} `}
-                    />
-                    <div className={` ${styles.avatar_user}  ${styles.status} ${user.isOnline ? 'Online-border' : 'Offline-border'}`} ></div>
+                        />
+                        <div className={` ${styles.avatar_user}  ${styles.status} ${user.isOnline ? 'Online-border' : 'Offline-border'}`} ></div>
+                    </div>
+                    {data?.from !== CurrentLoggedInUser && data?.unread && (
+                        <small className={`${styles.unread} animate-pulse text-white-normal cursor-pointer`} ><EmailIcon /></small>
+                    )}
                 </div>
-                {data?.from !== CurrentLoggedInUser && data?.unread && (
-                    <small className={`${styles.unread} animate-pulse text-white-normal cursor-pointer`} ><EmailIcon /></small>
-                )}
-            </div>
+            )
+            }
         </>
     )
 }
