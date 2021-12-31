@@ -50,6 +50,13 @@ const Post = ({ content }) => {
                     />
                 </div>
                 <Image src={content.imageSrc} caption={content.caption} />
+                <div className="post__container_caption">
+                    <Footer 
+                    username={content.username} 
+                    caption={content.caption}
+                    posted={content.dateCreated}
+                    />
+                </div>
                 <div className="post_container_header">
                     <Actions
                         username={content.username}
@@ -59,9 +66,6 @@ const Post = ({ content }) => {
                         likedPhoto={content.userLikedPhoto}
                         handleFocus={handleFocus}
                     />
-                </div>
-                <div className="post__container_caption">
-                    <Footer username={content.username} caption={content.caption} />
                 </div>
                 <Comments
                     username={content.username}

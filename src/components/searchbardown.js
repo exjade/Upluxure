@@ -1,21 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// import FirebaseContext from '../context/firebase'; // sign and signout functions
+/* Routes */
 import * as ROUTES from '../constants/routes';
+/* Styles */
 import '../styles/css/searchbardown.css'
+/*Context*/
 import UserContext from '../context/user';
+// import FirebaseContext from '../context/firebase'; // sign and signout functions
+/* Hooks */
 import useUser from '../hooks/use-user';
 import { v4 as uuidv4 } from 'uuid';
 /* Material UI*/
 import Box from '@mui/material/Box';
-import VideocamIcon from '@mui/icons-material/Videocam';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import AddIcon from '@mui/icons-material/Add';
 import Avatar from '@mui/material/Avatar';
 import HomeIcon from '@mui/icons-material/Home';
 import SendIcon from '@mui/icons-material/Send';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import PersonIcon from '@mui/icons-material/Person';
 import ButtonBase from '@mui/material/ButtonBase';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
@@ -143,26 +146,24 @@ const SearchBarDown = () => {
                                     <div className="homesearchbar__dashboard">
                                         <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                                             <ButtonBase>
-                                                <HomeIcon />
+                                                <HomeIcon
+                                                    sx={{ color: 'white' }}
+                                                />
                                             </ButtonBase>
                                         </Link>
                                     </div>
                                     <div className="homesearchbar__search cursor-pointer ">
                                         <ButtonBase >
-                                            <NotificationsIcon />
+                                            <NotificationsIcon
+                                                sx={{ color: 'white' }}
+                                            />
                                         </ButtonBase>
                                     </div>
                                     <div className="homesearchbar__add"  >
                                         <AddIcon className="ota-x" />
                                         <div className="bolinhas">
-                                            {/* <IconButton className="ota-bolinha" onClick={handleOpen}>
-                                                <PhotoCameraIcon sx={{ color: 'black' }} />
-                                            </IconButton>
                                             <IconButton className="ota-bolinha" onClick={handleOpen}>
-                                                <VideocamIcon sx={{ color: 'black' }} />
-                                            </IconButton> */}
-                                            <IconButton className="ota-bolinha" onClick={handleOpen}>
-                                                <InsertPhotoIcon sx={{ color: 'black' }} />
+                                                <InsertPhotoIcon sx={{ color: 'white' }} />
                                             </IconButton>
                                         </div>
                                     </div>
@@ -170,24 +171,16 @@ const SearchBarDown = () => {
                                         <div className="homesearchbar__notifications">
                                             <ButtonBase>
                                                 <SendIcon
+                                                    sx={{ color: 'white' }}
                                                 />
                                             </ButtonBase>
                                         </div>
                                     </Link>
                                     <div className="homesearchbar__search">
                                         <Link to={`/p/${user.displayName}`}>
-                                            {
-                                                !photoURL ? (
-                                                    <Avatar
-                                                        alt={`${user.displayName} profile `}
-                                                    />
-                                                ) : (
-                                                    <Avatar
-                                                        src={photoURL}
-                                                        alt={`${user.displayName} profile `}
-                                                    />
-                                                )
-                                            }
+                                            <PersonIcon
+                                                sx={{ color: 'white' }}
+                                            />
                                         </Link>
                                     </div>
 

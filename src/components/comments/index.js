@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { formatDistance } from 'date-fns'
+// import { formatDistance } from 'date-fns'
 import styles from '../../styles/css/comments/Comments.module.css'
 import AddComment from './add-comments'
 
@@ -9,7 +9,11 @@ import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ViewAllComments from './view-all-comments';
 
-const Comments = ({ username, docId, comments: allComments, posted, commentInput }) => {
+const Comments = ({
+    username,
+    docId,
+    comments: allComments, posted, commentInput
+}) => {
 
     const [comments, setComments] = useState(allComments)
     const [open, setOpen] = useState(false)
@@ -30,7 +34,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                                 aria-label="open drawer"
                                 onClick={() => setOpen(true)}
                             >
-                                View all {comments.length} comments
+                                View all comments ({comments.length})
                             </p>
                             <SwipeableDrawer
                                 anchor="bottom"
@@ -61,7 +65,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
                         </p>
                     )
                 }
-                
+
                 {/* {
 
                     comments.slice(0,1).map((item) => (
@@ -93,7 +97,7 @@ const Comments = ({ username, docId, comments: allComments, posted, commentInput
 
                 } */}
 
-                <p className="text-gray-primary uppercase text-xs mt-2 flex justify-center"> {formatDistance(posted, new Date(), { addSuffix: true })}</p>
+                {/* <p className="text-gray-primary uppercase text-xs mt-2 flex justify-center"> {formatDistance(posted, new Date(), { addSuffix: true })}</p> */}
             </div>
             <AddComment
                 docId={docId}

@@ -16,6 +16,8 @@ const storage = getStorage(firebase)
 
 const ViewAllComments = ({ docId, comments, setComments }) => {
 
+    console.log(comments)
+
     // const [comments, setComments] = useState(allComments)
     const [comment, setComment] = useState('');
     const { user, user: { displayName, uid: userId = '' } } = useContext(UserContext)
@@ -35,27 +37,6 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                 comments: FieldValue.arrayUnion({ displayName, comment })
             });
     }
-    // let totalLikes = []
-    // const { userLikedPhoto } = getPhotos()
-    // const [toggleLiked, setToggleLiked] = useState(userLikedPhoto)
-    // const [likes, setLikes] = useState(totalLikes)
-
-    // const handleToggleLikedComment = async () => {
-    //     setToggleLiked((toggleLiked) => !toggleLiked);
-
-    //     await firebase
-    //         .firestore()
-    //         .collection('photos')
-    //         .doc(docId)
-    //         .update({
-    //             comments: [ 
-    //                { likeComment: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)}
-    //             ]
-    //          })
-
-    //     setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
-    // }
-
 
     return (
 
@@ -68,7 +49,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                             <Link to={`/p/${item.displayName}`} className="flex w-3 h-3 mr-12">
                                 <Avatar
                                     className="rounded-full h-3 w-3 mt-4 cursor-pointer"
-                                    src={`/images/avatars/${item.displayName}.jpg`}
+                                    src={`/images/avatars/${item.photoURL}.jpg`}
                                 >
 
                                 </Avatar>

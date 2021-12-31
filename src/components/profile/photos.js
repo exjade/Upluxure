@@ -36,7 +36,6 @@ const Photos = ({
     const { firebase, FieldValue } = useContext(FirebaseContext)
     const [toggleLiked, setToggleLiked] = useState()
     const [likes, setLikes] = useState(photos.likes)
-
     const handleToggleLiked = async () => {
         setToggleLiked((toggleLiked) => !toggleLiked);
 
@@ -133,7 +132,6 @@ const Photos = ({
                 ) : photos.length > 1 ?
                     (
                         photos.slice(2, 100).map((photo) => (
-                            <>
                                 <div key={photo.docId} className={`relative group mb-8 `}  >
                                     <SRLWrapper options={options}>
                                         <img
@@ -157,7 +155,6 @@ const Photos = ({
                                         </div>
                                     </div> */}
                                 </div>
-                            </>
                         ))
                     )
                     : null}

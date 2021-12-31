@@ -7,3 +7,17 @@ span.hola.mr-1.font-bold {
     word-break: break-word;
     overflow: none;
 }
+.post__container_caption {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    -o-border-radius: 1px;
+}
+.footer__in_caption {
+    font-family: ui-serif;
+    font-size: small;
+}
