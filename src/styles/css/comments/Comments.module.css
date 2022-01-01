@@ -3,10 +3,10 @@
 }
 
 .box_comments {
-    height: 50vh;
-    overflow: scroll;
-    /* overflow-y: hidden; */
-    background: #181818;
+  height: 50vh;
+  overflow: scroll;
+  /* overflow-y: hidden; */
+  background: #181818;
 }
 
 .comments_avatar > a > .MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-2s90m6-MuiAvatar-root, img.MuiAvatar-img.css-1pqm26d-MuiAvatar-img {

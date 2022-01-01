@@ -1,26 +1,39 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+/* Context */
 import UserContext from '../../context/user';
 import FirebaseContext from '../../context/firebase';
+/* Components */
+import Header from './header'
+/* Material UI */
 import Avatar from '@mui/material/Avatar';
 import StarRateIcon from '@mui/icons-material/StarRate';
+/* Styles */
 import '../../styles/css/comments/view-all-comments.css';
-import { getPhotos } from '../../services/firebase';
+// import { getPhotos } from '../../services/firebase';
 import { firebase } from '../../lib/firebase'
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc, updateDoc, getDoc } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
+import { getFirestore } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
 
 const ViewAllComments = ({ docId, comments, setComments }) => {
 
-    console.log(comments)
+    /* Hook Scroll To Bottom */
+    const messagesEndRef = useRef(null)
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+    useEffect(() => {
+        scrollToBottom()
+    }, [comments]);
+
 
     // const [comments, setComments] = useState(allComments)
     const [comment, setComment] = useState('');
-    const { user, user: { displayName, uid: userId = '' } } = useContext(UserContext)
+    const { user, user: { displayName } } = useContext(UserContext)
     const { firebase, FieldValue } = useContext(FirebaseContext);
 
     const handleSubmitComment = (event) => {
@@ -41,7 +54,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
     return (
 
         <div className=" bg-black-background">
-            <p className="font-bold text-white-primary mt-2 mb-8">{comments.length} comments</p>
+            <Header comments={comments} />
             {
                 comments.map((item, index) => (
                     <div key={index} className="viewallcomments__container flex items-center justify-start content-between">
@@ -59,6 +72,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                         <div
                             key={`${item.comment}-${item.displayName}`}
                             className="flex text-white-primary capitalize mb-1 flex-col"
+                            ref={messagesEndRef}
                         >
                             <Link to={`/p/${item.displayName}`} className="comments__displayname">
                                 <span className="flex mr-1 mt-1 font-light text-ctitle-primary ">{item.displayName}:</span>
@@ -79,7 +93,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                     </div>
                 ))
             }
-            <div className="mt-2 border-b border-black-border">
+            <div className="view_all_comments_form mt-2 border-b border-black-border">
                 <form
                     className="flex justify-between pl-0 pr-5 mb-1"
                     method="POST"
@@ -87,7 +101,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                 >
                     <Link to={`/p/${user.displayName}`}>
                         <Avatar
-                            className="rounded-full h-10 w-10 mt-4 ml-2"
+                            className="rounded-full h-10 w-10 mt-4"
                             src={`/images/avatars/${user.displayName}.jpg`}
                         />
                     </Link>

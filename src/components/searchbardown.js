@@ -178,9 +178,7 @@ const SearchBarDown = () => {
                                     </Link>
                                     <div className="homesearchbar__search">
                                         <Link to={`/p/${user.displayName}`}>
-                                            <PersonIcon
-                                                sx={{ color: 'white' }}
-                                            />
+                                            <Avatar src={photoURL} />
                                         </Link>
                                     </div>
 

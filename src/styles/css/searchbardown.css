@@ -1,38 +1,4 @@
-/* .homesearch__card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    position: absolute;
-    bottom: 2rem;
-    width: 100%;
-    height: 55px;
-    background: #5D5D5D;
-    border-radius: 138px;
-    -webkit-border-radius: 138px;
-    -moz-border-radius: 138px;
-    -ms-border-radius: 138px;
-    -o-border-radius: 138px;
-} */
 
-.homesearch__card {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    position: fixed;
-    bottom: 1rem !important;
-    z-index: 9999;
-    width: 100%;
-    height: 55px;
-    background: #5D5D5D;
-    border-radius: 138px;
-    -webkit-border-radius: 138px;
-    -moz-border-radius: 138px;
-    -ms-border-radius: 138px;
-    -o-border-radius: 138px;
-    z-index: 9999; */
-}
 .homesearch__card {
     display: flex;
     justify-content: space-between;
@@ -42,9 +8,9 @@
     bottom: 0 !important;
     z-index: 9999;
     width: 100%;
-    height: 84px;
+    height: 5rem;
     background: #181818;
-    z-index: 9999;
+    z-index: 30;
 }
 
 
@@ -57,19 +23,6 @@
     height: 60px;
 
 }
-/* .homesearchbar__dashboard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    background: #C4C4C4;
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    -ms-border-radius: 100px;
-    -o-border-radius: 100px;
-} */
 
 button.MuiButtonBase-root.css-10d1a0h-MuiButtonBase-root {
     width: 100%;
@@ -262,8 +215,8 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 
 /* AVatar*/ 
 .MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-2s90m6-MuiAvatar-root, img.MuiAvatar-img.css-1pqm26d-MuiAvatar-img{
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display: flex;
     overflow: hidden;
     position: relative;

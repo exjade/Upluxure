@@ -6,6 +6,8 @@
 .viewallcomments__container {
     border-bottom: 1px solid #a8a7a70c;
     width: 100%;
+    margin-top: -1rem;
+    margin-bottom: 3rem;
 }
 
 .answer_comments {
@@ -81,4 +83,26 @@
 
 .Comments_box_comments > .p-3 {
     padding: 0;
+}
+
+/* view_all_comments_header  */
+ .header_view_all_comments {
+    background: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    z-index: 30;
+    margin-left: -15px;
+    bottom: 50%;
+ }
+
+/* view_all_comments_form */
+.view_all_comments_form {
+    position: fixed;
+    bottom: 0;
+    background: #181818;
+    width: 100%;
 }
