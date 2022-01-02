@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../styles/css/header.css'
 import UserContext from '../../context/user';
 import * as ROUTES from '../../constants/routes';

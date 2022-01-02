@@ -7,8 +7,6 @@ import '../../styles/modules/memberships/memberships.css'
 /* MATERIAL UI*/
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import StarsIcon from '@mui/icons-material/Stars';
 
 const MembershipCards = () => {

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase'
-import * as ROUTES from '../../constants/routes'
 import ContentLoader from 'react-content-loader'
 import useUser from '../../hooks/use-user'
 import styles from '../../styles/modules/profile/Header.module.css'
@@ -115,7 +114,7 @@ const Header = ({
                                 user.username && (
 
                                     photoURL === '' || photoURL === null || photoURL === undefined  ? (
-                                        <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Fdefault.png?alt=media&token=b45aa922-e61e-4af9-befd-cba374ef67a9" height="100" width="100" />
+                                        <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Fdefault.png?alt=media&token=b45aa922-e61e-4af9-befd-cba374ef67a9" height="100" width="100" alt='default'/>
                                     ) : (
                                         <>
                                             <img
@@ -138,13 +137,13 @@ const Header = ({
                                             <div className={`${styles.roles}`}>
                                                 {
                                                     rol === 'diamond' ?
-                                                        <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fdiamond.png?alt=media&token=36ab1cd8-f9b5-49ca-a708-d55f199c7d3a" />
+                                                        <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fdiamond.png?alt=media&token=36ab1cd8-f9b5-49ca-a708-d55f199c7d3a" alt='diamond'/>
                                                         : rol === 'platinum' ?
-                                                            <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fplatinum.png?alt=media&token=c4bf4abb-8c53-41ff-884d-85437a56c94e" />
+                                                            <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fplatinum.png?alt=media&token=c4bf4abb-8c53-41ff-884d-85437a56c94e" alt='platinum'/>
                                                             : rol === 'gold' ?
-                                                                <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fgold.png?alt=media&token=6e38a7c1-2fb2-44ee-b3ed-3bb4f1dd27df" />
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fgold.png?alt=media&token=6e38a7c1-2fb2-44ee-b3ed-3bb4f1dd27df" alt='gold'/>
                                                                 : rol === 'admin' ?
-                                                                    <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fadmin.png?alt=media&token=4fcf7675-f9b8-4800-814a-a61b75d9ae42" />
+                                                                    <img src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fbadge_roles%2Fadmin.png?alt=media&token=4fcf7675-f9b8-4800-814a-a61b75d9ae42" alt='admin'/>
                                                                     : <div className='mb-8'></div>
                                                 }
                                             </div>

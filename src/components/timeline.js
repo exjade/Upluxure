@@ -1,5 +1,5 @@
 /*eslint-disable no-nested-ternary */
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import Skeleton from 'react-loading-skeleton'
 import usePhotos from '../hooks/use-photos'
 import Post from './post'

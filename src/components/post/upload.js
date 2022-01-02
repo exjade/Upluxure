@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 /* Context */
 import UserContext from '../../context/user'
 import Header from '../header'
@@ -11,14 +11,14 @@ import TextField from '@mui/material/TextField';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc, doc, getDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc} from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
-const Upload = ({ src }) => {
+const Upload = () => {
     let downloadUrl;
 
-    const { user, user: userId, docId, username } = useContext(UserContext)
+    const { user } = useContext(UserContext)
     console.log(user)
     /* Modal */
     const [open, setOpen] = useState(false);
@@ -70,7 +70,6 @@ const Upload = ({ src }) => {
         return localFile
     /* END UPLOAD FILE*/
     }
-    let localFile;
 
 
     return (
