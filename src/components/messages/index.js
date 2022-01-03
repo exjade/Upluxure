@@ -86,11 +86,11 @@ const Messages = () => {
         e.preventDefault()
 
         const CurrentLoggedInUser2 = chat.userId;
-
         const id = CurrentLoggedInUser > CurrentLoggedInUser2 ?
             `${CurrentLoggedInUser}${CurrentLoggedInUser2}`
             :
             `${CurrentLoggedInUser2}${CurrentLoggedInUser}`
+
 
         let url;
         // Im checking if the user selected an image or not
@@ -98,7 +98,7 @@ const Messages = () => {
             // If the user selected an image, I upload it to firebase storage
             const imgRef = ref(
                 storage,
-                `messages/images/${chat.username}/${new Date().getTime()} - ${img.name}`
+                `messages/images/${chat.username}/${CurrentLoggedInUser}/${new Date().getTime()} - ${img.name}`
             )
             const snap = await uploadBytes(imgRef, img)
             // I get the download url of the image
