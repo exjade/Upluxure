@@ -18,35 +18,41 @@ import Avatar from '@mui/material/Avatar';
 import HomeIcon from '@mui/icons-material/Home';
 import SendIcon from '@mui/icons-material/Send';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import PersonIcon from '@mui/icons-material/Person';
 import ButtonBase from '@mui/material/ButtonBase';
 import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
 import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
+import IosShareIcon from '@mui/icons-material/IosShare';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../lib/firebase'
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { getFirestore, collection, addDoc, updateDoc } from 'firebase/firestore'
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from 'firebase/storage'
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    updateDoc
+} from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
 const SearchBarDown = () => {
 
+    const [isLoading, setIsLoading] = useState(true);
+    /* Description */
+    const [caption, setCaption] = useState({ caption: '' });
     /* Modal */
-    let history = useHistory();
+    const handleSubmit = async (event) => event.preventDefault();
     const { user: { photoURL } } = useUser();
-
-    const {
-        user
-    } = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [open, setOpen] = useState(false);
-
     /* Speel Dial*/
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-    const [openButton, setOpenButton] = useState(false);
     /* Mobile */
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => {
@@ -58,15 +64,20 @@ const SearchBarDown = () => {
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
 
+    let [img, setImg] = useState('');
     let downloadUrl;
-
     // Upload a file to firebase storage and get the download url
     const fileHandler = async (event) => {
-        const localFile = event.target.files[0];
-        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
-        await uploadBytes(storageRef, localFile)
-        downloadUrl = await getDownloadURL(storageRef)
-        console.log('successfully uploaded! Dev: Exjade')
+        try {
+            const localFile = event.target.files[0];
+            const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
+            await uploadBytes(storageRef, localFile)
+            downloadUrl = await getDownloadURL(storageRef)
+            console.log('successfully uploaded! Dev: Exjade')
+            setImg(downloadUrl)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     /* UPLOAD FILE*/
@@ -77,7 +88,7 @@ const SearchBarDown = () => {
                 caption: '',
                 comments: [],
                 dateCreated: Date.now(),
-                imageSrc: downloadUrl,
+                imageSrc: img,
                 likes: [],
                 userId: user.uid,
                 username: user.displayName,
@@ -89,7 +100,20 @@ const SearchBarDown = () => {
         } catch (error) {
             console.log("Failed: processing your file :(", error.message);
         }
+        setTimeout(() => {
+            handleClose();
+            setImg('')
+        }, 1000);
     }
+
+
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
+    }, []);
+
     /* END UPLOAD FILE*/
     // const newDoc =  async (event)  => {
     //     event.preventDefault()
@@ -107,31 +131,6 @@ const SearchBarDown = () => {
     //         console.error("Error adding document: ", e);
     //       }
     // }
-    const [caption, setCaption] = useState({
-        caption: ''
-    });
-
-    const handleCaptionChange = async (e) => {
-        setCaption(
-            {
-                ...caption,
-                [e.target.name]: e.target.value
-            }
-        );
-    }
-
-
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-    }
-
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 1000);
-    }, []);
 
     if (isLoading) {
         return <></>
@@ -159,11 +158,20 @@ const SearchBarDown = () => {
                                             />
                                         </ButtonBase>
                                     </div>
-                                    <div className="homesearchbar__add"  >
-                                        <AddIcon className="ota-x" />
+                                    <div
+                                        className="homesearchbar__add"
+                                        onClick={handleOpen}
+                                    >
+                                        <AddIcon
+                                            className="ota-x" />
                                         <div className="bolinhas">
-                                            <IconButton className="ota-bolinha" onClick={handleOpen}>
-                                                <InsertPhotoIcon sx={{ color: 'white' }} />
+                                            <IconButton className="ota-bolinha"
+                                                onClick={handleOpen}
+                                            >
+                                                <InsertPhotoIcon
+                                                    sx={{ color: 'white' }}
+                                                />
+
                                             </IconButton>
                                         </div>
                                     </div>
@@ -187,54 +195,91 @@ const SearchBarDown = () => {
                                 {/* Modal */}
                                 <Modal
                                     open={open}
-                                    onClose={handleClose}
+                                    onClose={
+                                        () => {
+                                            handleClose()
+                                            setImg('')
+                                        }
+                                    }
                                     aria-labelledby="modal-modal-title"
                                     aria-describedby="modal-modal-description"
                                 >
                                     <Box
                                         className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
                                     >
+                                        <div className="searchbardown__back_modal" >
+                                            <button
+                                                onClick={
+                                                    () => {
+                                                        handleClose()
+                                                        if (img) {
+                                                            setImg('')
+                                                        }
+                                                    }
+                                                }
+                                                className="cancel_searchbardown_modal text-white-normal"
+                                            >
+                                                <KeyboardBackspaceIcon
+
+                                                />
+                                            </button>
+                                        </div>
+
                                         <form
                                             onSubmit={handleSubmit}
+                                            className='form__searchbardown_modal_container'
                                         >
-                                            <label htmlFor="icon-button-file" className="btn-6">
-                                                <Input
-                                                    accept="image/*"
-                                                    id="icon-button-file"
-                                                    type="file"
-                                                    onChange={fileHandler}
-                                                />
-                                                <span>
-                                                    Select Image
-                                                </span>
-                                            </label>
-                                            <label htmlFor="fiel-area-text" className="textfield-6">
-                                                <TextField
-                                                    id="fiel-area-text"
-                                                    label="Write a description for your post"
-                                                    multiline
-                                                    fullWidth
-                                                    rows={4}
-                                                    maxLength="40"
-                                                    required
-                                                    name="caption"
+
+
+                                            {img ? (
+                                                <div className="form_searchbardown_image">
+                                                    <img src={img} alt="preview" />
+                                                </div>
+                                            ) : (
+                                                <div className="form_searchbardown_image">
+                                                    <img
+                                                        src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Flogo.png?alt=media&token=c22c4472-b70a-46a1-ac6b-3d7eecd1bc04"
+                                                        alt="no-image-searchbardown" />
+                                                </div>
+                                            )
+                                            }
+
+                                            <div className="form__searchbardown_container">
+                                                <label htmlFor="icon-button-file" className="btn-6">
+                                                    <input
+                                                        type="file"
+                                                        id="img"
+                                                        accept="image/*"
+                                                        onChange={fileHandler}
+                                                        style={{ display: 'none' }}
+                                                    />
+                                                    <label htmlFor='img'>
+                                                        <InsertPhotoIcon />
+                                                    </label>
+                                                </label>
+                                                <input
+                                                    className="searchbardown_modal_input"
+                                                    type="text"
+                                                    placeholder='Write a description'
                                                     value={caption.caption}
-                                                    onChange={handleCaptionChange}
+                                                    onChange={(event) => setCaption({ caption: event.target.value })}
                                                 />
-                                            </label>
+
+
+                                                <button
+                                                    variant="contained"
+                                                    component="span"
+                                                    onClick={() => {
+                                                        setTimeout(() => {
+                                                            newDoc()
+                                                        }, 3500);
+                                                    }}
+                                                    className="btn__upload"
+                                                >
+                                                    <IosShareIcon />
+                                                </button>
+                                            </div>
                                         </form>
-                                        <button
-                                            variant="contained"
-                                            component="span"
-                                            onClick={() => {
-                                                setTimeout(() => {
-                                                    newDoc()
-                                                }, 3500);
-                                            }}
-                                            className="btn__upload"
-                                        >
-                                            Upload Image
-                                        </button>
                                     </Box>
                                 </Modal>
                             </>

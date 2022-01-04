@@ -26,7 +26,7 @@ const storage = getStorage(firebase)
 
 
 const Messages = () => {
-    const { user: { uid } } = useContext(UserContext)
+    const { user, user: { uid } } = useContext(UserContext)
     const [users, setUsers] = useState([])
     const [chat, setChat] = useState('')
     const [text, setText] = useState('')
@@ -62,7 +62,7 @@ const Messages = () => {
             :
             `${CurrentLoggedInUser2}${CurrentLoggedInUser}`
 
-        const messagesRef = collection(firestore, 'messages', id, 'chat')
+        const messagesRef = collection(firestore, 'messages', id, 'chat', )
         const q = query(messagesRef, orderBy('createdAt', 'asc'))
 
         onSnapshot(q, querySnaopshot => {
@@ -106,7 +106,7 @@ const Messages = () => {
             url = downloadUrl
         } 
 
-        await addDoc(collection(firestore, 'messages', id, 'chat'), {
+        await addDoc(collection(firestore, 'messages', id, "chat"), {
             text,
             from: CurrentLoggedInUser,
             to: CurrentLoggedInUser2,

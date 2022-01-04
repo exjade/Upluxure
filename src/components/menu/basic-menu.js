@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -52,13 +52,15 @@ const BasicMenu = () => {
   const { user: { docId } } = useUser();
 
   async function updateUserStatus() {
-      const statusRef = doc(firestore, "users", docId);
+    const statusRef = doc(firestore, "users", docId);
 
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(statusRef, {
-          isOnline: false
-      });
+    // Set the "capital" field of the city 'DC'
+    await updateDoc(statusRef, {
+      isOnline: false
+    });
+    return () => updateUserStatus()
   }
+
 
   return (
 

@@ -13,14 +13,13 @@ import IconButton from '@mui/material/IconButton';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-
+import IosShareIcon from '@mui/icons-material/IosShare';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { v4 as uuidv4 } from 'uuid';
-/* Modal */
-/* Material UI*/
 import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
 import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+
 /* Firebase, Firestore & Storage */
 import { firebase } from '../lib/firebase'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
@@ -33,31 +32,35 @@ const Header = () => {
     const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext);
 
+    /* IsMobile? */
     const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
     const updateMedia = () => {
         setDesktop(window.innerWidth > 701);
     }
-
     useEffect(() => {
         window.addEventListener('resize', updateMedia);
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
     // console.log('user', user)
 
-    const fileHandler = async (event) => {
-        const localFile = event.target.files[0];
-        const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
-        await uploadBytes(storageRef, localFile)
-        downloadUrl = await getDownloadURL(storageRef)
-        console.log('successfully uploaded! Dev: Exjade')
-    }
-
-    /* Modal */
-    let history = useHistory();
     let downloadUrl;
-    const [openModal, setOpenModal] = useState(false);
-    const handleOpenModal = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
+    const [caption, setCaption] = useState({ caption: '' });
+    const [open, setOpen] = useState(false);
+    let [img, setImg] = useState('');
+
+    /* Functions - Upload files */
+    const fileHandler = async (event) => {
+        try {
+            const localFile = event.target.files[0];
+            const storageRef = ref(storage, `/images/avatars/${user.displayName}/${uuidv4() + localFile.name} `)
+            await uploadBytes(storageRef, localFile)
+            downloadUrl = await getDownloadURL(storageRef)
+            console.log('successfully uploaded! Dev: Exjade')
+            setImg(downloadUrl)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const newDoc = async () => {
         try {
@@ -81,19 +84,9 @@ const Header = () => {
             history.push(ROUTES.LOGIN)
         }, 3500);
     }
-    const [caption, setCaption] = useState({
-        caption: ''
-    });
 
-    const handleCaptionChange = async (e) => {
-        setCaption(
-            {
-                ...caption,
-                [e.target.name]: e.target.value
-            }
-        );
-    }
 
+    /* Update online/offline*/
     const { user: { docId } } = useUser();
 
     async function updateUserStatus() {
@@ -104,6 +97,17 @@ const Header = () => {
             isOnline: true
         });
     }
+
+    /* Modal Menu Basic*/
+    let history = useHistory();
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
+    /* Modal Upload Files */
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const handleSubmit = async (event) => event.preventDefault();
 
 
     return (
@@ -147,7 +151,7 @@ const Header = () => {
                                                             </Link>
                                                             <Link to="#" aria-label="add">
                                                                 <IconButton className="header_add_icon"
-                                                                    onClick={handleOpenModal}>
+                                                                    onClick={handleOpen}>
                                                                     <AddCircleOutlineIcon className=" text-white-primary"
                                                                     />
                                                                 </IconButton>
@@ -163,60 +167,100 @@ const Header = () => {
                                                         <BasicMenu />
 
                                                         {/* Modal */}
+                                                        {/* Modal */}
                                                         <Modal
-                                                            open={openModal}
-                                                            onClose={handleCloseModal}
+                                                            open={open}
+                                                            onClose={
+                                                                () => {
+                                                                    handleClose()
+                                                                    setImg('')
+                                                                }
+                                                            }
                                                             aria-labelledby="modal-modal-title"
                                                             aria-describedby="modal-modal-description"
                                                         >
                                                             <Box
-                                                                className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg"
+                                                                className="flex flex-col w-96 h-64 p-5 my-auto justify-between object-center rounded-lg
+                                                                "
                                                             >
+                                                                <div className="searchbardown__back_modal
+                                                                mx-auto max-w-screen-lg h-screen
+                                                                " >
+                                                                    <button
+                                                                        onClick={
+                                                                            () => {
+                                                                                handleClose()
+                                                                                if (img) {
+                                                                                    setImg('')
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        className="cancel_searchbardown_modal text-white-normal"
+                                                                    >
+                                                                        <KeyboardBackspaceIcon
+
+                                                                        />
+                                                                    </button>
+                                                                </div>
+
                                                                 <form
-                                                                    onSubmit={() => {
-                                                                        setTimeout(() => {
-                                                                            newDoc()
-                                                                        }, 6500);
-                                                                    }}
+                                                                    onSubmit={handleSubmit}
+                                                                    className='form__searchbardown_modal_container
+                                                                    mx-auto max-w-screen-lg h-screen'
                                                                 >
-                                                                    <label htmlFor="icon-button-file" className="btn-6">
-                                                                        <Input
-                                                                            accept="image/*"
-                                                                            id="icon-button-file"
-                                                                            type="file"
-                                                                            onChange={fileHandler}
-                                                                        />
-                                                                        <span>
-                                                                            Select Image
-                                                                        </span>
-                                                                    </label>
-                                                                    <label htmlFor="fiel-area-text" className="textfield-6">
-                                                                        <TextField
-                                                                            id="fiel-area-text"
-                                                                            label="Write a description for your post"
-                                                                            multiline
-                                                                            fullWidth
-                                                                            maxLength="40"
-                                                                            required
-                                                                            rows={4}
-                                                                            name="caption"
+
+
+                                                                    {img ? (
+                                                                        <div className="form_header_image">
+                                                                            <img src={img} alt="preview" />
+                                                                        </div>
+                                                                    ) : (
+                                                                        <div className="form_header_image">
+                                                                            <img
+                                                                                src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Flogo.png?alt=media&token=c22c4472-b70a-46a1-ac6b-3d7eecd1bc04"
+                                                                                alt="no-image-searchbardown" />
+                                                                        </div>
+                                                                    )
+                                                                    }
+
+                                                                    <div className="form__searchbardown_container
+                                                                    mx-auto max-w-screen-lg h-screen
+                                                                    ">
+                                                                        <label htmlFor="icon-button-file" className="btn-6">
+                                                                            <input
+                                                                                type="file"
+                                                                                id="img"
+                                                                                accept="image/*"
+                                                                                onChange={fileHandler}
+                                                                                style={{ display: 'none' }}
+                                                                            />
+                                                                            <label htmlFor='img'>
+                                                                                <InsertPhotoIcon />
+                                                                            </label>
+                                                                        </label>
+                                                                        <input
+                                                                            className="searchbardown_modal_input"
+                                                                            type="text"
+                                                                            placeholder='Write a description'
                                                                             value={caption.caption}
-                                                                            onChange={handleCaptionChange}
+                                                                            onChange={(event) => setCaption({ caption: event.target.value })}
                                                                         />
-                                                                    </label>
+
+
+                                                                        <button
+                                                                            variant="contained"
+                                                                            component="span"
+                                                                            onClick={() => {
+                                                                                setTimeout(() => {
+                                                                                    newDoc()
+                                                                                }, 3500);
+                                                                            }}
+                                                                            className="btn__upload"
+                                                                        >
+                                                                            <IosShareIcon />
+                                                                        </button>
+                                                                    </div>
                                                                 </form>
-                                                                <button
-                                                                    variant="contained"
-                                                                    component="span"
-                                                                    onClick={() => {
-                                                                        setTimeout(() => {
-                                                                            newDoc()
-                                                                        }, 6500);
-                                                                    }}
-                                                                    className="btn__upload"
-                                                                >
-                                                                    Upload Image
-                                                                </button>
                                                             </Box>
                                                         </Modal>
                                                     </>

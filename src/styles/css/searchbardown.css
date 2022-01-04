@@ -6,7 +6,7 @@
     flex-direction: row;
     position: fixed;
     bottom: 0 !important;
-    z-index: 9999;
+    z-index: 50;
     width: 100%;
     height: 5rem;
     background: #181818;
@@ -266,16 +266,11 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 .btn-6 {
     margin: 5px;
     display: flex;
-    padding: 1.1em 1.5em;
-    border: 1px solid #ffffff93;
-    margin-bottom:.7rem;
-    border-color: #ffffffa1;
-    border-radius: 4px;
-    font-size: 20px;
-    background-color: transparent;
+    background: transparent;
     font-family: "Roboto", sans-serif;
     color: #ffffff;
     align-content: center;
+    width: 5%;
     justify-content: center;
     align-items: center;
   }
@@ -288,7 +283,6 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
   
   
   .btn-6 div:before {
-    background: url('https://icon-library.com/images/upload-photo-icon/upload-photo-icon-21.jpg');
     color: azure;
       opacity: 0;
       transition: 1s;
@@ -298,7 +292,6 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
   
   .btn-6:hover {
     color: #fff;
-    border: 1px solid #ffffff6b;
   }
 
   .btn-6:hover span {
@@ -330,25 +323,96 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
 }
 
 .btn__upload {
-    border: 1px solid #ffffff52;
     color: #ffffff;
-    height: 3rem;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
+    display: flex;
+    align-items: center;
+    width: 5%;
+    margin: 5px;
 }
-.btn__upload:hover {
-    border: 2px solid #ffffff93;
-}
+
 
 /* Modal */
 .css-79ws1d-MuiModal-root {
     position: fixed;
     z-index: 1300;
+    right: 0;
     bottom: 0;
     top: 0;
-    left: 30px;
-    right: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* form__searchbardown_container */
+.flex.flex-col.w-96.h-64.p-5.my-60.justify-between.border.border-white-primary.object-center.rounded-lg.MuiBox-root.css-0, .flex.flex-col.h-64.p-5.my-60.justify-between.border.border-white-primary.object-center.rounded-lg.MuiBox-root.css-0, .flex.flex-col.h-64.p-5.my-60.justify-between.border.object-center.rounded-lg.MuiBox-root.css-0, .flex.flex-col.w-96.h-64.p-5.my-auto.justify-between.object-center.rounded-lg.MuiBox-root.css-0 {
+    height: 100vh !important;
+    width: 100vw !important;
+    background: #181818;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 99;
+    position: absolute;
+}
+.form__searchbardown_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 3rem;
+    position: fixed;
+    bottom: 1rem;
+    margin-bottom: 0;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 20px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+button.cancel_searchbardown_modal.text-white-normal {
+    top: 0;
+    position: absolute;
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.form__searchbardown_modal_container {
+    display: flex;
+    width: 100%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    height: 100%;
+    margin-bottom: 2.3rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.searchbardown_modal_input {
+    outline: none;
+    background: transparent;
+    width: 80%;
+    color: white;
+    display: flex;
+    text-align: center;
+}
+.searchbardown__back_modal {
+    width: 100%;
+    height: 20px;
+    display: flex;
+}
+.form_searchbardown_image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
 }
