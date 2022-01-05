@@ -47,7 +47,7 @@ const Header = () => {
     const [caption, setCaption] = useState({ caption: '' });
     const [open, setOpen] = useState(false);
     let [img, setImg] = useState('');
-
+    const isInvalid = img === '' || caption.caption === '';
     /* Functions - Upload files */
     const fileHandler = async (event) => {
         try {
@@ -61,14 +61,13 @@ const Header = () => {
             console.log(error)
         }
     }
-
     const newDoc = async () => {
         try {
             const docRef = await addDoc(collection(firestore, "photos"), {
-                caption: "prueba de descripcion",
+                caption: '',
                 comments: [],
                 dateCreated: Date.now(),
-                imageSrc: downloadUrl,
+                imageSrc: img,
                 likes: [],
                 userId: user.uid,
                 username: user.displayName,
@@ -78,11 +77,13 @@ const Header = () => {
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (error) {
-            console.log("Failed: processing your file :(")
+            console.log("Failed: processing your file :(", error.message);
         }
         setTimeout(() => {
-            history.push(ROUTES.LOGIN)
-        }, 3500);
+            handleClose();
+            setImg('')
+            setCaption({ caption: '' })
+        }, 100);
     }
 
 
@@ -216,9 +217,14 @@ const Header = () => {
                                                                         </div>
                                                                     ) : (
                                                                         <div className="form_header_image">
-                                                                            <img
+                                                                            <span className="text-white-normal text-3xl justify-center font-thin font-mono" >
+                                                                                <p>Select your file</p>
+                                                                                <p>Write a description</p>
+                                                                                <p>and Upload</p>
+                                                                            </span>
+                                                                            {/* <img
                                                                                 src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Flogo.png?alt=media&token=c22c4472-b70a-46a1-ac6b-3d7eecd1bc04"
-                                                                                alt="no-image-searchbardown" />
+                                                                                alt="no-image-searchbardown" /> */}
                                                                         </div>
                                                                     )
                                                                     }
@@ -248,6 +254,7 @@ const Header = () => {
 
 
                                                                         <button
+                                                                            disabled={isInvalid}
                                                                             variant="contained"
                                                                             component="span"
                                                                             onClick={() => {
@@ -255,7 +262,7 @@ const Header = () => {
                                                                                     newDoc()
                                                                                 }, 3500);
                                                                             }}
-                                                                            className="btn__upload"
+                                                                            className={`btn__upload ${isInvalid && 'opacity-30'}`}
                                                                         >
                                                                             <IosShareIcon />
                                                                         </button>

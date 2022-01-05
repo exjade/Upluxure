@@ -51,14 +51,14 @@ header.h-16.border-b.mb-5 {
     align-content: center;
  }
 
-.form_header_image img {
+/* .form_header_image > img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
+} */
 /* Change color of the modal */
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
-	position: fixed;
+    position: fixed;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;

@@ -41,10 +41,11 @@ const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
 
 const SearchBarDown = () => {
-
     const [isLoading, setIsLoading] = useState(true);
     /* Description */
     const [caption, setCaption] = useState({ caption: '' });
+    let [img, setImg] = useState('');
+    const isInvalid = img === '' || caption.caption === '';
     /* Modal */
     const handleSubmit = async (event) => event.preventDefault();
     const { user: { photoURL } } = useUser();
@@ -64,7 +65,7 @@ const SearchBarDown = () => {
         return () => window.removeEventListener('resize', updateMedia);
     }, [])
 
-    let [img, setImg] = useState('');
+
     let downloadUrl;
     // Upload a file to firebase storage and get the download url
     const fileHandler = async (event) => {
@@ -103,7 +104,8 @@ const SearchBarDown = () => {
         setTimeout(() => {
             handleClose();
             setImg('')
-        }, 1000);
+            setCaption({ caption: '' })
+        }, 100);
     }
 
 
@@ -237,9 +239,14 @@ const SearchBarDown = () => {
                                                 </div>
                                             ) : (
                                                 <div className="form_searchbardown_image">
-                                                    <img
+                                                    <span className="text-white-normal text-3xl justify-center font-thin font-mono" >
+                                                        <p>Select your file</p>
+                                                        <p>Write a description</p>
+                                                        <p>and Upload</p>
+                                                    </span>
+                                                    {/* <img
                                                         src="https://firebasestorage.googleapis.com/v0/b/upluxure.appspot.com/o/images%2Fprofile%2FUPLUXURE_PROFILE_DEFAULT_USER%2Flogo.png?alt=media&token=c22c4472-b70a-46a1-ac6b-3d7eecd1bc04"
-                                                        alt="no-image-searchbardown" />
+                                                        alt="no-image-searchbardown" /> */}
                                                 </div>
                                             )
                                             }
@@ -267,6 +274,7 @@ const SearchBarDown = () => {
 
 
                                                 <button
+                                                    disabled={isInvalid}
                                                     variant="contained"
                                                     component="span"
                                                     onClick={() => {
@@ -274,8 +282,9 @@ const SearchBarDown = () => {
                                                             newDoc()
                                                         }, 3500);
                                                     }}
-                                                    className="btn__upload"
+                                                    className={`btn__upload ${isInvalid && 'opacity-30'}`}
                                                 >
+
                                                     <IosShareIcon />
                                                 </button>
                                             </div>
