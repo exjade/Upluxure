@@ -356,8 +356,6 @@ button.MuiButtonBase-root.MuiFab-root.MuiFab-circular.MuiFab-sizeLarge.MuiFab-pr
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    z-index: 99;
-    position: absolute;
 }
 .form__searchbardown_container {
     display: flex;
