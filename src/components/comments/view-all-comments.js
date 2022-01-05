@@ -53,7 +53,7 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
 
     return (
         <>
-            <div className=" bg-black-background overflow-hidden">
+            <div className=" bg-black-background overflow-hidden ">
 
                 <Header comments={comments} />
 
@@ -80,11 +80,11 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
                                     <span className="flex mr-1 mt-1 font-light text-ctitle-primary ">{item.displayName}:</span>
                                 </Link>
                                 <span className="breakwordbug font-medium flex text-justify">{item.comment}</span>
-                                <div className="comments__answer">
+                                {/* <div className="comments__answer">
                                     <div className="flex content-start text-brown-button cursor-pointer min-w-min">View Comments
                                         <div className="comments__answer_reply">Reply</div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="viewallcomments__like_star" key={`${index}-${item.displayName}`}>
                                 <StarRateIcon
