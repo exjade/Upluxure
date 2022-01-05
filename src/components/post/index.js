@@ -11,17 +11,17 @@ import ContentLoader from 'react-content-loader'
 const Post = ({ content }) => {
     const commentInput = useRef(null)
     const handleFocus = () => commentInput.current.focus();
+    const [isLoading, setIsLoading] = useState(true);
     //Components
     // => Header, Image, actions (like, comment icons), footer, comments
     useEffect(() => {
 
         setTimeout(() => {
             setIsLoading(false)
-        }, 1000);
+        }, 900);
 
     }, [])
 
-    const [isLoading, setIsLoading] = useState(true);
 
     const loader = () => {
         return (

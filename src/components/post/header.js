@@ -10,30 +10,21 @@ import useUser from '../../hooks/use-user'
 
 /* Firebase, Firestore & Storage */
 import { firebase } from '../../lib/firebase'
-import { getFirestore, getDoc, doc } from 'firebase/firestore'
+import {
+    getFirestore,
+    getDoc,
+    doc,
+    collection,
+    query,
+    where,
+    getDocs,
+} from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 
-const Header = ({ username, docId, totalLikes, likedPhoto }) => {
-    const {
-        user: { uid: userId = '' }
-    } = useContext(UserContext)
+const Header = ({ username }) => {
+    const { user: { uid: userId = '' } } = useContext(UserContext)
 
-    const { firebase, FieldValue } = useContext(FirebaseContext)
-    const [toggleLiked, setToggleLiked] = useState(likedPhoto)
-    const [likes, setLikes] = useState(totalLikes)
 
-    const handleToggleLiked = async () => {
-        setToggleLiked((toggleLiked) => !toggleLiked);
-
-        await firebase
-            .firestore()
-            .collection('photos')
-            .doc(docId)
-            .update({
-                likes: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId),
-            })
-        setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
-    }
 
     return (
         <>
@@ -42,7 +33,8 @@ const Header = ({ username, docId, totalLikes, likedPhoto }) => {
                     <Link to={`/p/${username}`} className="flex items-center">
                         <img
                             className="rounded-full h-12 w-16 mr-3 object-cover"
-                            src={`/images/avatars/${username}.jpg`}//  IMPORTANTE!!! CAMBIAR cat POR ${username}
+                            src={`${username}`}//  IMPORTANTE!!! CAMBIAR cat POR ${username}
+                            // src={`/images/avatars/${username}.jpg`}//  IMPORTANTE!!! CAMBIAR cat POR ${username}
                             alt={`${username} profile`}
                         />
                     </Link>
@@ -56,9 +48,7 @@ const Header = ({ username, docId, totalLikes, likedPhoto }) => {
                         </IconButton>
                     </div>
                 </div>
-
             </div>
-
         </>
     )
 }
