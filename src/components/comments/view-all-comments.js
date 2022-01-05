@@ -52,81 +52,84 @@ const ViewAllComments = ({ docId, comments, setComments }) => {
     }
 
     return (
+        <>
+            <div className=" bg-black-background overflow-hidden">
 
-        <div className=" bg-black-background">
-            <Header comments={comments} />
-            {
-                comments.map((item, index) => (
-                    <div key={index} className="viewallcomments__container flex items-center justify-start content-between">
-                        <div className="view_comments_avatar mb-8">
-                            <Link to={`/p/${item.displayName}`} className="flex w-3 h-3 mr-12">
-                                <Avatar
-                                    className="rounded-full h-3 w-3 mt-4 cursor-pointer"
-                                    src={`/images/avatars/${item.photoURL}.jpg`}
-                                >
+                <Header comments={comments} />
 
-                                </Avatar>
-                            </Link>
-                        </div>
+                {
+                    comments.map((item, index) => (
+                        <div key={index} className="viewallcomments__container flex items-center justify-start content-between">
+                            <div className="view_comments_avatar mb-8">
+                                <Link to={`/p/${item.displayName}`} className="flex w-3 h-3 mr-12">
+                                    <Avatar
+                                        className="rounded-full h-3 w-3 mt-4 cursor-pointer"
+                                        src={`/images/avatars/${item.photoURL}.jpg`}
+                                    >
 
-                        <div
-                            key={`${item.comment}-${item.displayName}`}
-                            className="flex text-white-primary capitalize mb-1 flex-col"
-                            ref={messagesEndRef}
-                        >
-                            <Link to={`/p/${item.displayName}`} className="comments__displayname">
-                                <span className="flex mr-1 mt-1 font-light text-ctitle-primary ">{item.displayName}:</span>
-                            </Link>
-                            <span className="breakwordbug font-medium flex text-justify">{item.comment}</span>
-                            <div className="comments__answer">
-                                <div className="flex content-start text-brown-button cursor-pointer min-w-min">View Comments
-                                    <div className="comments__answer_reply">Reply</div>
+                                    </Avatar>
+                                </Link>
+                            </div>
+
+                            <div
+                                key={`${item.comment}-${item.displayName}`}
+                                className="flex text-white-primary capitalize mb-1 flex-col"
+                                ref={messagesEndRef}
+                            >
+                                <Link to={`/p/${item.displayName}`} className="comments__displayname">
+                                    <span className="flex mr-1 mt-1 font-light text-ctitle-primary ">{item.displayName}:</span>
+                                </Link>
+                                <span className="breakwordbug font-medium flex text-justify">{item.comment}</span>
+                                <div className="comments__answer">
+                                    <div className="flex content-start text-brown-button cursor-pointer min-w-min">View Comments
+                                        <div className="comments__answer_reply">Reply</div>
+                                    </div>
                                 </div>
                             </div>
+                            <div className="viewallcomments__like_star" key={`${index}-${item.displayName}`}>
+                                <StarRateIcon
+                                    className="text-white-primary" />
+                                {/* CANTIDAD DE LIKES */}
+                                <p className="text-white-primary font-extralight text-sm">0</p>
+                            </div>
                         </div>
-                        <div className="viewallcomments__like_star" key={`${index}-${item.displayName}`}>
-                            <StarRateIcon
-                                className="text-white-primary" />
-                            {/* CANTIDAD DE LIKES */}
-                            <p className="text-white-primary font-extralight text-sm">0</p>
-                        </div>
-                    </div>
-                ))
-            }
-            <div className="view_all_comments_form mt-2 border-b border-black-border">
-                <form
-                    className="flex justify-between pl-0 pr-5 mb-1"
-                    method="POST"
-                    onSubmit={(event) => comment.length >= 1 ? handleSubmitComment(event) : (event.preventDefault())}
-                >
-                    <Link to={`/p/${user.displayName}`}>
-                        <Avatar
-                            className="rounded-full h-10 w-10 mt-4"
-                            src={`/images/avatars/${user.displayName}.jpg`}
-                        />
-                    </Link>
-                    <input
-                        aria-label="Add a comment"
-                        autoComplete="off"
-                        className="text-sm text-white-primary w-full py-5 px-4 bg-black-background outline-none mb-2"
-                        type="text"
-                        name="add-comment"
-                        placeholder="Add a comment..."
-                        value={comment}
-                        onChange={({ target }) => setComment(target.value)}
-                        maxLength="60"
-                    />
-                    <button
-                        className={`text-sm font-bold text-white-primary flex items-center w-12 ${!comment && 'opacity-25'}`}
-                        type="button"
-                        disabled={comment.length < 1}
-                        onClick={handleSubmitComment}
+                    ))
+                }
+                <div className="view_all_comments_form mt-2 border-b border-black-border">
+                    <form
+                        className="flex justify-between pl-0 pr-5 mb-1"
+                        method="POST"
+                        onSubmit={(event) => comment.length >= 1 ? handleSubmitComment(event) : (event.preventDefault())}
                     >
-                        Post
-                    </button>
-                </form>
+                        <Link to={`/p/${user.displayName}`}>
+                            <Avatar
+                                className="rounded-full h-10 w-10 mt-4"
+                                src={`/images/avatars/${user.displayName}.jpg`}
+                            />
+                        </Link>
+                        <input
+                            aria-label="Add a comment"
+                            autoComplete="off"
+                            className="text-sm text-white-primary w-full py-5 px-4 bg-black-background outline-none mb-2"
+                            type="text"
+                            name="add-comment"
+                            placeholder="Add a comment..."
+                            value={comment}
+                            onChange={({ target }) => setComment(target.value)}
+                            maxLength="60"
+                        />
+                        <button
+                            className={`text-sm font-bold text-white-primary flex items-center w-12 ${!comment && 'opacity-25'}`}
+                            type="button"
+                            disabled={comment.length < 1}
+                            onClick={handleSubmitComment}
+                        >
+                            Post
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

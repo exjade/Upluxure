@@ -3,7 +3,7 @@
 }
 
 .box_comments {
-  height: 50vh;
+  height: 60vh;
   overflow: scroll;
   /* overflow-y: hidden; */
   background: #181818;
