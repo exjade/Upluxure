@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import useUser from '../../hooks/use-user'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import ContentLoader from 'react-content-loader'
 import styles from '../../styles/modules/my-account/header.module.css'
 // import * as ROUTES from '../../constants/routes'
@@ -9,16 +9,11 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import Avatar from '@material-ui/core/Avatar';
-/* Firebase, Firestore & Storage */
-import { firebase } from '../../lib/firebase'
-import { getFirestore, doc, onSnapshot, collection } from 'firebase/firestore'
-const firestore = getFirestore(firebase)
 
 const URL = 'https://ip.nf/me.json';
 
 const Profile = () => {
     const {
-        user,
         user: {
             fullName,
             photoURL,

@@ -1,14 +1,13 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState } from "react"
 import '../../styles/css/profile/profile-information.css'
 import { useHistory } from "react-router-dom"
-import * as ROUTES from '../../constants/routes'
 import UseUser from '../../hooks/use-user'
 /* Material UI*/
 import { v4 as uuidv4 } from 'uuid';
 
 /* Firebase, Firestore & Storage */
 import { firebase } from '../../lib/firebase'
-import { getStorage, ref, uploadBytes, getDownloadURL, storageRef } from 'firebase/storage'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { getFirestore, deleteField , updateDoc, getDoc, doc } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 const storage = getStorage(firebase)
@@ -21,26 +20,10 @@ const EditProfile = ({
     //     user
     // } = useContext(UserContext);
     const {
-        user,
         user: {
-            Age,
-            Height,
-            Weight,
-            Country,
-            AboutMe,
-            Gender,
-            Language,
-            BodyType,
-            fullName,
-            sxpreference,
-            following = [],
-            followers = [],
-            tags = [],
             photoURL,
             rol,
-            privateorpublic = false,
             docId: profileDocId,
-            userId: profileUserId,
             username: profileUsername
         }
     } = UseUser()
@@ -280,23 +263,19 @@ const EditProfile = ({
             setInfoUpdated('Successful Updated!')
         }
     }
+    /* Tags */
     const updateUserTag = async () => {
         try {
             const docRef = doc(firestore, "users", profileDocId);
             const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
-            } else {
-                console.log("No such document!");
-            }
+            console.log(docSnap)
             if (docRef) {
                 await updateDoc(docRef, {
-                    tags: infoUser.tags
+                    tag: infoUser.tag
                 });
             }
-            console.log("Successfully!", docRef.id);
         } catch (error) {
-            console.log("Failed: Updating your file :(", error.message);
+            console.log("Failed: Updating your tags :(", error.message);
         }
         if (error) {
             setError('try again in a few minutes')
@@ -304,6 +283,45 @@ const EditProfile = ({
             setInfoUpdated('Successful Updated!')
         }
     }
+    const updateUserTag2 = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            console.log(docSnap)
+            if (docRef) {
+                await updateDoc(docRef, {
+                    tag2: infoUser.tag2
+                });
+            }
+        } catch (error) {
+            console.log("Failed: Updating your tags :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    const updateUserTag3 = async () => {
+        try {
+            const docRef = doc(firestore, "users", profileDocId);
+            const docSnap = await getDoc(docRef);
+            console.log(docSnap)
+            if (docRef) {
+                await updateDoc(docRef, {
+                    tag3: infoUser.tag3
+                });
+            }
+        } catch (error) {
+            console.log("Failed: Updating your tags :(", error.message);
+        }
+        if (error) {
+            setError('try again in a few minutes')
+        } {
+            setInfoUpdated('Successful Updated!')
+        }
+    }
+    /*AGE*/ 
     const updateUserAge = async () => {
         try {
             const docRef = doc(firestore, "users", profileDocId);
@@ -414,7 +432,9 @@ const EditProfile = ({
         fullName: '',
         Gender: '',
         sxpreference: '',
-        tags: [],
+        tag: '',
+        tag2: '',
+        tag3: '',
         privateorpublic: '',
     });
 
@@ -943,17 +963,17 @@ const EditProfile = ({
                     </div>
 
 
-                    <div className="flex flex-wrap -mx-3 mb-2">
-                        <div className="w-full px-2 mb-6 ">
+                    <div className="flex flex-wrap flex-row -mx-3 mb-2">
+                        <div className="w-full md:w-1/3 px-2 mb-6 ">
                             <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                                Add a New Hobby
+                                Hobby#1
                             </label>
                             <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-city"
                                 type="text"
                                 placeholder="Travel"
-                                name="tags"
-                                value={infoUser.tags}
+                                name="tag"
+                                value={infoUser.tag}
                                 onChange={handleAboutChange}
                             />
                             {
@@ -966,12 +986,73 @@ const EditProfile = ({
                                     ) : null
                             }
                             <button
-                                className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-4 border  hover:border-transparent rounded border-black-background"
+                                className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-1  border  hover:border-transparent rounded border-black-background"
                                 onClick={() => {
                                     updateUserTag()
                                 }}
-                            >New Hobby
+                            >Update
                             </button>
+                            
+                        </div>
+                        <div className="w-full md:w-1/3 px-2 mb-6 ">
+                            <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                                Hobby#2
+                            </label>
+                            <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="grid-city"
+                                type="text"
+                                placeholder="Travel"
+                                name="tag2"
+                                value={infoUser.tag2}
+                                onChange={handleAboutChange}
+                            />
+                            {
+                                error ? (
+
+                                    <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                                ) :
+                                    success ? (
+                                        <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                    ) : null
+                            }
+                            <button
+                                className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-1 border  hover:border-transparent rounded border-black-background"
+                                onClick={() => {
+                                    updateUserTag2()
+                                }}
+                            >Update
+                            </button>
+
+                        </div>
+                        <div className="w-full md:w-1/3 px-2 mb-6 ">
+                            <label className=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                                Hobby#2
+                            </label>
+                            <input className="appearance-none  w-full border-gray-border text-gray-700 border  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="grid-city"
+                                type="text"
+                                placeholder="Travel"
+                                name="tag3"
+                                value={infoUser.tag3}
+                                onChange={handleAboutChange}
+                            />
+                            {
+                                error ? (
+
+                                    <p className="text-red-warning font-bold text-xs mb-6">{error}</p>
+                                ) :
+                                    success ? (
+                                        <p className="text-green-button font-bold text-xs mb-6">{infoUpdated}</p>
+                                    ) : null
+                            }
+                            <button
+                                className="border-b-2 hover:bg-green-button text-blue-700 font-semibold hover:text-white-normal py-2 px-1 border  hover:border-transparent rounded border-black-background"
+                                onClick={() => {
+                                    updateUserTag3()
+                                }}
+                            >Update
+                            </button>
+
                         </div>
                     </div>
 
