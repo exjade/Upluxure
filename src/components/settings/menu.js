@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
+/* Firebase */
+import { firebase } from '../../lib/firebase'
+import FirebaseContext from '../../context/firebase';
+/* Styles */
 import styles from '../../styles/modules/my-account/menu.module.css'
-
 /* Material ui */
 import HelpIcon from '@mui/icons-material/Help';
 import InfoIcon from '@mui/icons-material/Info';
@@ -11,6 +15,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Divider from '@mui/material/Divider';
 
 const Menu = ({ rol }) => {
+    const { firebase } = useContext(FirebaseContext);
+
     return (
         <>
             <div className={`${styles.main} grid mx-auto max-w-screen-lg`} >
@@ -69,7 +75,17 @@ const Menu = ({ rol }) => {
                             <ArrowForwardIosIcon className={`${styles.arrow}`} />
                         </div>
                         <Divider />
-                        <div className={`${styles.spaceb} flex flex-row mt-8 mb-10`} >
+                        <div
+                            className={`${styles.spaceb} flex flex-row mt-8 mb-10 cursor-pointer`}
+                            onClick={() =>
+                                firebase.auth().signOut()
+                            }
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                    firebase.auth().signOut()
+                                }
+                            }}
+                        >
                             <div className={`${styles.circle} 
                             ${rol === 'gold' ? 'bg-badges-gold'
                                     : rol === 'diamond' ? ' bg-badges-diamond'

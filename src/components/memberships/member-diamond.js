@@ -146,6 +146,7 @@ const MemberDiamond = () => {
                                 Priority Support 24/7
                             </p>
                         </Tooltip>
+                        <Divider className={`${styles.divider}`} />
                     </span>
                 </div>
 

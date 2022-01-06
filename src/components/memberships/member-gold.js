@@ -80,6 +80,7 @@ const MemberGold = () => {
                                 Upload Photos
                             </p>
                         </Tooltip>
+                        <Divider className={`${styles.divider}`} />
                         <Tooltip
                             title="Priority support."
                             enterDelay={400}
@@ -92,6 +93,7 @@ const MemberGold = () => {
                                 Priority Support 24/7
                             </p>
                         </Tooltip>
+                        <Divider className={`${styles.divider}`} />
                         <p className={`${styles.benefits} flex gap-3 mb-5`} ></p>
                     </span>
                 </div>

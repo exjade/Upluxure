@@ -94,6 +94,7 @@ const MemberPlatinum = () => {
                                 Profile (Public or Private)
                             </p>
                         </Tooltip>
+                        <Divider className={`${styles.divider}`} />
                         <Tooltip
                             title="Priority support."
                             enterDelay={400}
@@ -106,6 +107,7 @@ const MemberPlatinum = () => {
                                 Priority Support 24/7
                             </p>
                         </Tooltip>
+                        <Divider className={`${styles.divider}`} />
                     </span>
                 </div>
 

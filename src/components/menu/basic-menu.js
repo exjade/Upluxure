@@ -16,7 +16,11 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 /* Firebase, Firestore  */
 import { firebase } from '../../lib/firebase'
-import { getFirestore, collection, addDoc, updateDoc, doc } from 'firebase/firestore'
+import { 
+  getFirestore,
+   updateDoc,
+    doc
+   } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 
 const dividerstyle = {
