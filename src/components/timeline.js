@@ -4,6 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import usePhotos from '../hooks/use-photos'
 import Post from './post'
 import FollowPeople from './followpeople';
+import Suggestions from './suggestions';
 
 const Timeline = () => {
 

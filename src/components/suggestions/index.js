@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
 import useUser from '../../hooks/use-user'
 import User from './user'
-import Suggestions from './suggestions'
+import SuggestionsProfiles from './suggestions'
 import '../../styles/css/suggestions-user.css'
 // import UserContext from '../../context/user'
 
-const Sidebar = () => {
+const Suggestions = () => {
 
     const { user, user: { docId, fullName, username, userId, following, photoURL } } = useUser()
 
@@ -15,13 +14,13 @@ const Sidebar = () => {
     // console.log('fullName, username, userId', fullName, username, userId)
     return (
         <div className="sidebar border-l-2 border-black-border">
-            <User username={username} fullName={fullName} user={user}/>
-            <Suggestions userId={userId} following={following} LoggedInUserDocId={docId} user={user} photoURL={photoURL}/>
+            {/* <User username={username} fullName={fullName} user={user}/> */}
+            <SuggestionsProfiles userId={userId} following={following} LoggedInUserDocId={docId} user={user} photoURL={photoURL}/>
         </div>
     )
 }
 
-export default Sidebar
+export default Suggestions
 
 // Sidebar.whyDidYouRender = true
 
