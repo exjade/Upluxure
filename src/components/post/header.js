@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import '../../styles/css/post/header.css'
-import FirebaseContext from '../../context/firebase'
+// import FirebaseContext from '../../context/firebase'
 import UserContext from '../../context/user'
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -12,19 +12,26 @@ import useUser from '../../hooks/use-user'
 import { firebase } from '../../lib/firebase'
 import {
     getFirestore,
-    getDoc,
-    doc,
-    collection,
-    query,
-    where,
-    getDocs,
+    collection, query, where, getDocs 
 } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 
 const Header = ({ username }) => {
-    const { user: { uid: userId = '' } } = useContext(UserContext)
+    const [user, setUser] = useState(null)
 
+    useEffect(() => {
 
+        async function getUser() {
+            const q = query(collection(firestore, "users"), where("username", "==", username));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+              setUser(doc.data().photoURL)
+            });
+        }
+        getUser()
+
+    }, [])
+    console.log(user)
 
     return (
         <>
@@ -33,7 +40,7 @@ const Header = ({ username }) => {
                     <Link to={`/p/${username}`} className="flex items-center">
                         <img
                             className="rounded-full h-12 w-16 mr-3 object-cover"
-                            src={`${username}`}//  IMPORTANTE!!! CAMBIAR cat POR ${username}
+                            src={`${user}`}//  IMPORTANTE!!! CAMBIAR cat POR ${username}
                             // src={`/images/avatars/${username}.jpg`}//  IMPORTANTE!!! CAMBIAR cat POR ${username}
                             alt={`${username} profile`}
                         />
