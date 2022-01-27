@@ -18,7 +18,7 @@ const Post = ({ content }) => {
 
         setTimeout(() => {
             setIsLoading(false)
-        }, 900);
+        }, 1000);
 
     }, [])
 

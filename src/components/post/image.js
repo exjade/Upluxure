@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import '../../styles/css/post/image.css'
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Image = ({ src, caption }) => {
 
