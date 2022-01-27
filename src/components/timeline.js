@@ -3,8 +3,8 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton'
 import usePhotos from '../hooks/use-photos'
 import Post from './post'
-import FollowPeople from './followpeople';
-import Suggestions from './suggestions';
+// import FollowPeople from './followpeople';
+import FollowPeople from './suggestions/';
 
 const Timeline = () => {
 

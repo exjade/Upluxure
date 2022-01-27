@@ -1,26 +1,39 @@
+import React from 'react';
 import useUser from '../../hooks/use-user'
-import User from './user'
-import SuggestionsProfiles from './suggestions'
-import '../../styles/css/suggestions-user.css'
-// import UserContext from '../../context/user'
+import SuggestedProfiles from './suggestions'
 
-const Suggestions = () => {
+const FollowPeople = () => {
 
-    const { user, user: { docId, fullName, username, userId, following, photoURL } } = useUser()
+    const { user,
+        user: {
+            docId,
+            fullName,
+            username,
+            userId,
+            following,
+            photoURL,
+            AboutMe,
+            Country,
+            followers,
+        } } = useUser()
 
-        // const user = useContext(UserContext)
-    // console.log('docId', docId)
-
-    // console.log('fullName, username, userId', fullName, username, userId)
     return (
-        <div className="sidebar border-l-2 border-black-border">
-            {/* <User username={username} fullName={fullName} user={user}/> */}
-            <SuggestionsProfiles userId={userId} following={following} LoggedInUserDocId={docId} user={user} photoURL={photoURL}/>
+
+        <div>
+            <SuggestedProfiles
+                userId={userId}
+                following={following}
+                followers={followers}
+                LoggedInUserDocId={docId}
+                user={user}
+                photoURL={photoURL}
+                AboutMe={AboutMe}
+                Country={Country}
+            />
         </div>
+
+
     )
-}
+};
 
-export default Suggestions
-
-// Sidebar.whyDidYouRender = true
-
+export default FollowPeople;
