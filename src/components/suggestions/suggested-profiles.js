@@ -117,7 +117,7 @@ export default function SuggestedProfile({
                                     (
 
                                         <img
-                                            className="rounded-full w-20 flex"
+                                            className="rounded-full w-20 h-20 flex"
                                             src={usersData}
                                             alt={`${username} pic`}
                                         />
@@ -126,7 +126,7 @@ export default function SuggestedProfile({
                         </div>
                     </Link>
                     {/* Username, Info, Description */}
-                    <div className='mb-3'>
+                    <div className={`${styles.user_card} mb-3`} >
                         <Link to={`/p/${username}`}>
                             <p className={styles.username} >
                                 {username}
@@ -149,7 +149,7 @@ export default function SuggestedProfile({
                                         )
                             }
                         </p>
-                       
+
                         {/* Followers & Following */}
                         <div className={`${styles.container_follows}`} >
                             <div>
@@ -172,14 +172,16 @@ export default function SuggestedProfile({
                             </div>
                         </div>
                         {/* Follow Button */}
-                        <button
-                            // 20
-                            className="text-small font-normal bg-gray-button rounded-lg w-40 h-10 text-center text-white-primary"
-                            type="button"
-                            onClick={handleFollowUser}
-                        >
-                            Follow
-                        </button>
+                        <div>
+                            <button
+                                // 20
+                                className="text-small font-normal bg-gray-button rounded-lg w-40 h-10 text-center text-white-primary"
+                                type="button"
+                                onClick={handleFollowUser}
+                            >
+                                Follow
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
