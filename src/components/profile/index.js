@@ -1,18 +1,23 @@
 import React, { useReducer, useState, useEffect } from 'react'
 import { getUserPhotosByUsername } from '../../services/firebase'
 import PropTypes from 'prop-types'
+/* Componentes */
 import Header from './header'
 import Private from './private'
 import Photos from './photos'
 import ProfileInformation from './profile-information';
+import PremiumOptions from './additionalOptions';
+/* Styles */
 import '../../styles/modules/tabs.css';
 import SimpleReactLightbox from 'simple-react-lightbox'
+/* Hooks */
 import useUser from '../../hooks/use-user'
 /* MATERIAL UI*/
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
+import KeyIcon from '@mui/icons-material/Key';
 
 
 const Profile = ({
@@ -58,7 +63,8 @@ const Profile = ({
     /* Component Switch*/
     const [openTabs, setOpenTabs] = useState({
         showPhoto: true,
-        showInformation: false
+        showInformation: false,
+        showPrivate: false
     });
 
     const showPhotoTab = () => {
@@ -72,6 +78,12 @@ const Profile = ({
             <ProfileInformation />
         }
     }
+    const showPrivateTab = () => {
+
+        <PremiumOptions />
+
+    }
+
     /* Switch Icons */
     const [value, setValue] = React.useState(0);
 
@@ -94,10 +106,30 @@ const Profile = ({
 
             {/* TABS */}
             <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="IconsTab_color">
-                <Tab icon={<PhotoSizeSelectActualIcon sx={openTabs.showPhoto ? { color: "#fff" } : { color: '#696969' }} />} aria-label="photo" onClick={() => showPhotoTab(setOpenTabs({ showInformation: false, showPhoto: true }))} />
-                <Tab icon={<AccountBoxIcon sx={openTabs.showInformation ? { color: "#fff" } : { color: '#696969' }} />} aria-label="information" onClick={() => showInfoTabs(setOpenTabs({ showInformation: true, showPhoto: false }))} />
+
+                <Tab
+                    icon={<PhotoSizeSelectActualIcon
+                        sx={openTabs.showPhoto ? { color: "#fff" } : { color: '#696969' }} />}
+                    aria-label="photo"
+                    onClick={() => showPhotoTab(setOpenTabs({ showInformation: false, showPhoto: true }))}
+                />
+
+                <Tab
+                    icon={<AccountBoxIcon
+                        sx={openTabs.showInformation ? { color: "#fff" } : { color: '#696969' }} />}
+                    aria-label="information"
+                    onClick={() => showInfoTabs(setOpenTabs({ showInformation: true, showPhoto: false }))}
+                />
+
+                <Tab
+                    icon={<KeyIcon
+                        sx={openTabs.showPrivate ? { color: "#fff" } : { color: '#696969' }} />}
+                    aria-label="Private"
+                    onClick={() => showPrivateTab(setOpenTabs({ showPrivate: true, showPhoto: false, showInformation: false }))}
+                />
+
             </Tabs>
-            {
+            {/* {
                 openTabs.showPhoto || !openTabs.showInformation ?
                     (
                         <SimpleReactLightbox>
@@ -117,10 +149,38 @@ const Profile = ({
                     )
                     :
                     openTabs.showInformation || !openTabs.showPhoto ? (
-                        <ProfileInformation
-                            profile={profile}
-                        />
-                    ) : null
+                        <ProfileInformation profile={profile}/>
+                    ) :
+                        openTabs.showPrivate || !openTabs.showPhoto || !openTabs.showInformation ? (
+                            <PremiumOptions />
+                        ) : null
+            } */}
+            {
+                openTabs.showPrivate ? (
+                    <PremiumOptions />
+                ) :
+                    openTabs.showPhoto || !openTabs.showInformation ?
+                        (
+                            <SimpleReactLightbox>
+                                {
+                                    privateorpublic === 'Public' || privateorpublic === '' || privateorpublic === undefined || privateorpublic === null ?
+                                        <Photos photos={photosCollection} />
+                                        : followers.includes(currentId) && privateorpublic === 'Private' ?
+                                            <Photos photos={photosCollection} />
+                                            : activeUserProfile && currentId === user.userId ?
+                                                <Photos photos={photosCollection} />
+                                                : privateorpublic === 'Private' && privateorpublic !== 'Public' ?
+                                                    <Private />
+                                                    : null
+
+                                }
+                            </SimpleReactLightbox>
+                        )
+                        :
+                        openTabs.showInformation || !openTabs.showPhoto ? (
+                            <ProfileInformation profile={profile} />
+                        ) :
+                            null
             }
 
             {/* <HomeIconComponent /> */}
