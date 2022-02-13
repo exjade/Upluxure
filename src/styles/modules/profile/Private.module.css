@@ -36,6 +36,11 @@
     font-family: serif;
     padding-left: 5px;
     padding-right: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 .content_container {
     display: flex;

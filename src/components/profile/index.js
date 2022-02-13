@@ -25,6 +25,7 @@ const Profile = ({
     user: {
         privateorpublic,
         followers,
+        rol,
         username: profileUsername
     } }) => {
 
@@ -32,7 +33,7 @@ const Profile = ({
     const { user: { userId: currentId } } = useUser()
     // console.log(profileUsername)
     // console.log(currentId)
-
+    console.log(user)
     const reducer = (state, newState) => ({ ...state, ...newState })
     const initialState = {
         profile: {},
@@ -121,12 +122,16 @@ const Profile = ({
                     onClick={() => showInfoTabs(setOpenTabs({ showInformation: true, showPhoto: false }))}
                 />
 
-                <Tab
-                    icon={<KeyIcon
-                        sx={openTabs.showPrivate ? { color: "#fff" } : { color: '#696969' }} />}
-                    aria-label="Private"
-                    onClick={() => showPrivateTab(setOpenTabs({ showPrivate: true, showPhoto: false, showInformation: false }))}
-                />
+                {
+                     rol === 'model' && (
+                        <Tab
+                            icon={<KeyIcon
+                                sx={openTabs.showPrivate ? { color: "#fff" } : { color: '#696969' }} />}
+                            aria-label="Private"
+                            onClick={() => showPrivateTab(setOpenTabs({ showPrivate: true, showPhoto: false, showInformation: false }))}
+                        />
+                    ) 
+                }
 
             </Tabs>
             {/* {
@@ -156,8 +161,8 @@ const Profile = ({
                         ) : null
             } */}
             {
-                openTabs.showPrivate ? (
-                    <PremiumOptions profile={profile}/>
+                openTabs.showPrivate && rol === 'model' ? (
+                    <PremiumOptions profile={profile} />
                 ) :
                     openTabs.showPhoto || !openTabs.showInformation ?
                         (

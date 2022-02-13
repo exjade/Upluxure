@@ -33,7 +33,7 @@ const PremiumOptions = ({
     return (
       <div className={`${styles.background} h-16 border-t border-gray-primary mt-12 pt-4`} >
         <div className={`${styles.post} grid grid-cols-2 justify-around`}>
-          <h2 className={`${styles.title} animate-bounce`} >Welcome to my Fan's Club!</h2>
+          <h2 className={`${styles.title}`} >Welcome to my Fan's Club!</h2>
           {/* Cambio de sección */}
         </div>
         <div className='grid gap-8 justify-center p-3'>
