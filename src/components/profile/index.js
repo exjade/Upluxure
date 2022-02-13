@@ -157,7 +157,7 @@ const Profile = ({
             } */}
             {
                 openTabs.showPrivate ? (
-                    <PremiumOptions />
+                    <PremiumOptions profile={profile}/>
                 ) :
                     openTabs.showPhoto || !openTabs.showInformation ?
                         (

@@ -22,7 +22,6 @@ export default function SuggestedProfile({
     userId,
     LoggedInUserDocId,
     AboutMe,
-    Country,
     following,
     followers,
 }) {

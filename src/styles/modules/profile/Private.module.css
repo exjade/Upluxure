@@ -1,0 +1,70 @@
+.background {
+    background: #fffffffa;
+    border-radius: 33px;
+    margin-top: 2rem;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    overflow: hidden;
+    box-shadow: 0px -3px 121px -8px rgba(77,77,77,0.49);
+    -webkit-box-shadow: 0px -12px 50px -15px rgb(142 139 139 / 49%);
+    -moz-box-shadow: 0px -3px 121px -8px rgba(77,77,77,0.49);
+}
+
+.post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top:1rem;
+}
+
+.title {
+    margin-left: 2rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    font-family: serif;
+    color: black;
+}
+
+/* UNLOCK */
+/* Description */
+.description {
+    font-weight: 300;
+    font-size: 1.3rem;
+    font-family: serif;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.content_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.pictures {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.videos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.moreinfo {
+    text-align: center;
+}
+.button_payment {
+    background: linear-gradient(267.25deg, #474747 1.2%, #2e2e2e 49.72%, #2c2c2c 115.25%);
+    width: 100%;
+    height: 2.5em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-radius: 30px;
+    color: white;
+    margin-bottom:1rem;
+}
