@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/css/followpeople.css'
 
-const FollowPeople = () => {
+const FollowPeopleDesktop = () => {
 
     return (
         <div className="wrapper">
@@ -15,4 +15,4 @@ const FollowPeople = () => {
     )
 }
 
-export default FollowPeople
+export default FollowPeopleDesktop

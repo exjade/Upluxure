@@ -36,9 +36,9 @@ export default function SuggestedProfile({
         await updateLoggedInUserFollowing(LoggedInUserDocId, profileId, false)
         // 2) update followers array of the user who has been followed
         await updateFollowedUserFollowers(profileDocId, userId, false)
-        if (photos) {
-            window.location.reload()
-        }
+        // if (photos) {
+        //     window.location.reload()
+        // }
     }
 
     /*PERFIL DE OTROS USUARIOS*/

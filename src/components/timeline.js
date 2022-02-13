@@ -1,14 +1,26 @@
 /*eslint-disable no-nested-ternary */
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton'
 import usePhotos from '../hooks/use-photos'
 import Post from './post'
 // import FollowPeople from './followpeople';
 import FollowPeople from './suggestions/';
+import FollowPeopleDesktop from './followpeople';
 
 const Timeline = () => {
 
     const { photos } = usePhotos();
+
+    /* Mobile */
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1076);
+
+    const updateMedia = () => {
+        setIsMobile(window.innerWidth < 1076);
+    }
+    useEffect(() => {
+        window.addEventListener('resize', updateMedia);
+        return () => window.removeEventListener('resize', updateMedia);
+    }, []);
 
     return (
         <div className="container col-span-2 mt- text-white-primary ">
@@ -28,10 +40,14 @@ const Timeline = () => {
                 ) : photos?.length > 0 ? (
                     photos.map((content) => <Post key={content.docId} content={content} />)
                 ) : (
-                    <div className="text-center text-2x1"><FollowPeople /> </div>
+                    isMobile ? (
+                        <div className="text-center text-2x1"><FollowPeople /> </div>
+                    ) : (
+                        <div className="text-center text-2x1"><FollowPeopleDesktop /> </div>
+                    ) 
                 )
             }
-            
+
         </div>
     )
 }
