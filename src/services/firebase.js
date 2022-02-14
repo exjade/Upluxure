@@ -40,7 +40,7 @@ export async function getSuggestedProfiles(userId, following) {
   const result = await firebase
     .firestore()
     .collection('users')
-    .limit(8)
+    // .limit(8)
     .get();
 
   return result.docs
