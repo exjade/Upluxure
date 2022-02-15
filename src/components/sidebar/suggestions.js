@@ -33,7 +33,7 @@ const Suggestions = ({ user, userId, following, LoggedInUserDocId, photoURL }) =
                 </div>
                 <div className="mt-4 grid gap-5">
                     {
-                        profiles.map( (profile) => (
+                        profiles.slice(0,8).map( (profile) => (
                             <SuggestedProfile 
                                 user={user}
                                 key={profile.docId}

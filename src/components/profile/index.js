@@ -26,7 +26,9 @@ const Profile = ({
         privateorpublic,
         followers,
         rol,
-        username: profileUsername
+        username: profileUsername,
+        Gender,
+
     } }) => {
 
 
