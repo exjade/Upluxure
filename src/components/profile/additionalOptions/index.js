@@ -15,9 +15,7 @@ import { getFirestore, updateDoc, doc, addDoc, collection, increment } from 'fir
 const firestore = getFirestore(firebase)
 
 const PremiumOptions = ({
-  profile,
   profile: {
-    token,
     docId: modelDocId,
     username,
     photoURL,
@@ -28,12 +26,11 @@ const PremiumOptions = ({
 
   const {
     user: {
+      username: currentUserUsername,
       docId: clientDocId,
       token: clientTokenBalance,
-      fan,
       userId: clientId }
   } = useUser()
-
   /* Fan Club */
   const [isBecomingFan, setIsBecomingFan] = useState(false)
   const [isFanError, setIsFanError] = useState('')
@@ -50,7 +47,6 @@ const PremiumOptions = ({
         const clientBalanceRef = doc(firestore, "users", clientDocId)
         await updateDoc(clientBalanceRef, {
           token: increment(-45),
-          fan: true,
         })
         window.location.reload()
       } else {
@@ -97,7 +93,7 @@ const PremiumOptions = ({
       <>
         {/* INICIO */}
         {
-          fan && arraysContaineMemberId ? (
+           arraysContaineMemberId && currentUserUsername ? (
             <>
               <Unlock />
             </>

@@ -4,7 +4,6 @@ import FirebaseContext from '../context/firebase'
 import '../styles/css/signup.css'
 import * as ROUTES from '../constants/routes'
 import { doesUsernameExist } from '../services/firebase'
-
 /* Material UI Icons*/
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -62,6 +61,7 @@ const SignUp = () => {
                     Weight: 0,
                     token: 0,
                     online: false,
+                    clubMember: [createdUserResult.user.uid],
                 })
                 window.location.reload()
                 history.push(ROUTES.DASHBOARD)

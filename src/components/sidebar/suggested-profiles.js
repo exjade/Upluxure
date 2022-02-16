@@ -20,7 +20,7 @@ export default function SuggestedProfile({
     LoggedInUserDocId,
 }) {
     const [followed, setFollowed] = useState(false)
-    // const { photos } = usePhotos();
+    const { photos } = usePhotos();
 
     async function handleFollowUser() {
         setFollowed(true)
