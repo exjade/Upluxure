@@ -1,34 +1,86 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 /* Components*/
 import Unlock from './Unlocks'
+import useUser from '../../../hooks/use-user'
+/* UUID */
+// import { v4 as uuidv4 } from 'uuid';
 /* Styles */
 import styles from '../../../styles/modules/profile/Private.module.css'
 /* Material UI  */
 import DiamondIcon from '@mui/icons-material/Diamond';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 /* Firebase, Firestore & Storage */
 import { firebase } from '../../../lib/firebase'
-import { getFirestore, updateDoc, doc } from 'firebase/firestore'
+import { getFirestore, updateDoc, doc, addDoc, collection, increment } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 
 const PremiumOptions = ({
   profile,
   profile: {
     token,
-    docId,
+    docId: modelDocId,
     username,
-    photoURL
+    photoURL,
+    userId: IdModel,
   }
 }) => {
 
+  const { user: { docId: clientDocId, token: clientTokenBalance } } = useUser()
+
+  console.log(clientTokenBalance)
+
   /* Fan Club */
   const [isBecomingFan, setIsBecomingFan] = useState(false)
+
+  const [isFanError, setIsFanError] = useState('')
 
   /* Lock content */
   const [isLocked, setLock] = useState(false)
 
   const lockContent = () => { return <Unlock /> }
+
+  async function getFanStatus() {
+    try {
+
+      if (clientTokenBalance !== null
+        && clientTokenBalance > 0
+        && clientTokenBalance !== undefined
+        && clientTokenBalance !== -0
+        && clientTokenBalance >= 45
+      ) {
+        const clientBalanceRef = doc(firestore, "users", clientDocId)
+        await updateDoc(clientBalanceRef, {
+          token: increment(-45)
+        })
+        window.location.reload()
+      } else {
+        setIsFanError('insufficient funds, please top up')
+      }
+
+      if (clientTokenBalance !== null
+        && clientTokenBalance > 0
+        && clientTokenBalance !== undefined
+        && clientTokenBalance !== -0
+        && clientTokenBalance > 45
+      ) {
+        const modelBalanceRef = doc(firestore, "users", modelDocId)
+        await updateDoc(modelBalanceRef, {
+          token: increment(45)
+        })
+      } else {
+        setIsFanError('insufficient funds, please top up')
+      }
+      // console.log('Fan status updated')
+    } catch (error) {
+      console.error(error)
+      setIsFanError('insufficient funds, please top up')
+      setIsFanError('')
+    }
+
+  }
+
+
+
 
   if (isLocked) {
     return lockContent()
@@ -107,14 +159,15 @@ const PremiumOptions = ({
 
                   </div>
                 </div>
-
+                <p className="text-red-like text-center">{isFanError}</p>
                 {/* FOOTER */}
                 <div className={`${styles.payment_options}`} >
                   <button
                     type="button"
                     className={styles.payment_button}
+                    onClick={() => getFanStatus()}
                   >
-                    Pay 50 Lux's
+                    Pay 45 Lux's
                   </button>
 
                   <button

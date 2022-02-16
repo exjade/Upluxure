@@ -35,7 +35,7 @@ const Profile = ({
     const { user: { userId: currentId } } = useUser()
     // console.log(profileUsername)
     // console.log(currentId)
-    console.log(user)
+    // console.log(user)
     const reducer = (state, newState) => ({ ...state, ...newState })
     const initialState = {
         profile: {},
