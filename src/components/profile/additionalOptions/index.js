@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 /* Components*/
 import Unlock from './Unlocks'
 import useUser from '../../../hooks/use-user'
 /* UUID */
-// import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 /* Styles */
 import styles from '../../../styles/modules/profile/Private.module.css'
 /* Material UI  */
@@ -11,7 +11,7 @@ import DiamondIcon from '@mui/icons-material/Diamond';
 import CheckIcon from '@mui/icons-material/Check';
 /* Firebase, Firestore & Storage */
 import { firebase, FieldValue } from '../../../lib/firebase'
-import { getFirestore, updateDoc, doc, addDoc, collection, increment } from 'firebase/firestore'
+import { getFirestore, updateDoc, doc, addDoc, serverTimestamp, collection, increment } from 'firebase/firestore'
 const firestore = getFirestore(firebase)
 
 const PremiumOptions = ({
@@ -19,11 +19,10 @@ const PremiumOptions = ({
     docId: modelDocId,
     username,
     photoURL,
-    userId: IdModel,
+    userId: modelId,
     clubMember
   }
 }) => {
-
   const {
     user: {
       username: currentUserUsername,
@@ -34,6 +33,7 @@ const PremiumOptions = ({
   /* Fan Club */
   const [isBecomingFan, setIsBecomingFan] = useState(false)
   const [isFanError, setIsFanError] = useState('')
+  const [isFanProcessing, setIsFanProcessing] = useState('')
 
   async function getFanStatus() {
     try {
@@ -44,13 +44,34 @@ const PremiumOptions = ({
         && clientTokenBalance !== -0
         && clientTokenBalance >= 90
       ) {
+        // User pay for fan club
         const clientBalanceRef = doc(firestore, "users", clientDocId)
         await updateDoc(clientBalanceRef, {
           token: increment(-90),
         })
+        setIsFanProcessing('Processing...')
+        // Payment information
+        const docSuccessRef = await addDoc(collection(firestore, "FanClubCompleted", 'modelID', modelId, clientId, 'ticket'), {
+          Transaction: 'Completed',
+          ClientID: clientId,
+          ModelID: modelId,
+          Amount: 90,
+          Date: serverTimestamp(),
+          Concept: 'Fan Club Membership',
+          ticketID: uuidv4(),
+        });
         window.location.reload()
       } else {
         setIsFanError('insufficient funds, please top up')
+        const docFailedRef = await addDoc(collection(firestore, "FanClubFailed", 'modelID', modelId, clientId, 'ticket'), {
+          Transaction: 'Declined',
+          ClientID: clientId,
+          ModelID: modelId,
+          Amount: 90,
+          Date: serverTimestamp(),
+          Concept: 'Fan Club Membership',
+          ticketID: uuidv4(),
+        });
       }
       if (clientTokenBalance !== null
         && clientTokenBalance > 0
@@ -58,6 +79,7 @@ const PremiumOptions = ({
         && clientTokenBalance !== -0
         && clientTokenBalance > 90
       ) {
+        // Model gets paid for fan club
         const modelBalanceRef = doc(firestore, "users", modelDocId)
         await updateDoc(modelBalanceRef, {
           token: increment(90),
@@ -175,7 +197,13 @@ const PremiumOptions = ({
                           </div>
                         </div>
                         <div className={styles.error}>
-                          <p className={`text-red-like text-center`} >{isFanError}</p>
+                          {isFanError ? (
+
+                            <p className={`text-red-like text-center`} >{isFanError}</p>
+                          ) : (
+
+                            <p className={`text-green-button text-center`} >{isFanProcessing}</p>
+                          )}
                         </div>
                         {/* FOOTER */}
                         <div className={`${styles.payment_options}`} >
