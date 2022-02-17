@@ -54,6 +54,8 @@ const PremiumOptions = ({
         const docSuccessRef = await addDoc(collection(firestore, "FanClubCompleted", 'modelID', modelId, clientId, 'ticket'), {
           Transaction: 'Completed',
           ClientID: clientId,
+          ClientUsername: currentUserUsername,
+          ModelUsername: username,
           ModelID: modelId,
           Amount: 90,
           Date: serverTimestamp(),
@@ -65,6 +67,8 @@ const PremiumOptions = ({
         setIsFanError('insufficient funds, please top up')
         const docFailedRef = await addDoc(collection(firestore, "FanClubFailed", 'modelID', modelId, clientId, 'ticket'), {
           Transaction: 'Declined',
+          ClientUsername: currentUserUsername,
+          ModelUsername: username,
           ClientID: clientId,
           ModelID: modelId,
           Amount: 90,
