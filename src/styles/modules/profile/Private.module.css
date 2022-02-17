@@ -222,7 +222,7 @@
 }
 /* FOOTER */
 .payment_options {
-    height: 33%;
+    /* height: 33%; */
     width: 100%;
     display: flex;
     align-items: center;

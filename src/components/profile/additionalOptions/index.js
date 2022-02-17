@@ -42,11 +42,11 @@ const PremiumOptions = ({
         && clientTokenBalance > 0
         && clientTokenBalance !== undefined
         && clientTokenBalance !== -0
-        && clientTokenBalance >= 45
+        && clientTokenBalance >= 90
       ) {
         const clientBalanceRef = doc(firestore, "users", clientDocId)
         await updateDoc(clientBalanceRef, {
-          token: increment(-45),
+          token: increment(-90),
         })
         window.location.reload()
       } else {
@@ -56,11 +56,11 @@ const PremiumOptions = ({
         && clientTokenBalance > 0
         && clientTokenBalance !== undefined
         && clientTokenBalance !== -0
-        && clientTokenBalance > 45
+        && clientTokenBalance > 90
       ) {
         const modelBalanceRef = doc(firestore, "users", modelDocId)
         await updateDoc(modelBalanceRef, {
-          token: increment(45),
+          token: increment(90),
           clubMember: FieldValue.arrayUnion(clientId)
         })
       } else {
@@ -184,7 +184,7 @@ const PremiumOptions = ({
                             className={styles.payment_button}
                             onClick={() => getFanStatus()}
                           >
-                            Pay 45 Lux's
+                            Pay 90 Lux's
                           </button>
 
                           <button
