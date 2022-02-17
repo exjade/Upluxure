@@ -107,7 +107,9 @@ const PremiumOptions = ({
     setTimeout(() => {
       setIsLoading(false)
     }, 500);
+    return () => {setIsLoading(false)}
   }, [])
+
   const [isLoading, setIsLoading] = useState(true);
   const loader = () => { return <p className="bg-black-background">.</p> }
 
