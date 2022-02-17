@@ -66,7 +66,6 @@ const PremiumOptions = ({
       } else {
         setIsFanError('insufficient funds, please top up')
       }
-      // console.log('Fan status updated')
     } catch (error) {
       console.error(error)
       setIsFanError('insufficient funds, please top up')
@@ -84,7 +83,7 @@ const PremiumOptions = ({
     }, 500);
   }, [])
   const [isLoading, setIsLoading] = useState(true);
-  const loader = () =>  {  return <p className="bg-black-background">.</p>  }
+  const loader = () => { return <p className="bg-black-background">.</p> }
 
   if (isLoading) {
     return loader()
@@ -93,7 +92,7 @@ const PremiumOptions = ({
       <>
         {/* INICIO */}
         {
-           arraysContaineMemberId && currentUserUsername ? (
+          arraysContaineMemberId && currentUserUsername ? (
             <>
               <Unlock />
             </>
@@ -131,15 +130,16 @@ const PremiumOptions = ({
                     </button>
                   </div>
 
+                  {/* MODAL */}
                   {isBecomingFan ? (
-                    <div className={`${styles.modal} text-red-like rounded bg-gray-background`} >
+                    <div className={`${styles.modal} `} >
 
                       <div className={`${styles.main_container}`} >
                         {/* HEADER */}
                         <div className={`${styles.modal_header}`}>
                           {/* HEADER TITLE */}
                           <div className={styles.header_container}>
-                            <div className='header_imagediv'>
+                            <div className={styles.header_imagediv} >
                               <img
                                 src={photoURL}
                                 alt="profile_picture"
@@ -147,12 +147,10 @@ const PremiumOptions = ({
                               />
                             </div>
                             <div className={styles.modal_header_title}>
-                              <h4 className='capitalize'>Suscribe to</h4>
-                              <h2 className='capitalize'>{username} Fan's club </h2>
+                              <h4 className={`${styles.modal_header_text} capitalize`}>Suscribe to {username} Fan's club</h4>
+                              {/* HEADER INFO */}
                             </div>
                           </div>
-                          {/* HEADER INFO */}
-                          <p className={styles.modal_header_description} >Suscription is the perfect way to support {username} and get great benefits at same time!</p>
                         </div>
 
                         {/* BODY */}
@@ -163,16 +161,22 @@ const PremiumOptions = ({
                           </div>
                           <div className={styles.benefits} >
                             <h3 className='mb-5 font-semibold '>Benefits:</h3>
-
                             <div className={styles.list} >
-                              <span className={styles.list_child} ><CheckIcon /> <p>Unlimited private chat with the model</p> </span>
-                              <span className={styles.list_child} ><CheckIcon /> <p>Payment Request's</p></span>
-                              <span className={styles.list_child} ><CheckIcon /> <p>Nude Content</p></span>
+                              <span className={styles.list_child} >
+                                <CheckIcon /> <p>Unlimited chat with the model</p>
+                              </span>
+                              <span className={styles.list_child} >
+                                <CheckIcon /> <p>Payment Request's</p>
+                              </span>
+                              <span className={styles.list_child} >
+                                <CheckIcon /> <p>Nude Content</p>
+                              </span>
                             </div>
-
                           </div>
                         </div>
-                        <p className="text-red-like text-center">{isFanError}</p>
+                        <div className={styles.error}>
+                          <p className={`text-red-like text-center`} >{isFanError}</p>
+                        </div>
                         {/* FOOTER */}
                         <div className={`${styles.payment_options}`} >
                           <button
