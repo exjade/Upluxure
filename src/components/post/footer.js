@@ -4,9 +4,9 @@ import { formatDistance } from 'date-fns'
 
 import React from 'react'
 
-const Footer = ({ 
-    posted, 
-    // username, 
+const Footer = ({
+    posted,
+    username,
     caption }) => {
     return (
 
@@ -14,7 +14,13 @@ const Footer = ({
             {/* <span className="capitalize mr-1 font-bold">
             {username}
         </span> */}
-            <span className='footer__in_caption' >{caption}</span>
+            {
+                caption ? (
+                    <span className='footer__in_caption' ><b className='capitalize'>{username}:</b> {caption}</span>
+                ) : (
+                    null
+                )
+            }
             <p className="text-gray-primary uppercase text-xs mt-2 flex justify-center"> {formatDistance(posted, new Date(), { addSuffix: true })}</p>
         </div>
 

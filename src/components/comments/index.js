@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 // import { formatDistance } from 'date-fns'
 import styles from '../../styles/css/comments/Comments.module.css'
@@ -69,7 +70,7 @@ const Comments = ({
 
                 {/* {
 
-                    comments.slice(0,1).map((item) => (
+                    comments.slice(0,5).map((item) => (
                         <div key={`${item.comment}-${item.displayName}`}>
 
                             <div
@@ -78,12 +79,12 @@ const Comments = ({
                             >
                                 <div className={`${styles.comments__avatar} flex items-center`}>
                                     <Link to={`/p/${item.displayName}`} >
-                                        <Avatar
+                                        <img
                                             className="rounded-full cursor-pointer avatarincomments"
                                             src={`/images/avatars/${item.displayName}.jpg`}
-                                        >
+                                        />
 
-                                        </Avatar>
+                                       
                                     </Link>
                                 </div>
                                 <div className={`${styles.comments__comment} flex items-start justify-center content-center ml-4 flex-col`}>
